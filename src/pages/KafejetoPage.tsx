@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar"
 import { ProjectNav } from "@/components/ProjectNav"
 import { NextProject } from "@/components/NextProject"
 import { ContactCTA } from "@/components/ContactCTA"
+import { useLang } from "@/i18n/LanguageContext"
 
 const PRIMARY = "#8EBD3F"
 
@@ -18,18 +19,37 @@ function Divider() {
   return <hr className="border-t border-slate-100 my-0" />
 }
 
-function ScreenPlaceholder({ label }: { label: string }) {
-  return (
-    <div className="bg-secondary border border-dashed border-slate-200 rounded-xl flex flex-col items-center justify-center gap-2 py-16 px-6 text-center">
-      <svg width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" className="text-slate-300">
-        <rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" />
-      </svg>
-      <p className="font-medium text-slate-400">{label}</p>
-    </div>
-  )
+const copy = {
+  pl: {
+    desc: "Projekt UI sklepu internetowego dla polskiej palarni kawy specialty Kafejeto — świeżo palona kawa ziarnista, akcesoria baristyczne i szkolenia dla miłośników kawy.",
+    meta: [
+      { label: "Produkt", value: "Kafejeto.pl" },
+      { label: "Branża", value: "E-commerce · Coffee" },
+      { label: "Użytkownicy", value: "Miłośnicy kawy specialty" },
+      { label: "Zakres", value: "Sklep internetowy" },
+    ],
+    s01: { tag: "01 — Screens", h2: "Kluczowe ekrany" },
+    s02: { tag: "02 — Mobile", h2: "Wersja mobilna" },
+    s03: { tag: "03 — Overview", h2: "Całość w jednym widoku" },
+  },
+  en: {
+    desc: "UI project for the Polish specialty coffee roastery Kafejeto — freshly roasted whole bean coffee, barista accessories and training for coffee enthusiasts.",
+    meta: [
+      { label: "Product", value: "Kafejeto.pl" },
+      { label: "Industry", value: "E-commerce · Coffee" },
+      { label: "Users", value: "Specialty coffee enthusiasts" },
+      { label: "Scope", value: "Online store" },
+    ],
+    s01: { tag: "01 — Screens", h2: "Key screens" },
+    s02: { tag: "02 — Mobile", h2: "Mobile version" },
+    s03: { tag: "03 — Overview", h2: "Everything in one view" },
+  },
 }
 
 export function KafejetoPage() {
+  const { lang } = useLang()
+  const t = copy[lang]
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "auto"
     window.scrollTo(0, 0)
@@ -51,17 +71,10 @@ export function KafejetoPage() {
           </h1>
           <span className="inline-block mb-6 text-sm font-semibold px-3 py-1.5 rounded-full bg-violet-600 text-white">UI</span>
 
-          <p className="text-slate-500 leading-relaxed mb-10">
-            Projekt UI sklepu internetowego dla polskiej palarni kawy specialty Kafejeto — świeżo palona kawa ziarnista, akcesoria baristyczne i szkolenia dla miłośników kawy.
-          </p>
+          <p className="text-slate-500 leading-relaxed mb-10">{t.desc}</p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-b border-slate-100 py-6 mb-10">
-            {[
-              { label: "Produkt", value: "Kafejeto.pl" },
-              { label: "Branża", value: "E-commerce · Coffee" },
-              { label: "Użytkownicy", value: "Miłośnicy kawy specialty" },
-              { label: "Zakres", value: "Sklep internetowy" },
-            ].map((item) => (
+            {t.meta.map((item) => (
               <div key={item.label} className="flex flex-col">
                 <Tag>{item.label}</Tag>
                 <p className="font-semibold text-slate-900 mt-1">{item.value}</p>
@@ -69,15 +82,15 @@ export function KafejetoPage() {
             ))}
           </div>
 
-          <img src="/kafejeto/okladka.jpg" alt="Kafejeto — okładka" className="w-full rounded-xl border border-slate-200 object-cover" />
+          <img src="/kafejeto/okladka.jpg" alt="Kafejeto — cover" className="w-full rounded-xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
 
         {/* ── SCREENS ── */}
         <div className="py-14">
-          <Tag color="#8EBD3F">01 — Screens</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">Kluczowe ekrany</h2>
+          <Tag color={PRIMARY}>{t.s01.tag}</Tag>
+          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s01.h2}</h2>
 
           <div className="flex flex-col gap-6">
             <img src="/kafejeto/page1.jpg" alt="Page 1" className="w-full rounded-xl border border-slate-200 object-cover" />
@@ -91,8 +104,8 @@ export function KafejetoPage() {
 
         {/* ── MOBILE ── */}
         <div className="py-14">
-          <Tag color="#8EBD3F">02 — Mobile</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">Wersja mobilna</h2>
+          <Tag color={PRIMARY}>{t.s02.tag}</Tag>
+          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <img src="/kafejeto/mobile1.jpg" alt="Mobile 1" className="w-full rounded-xl border border-slate-200 object-cover" />
@@ -104,8 +117,8 @@ export function KafejetoPage() {
 
         {/* ── OVERVIEW ── */}
         <div className="py-14">
-          <Tag color="#8EBD3F">03 — Overview</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">Całość w jednym widoku</h2>
+          <Tag color={PRIMARY}>{t.s03.tag}</Tag>
+          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s03.h2}</h2>
 
           <img src="/kafejeto/overview.jpg" alt="Overview" className="w-full rounded-xl border border-slate-200 object-cover" />
         </div>

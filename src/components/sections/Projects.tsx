@@ -2,23 +2,44 @@ import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { useNavigate } from "react-router-dom"
 import { projects } from "@/data/projects"
+import { useLang } from "@/i18n/LanguageContext"
 
 type ProjectTag = "UI" | "Case Study"
-type Filter = "Wszystkie" | ProjectTag
-
+type Filter = "all" | ProjectTag
 
 const tagStyles: Record<ProjectTag, string> = {
   "UI": "bg-violet-600 text-white",
   "Case Study": "bg-amber-500 text-white",
 }
 
-const filters: Filter[] = ["Wszystkie", "UI", "Case Study"]
+const copy = {
+  pl: {
+    label: "Portfolio",
+    heading: "Wybrane projekty",
+    filters: [
+      { id: "all" as Filter, label: "Wszystkie" },
+      { id: "UI" as Filter, label: "UI" },
+      { id: "Case Study" as Filter, label: "Case Study" },
+    ],
+  },
+  en: {
+    label: "Portfolio",
+    heading: "Selected projects",
+    filters: [
+      { id: "all" as Filter, label: "All" },
+      { id: "UI" as Filter, label: "UI" },
+      { id: "Case Study" as Filter, label: "Case Study" },
+    ],
+  },
+}
 
 export function Projects() {
-  const [active, setActive] = useState<Filter>("Wszystkie")
+  const [active, setActive] = useState<Filter>("all")
   const navigate = useNavigate()
+  const { lang } = useLang()
+  const t = copy[lang]
 
-  const filtered = active === "Wszystkie"
+  const filtered = active === "all"
     ? projects
     : projects.filter((p) => p.tag === active)
 
@@ -27,21 +48,21 @@ export function Projects() {
       <div className="max-w-[1100px] mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">Portfolio</p>
+            <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
-              Wybrane projekty
+              {t.heading}
             </h2>
           </div>
 
           <div className="inline-flex items-center bg-white rounded-xl p-1 gap-0.5 relative border border-slate-200">
-            {filters.map((f) => (
+            {t.filters.map((f) => (
               <button
-                key={f}
-                onClick={() => setActive(f)}
+                key={f.id}
+                onClick={() => setActive(f.id)}
                 className="relative px-4 py-1.5 rounded-lg text-sm font-medium z-10 transition-colors duration-200"
-                style={{ color: active === f ? "white" : undefined }}
+                style={{ color: active === f.id ? "white" : undefined }}
               >
-                {active === f && (
+                {active === f.id && (
                   <motion.div
                     layoutId="active-tab"
                     className="absolute inset-0 bg-[#0F172A] rounded-lg shadow-sm"
@@ -49,8 +70,8 @@ export function Projects() {
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
                   />
                 )}
-                <span className={active === f ? "text-white" : "text-slate-500 hover:text-slate-700"}>
-                  {f}
+                <span className={active === f.id ? "text-white" : "text-slate-500 hover:text-slate-700"}>
+                  {f.label}
                 </span>
               </button>
             ))}
@@ -99,9 +120,9 @@ export function Projects() {
               {/* White panel — expands on hover */}
               <div className="panel absolute bottom-0 left-0 right-0 bg-white px-4 pt-3 pb-4 overflow-hidden transition-all duration-300" style={{ height: 52 }}>
                 <p className="font-semibold text-slate-900 leading-snug">{project.title}</p>
-                {"description" in project && project.description && (
+                {"description" in project && (lang === "en" ? project.description_en : project.description) && (
                   <p className="text-slate-500 text-[15px] mt-4 leading-snug">
-                    {project.description}
+                    {lang === "en" ? project.description_en : project.description}
                   </p>
                 )}
               </div>

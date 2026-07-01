@@ -1,41 +1,50 @@
 import { useNavigate } from "react-router-dom"
 import { projects } from "@/data/projects"
+import { useLang } from "@/i18n/LanguageContext"
 
 interface NextProjectProps {
   currentHref: string
   dark?: boolean
 }
 
+const copy = {
+  pl: { label: "Następny projekt", cta: "Zobacz projekt →" },
+  en: { label: "Next project", cta: "View project →" },
+}
+
 export function NextProject({ currentHref, dark = false }: NextProjectProps) {
   const navigate = useNavigate()
+  const { lang } = useLang()
+  const t = copy[lang]
   const currentIndex = projects.findIndex((p) => p.href === currentHref)
   const next = projects[(currentIndex + 1) % projects.length]
 
   const goToNext = () => { if (next.href) navigate(next.href) }
+  const desc = lang === "en" ? next.description_en : next.description
 
   return (
     <div className={`mt-8 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-10 ${dark ? "bg-[#0F172A]" : "border border-slate-200"}`}>
       <div className="flex-1 min-w-0">
-        <span className={`text-[13px] font-medium tracking-widest uppercase ${dark ? "text-white/40" : "text-slate-400"}`}>Następny projekt</span>
+        <span className={`text-[13px] font-medium tracking-widest uppercase ${dark ? "text-white/40" : "text-slate-400"}`}>{t.label}</span>
         <h3
           onClick={goToNext}
           className={`text-3xl font-black mt-3 mb-4 leading-snug cursor-pointer transition-colors ${dark ? "text-white hover:text-white/70" : "text-[#0F172A] hover:text-slate-600"}`}
         >
           {next.title}
         </h3>
-        {next.description && (
-          <p className={`leading-relaxed mb-8 ${dark ? "text-white/50" : "text-slate-500"}`}>{next.description}</p>
+        {desc && (
+          <p className={`leading-relaxed mb-8 ${dark ? "text-white/50" : "text-slate-500"}`}>{desc}</p>
         )}
         {next.href ? (
           <button
             onClick={goToNext}
             className={`font-semibold px-6 py-3 rounded-xl transition-colors ${dark ? "bg-white text-[#0F172A] hover:bg-slate-100" : "bg-[#0F172A] text-white hover:bg-[#1E293B]"}`}
           >
-            Zobacz projekt →
+            {t.cta}
           </button>
         ) : (
           <button disabled className={`font-semibold px-6 py-3 rounded-xl opacity-40 cursor-not-allowed ${dark ? "bg-white text-[#0F172A]" : "bg-[#0F172A] text-white"}`}>
-            Zobacz projekt →
+            {t.cta}
           </button>
         )}
       </div>

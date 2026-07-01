@@ -1,9 +1,17 @@
 import { Button } from "@/components/ui/button"
 import { Link, useNavigate, useLocation } from "react-router-dom"
+import { useLang } from "@/i18n/LanguageContext"
+
+const copy = {
+  pl: { projects: "Projekty", contact: "Kontakt" },
+  en: { projects: "Projects", contact: "Contact" },
+}
 
 export function Navbar() {
   const navigate = useNavigate()
   const location = useLocation()
+  const { lang, setLang } = useLang()
+  const t = copy[lang]
 
   const handleProjects = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -37,11 +45,25 @@ export function Navbar() {
             href="#projects"
             onClick={handleProjects}
             className="hover:text-violet-600 transition-colors cursor-pointer"
-          >Projekty</a>
+          >{t.projects}</a>
           <a href="/cv" className="hover:text-violet-600 transition-colors">CV</a>
           <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-violet-600 transition-colors">LinkedIn</a>
+
+          {/* Language switcher */}
+          <div className="flex items-center gap-1 text-sm font-medium">
+            <button
+              onClick={() => setLang("pl")}
+              className={`transition-colors ${lang === "pl" ? "text-slate-900 font-bold" : "text-slate-400 hover:text-slate-600"}`}
+            >PL</button>
+            <span className="text-slate-200">/</span>
+            <button
+              onClick={() => setLang("en")}
+              className={`transition-colors ${lang === "en" ? "text-slate-900 font-bold" : "text-slate-400 hover:text-slate-600"}`}
+            >EN</button>
+          </div>
+
           <Button size="sm" className="bg-[#0F172A] hover:bg-[#1E293B]" onClick={handleContact}>
-            Kontakt
+            {t.contact}
           </Button>
         </div>
       </div>

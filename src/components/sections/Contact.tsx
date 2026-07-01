@@ -1,46 +1,65 @@
-import { Badge } from "@/components/ui/badge"
 import { Mail, ExternalLink } from "lucide-react"
+import { useLang } from "@/i18n/LanguageContext"
 
-const links = [
-  {
-    label: "Email",
-    value: "suprun.edyta@gmail.com",
-    href: "mailto:suprun.edyta@gmail.com",
-    icon: <Mail className="w-6 h-6 text-slate-500" />,
-    dark: false,
+const copy = {
+
+  pl: {
+    label: "Kontakt",
+    heading: "Porozmawiajmy.",
+    body: "Jeśli pracujesz nad produktem, który wymaga przemyślanego designu — chętnie porozmawiam. Wpadnij na LinkedIn albo po prostu napisz maila : )",
+    resume: "Pobierz CV",
   },
-  {
-    label: "LinkedIn",
-    value: "linkedin.com/in/esuprun",
-    href: "https://linkedin.com/in/esuprun",
-    icon: (
-      <svg className="w-6 h-6 text-slate-500" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
-        <circle cx="4" cy="4" r="2" />
-      </svg>
-    ),
-    dark: false,
+  en: {
+    label: "Contact",
+    heading: "Let's talk.",
+    body: "If you're working on a product that needs thoughtful design — I'd love to chat. Find me on LinkedIn or just send an email : )",
+    resume: "Download resume",
   },
-  {
-    label: "PDF",
-    value: "Download resume",
-    href: "/resume.pdf",
-    icon: null,
-    dark: true,
-  },
-]
+}
 
 export function Contact() {
+  const { lang } = useLang()
+  const t = copy[lang]
+
+  const links = [
+    {
+      label: "Email",
+      value: "suprun.edyta@gmail.com",
+      href: "mailto:suprun.edyta@gmail.com",
+      icon: <Mail className="w-6 h-6 text-slate-500" />,
+      dark: false,
+    },
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/esuprun",
+      href: "https://linkedin.com/in/esuprun",
+      icon: (
+        <svg className="w-6 h-6 text-slate-500" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+          <circle cx="4" cy="4" r="2" />
+        </svg>
+      ),
+      dark: false,
+    },
+    {
+      label: "PDF",
+      value: t.resume,
+      href: "/resume.pdf",
+      icon: null,
+      dark: true,
+    },
+  ]
+
   return (
     <section id="contact" className="py-24 px-6 bg-secondary">
       <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div>
-          <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">Kontakt</p>
+          <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>
           <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
-            Porozmawiajmy.
+            {t.heading}
           </h2>
           <p className="text-slate-500 leading-relaxed max-w-sm">
-            Jeśli pracujesz nad produktem, który wymaga przemyślanego designu — chętnie porozmawiam. Wpadnij na LinkedIn albo po prostu napisz maila : )
+            {t.body}
           </p>
         </div>
 
