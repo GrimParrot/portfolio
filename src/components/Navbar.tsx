@@ -46,7 +46,7 @@ export function Navbar() {
             onClick={handleProjects}
             className="hover:text-violet-600 transition-colors cursor-pointer"
           >{t.projects}</a>
-          <a href="/cv" className="hover:text-violet-600 transition-colors">CV</a>
+          <a href="/cv.pdf" target="_blank" rel="noreferrer" className="hover:text-violet-600 transition-colors">CV</a>
           <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="hover:text-violet-600 transition-colors">LinkedIn</a>
 
           {/* Language switcher */}

@@ -7,13 +7,13 @@ const copy = {
     label: "Kontakt",
     heading: "Porozmawiajmy.",
     body: "Jeśli pracujesz nad produktem, który wymaga przemyślanego designu — chętnie porozmawiam. Wpadnij na LinkedIn albo po prostu napisz maila : )",
-    resume: "Pobierz CV",
+    resume: "Zobacz CV",
   },
   en: {
     label: "Contact",
     heading: "Let's talk.",
     body: "If you're working on a product that needs thoughtful design — I'd love to chat. Find me on LinkedIn or just send an email : )",
-    resume: "Download resume",
+    resume: "View resume",
   },
 }
 
@@ -44,7 +44,7 @@ export function Contact() {
     {
       label: "PDF",
       value: t.resume,
-      href: "/resume.pdf",
+      href: "/cv.pdf",
       icon: null,
       dark: true,
     },

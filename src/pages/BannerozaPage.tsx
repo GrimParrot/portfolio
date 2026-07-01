@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { Lightbulb } from "lucide-react"
 import { Navbar } from "@/components/Navbar"
 import { ProjectNav } from "@/components/ProjectNav"
@@ -175,11 +174,6 @@ export function BannerozaPage() {
   const { lang } = useLang()
   const t = copy[lang]
 
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = "auto"
-    window.scrollTo(0, 0)
-    setTimeout(() => { document.documentElement.style.scrollBehavior = "" }, 100)
-  }, [])
 
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
