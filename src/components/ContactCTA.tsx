@@ -25,7 +25,7 @@ export function ContactCTA() {
       </div>
       <a
         href="mailto:suprun.edyta@gmail.com"
-        className="whitespace-nowrap bg-white text-[#0F172A] font-semibold px-6 py-3 rounded-xl hover:bg-slate-100 transition-colors"
+        className="w-full md:w-auto text-center whitespace-nowrap bg-white text-[#0F172A] font-semibold px-6 py-3 rounded-xl hover:bg-slate-100 transition-colors"
       >
         {t.cta}
       </a>

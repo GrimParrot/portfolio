@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { Lightbulb, TrendingDown, BarChart2, Video, Users, Headphones, Star } from "lucide-react"
+import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { ProjectNav } from "@/components/ProjectNav"
 import { NextProject } from "@/components/NextProject"
-import { ContactCTA } from "@/components/ContactCTA"
+import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
 
 function CrossfadeImage({ images, interval }: { images: string[]; interval: number }) {
@@ -32,7 +33,7 @@ function CrossfadeImage({ images, interval }: { images: string[]; interval: numb
   const fromRight = next !== null && next % 2 === 1
 
   return (
-    <div className="relative w-full rounded-xl border border-slate-200 overflow-hidden" style={{ aspectRatio: "16/9" }}>
+    <div className="relative w-full rounded-2xl border border-slate-200 overflow-hidden" style={{ aspectRatio: "16/9" }}>
       <img
         src={images[index]}
         alt=""
@@ -278,10 +279,10 @@ export function LocaloCaseStudy() {
     <div className="min-h-screen bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
       <Navbar />
 
-      <div className="max-w-[1100px] mx-auto px-6 pt-24 pb-32">
+      <div className="max-w-[1100px] mx-auto px-6 pt-24 pb-16 md:pb-32">
 
         {/* ── HERO ── */}
-        <div className="py-16">
+        <div className="py-8 md:py-16">
           <ProjectNav currentHref="/case-study/localo" />
           <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
             Unifying client prospecting — from two fragmented tools into{" "}
@@ -308,7 +309,7 @@ export function LocaloCaseStudy() {
             ))}
           </div>
 
-          <img src="/Sales mode.png" alt="Client Acquisition — main view" className="w-full rounded-xl border border-slate-200 object-cover" />
+          <img src="/Sales mode.png" alt="Client Acquisition — main view" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
@@ -408,21 +409,21 @@ export function LocaloCaseStudy() {
               <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{t.s03.flowH3}</h3>
               <p className="text-slate-500 leading-relaxed">{t.s03.flowDesc}</p>
             </div>
-            <img src="/flow.png" alt="User flow — Client Acquisition" className="w-full rounded-xl border border-slate-200" />
+            <img src="/flow.png" alt="User flow — Client Acquisition" className="w-full rounded-2xl border border-slate-200" />
           </div>
 
           <div className="mt-16 mb-6">
             <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{t.s03.synthesisH3}</h3>
             <p className="text-slate-500 leading-relaxed mb-6">{t.s03.synthesisDesc}</p>
-            <img src="/summary.png" alt="Research synthesis" className="w-full rounded-xl border border-slate-200" />
+            <img src="/summary.png" alt="Research synthesis" className="w-full rounded-2xl border border-slate-200" />
           </div>
 
           <div className="mt-16 mb-8">
             <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{t.s03.lofiH3}</h3>
             <p className="text-slate-500 leading-relaxed mb-6">{t.s03.lofiDesc}</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <img src="/content.png" alt="Lo-fi — Content" className="w-full rounded-xl border border-slate-200" />
-              <img src="/content-1.png" alt="Lo-fi — Content 1" className="w-full rounded-xl border border-slate-200" />
+              <img src="/content.png" alt="Lo-fi — Content" className="w-full rounded-2xl border border-slate-200" />
+              <img src="/content-1.png" alt="Lo-fi — Content 1" className="w-full rounded-2xl border border-slate-200" />
             </div>
           </div>
         </div>
@@ -441,7 +442,7 @@ export function LocaloCaseStudy() {
                 <span className="text-[13px] font-medium tracking-widest uppercase mb-2 block" style={{ color: PRIMARY }}>{feature.step}</span>
                 <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{feature.title}</h3>
                 <p className="text-slate-500 leading-relaxed mb-8">{feature.desc}</p>
-                <img src={feature.img} alt={feature.title} className="w-full rounded-xl border border-slate-200 object-cover" />
+                <img src={feature.img} alt={feature.title} className="w-full rounded-2xl border border-slate-200 object-cover" />
               </div>
             ) : "fullWidth" in feature && feature.fullWidth ? (
               <div key={i} className="mb-16">
@@ -457,7 +458,7 @@ export function LocaloCaseStudy() {
                   <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{feature.title}</h3>
                   <p className="text-slate-500 leading-relaxed">{feature.desc}</p>
                 </div>
-                <img src={feature.img} alt={feature.imgAlt} className={`w-full rounded-xl border border-slate-200 ${"contain" in feature && feature.contain ? "object-contain bg-secondary" : "object-cover"}`} style={"contain" in feature && feature.contain ? {} : { aspectRatio: "16/9" }} />
+                <img src={feature.img} alt={feature.imgAlt} className={`w-full rounded-2xl border border-slate-200 ${"contain" in feature && feature.contain ? "object-contain bg-secondary" : "object-cover"}`} style={"contain" in feature && feature.contain ? {} : { aspectRatio: "16/9" }} />
               </div>
             )
           ))}
@@ -498,9 +499,10 @@ export function LocaloCaseStudy() {
         </div>
 
         <NextProject currentHref="/case-study/localo" />
-        <ContactCTA />
 
       </div>
+      <Contact />
+      <Footer />
     </div>
   )
 }

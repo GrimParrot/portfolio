@@ -54,12 +54,12 @@ export function Projects() {
             </h2>
           </div>
 
-          <div className="inline-flex items-center bg-white rounded-xl p-1 gap-0.5 relative border border-slate-200">
+          <div className="flex w-full sm:w-auto sm:inline-flex items-center bg-white rounded-xl p-1 gap-0.5 relative border border-slate-200">
             {t.filters.map((f) => (
               <button
                 key={f.id}
                 onClick={() => setActive(f.id)}
-                className="relative px-4 py-1.5 rounded-lg text-sm font-medium z-10 transition-colors duration-200"
+                className="relative flex-1 px-4 py-1.5 rounded-lg text-sm font-medium z-10 transition-colors duration-200 text-center whitespace-nowrap"
                 style={{ color: active === f.id ? "white" : undefined }}
               >
                 {active === f.id && (

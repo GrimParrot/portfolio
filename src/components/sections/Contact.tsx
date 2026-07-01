@@ -6,13 +6,13 @@ const copy = {
   pl: {
     label: "Kontakt",
     heading: "Porozmawiajmy.",
-    body: "Jeśli pracujesz nad produktem, który wymaga przemyślanego designu — chętnie porozmawiam. Wpadnij na LinkedIn albo po prostu napisz maila : )",
+    body: "Chcesz porozmawiać o projekcie, dowiedzieć się więcej o procesach, decyzjach i kontekście? Wpadnij na LinkedIn albo po prostu napisz maila : )",
     resume: "Zobacz CV",
   },
   en: {
     label: "Contact",
     heading: "Let's talk.",
-    body: "If you're working on a product that needs thoughtful design — I'd love to chat. Find me on LinkedIn or just send an email : )",
+    body: "Want to talk about a project, learn more about the process, decisions, and context? Find me on LinkedIn or just send an email : )",
     resume: "View resume",
   },
 }
@@ -45,17 +45,17 @@ export function Contact() {
       label: "PDF",
       value: t.resume,
       href: "/cv.pdf",
-      icon: null,
+      icon: <span className="text-sm font-bold text-white/70">CV</span>,
       dark: true,
     },
   ]
 
   return (
-    <section id="contact" className="py-24 px-6 bg-secondary">
+    <section id="contact" className="py-12 md:py-24 px-6 bg-secondary overflow-hidden">
       <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div>
           <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>
-          <h2 className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
             {t.heading}
           </h2>
           <p className="text-slate-500 leading-relaxed max-w-sm">
@@ -78,7 +78,7 @@ export function Contact() {
             >
               <div className="flex items-center gap-3">
                 {link.icon && (
-                  <div className="w-12 h-12 bg-secondary flex items-center justify-center" style={{ borderRadius: 8 }}>
+                  <div className={`w-12 h-12 flex items-center justify-center ${link.dark ? "bg-white/10" : "bg-secondary"}`} style={{ borderRadius: 8 }}>
                     {link.icon}
                   </div>
                 )}

@@ -1,8 +1,9 @@
 import { Lightbulb } from "lucide-react"
+import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { ProjectNav } from "@/components/ProjectNav"
 import { NextProject } from "@/components/NextProject"
-import { ContactCTA } from "@/components/ContactCTA"
+import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
 
 const PRIMARY = "#DD8100"
@@ -179,10 +180,10 @@ export function BannerozaPage() {
     <div className="min-h-screen bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
       <Navbar />
 
-      <div className="max-w-[1100px] mx-auto px-6 pt-24 pb-32">
+      <div className="max-w-[1100px] mx-auto px-6 pt-24 pb-16 md:pb-32">
 
         {/* ── HERO ── */}
-        <div className="py-16">
+        <div className="py-8 md:py-16">
           <ProjectNav currentHref="/case-study/banneroza" />
 
           <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
@@ -207,7 +208,7 @@ export function BannerozaPage() {
             ))}
           </div>
 
-          <img src="/banneroza/cover2.jpg" alt="Banneroza — cover" className="w-full rounded-xl border border-slate-200 object-cover" />
+          <img src="/banneroza/cover2.jpg" alt="Banneroza — cover" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
@@ -218,7 +219,7 @@ export function BannerozaPage() {
           <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-8">{t.s01.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-6">{t.s01.p1}</p>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s01.p2}</p>
-          <img src="/banneroza/1.jpg" alt="Problem — banners in cities" className="w-full rounded-xl border border-slate-200 object-cover" />
+          <img src="/banneroza/1.jpg" alt="Problem — banners in cities" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
@@ -234,7 +235,7 @@ export function BannerozaPage() {
               <p className="text-slate-500 leading-relaxed mb-6">{t.s02.p2}</p>
               <p className="text-slate-500 leading-relaxed">{t.s02.p3}</p>
             </div>
-            <img src="/banneroza/3.jpg" alt="Szyldowe Rewolucje — solution" className="w-full rounded-xl border border-slate-200 object-cover" />
+            <img src="/banneroza/3.jpg" alt="Szyldowe Rewolucje — solution" className="w-full rounded-2xl border border-slate-200 object-cover" />
           </div>
         </div>
 
@@ -260,7 +261,7 @@ export function BannerozaPage() {
             </ul>
           </div>
 
-          <img src="/banneroza/4.jpg" alt="Research — quantitative data" className="w-full rounded-xl border border-slate-200 object-cover mb-12" />
+          <img src="/banneroza/4.jpg" alt="Research — quantitative data" className="w-full rounded-2xl border border-slate-200 object-cover mb-12" />
 
           <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s03.insightsH3}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
@@ -275,7 +276,7 @@ export function BannerozaPage() {
 
           <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s03.personaH3}</h3>
           <p className="text-slate-500 leading-relaxed mb-8">{t.s03.personaDesc}</p>
-          <img src="/banneroza/5.jpg" alt="Persona" className="w-full rounded-xl border border-slate-200 object-cover" />
+          <img src="/banneroza/5.jpg" alt="Persona" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
@@ -285,7 +286,7 @@ export function BannerozaPage() {
           <Tag color={PRIMARY}>{t.s04.tag}</Tag>
           <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-8">{t.s04.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s04.p}</p>
-          <img src="/banneroza/6.jpg" alt="Information architecture" className="w-full rounded-xl border border-slate-200 object-cover" />
+          <img src="/banneroza/6.jpg" alt="Information architecture" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
@@ -297,11 +298,11 @@ export function BannerozaPage() {
 
           <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s05.lofiH3}</h3>
           <p className="text-slate-500 leading-relaxed mb-8">{t.s05.lofiP}</p>
-          <img src="/banneroza/7.jpg" alt="Low fidelity wireframes" className="w-full rounded-xl border border-slate-200 object-cover mb-12" />
+          <img src="/banneroza/7.jpg" alt="Low fidelity wireframes" className="w-full rounded-2xl border border-slate-200 object-cover mb-12" />
 
           <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s05.hifiH3}</h3>
           <p className="text-slate-500 leading-relaxed mb-8">{t.s05.hifiP}</p>
-          <img src="/banneroza/8.jpg" alt="High fidelity mockup" className="w-full rounded-xl border border-slate-200 object-cover" />
+          <img src="/banneroza/8.jpg" alt="High fidelity mockup" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
@@ -326,9 +327,10 @@ export function BannerozaPage() {
         </div>
 
         <NextProject currentHref="/case-study/banneroza" />
-        <ContactCTA />
 
       </div>
+      <Contact />
+      <Footer />
     </div>
   )
 }

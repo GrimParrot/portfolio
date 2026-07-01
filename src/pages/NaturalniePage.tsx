@@ -1,7 +1,8 @@
+import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { ProjectNav } from "@/components/ProjectNav"
 import { NextProject } from "@/components/NextProject"
-import { ContactCTA } from "@/components/ContactCTA"
+import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
 
 const PRIMARY = "#32685B"
@@ -52,10 +53,10 @@ export function NaturalniePage() {
     <div className="min-h-screen bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
       <Navbar />
 
-      <div className="max-w-[1100px] mx-auto px-6 pt-24 pb-32">
+      <div className="max-w-[1100px] mx-auto px-6 pt-24 pb-16 md:pb-32">
 
         {/* ── HERO ── */}
-        <div className="py-16">
+        <div className="py-8 md:py-16">
           <ProjectNav currentHref="/ui/naturalnie" />
 
           <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
@@ -74,7 +75,7 @@ export function NaturalniePage() {
             ))}
           </div>
 
-          <img src="/naturalnie.png" alt="Naturalnie.pl — main view" className="w-full border border-slate-200 object-cover" style={{ borderRadius: 32 }} />
+          <img src="/naturalnie.png" alt="Naturalnie.pl — main view" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
@@ -85,8 +86,8 @@ export function NaturalniePage() {
           <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s01.h2}</h2>
 
           <div className="flex flex-col gap-6">
-            <img src="/naturalniepl1.png" alt="Naturalnie.pl — view 1" className="w-full block border border-slate-200" style={{ borderRadius: 32 }} />
-            <img src="/naturalniepl2.png" alt="Naturalnie.pl — view 2" className="w-full block border border-slate-200" style={{ borderRadius: 32 }} />
+            <img src="/naturalniepl1.png" alt="Naturalnie.pl — view 1" className="w-full block rounded-2xl border border-slate-200" />
+            <img src="/naturalniepl2.png" alt="Naturalnie.pl — view 2" className="w-full block rounded-2xl border border-slate-200" />
           </div>
         </div>
 
@@ -98,17 +99,18 @@ export function NaturalniePage() {
           <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
           <div className="flex flex-col gap-6">
-            <img src="/ui-summary-3.png" alt="UI Summary 3" className="w-full block border border-slate-200" style={{ borderRadius: 32 }} />
-            <img src="/ui-summary.png" alt="UI Summary" className="w-full block border border-slate-200" style={{ borderRadius: 32 }} />
-            <img src="/ui-summary-1.png" alt="UI Summary 1" className="w-full block border border-slate-200" style={{ borderRadius: 32 }} />
-            <img src="/ui-summary-2.png" alt="UI Summary 2" className="w-full block border border-slate-200" style={{ borderRadius: 32 }} />
+            <img src="/ui-summary-3.png" alt="UI Summary 3" className="w-full block rounded-2xl border border-slate-200" />
+            <img src="/ui-summary.png" alt="UI Summary" className="w-full block rounded-2xl border border-slate-200" />
+            <img src="/ui-summary-1.png" alt="UI Summary 1" className="w-full block rounded-2xl border border-slate-200" />
+            <img src="/ui-summary-2.png" alt="UI Summary 2" className="w-full block rounded-2xl border border-slate-200" />
           </div>
         </div>
 
         <NextProject currentHref="/ui/naturalnie" />
-        <ContactCTA />
 
       </div>
+      <Contact />
+      <Footer />
     </div>
   )
 }

@@ -12,7 +12,7 @@ const copy = {
   en: { label: "Next project", cta: "View project →" },
 }
 
-export function NextProject({ currentHref, dark = false }: NextProjectProps) {
+export function NextProject({ currentHref, dark = true }: NextProjectProps) {
   const navigate = useNavigate()
   const { lang } = useLang()
   const t = copy[lang]
@@ -28,17 +28,30 @@ export function NextProject({ currentHref, dark = false }: NextProjectProps) {
         <span className={`text-[13px] font-medium tracking-widest uppercase ${dark ? "text-white/40" : "text-slate-400"}`}>{t.label}</span>
         <h3
           onClick={goToNext}
-          className={`text-3xl font-black mt-3 mb-4 leading-snug cursor-pointer transition-colors ${dark ? "text-white hover:text-white/70" : "text-[#0F172A] hover:text-slate-600"}`}
+          className={`text-xl md:text-3xl font-black mt-3 mb-4 leading-snug cursor-pointer transition-colors ${dark ? "text-white hover:text-white/70" : "text-[#0F172A] hover:text-slate-600"}`}
         >
           {next.title}
         </h3>
+
+        {/* Image — mobile only, between title and description */}
+        <div
+          onClick={goToNext}
+          className="md:hidden w-full rounded-xl overflow-hidden border border-white/10 cursor-pointer group/img mb-6" style={{ height: 200 }}
+        >
+          {next.image ? (
+            <img src={next.image} alt={next.title} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105" />
+          ) : (
+            <div className={`w-full h-full bg-gradient-to-br ${next.color} transition-transform duration-500 group-hover/img:scale-105`} />
+          )}
+        </div>
+
         {desc && (
           <p className={`leading-relaxed mb-8 ${dark ? "text-white/50" : "text-slate-500"}`}>{desc}</p>
         )}
         {next.href ? (
           <button
             onClick={goToNext}
-            className={`font-semibold px-6 py-3 rounded-xl transition-colors ${dark ? "bg-white text-[#0F172A] hover:bg-slate-100" : "bg-[#0F172A] text-white hover:bg-[#1E293B]"}`}
+            className={`w-full md:w-auto font-semibold px-6 py-3 rounded-xl transition-colors ${dark ? "bg-white text-[#0F172A] hover:bg-slate-100" : "bg-[#0F172A] text-white hover:bg-[#1E293B]"}`}
           >
             {t.cta}
           </button>
@@ -48,9 +61,11 @@ export function NextProject({ currentHref, dark = false }: NextProjectProps) {
           </button>
         )}
       </div>
+
+      {/* Image — desktop only */}
       <div
         onClick={goToNext}
-        className="min-w-0 rounded-xl overflow-hidden border border-white/10 cursor-pointer group/img" style={{ width: "45%", height: 240 }}
+        className="hidden md:block md:w-[45%] rounded-xl overflow-hidden border border-white/10 cursor-pointer group/img" style={{ height: 240 }}
       >
         {next.image ? (
           <img src={next.image} alt={next.title} className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105" />
