@@ -2,6 +2,7 @@ export type ProjectTag = "UI" | "Case Study"
 
 export interface Project {
   title: string
+  title_pl?: string
   description?: string
   description_en?: string
   tag: ProjectTag
@@ -14,7 +15,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Client Acquisition · Localo",
-    description: "Dwa oddzielne narzędzia zastąpione jednym flow — od leada do onboardingu klienta.",
+    title_pl: "Pozyskiwanie klientów · Localo",
+    description: "Od dwóch osobnych narzędzi do jednego flow end-to-end.",
     description_en: "Two separate tools replaced by one flow — from lead to client onboarding.",
     tag: "Case Study",
     color: "from-[#466AFA] to-indigo-500",
@@ -43,7 +45,8 @@ export const projects: Project[] = [
     href: "/ui/kafejeto",
   },
   {
-    title: "Banneroza",
+    title: "Banner Revolution",
+    title_pl: "Szyldowe rewolucje",
     description: "Strona konkursu dla projektantów walczącego z chaosem reklamowym w przestrzeni miejskiej.",
     description_en: "Competition website for designers fighting advertising chaos in urban space.",
     tag: "Case Study",

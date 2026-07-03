@@ -96,7 +96,7 @@ const copy = {
     },
   },
   en: {
-    h1: "Szyldowe Rewolucje — competition website for designers",
+    h1: "Banner Revolution — competition website for designers",
     body: <>A conceptual website project for the <strong className="text-slate-700">Szyldowe Rewolucje</strong> competition — an initiative fighting advertising chaos in public space. The competition engages designers to create aesthetic, legally compliant signage for local businesses, with winning designs realized in urban space. The project was created as part of postgraduate studies in <strong className="text-slate-700">UX design | web analytics</strong> at the Białystok University of Technology.</>,
     roleLabel: "My role",
     roleText: "Research, user interviews, analysis, prototyping, wireframes, usability tests. Project created as part of postgraduate studies in UX design | web analytics at Białystok University of Technology.",

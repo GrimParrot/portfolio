@@ -21,6 +21,7 @@ export function NextProject({ currentHref, dark = true }: NextProjectProps) {
 
   const goToNext = () => { if (next.href) navigate(next.href) }
   const desc = lang === "en" ? next.description_en : next.description
+  const title = lang === "pl" && next.title_pl ? next.title_pl : next.title
 
   return (
     <div className={`mt-8 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-10 ${dark ? "bg-[#0F172A]" : "border border-slate-200"}`}>
@@ -30,7 +31,7 @@ export function NextProject({ currentHref, dark = true }: NextProjectProps) {
           onClick={goToNext}
           className={`text-xl md:text-3xl font-black mt-3 mb-4 leading-snug cursor-pointer transition-colors ${dark ? "text-white hover:text-white/70" : "text-[#0F172A] hover:text-slate-600"}`}
         >
-          {next.title}
+          {title}
         </h3>
 
         {/* Image — mobile only, between title and description */}

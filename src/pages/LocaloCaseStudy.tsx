@@ -81,6 +81,7 @@ function Metric({ value, sub, color }: { value: string; sub: string; color: stri
 
 const copy = {
   pl: {
+    h1: "Pozyskiwanie klientów — od dwóch osobnych narzędzi do jednego flow end-to-end",
     intro: "Obie funkcje — generowanie leadów i research widoczności — istniały w Localo osobno, były trudne w obsłudze i wymagały osobistego onboardingu przez zespół. Sales mode dodatkowo zmuszał użytkowników do pracy w zewnętrznych narzędziach: CRM, arkuszach kalkulacyjnych. Zaprojektowałam ",
     introProduct: "Client Acquisition",
     introSuffix: " — jedno narzędzie z dwoma modułami, które działają jako spójne, samowyjaśniające się flow, bez konieczności wychodzenia do zewnętrznych aplikacji.",
@@ -174,6 +175,7 @@ const copy = {
     },
   },
   en: {
+    h1: "Client Acquisition — from two separate tools into one end-to-end flow",
     intro: "Both features — lead generation and visibility research — existed in Localo as separate, hard-to-use tools requiring personal onboarding by the team. Sales mode also forced users to work in external tools: CRMs and spreadsheets. I designed ",
     introProduct: "Client Acquisition",
     introSuffix: " — one tool with two modules working as a coherent, self-explanatory flow, without needing to leave to external apps.",
@@ -285,8 +287,7 @@ export function LocaloCaseStudy() {
         <div className="py-8 md:py-16">
           <ProjectNav currentHref="/case-study/localo" />
           <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
-            Unifying client prospecting — from two fragmented tools into{" "}
-            <span className="font-black">one end-to-end flow</span>
+            {t.h1}
           </h1>
           <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-amber-500 text-white">Case Study</span>
 

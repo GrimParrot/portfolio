@@ -119,7 +119,7 @@ export function Projects() {
 
               {/* White panel — expands on hover */}
               <div className="panel absolute bottom-0 left-0 right-0 bg-white px-4 pt-3 pb-4 overflow-hidden transition-all duration-300" style={{ height: 52 }}>
-                <p className="font-semibold text-slate-900 leading-snug">{project.title}</p>
+                <p className="font-semibold text-slate-900 leading-snug">{lang === "pl" && project.title_pl ? project.title_pl : project.title}</p>
                 {"description" in project && (lang === "en" ? project.description_en : project.description) && (
                   <p className="text-slate-500 text-[15px] mt-4 leading-snug">
                     {lang === "en" ? project.description_en : project.description}
