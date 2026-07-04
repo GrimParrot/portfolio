@@ -9,7 +9,7 @@ const PRIMARY = "#32685B"
 
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
-    <span className="text-[13px] font-medium tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
+    <span className="text-[13px] font-bold tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
       {children}
     </span>
   )
@@ -62,7 +62,7 @@ export function NaturalniePage() {
           <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
             Naturalnie.pl
           </h1>
-          <span className="inline-block mb-6 text-sm font-semibold px-3 py-1.5 rounded-full bg-violet-600 text-white">UI</span>
+          <span className="inline-block mb-6 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0F172A] text-white">UI</span>
 
           <p className="text-slate-500 leading-relaxed mb-10">{t.desc}</p>
 
@@ -83,7 +83,7 @@ export function NaturalniePage() {
         {/* ── SCREENS ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s01.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s01.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s01.h2}</h2>
 
           <div className="flex flex-col gap-6">
             <img src="/naturalniepl1.png" alt="Naturalnie.pl — view 1" className="w-full block rounded-2xl border border-slate-200" />
@@ -96,7 +96,7 @@ export function NaturalniePage() {
         {/* ── DESIGN SYSTEM ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s02.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
           <div className="flex flex-col gap-6">
             <img src="/ui-summary-3.png" alt="UI Summary 3" className="w-full block rounded-2xl border border-slate-200" />

@@ -1,16 +1,10 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { useNavigate } from "react-router-dom"
-import { projects } from "@/data/projects"
+import { projects, tagStyles, type ProjectTag } from "@/data/projects"
 import { useLang } from "@/i18n/LanguageContext"
 
-type ProjectTag = "UI" | "Case Study"
 type Filter = "all" | ProjectTag
-
-const tagStyles: Record<ProjectTag, string> = {
-  "UI": "bg-violet-600 text-white",
-  "Case Study": "bg-amber-500 text-white",
-}
 
 const copy = {
   pl: {

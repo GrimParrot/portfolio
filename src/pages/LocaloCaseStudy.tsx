@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Lightbulb, TrendingDown, BarChart2, Video, Users, Headphones, Star } from "lucide-react"
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { ProjectNav } from "@/components/ProjectNav"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
+import { Badge } from "@/components/ui/badge"
 import { useLang } from "@/i18n/LanguageContext"
 
 function CrossfadeImage({ images, interval }: { images: string[]; interval: number }) {
@@ -59,7 +60,7 @@ function CrossfadeImage({ images, interval }: { images: string[]; interval: numb
 
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
-    <span className="text-[13px] font-medium tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
+    <span className="text-[13px] font-bold tracking-widest uppercase text-[#0F172A]" style={color ? { color } : undefined}>
       {children}
     </span>
   )
@@ -69,11 +70,84 @@ function Divider() {
   return <hr className="border-t border-slate-100 my-0" />
 }
 
-function Metric({ value, sub, color }: { value: string; sub: string; color: string }) {
+function parseNum(str: string) {
+  const prefix = str.startsWith("+") ? "+" : ""
+  const s = prefix ? str.slice(1) : str
+  const match = s.match(/^([\d,.]+)(.*)$/)
+  if (!match) return { prefix, numeric: 0, suffix: str, decimals: 0 }
+  const numStr = match[1].replace(",", ".")
+  const numeric = parseFloat(numStr)
+  const suffix = match[2]
+  const decPart = match[1].split(/[,.]/)
+  const decimals = decPart.length > 1 ? decPart[1].length : 0
+  return { prefix, numeric, suffix, decimals }
+}
+
+function useCountUp(target: number, duration: number, active: boolean) {
+  const [value, setValue] = useState(0)
+  useEffect(() => {
+    if (!active) return
+    setValue(0)
+    const start = performance.now()
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1)
+      const eased = 1 - Math.pow(1 - t, 3)
+      setValue(target * eased)
+      if (t < 1) requestAnimationFrame(tick)
+      else setValue(target)
+    }
+    requestAnimationFrame(tick)
+  }, [active, target, duration])
+  return value
+}
+
+function StatCard({ num, caption, color, active }: { num: string; caption: string; color: string; active: boolean }) {
+  const { prefix, numeric, suffix, decimals } = parseNum(num)
+  const count = useCountUp(numeric, 1100, active)
+  const formatted = decimals > 0
+    ? count.toFixed(decimals).replace(".", ",")
+    : Math.round(count).toString()
+  const display = `${prefix}${formatted}${suffix}`
+
   return (
-    <div className="bg-white border border-slate-200 rounded-xl p-6 flex flex-col gap-6">
-      <p className="text-5xl font-black" style={{ color }}>{value}</p>
-      <p className="text-slate-400 leading-snug">{sub}</p>
+    <div className="relative overflow-hidden rounded-2xl p-6 flex flex-col" style={{ backgroundColor: color + "0D" }}>
+      <div
+        className="absolute top-0 right-0 w-40 h-40"
+        style={{
+          backgroundImage: [
+            `repeating-linear-gradient(0deg, ${color}30 0px, ${color}30 1px, transparent 1px, transparent 22px)`,
+            `repeating-linear-gradient(90deg, ${color}30 0px, ${color}30 1px, transparent 1px, transparent 22px)`,
+          ].join(", "),
+          WebkitMaskImage: "radial-gradient(circle at 100% 0%, black 0%, transparent 75%)",
+          maskImage: "radial-gradient(circle at 100% 0%, black 0%, transparent 75%)",
+        }}
+      />
+      <div className="relative z-10 flex flex-col">
+        <p className="text-5xl font-black tracking-tight leading-none" style={{ color }}>{display}</p>
+        <p className="text-sm text-[#0F172A] leading-relaxed mt-5">{caption}</p>
+      </div>
+    </div>
+  )
+}
+
+function MetricsGrid({ metrics }: { metrics: Array<{ num: string; caption: string; color: string; icon: string }> }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect() } },
+      { threshold: 0.2 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+  return (
+    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {metrics.map((m) => (
+        <StatCard key={m.caption} num={m.num} caption={m.caption} color={m.color} active={active} />
+      ))}
     </div>
   )
 }
@@ -98,18 +172,17 @@ const copy = {
       h2: "Co się zmieniło po wdrożeniu",
       body: <><strong className="text-slate-700">Dwa osobne narzędzia</strong> — Research mode i Sales mode — zostały zastąpione <strong className="text-slate-700">jednym spójnym flow</strong> z dwoma modułami: Leads Finder i Visibility Scans. Użytkownik <strong className="text-slate-700">nie przeskakuje między trybami</strong>: wynik z jednego modułu naturalnie prowadzi do drugiego. Narzędzie jest <strong className="text-slate-700">samowyjaśniające się</strong> i nie wymaga zewnętrznych aplikacji do dokończenia zadania.</>,
       metrics: [
-        { value: "↑ TBD", sub: "[Nazwa metryki, np. task completion rate]", color: "#1D9E75" },
-        { value: "−28%", sub: "[Np. czas do pierwszego sukcesu]", color: "#1D9E75" },
-        { value: "4.6 / 5", sub: "[Np. ocena w badaniu satysfakcji]", color: "#466AFA" },
+        { num: "9×", caption: "Wyższe blended LTV na użytkowniku funkcji", color: "#0ABA53", icon: "ltv" },
+        { num: "+81%", caption: "Dłuższy czas sesji na funkcji", color: "#0ABA53", icon: "time" },
+        { num: "+145%", caption: "Więcej sesji na funkcji", color: "#0ABA53", icon: "sessions" },
+        { num: "5,5×", caption: "Użytkownicy funkcji płacą częściej", color: "#0ABA53", icon: "pay" },
       ],
-      quote: `„Cytat od użytkownika lub stakeholdera po wdrożeniu — najlepiej konkrety, nie ogólniki.”`,
-      quoteAttr: "— Rola / kontekst",
       lastPara: <>Funkcja weszła w skład wszystkich planów <strong className="text-slate-700">Pro i Enterprise</strong>, zwiększając postrzeganą wartość wyższych tierów i przekładając się na <strong className="text-slate-700">niższy churn</strong> wśród agencji obsługujących wielu klientów. Mierzyliśmy adopcję nowej funkcji oraz pośredni wpływ na <strong className="text-slate-700">wzrost liczby zarządzanych profili</strong> — kluczową metrykę dla przychodu platformy.</>,
     },
     s02: {
       tag: "02 — Discovery",
       h2: "Co pokazały badania",
-      pullQuote: <>Choć funkcje są dostępne, ich złożoność wymusza{" "}<span className="font-black" style={{ color: "#466AFA" }}>ręczny onboarding</span>{" "}i wypycha użytkowników do{" "}<span className="font-black" style={{ color: "#466AFA" }}>narzędzi zewnętrznych</span>.{" "}Efekt: stracony czas, brak rezultatów i{" "}<span className="font-black" style={{ color: "#466AFA" }}>wysoki próg wejścia</span>{" "}ograniczający adopcję.</>,
+      pullQuote: <>Złożoność funkcji wymusza{" "}<span className="font-black" style={{ color: "#466AFA" }}>ręczny onboarding</span>{" "}i wypycha użytkowników do{" "}<span className="font-black" style={{ color: "#466AFA" }}>narzędzi zewnętrznych</span>, podnosząc{" "}<span className="font-black" style={{ color: "#466AFA" }}>próg wejścia</span>{" "}i ograniczając adopcję.</>,
       insightsH3: "Kluczowe insighty",
       insights: [
         { n: "1", title: "Brak ciągłości między modułami", desc: "Leady były w Sales mode, dane o widoczności — w Research. Między trybami nie przechodził żaden kontekst." },
@@ -192,18 +265,17 @@ const copy = {
       h2: "What changed after launch",
       body: <><strong className="text-slate-700">Two separate tools</strong> — Research mode and Sales mode — were replaced by <strong className="text-slate-700">one coherent flow</strong> with two modules: Leads Finder and Visibility Scans. The user <strong className="text-slate-700">doesn't jump between modes</strong>: the output of one module naturally leads to the next. The tool is <strong className="text-slate-700">self-explanatory</strong> and doesn't require external apps to complete a task.</>,
       metrics: [
-        { value: "↑ TBD", sub: "[Metric name, e.g. task completion rate]", color: "#1D9E75" },
-        { value: "−28%", sub: "[E.g. time to first success]", color: "#1D9E75" },
-        { value: "4.6 / 5", sub: "[E.g. satisfaction survey score]", color: "#466AFA" },
+        { num: "9×", caption: "Higher blended LTV per feature user", color: "#0ABA53", icon: "ltv" },
+        { num: "+81%", caption: "Longer session time on the feature", color: "#0ABA53", icon: "time" },
+        { num: "+145%", caption: "More sessions on the feature", color: "#0ABA53", icon: "sessions" },
+        { num: "5.5×", caption: "Feature users pay more often", color: "#0ABA53", icon: "pay" },
       ],
-      quote: "\"A quote from a user or stakeholder after launch — specifics, not generalities.\"",
-      quoteAttr: "— Role / context",
       lastPara: <>The feature was included in all <strong className="text-slate-700">Pro and Enterprise</strong> plans, increasing the perceived value of higher tiers and contributing to <strong className="text-slate-700">lower churn</strong> among agencies managing multiple clients. We measured adoption of the new feature and the indirect impact on <strong className="text-slate-700">growth in managed profiles</strong> — a key revenue metric for the platform.</>,
     },
     s02: {
       tag: "02 — Discovery",
       h2: "What the research revealed",
-      pullQuote: <>Although the features exist, their complexity forces{" "}<span className="font-black" style={{ color: "#466AFA" }}>manual onboarding</span>{" "}and pushes users to{" "}<span className="font-black" style={{ color: "#466AFA" }}>external tools</span>.{" "}The result: wasted time, no results, and a{" "}<span className="font-black" style={{ color: "#466AFA" }}>high entry barrier</span>{" "}limiting adoption.</>,
+      pullQuote: <>The features' complexity forces{" "}<span className="font-black" style={{ color: "#466AFA" }}>manual onboarding</span>{" "}and pushes users to{" "}<span className="font-black" style={{ color: "#466AFA" }}>external tools</span>, raising the{" "}<span className="font-black" style={{ color: "#466AFA" }}>entry barrier</span>{" "}and limiting adoption.</>,
       insightsH3: "Key insights",
       insights: [
         { n: "1", title: "No continuity between modules", desc: "Leads were in Sales mode, visibility data — in Research. No context passed between modes." },
@@ -271,6 +343,7 @@ const copy = {
 }
 
 const PRIMARY = "#466AFA"
+const GREEN = "#0ABA53"
 
 export function LocaloCaseStudy() {
   const { lang } = useLang()
@@ -289,7 +362,7 @@ export function LocaloCaseStudy() {
           <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
             {t.h1}
           </h1>
-          <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-amber-500 text-white">Case Study</span>
+          <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0ABA53] text-white">Case Study</span>
 
           <p className="text-slate-500 leading-relaxed mb-8">
             {t.intro}<strong className="text-slate-700">{t.introProduct}</strong>{t.introSuffix}
@@ -318,20 +391,12 @@ export function LocaloCaseStudy() {
         {/* ── 01 ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s01.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-4">{t.s01.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-4">{t.s01.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s01.body}</p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.s01.metrics.map((m) => (
-              <Metric key={m.sub} value={m.value} sub={m.sub} color={m.color} />
-            ))}
-          </div>
+          <MetricsGrid metrics={t.s01.metrics} />
 
-          <div className="mt-12 mb-12 pl-6 border-l-2 border-slate-200">
-            <p className="text-slate-700 leading-relaxed italic">{t.s01.quote}</p>
-            <p className="text-[13px] text-slate-400 mt-3">{t.s01.quoteAttr}</p>
-          </div>
-          <p className="text-slate-500 leading-relaxed">{t.s01.lastPara}</p>
+          <p className="text-slate-500 leading-relaxed mt-12">{t.s01.lastPara}</p>
         </div>
 
         <Divider />
@@ -339,9 +404,9 @@ export function LocaloCaseStudy() {
         {/* ── 02 ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s02.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
-          <p className="font-light text-[#0F172A] mt-4 mb-12 pl-6 border-l-4" style={{ fontSize: "32px", lineHeight: 1.4, borderColor: PRIMARY }}>
+          <p className="font-light text-[#0F172A] mt-4 mb-12 pl-6 border-l-4" style={{ fontSize: "22px", lineHeight: 1.5, borderColor: PRIMARY }}>
             {t.s02.pullQuote}
           </p>
 
@@ -360,9 +425,9 @@ export function LocaloCaseStudy() {
             <Tag>{t.s02.methodsLabel}</Tag>
             <div className="flex flex-wrap gap-3 mt-3">
               {t.s02.methods.map((m) => (
-                <span key={m.label} className="flex items-center gap-1.5 text-slate-600 border border-slate-200 rounded-full px-3 py-1.5 [&>svg]:text-[#466AFA]">
+                <Badge key={m.label} variant="secondary" className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium [&>svg]:text-[#466AFA]">
                   {m.icon}{m.label}
-                </span>
+                </Badge>
               ))}
             </div>
           </div>
@@ -373,7 +438,7 @@ export function LocaloCaseStudy() {
         {/* ── 03 ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s03.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s03.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s03.h2}</h2>
 
           <div className="mb-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-6">
@@ -434,7 +499,7 @@ export function LocaloCaseStudy() {
         {/* ── 04 ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s04.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-6">{t.s04.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-6">{t.s04.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
 
           {t.s04.steps.map((feature, i) => (
@@ -484,7 +549,7 @@ export function LocaloCaseStudy() {
         {/* ── 05 ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s05.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-4">{t.s05.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-4">{t.s05.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s05.intro}</p>
           <div className="border border-slate-200 rounded-xl divide-y divide-slate-100">
             {t.s05.items.map((item, i) => (

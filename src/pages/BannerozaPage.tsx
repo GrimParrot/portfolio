@@ -10,7 +10,7 @@ const PRIMARY = "#DD8100"
 
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
-    <span className="text-[13px] font-medium tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
+    <span className="text-[13px] font-bold tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
       {children}
     </span>
   )
@@ -189,7 +189,7 @@ export function BannerozaPage() {
           <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
             {t.h1}
           </h1>
-          <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-amber-500 text-white">Case Study</span>
+          <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0ABA53] text-white">Case Study</span>
 
           <p className="text-slate-500 leading-relaxed mb-6">{t.body}</p>
           <div className="flex gap-3 items-start rounded-lg px-6 py-5 mb-10" style={{ background: "#FFF3E0" }}>
@@ -216,7 +216,7 @@ export function BannerozaPage() {
         {/* ── PROBLEM ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s01.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-8">{t.s01.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-8">{t.s01.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-6">{t.s01.p1}</p>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s01.p2}</p>
           <img src="/banneroza/1.jpg" alt="Problem — banners in cities" className="w-full rounded-2xl border border-slate-200 object-cover" />
@@ -227,7 +227,7 @@ export function BannerozaPage() {
         {/* ── SOLUTION ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s02.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
@@ -244,7 +244,7 @@ export function BannerozaPage() {
         {/* ── DISCOVERY ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s03.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-8">{t.s03.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-8">{t.s03.h2}</h2>
 
           <p className="text-slate-500 leading-relaxed mb-6">{t.s03.p1}</p>
           <p className="text-slate-500 leading-relaxed mb-8">{t.s03.p2}</p>
@@ -284,7 +284,7 @@ export function BannerozaPage() {
         {/* ── PROCES ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s04.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-8">{t.s04.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-8">{t.s04.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s04.p}</p>
           <img src="/banneroza/6.jpg" alt="Information architecture" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
@@ -294,7 +294,7 @@ export function BannerozaPage() {
         {/* ── DESIGN ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s05.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s05.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s05.h2}</h2>
 
           <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s05.lofiH3}</h3>
           <p className="text-slate-500 leading-relaxed mb-8">{t.s05.lofiP}</p>
@@ -310,7 +310,7 @@ export function BannerozaPage() {
         {/* ── WNIOSKI ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s06.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-4">{t.s06.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-4">{t.s06.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s06.intro}</p>
 
           <div className="border border-slate-200 rounded-xl divide-y divide-slate-100 mb-12">

@@ -9,7 +9,7 @@ const PRIMARY = "#8EBD3F"
 
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
-    <span className="text-[13px] font-medium tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
+    <span className="text-[13px] font-bold tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
       {children}
     </span>
   )
@@ -64,7 +64,7 @@ export function KafejetoPage() {
           <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
             Kafejeto.pl
           </h1>
-          <span className="inline-block mb-6 text-sm font-semibold px-3 py-1.5 rounded-full bg-violet-600 text-white">UI</span>
+          <span className="inline-block mb-6 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0F172A] text-white">UI</span>
 
           <p className="text-slate-500 leading-relaxed mb-10">{t.desc}</p>
 
@@ -85,7 +85,7 @@ export function KafejetoPage() {
         {/* ── SCREENS ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s01.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s01.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s01.h2}</h2>
 
           <div className="flex flex-col gap-6">
             <img src="/kafejeto/page1.jpg" alt="Page 1" className="w-full rounded-2xl border border-slate-200 object-cover" />
@@ -100,7 +100,7 @@ export function KafejetoPage() {
         {/* ── MOBILE ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s02.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <img src="/kafejeto/mobile1.jpg" alt="Mobile 1" className="w-full rounded-2xl border border-slate-200 object-cover" />
@@ -113,7 +113,7 @@ export function KafejetoPage() {
         {/* ── OVERVIEW ── */}
         <div className="py-14">
           <Tag color={PRIMARY}>{t.s03.tag}</Tag>
-          <h2 className="text-2xl font-bold text-[#0F172A] mt-4 mb-12">{t.s03.h2}</h2>
+          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s03.h2}</h2>
 
           <img src="/kafejeto/overview.jpg" alt="Overview" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>

@@ -1,5 +1,10 @@
 export type ProjectTag = "UI" | "Case Study"
 
+export const tagStyles: Record<ProjectTag, string> = {
+  "UI": "bg-[#0F172A] text-white",
+  "Case Study": "bg-[#0ABA53] text-white",
+}
+
 export interface Project {
   title: string
   title_pl?: string
