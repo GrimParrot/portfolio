@@ -343,7 +343,6 @@ const copy = {
 }
 
 const PRIMARY = "#466AFA"
-const GREEN = "#0ABA53"
 
 export function LocaloCaseStudy() {
   const { lang } = useLang()
