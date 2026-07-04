@@ -48,6 +48,7 @@ Wyjątek: Edit/Write działają przy **edytowaniu istniejącego** pliku (np. zmi
 | Kolor hover ciemny | `#1E293B` |
 | Akcent zielony (portfolio) | `#0ABA53` |
 | Font | Manrope (global, `index.css`) |
+| Meta labels (Produkt, Skala…) | `text-slate-400` (szary) — Tag bez `color` prop |
 | Border-radius buttonów | `rounded-xl` (12px) — zmienione globalnie w `button.tsx` |
 | Border-radius badge'ów | `rounded-xl` (12px) — zmienione globalnie w `badge.tsx` |
 | Font weight buttonów | `font-bold` — zmienione globalnie w `button.tsx` |
