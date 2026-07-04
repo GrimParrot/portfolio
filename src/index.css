@@ -48,4 +48,46 @@
   }
   .animate-bounce-left { animation: bounce-left 1s infinite; }
   .animate-bounce-right { animation: bounce-right 1s infinite; }
+
+  @keyframes nudge-ur {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(2px, -2px); }
+  }
+  .animate-nudge-ur { animation: nudge-ur 1.2s ease-in-out infinite; }
+
+  @keyframes grid-flash-a {
+    0%, 100% { opacity: 0; }
+    15%, 30% { opacity: 0.6; }
+    35%, 60% { opacity: 0; }
+    70%, 80% { opacity: 0.4; }
+    85% { opacity: 0; }
+  }
+  @keyframes grid-flash-b {
+    0%, 100% { opacity: 0; }
+    5%, 20% { opacity: 0.5; }
+    28%, 55% { opacity: 0; }
+    65%, 78% { opacity: 0.7; }
+    90% { opacity: 0; }
+  }
+  @keyframes grid-flash-c {
+    0%, 100% { opacity: 0; }
+    20%, 35% { opacity: 0.4; }
+    45%, 70% { opacity: 0; }
+    80%, 92% { opacity: 0.5; }
+  }
+  .animate-grid-a { animation: grid-flash-a 5s ease-in-out infinite; }
+  .animate-grid-b { animation: grid-flash-b 7s ease-in-out infinite 1.5s; }
+  .animate-grid-c { animation: grid-flash-c 11s ease-in-out infinite 3s; }
+
+  @keyframes wave {
+    0%, 60%, 100% { transform: rotate(0deg); }
+    10%, 30% { transform: rotate(20deg); }
+    20%, 40% { transform: rotate(-8deg); }
+    50% { transform: rotate(15deg); }
+  }
+  .animate-wave {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: wave 2.5s ease-in-out infinite;
+  }
 }

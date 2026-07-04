@@ -43,7 +43,7 @@ export function Projects() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900">
+            <h2 className="text-3xl font-black text-slate-900">
               {t.heading}
             </h2>
           </div>

@@ -1,17 +1,17 @@
-import { Mail, ExternalLink } from "lucide-react"
+import { Mail, ArrowUpRight } from "lucide-react"
 import { useLang } from "@/i18n/LanguageContext"
 
 const copy = {
 
   pl: {
     label: "Kontakt",
-    heading: "Porozmawiajmy.",
+    heading: "Porozmawiajmy",
     body: "Chcesz porozmawiać o projekcie, dowiedzieć się więcej o procesach, decyzjach i kontekście? Wpadnij na LinkedIn albo po prostu napisz maila : )",
     resume: "Zobacz CV",
   },
   en: {
     label: "Contact",
-    heading: "Let's talk.",
+    heading: "Let's talk",
     body: "Want to talk about a project, learn more about the process, decisions, and context? Find me on LinkedIn or just send an email : )",
     resume: "View resume",
   },
@@ -55,7 +55,7 @@ export function Contact() {
       <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div>
           <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>
-          <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-8 leading-tight">
+          <h2 className="text-3xl font-black text-slate-900 mb-8 leading-tight">
             {t.heading}
           </h2>
           <p className="text-slate-500 leading-relaxed max-w-sm">
@@ -91,7 +91,7 @@ export function Contact() {
                   </p>
                 </div>
               </div>
-              <ExternalLink className={`w-4 h-4 ${link.dark ? "text-slate-400" : "text-slate-400"}`} />
+              <ArrowUpRight className={`w-4 h-4 animate-nudge-ur ${link.dark ? "text-slate-400" : "text-slate-400"}`} />
             </a>
           ))}
         </div>

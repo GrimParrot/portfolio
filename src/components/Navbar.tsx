@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useLang } from "@/i18n/LanguageContext"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Mail } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 
 const copy = {
@@ -43,8 +43,8 @@ export function Navbar() {
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-[1100px] mx-auto px-6 h-16 flex items-center justify-between">
-          <Link to="/" className="font-bold text-slate-900 text-lg tracking-tight" onClick={() => setOpen(false)}>
-            Edyta<span className="text-violet-500">.</span>Suprun
+          <Link to="/" onClick={() => setOpen(false)}>
+            <img src="/pixelnow.svg" alt="Pixel Now" className="h-8" />
           </Link>
 
           {/* Desktop */}
@@ -59,7 +59,7 @@ export function Navbar() {
               <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-slate-900 font-bold" : "text-slate-400 hover:text-slate-600"}`}>EN</button>
             </div>
 
-            <Button size="sm" className="bg-[#0F172A] hover:bg-[#1E293B]" onClick={handleContact}>{t.contact}</Button>
+            <Button size="sm" className="bg-[#0F172A] hover:bg-[#1E293B] px-5" onClick={handleContact}><Mail className="w-4 h-4" /> {t.contact}</Button>
           </div>
 
           {/* Hamburger */}
