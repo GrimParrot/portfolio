@@ -61,7 +61,7 @@ function CrossfadeImage({ images, interval }: { images: string[]; interval: numb
 
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
-    <span className="text-[13px] font-bold tracking-widest uppercase text-[#0F172A]" style={color ? { color } : undefined}>
+    <span className="text-[13px] font-bold tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
       {children}
     </span>
   )
