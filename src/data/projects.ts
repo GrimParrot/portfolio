@@ -19,16 +19,6 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Reports",
-    title_pl: "Raporty",
-    description: "Jak zamienić dane SEO w raporty, które nietechniczni klienci naprawdę czytają.",
-    description_en: "Turning SEO data into reports that non-technical clients actually read.",
-    tag: "Case Study",
-    color: "from-[#6366F1] to-indigo-400",
-    bg: "bg-indigo-50",
-    href: "/case-study/raporty",
-  },
-  {
     title: "Client Acquisition · Localo",
     title_pl: "Pozyskiwanie klientów · Localo",
     description: "Od dwóch osobnych narzędzi do jednego flow end-to-end.",
