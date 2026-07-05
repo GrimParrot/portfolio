@@ -24,7 +24,7 @@ export const copy = {
         { num: "+145%", caption: "Więcej sesji na funkcji", color: "#0ABA53", icon: "sessions" },
         { num: "5,5×", caption: "Użytkownicy funkcji płacą częściej", color: "#0ABA53", icon: "pay" },
       ],
-      lastPara: <>Funkcja weszła w skład wszystkich planów <strong className="text-slate-700">Pro i Enterprise</strong>, zwiększając postrzeganą wartość wyższych tierów i przekładając się na <strong className="text-slate-700">niższy churn</strong> wśród agencji obsługujących wielu klientów. Mierzyliśmy adopcję nowej funkcji oraz pośredni wpływ na <strong className="text-slate-700">wzrost liczby zarządzanych profili</strong> — kluczową metrykę dla przychodu platformy.</>,
+      lastPara: <>Funkcja weszła w skład wszystkich planów <strong className="text-slate-700">Pro i Enterprise</strong>, zwiększając postrzeganą wartość wyższych tierów i przekładając się na <strong className="text-slate-700">niższy churn</strong> wśród agencji obsługujących wielu klientów. Zanotowaliśmy też wzrost w adopcji nowej funkcji oraz pośredni wpływ na <strong className="text-slate-700">liczbę zarządzanych profili</strong> — kluczową metrykę dla przychodu platformy.</>,
     },
     s02: {
       tag: "02 — Discovery",
@@ -88,9 +88,9 @@ export const copy = {
       h2: "Co bym zrobiła inaczej",
       intro: "Projekt był złożony — dwa moduły, system kredytowy, onboarding kontekstowy i migracja danych w jednym zakresie. Kilka rzeczy zrobiłabym dziś inaczej.",
       items: [
-        { title: "Przetestować Growth Potential score wcześniej", desc: "Algorytm jest kluczowy dla decyzji użytkownika — scoring decyduje o tym, czy ktoś w ogóle zaczyna rozmowę sprzedażową. Chciałabym więcej iteracji na samej formule zanim weszła do produktu." },
-        { title: "Wcześniej zaangażować dział developmentu", desc: "Devów zaangażowałam za późno — a to właśnie w rozmowie z nimi dowiedziałam się o danych legacy, które trzeba było obsłużyć w nowym flow. Na przyszłość: wciągam tech do projektu wcześniej." },
-        { title: "Więcej czasu na Design QA", desc: "Chciałabym poświęcić więcej czasu na wyłapanie odchyłek wdrożenia od designu. Drobne rozbieżności kumulują się i wpływają na spójność końcowego produktu." },
+        { title: "Przetestować Growth Potential score wcześniej", desc: "Scoring decyduje, czy ktoś zaczyna rozmowę sprzedażową — potrzebował więcej iteracji przed wejściem do produktu." },
+        { title: "Wcześniej zaangażować development", desc: "To devi ujawnili dane legacy, które trzeba było obsłużyć w nowym flow — tech warto wciągać do projektu wcześniej." },
+        { title: "Więcej czasu na Design QA", desc: "Drobne odchyłki wdrożenia od designu kumulują się i wpływają na spójność końcowego produktu." },
       ],
     },
   },

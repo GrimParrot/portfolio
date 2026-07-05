@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { Lightbulb } from "lucide-react"
+import { Lightbulb, GraduationCap } from "lucide-react"
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { ProjectNav } from "@/components/ProjectNav"
@@ -175,7 +175,7 @@ export function LocaloCaseStudy() {
           </h1>
           <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0ABA53] text-white">Case Study</span>
 
-          <p className="text-slate-500 leading-relaxed mb-8">
+          <p className="text-slate-500 leading-relaxed mb-10">
             {t.intro}<strong className="text-slate-700">{t.introProduct}</strong>{t.introSuffix}
           </p>
           <div className="flex gap-3 items-start rounded-lg px-6 py-5 mb-10" style={{ background: "#EEF2FF" }}>
@@ -273,7 +273,7 @@ export function LocaloCaseStudy() {
               </div>
             </div>
 
-            <div className="flex gap-3 items-start rounded-lg px-6 py-5 mt-6" style={{ background: "#EEF2FF" }}>
+            <div className="flex gap-3 items-start rounded-lg px-6 py-5 mt-10" style={{ background: "#EEF2FF" }}>
               <span className="font-medium flex-shrink-0 mt-0.5" style={{ color: PRIMARY }}>↗</span>
               <p style={{ color: PRIMARY }}>
                 <strong className="font-semibold">{t.s03.goalLabel}</strong> — {t.s03.goalText}
@@ -340,9 +340,9 @@ export function LocaloCaseStudy() {
             )
           ))}
 
-          <div className="border-t border-slate-100 pt-8">
+          <div className="border-t border-slate-100 pt-10">
             <Tag color="#64748b">{t.s04.rejectedTag}</Tag>
-            <div className="flex flex-col gap-3 mt-4">
+            <div className="flex flex-col gap-3 mt-6">
               {t.s04.rejected.map((r) => (
                 <div key={r.title} className="flex gap-3 items-start bg-red-50 rounded-lg px-6 py-5">
                   <span className="text-red-400 font-medium flex-shrink-0">✕</span>
@@ -362,14 +362,12 @@ export function LocaloCaseStudy() {
           <Tag color={PRIMARY}>{t.s05.tag}</Tag>
           <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-4">{t.s05.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s05.intro}</p>
-          <div className="border border-slate-200 rounded-xl divide-y divide-slate-100">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {t.s05.items.map((item, i) => (
-              <div key={i} className="flex gap-5 px-7 py-6">
-                <span className="font-semibold text-slate-400 flex-shrink-0 mt-0.5">{i + 1}</span>
-                <div>
-                  <p className="font-semibold mb-1 text-slate-900">{item.title}</p>
-                  <p className="leading-relaxed text-[15px] text-slate-500">{item.desc}</p>
-                </div>
+              <div key={i} className="border border-slate-200 rounded-xl p-6">
+                <GraduationCap style={{ width: 24, height: 24, color: "#F97316" }} />
+                <p className="font-semibold text-slate-900 mt-3 mb-2">{item.title}</p>
+                <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
               </div>
             ))}
           </div>

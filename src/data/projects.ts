@@ -14,10 +14,23 @@ export interface Project {
   color: string
   bg: string
   image?: string
+  imagePosition?: string
   href?: string
 }
 
 export const projects: Project[] = [
+  {
+    title: "Reporting · Localo",
+    title_pl: "Raportowanie · Localo",
+    description: "Automatyzacja, która robi raport za specjalistę.",
+    description_en: "Automation that does the report for the specialist.",
+    tag: "Case Study",
+    color: "from-[#466AFA] to-indigo-500",
+    bg: "bg-indigo-50",
+    image: "/raporty-cover.png",
+    imagePosition: "left center",
+    href: "/case-study/raporty",
+  },
   {
     title: "Client Acquisition · Localo",
     title_pl: "Pozyskiwanie klientów · Localo",

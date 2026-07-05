@@ -41,7 +41,7 @@ export function BannerozaPage() {
           </h1>
           <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0ABA53] text-white">Case Study</span>
 
-          <p className="text-slate-500 leading-relaxed mb-6">{t.body}</p>
+          <p className="text-slate-500 leading-relaxed mb-10">{t.body}</p>
           <div className="flex gap-3 items-start rounded-lg px-6 py-5 mb-10" style={{ background: "#FFF3E0" }}>
             <span className="font-medium flex-shrink-0 mt-0.5" style={{ color: PRIMARY }}>↗</span>
             <p style={{ color: "#6b3a00" }}>
