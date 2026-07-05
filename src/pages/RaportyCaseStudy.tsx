@@ -398,7 +398,7 @@ export function RaportyCaseStudy() {
                     <img src={feature.img} alt={feature.imgAlt} className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9", objectPosition: "top" }} />
                   ) : (
                     <div className="w-full rounded-2xl border border-slate-200 flex items-center justify-center" style={{ aspectRatio: "16/9", backgroundColor: "#F5F5F5" }}>
-                      <img src={feature.img} alt={feature.imgAlt} className="object-contain" style={feature.imgPad ? { maxWidth: "100%", maxHeight: "70%" } : { maxWidth: "100%", maxHeight: "100%" }} />
+                      <img src={feature.img} alt={feature.imgAlt} className="object-contain" style={{ maxWidth: "100%", maxHeight: "100%" }} />
                     </div>
                   )
                 ) : (
