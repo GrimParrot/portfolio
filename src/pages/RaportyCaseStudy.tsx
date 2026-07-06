@@ -262,11 +262,6 @@ export function RaportyCaseStudy() {
           <Tag color={PRIMARY}>{t.s02.tag}</Tag>
           <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
-          <p className="font-light text-[#0F172A] mt-4 mb-12 pl-6 border-l-4" style={{ fontSize: "22px", lineHeight: 1.5, borderColor: PRIMARY }}>
-            {t.s02.pullQuote}
-          </p>
-
-          <h3 className="text-lg font-semibold text-[#0F172A] mb-4">{t.s02.insightsH3}</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {t.s02.insights.map((item) => (
               <div key={item.n} className="border border-slate-200 rounded-xl p-6">
@@ -381,6 +376,18 @@ export function RaportyCaseStudy() {
                   />
                 ) : feature.visual === "autoScrollReport" ? (
                   <AutoScrollImage src="/raporty-raport.webp" imageAspect={1440 / 3795} />
+                ) : feature.imgPair ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {feature.imgPair.map((p, j) => (
+                      p.imgFit === "cover" ? (
+                        <img key={j} src={p.img} alt={p.imgAlt} className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9", objectPosition: "top" }} />
+                      ) : (
+                        <div key={j} className="w-full rounded-2xl border border-slate-200 flex items-center justify-center" style={{ aspectRatio: "16/9", backgroundColor: "#F5F5F5" }}>
+                          <img src={p.img} alt={p.imgAlt} className="object-contain" style={{ maxWidth: "100%", maxHeight: "100%" }} />
+                        </div>
+                      )
+                    ))}
+                  </div>
                 ) : feature.img ? (
                   <img src={feature.img} alt={feature.imgAlt} className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9", objectPosition: "top" }} />
                 ) : (
@@ -394,7 +401,7 @@ export function RaportyCaseStudy() {
                   <p className="text-slate-500 leading-relaxed">{feature.desc}</p>
                 </div>
                 {feature.img ? (
-                  feature.imgFit === "cover" ? (
+                  "imgFit" in feature && feature.imgFit === "cover" ? (
                     <img src={feature.img} alt={feature.imgAlt} className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9", objectPosition: "top" }} />
                   ) : (
                     <div className="w-full rounded-2xl border border-slate-200 flex items-center justify-center" style={{ aspectRatio: "16/9", backgroundColor: "#F5F5F5" }}>
@@ -412,7 +419,7 @@ export function RaportyCaseStudy() {
             <Tag color="#64748b">{t.s04.rejectedTag}</Tag>
             <div className="flex flex-col gap-3 mt-6">
               {t.s04.rejected.map((r) => (
-                <div key={r.title} className="flex gap-3 items-start bg-red-50 rounded-lg px-6 py-5">
+                <div key={r.title} className="flex gap-3 items-center bg-red-50 rounded-lg px-6 py-5">
                   <span className="text-red-400 font-medium flex-shrink-0">✕</span>
                   <p className="text-red-900 text-[15px]">
                     <strong className="font-semibold">{r.title}</strong> — {r.reason}
@@ -434,8 +441,7 @@ export function RaportyCaseStudy() {
             {t.s05.items.map((item, i) => (
               <div key={i} className="border border-slate-200 rounded-xl p-6">
                 <GraduationCap style={{ width: 24, height: 24, color: "#F97316" }} />
-                <p className="font-semibold text-slate-900 mt-3 mb-2">{item.title}</p>
-                <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+                <p className="font-semibold text-slate-900 mt-3">{item.title}</p>
               </div>
             ))}
           </div>
