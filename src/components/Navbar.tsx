@@ -31,12 +31,7 @@ export function Navbar() {
   const handleContact = (e: React.MouseEvent) => {
     e.preventDefault()
     setOpen(false)
-    if (location.pathname === "/") {
-      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" })
-    } else {
-      navigate("/")
-      setTimeout(() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" }), 300)
-    }
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" })
   }
 
   return (
@@ -50,7 +45,7 @@ export function Navbar() {
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-8 text-sm text-slate-600">
             <a href="#projects" onClick={handleProjects} className="hover:text-slate-900 hover:bg-secondary px-3 py-1.5 rounded-md transition-colors cursor-pointer">{t.projects}</a>
-            <a href="/cv.pdf" target="_blank" rel="noreferrer" className="hover:text-slate-900 hover:bg-secondary px-3 py-1.5 rounded-md transition-colors">CV</a>
+            <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className="hover:text-slate-900 hover:bg-secondary px-3 py-1.5 rounded-md transition-colors">CV</a>
             <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className="hover:text-slate-900 hover:bg-secondary px-3 py-1.5 rounded-md transition-colors">LinkedIn</a>
 
             <div className="flex items-center gap-1 text-sm font-medium">
@@ -84,7 +79,7 @@ export function Navbar() {
           className="fixed inset-0 z-40 bg-white pt-16 flex flex-col px-6 py-8 gap-6 text-lg font-medium text-slate-700 md:hidden"
         >
           <a href="#projects" onClick={handleProjects} className="py-3 border-b border-slate-100">{t.projects}</a>
-          <a href="/cv.pdf" target="_blank" rel="noreferrer" className="py-3 border-b border-slate-100" onClick={() => setOpen(false)}>CV</a>
+          <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className="py-3 border-b border-slate-100" onClick={() => setOpen(false)}>CV</a>
           <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className="py-3 border-b border-slate-100" onClick={() => setOpen(false)}>LinkedIn</a>
 
           <div className="flex items-center gap-3 py-3 border-b border-slate-100">

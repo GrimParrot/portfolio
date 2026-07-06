@@ -43,7 +43,7 @@ export function Hero() {
 
         <div className="flex flex-wrap gap-3">
           <Button asChild size="lg" className="bg-[#0F172A] hover:bg-[#1E293B]">
-            <a href="/cv.pdf" target="_blank" rel="noreferrer">
+            <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">
               {t.cvBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
             </a>
           </Button>

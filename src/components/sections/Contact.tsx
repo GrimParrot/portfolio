@@ -44,7 +44,7 @@ export function Contact() {
     {
       label: "PDF",
       value: t.resume,
-      href: "/cv.pdf",
+      href: lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf",
       icon: <span className="text-sm font-bold text-white/70">CV</span>,
       dark: true,
     },
