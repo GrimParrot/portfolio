@@ -27,7 +27,7 @@ export const projects: Project[] = [
     tag: "Case Study",
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-indigo-50",
-    image: "/raporty-cover.png",
+    image: "/raporty-cover.webp",
     imagePosition: "left center",
     href: "/case-study/raporty",
   },

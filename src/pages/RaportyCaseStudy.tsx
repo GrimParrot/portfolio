@@ -236,7 +236,7 @@ export function RaportyCaseStudy() {
             ))}
           </div>
 
-          <img src="/raporty-cover.png" alt="Kreator Raportów" className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9" }} />
+          <img src="/raporty-cover.webp" alt="Kreator Raportów" className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9" }} />
         </div>
 
         <Divider />
@@ -306,7 +306,7 @@ export function RaportyCaseStudy() {
                       <h3 className="text-lg font-semibold text-[#0F172A] mb-2">{step.title}</h3>
                       <p className="text-slate-500 leading-relaxed">{step.desc}</p>
                     </div>
-                    <img src="/raporty-user-stories.png" alt="User stories" className="w-full rounded-2xl border border-slate-200 object-cover" />
+                    <img src="/raporty-user-stories.webp" alt="User stories" className="w-full rounded-2xl border border-slate-200 object-cover" />
                   </div>
                 ) : (
                   <div>
@@ -347,12 +347,12 @@ export function RaportyCaseStudy() {
                 )}
 
                 {step.visual === "scope" && (
-                  <img src="/raporty-scope.png" alt="Zakres projektu" className="w-full rounded-2xl border border-slate-200 mt-10 object-cover" />
+                  <img src="/raporty-scope.webp" alt="Zakres projektu" className="w-full rounded-2xl border border-slate-200 mt-10 object-cover" />
                 )}
 
                 {step.visual === "flow" && (
                   <div className="mt-10">
-                    <ImageCarousel images={["/raporty-flow-1.png", "/raporty-flow-2.png", "/raporty-flow-3.png"]} />
+                    <ImageCarousel images={["/raporty-flow-1.webp", "/raporty-flow-2.webp", "/raporty-flow-3.webp"]} />
                   </div>
                 )}
               </div>
@@ -375,12 +375,12 @@ export function RaportyCaseStudy() {
                 <p className="text-slate-500 leading-relaxed mb-6">{feature.desc}</p>
                 {feature.visual === "sidebarSwap" ? (
                   <SidebarSettingsSwap
-                    base="/raporty-section.png"
-                    overlay="/raporty-settings.png"
+                    base="/raporty-section.webp"
+                    overlay="/raporty-settings.webp"
                     overlayRect={{ top: 6.91, left: 0, width: 17.78, height: 109.6 }}
                   />
                 ) : feature.visual === "autoScrollReport" ? (
-                  <AutoScrollImage src="/raporty-raport.png" imageAspect={1440 / 3795} />
+                  <AutoScrollImage src="/raporty-raport.webp" imageAspect={1440 / 3795} />
                 ) : feature.img ? (
                   <img src={feature.img} alt={feature.imgAlt} className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9", objectPosition: "top" }} />
                 ) : (

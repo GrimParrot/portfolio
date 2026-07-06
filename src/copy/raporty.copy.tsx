@@ -128,7 +128,7 @@ export const copy = {
         {
           title: "Lista raportów",
           desc: "Cała historia raportów w jednym miejscu. Status, sposób wysyłki i data następnego automatycznego raportu widoczne od razu przy każdym wpisie — bez wchodzenia w środek, żeby porównać wyniki w czasie.",
-          img: "/raporty-lista.png",
+          img: "/raporty-lista.webp",
           imgAlt: "Lista raportów",
           reverse: false,
           stack: true,
@@ -136,21 +136,21 @@ export const copy = {
         {
           title: "Auto-raportowanie",
           desc: "Automatyzacja włączona domyślnie - każda wizytówka ma z góry ustawiony harmonogram (zakres dat i częstotliwość), który można zmienić w dowolnym momencie. Wyłączenie automatyzacji to wyjątek, nie punkt startowy.",
-          img: "/raporty-auto.png",
+          img: "/raporty-auto.webp",
           imgAlt: "Auto-raportowanie",
           reverse: false,
         },
         {
           title: "Raport na żądanie, bez ruszania harmonogramu",
           desc: "Gdy klient pyta o konkretny okres, specjalista generuje dodatkowy raport z dowolnym zakresem dat — harmonogram automatyczny zostaje nietknięty.",
-          img: "/raporty-instant.png",
+          img: "/raporty-instant.webp",
           imgAlt: "Raport na żądanie",
           reverse: true,
         },
         {
           title: "Reports manager",
           desc: <>Jeden widok na wszystkie profile klientów. <NumBadge n={1} /> Filtrowanie po statusie i częstotliwości oraz <NumBadge n={2} /> akcje zbiorcze — dla specjalisty zarządzającego dziesiątkami wizytówek to różnica między klikaniem w każdą z osobna a jedną akcją na wszystkich. Przy każdym profilu widać też <NumBadge n={3} /> dwa ostatnie raporty razem z datą kolejnego automatycznego, a obok — <NumBadge n={4} /> status i jaką metodą zostały wysłane.</>,
-          img: "/raporty-manager.png",
+          img: "/raporty-manager.webp",
           imgAlt: "Reports manager",
           reverse: false,
           stack: true,
@@ -170,7 +170,7 @@ export const copy = {
         {
           title: "Ustawienia maila",
           desc: "Własny adres wysyłki i reply-to ustawia się raz — każdy kolejny raport, ręczny czy automatyczny, wygląda jakby wysłał go sam specjalista.",
-          img: "/raporty-email.png",
+          img: "/raporty-email.webp",
           imgAlt: "Ustawienia maila",
           reverse: false,
           imgFit: "cover",
@@ -178,7 +178,7 @@ export const copy = {
         {
           title: "Trzy sposoby dostarczenia, jeden ekran",
           desc: "Auto-raportowanie (60% adopcji, 44% wyłącznie auto) wysyła raport cyklicznie prosto do skrzynki klienta i specjalisty. Alternatywnie: link bez konieczności logowania lub PDF, do wysłania w dowolnym momencie.",
-          img: "/raporty-share.png",
+          img: "/raporty-share.webp",
           imgAlt: "Trzy sposoby dostarczenia",
           reverse: true,
           imgFit: "cover",
@@ -317,7 +317,7 @@ export const copy = {
         {
           title: "Reports list",
           desc: "The full report history in one place. Status, delivery method and the date of the next automatic report are visible right away on every entry — no need to open each one to compare results over time.",
-          img: "/raporty-lista.png",
+          img: "/raporty-lista.webp",
           imgAlt: "Reports list",
           reverse: false,
           stack: true,
@@ -325,21 +325,21 @@ export const copy = {
         {
           title: "Auto-reporting",
           desc: "Automation is on by default — every profile has a schedule (date range and frequency) set up front, which can be changed at any time. Turning automation off is the exception, not the starting point.",
-          img: "/raporty-auto.png",
+          img: "/raporty-auto.webp",
           imgAlt: "Auto-reporting",
           reverse: false,
         },
         {
           title: "On-demand report, without touching the schedule",
           desc: "When a client asks about a specific period, the specialist generates an extra report with any date range — the automatic schedule stays untouched.",
-          img: "/raporty-instant.png",
+          img: "/raporty-instant.webp",
           imgAlt: "On-demand report",
           reverse: true,
         },
         {
           title: "Reports manager",
           desc: <>One view of all client profiles. <NumBadge n={1} /> Filtering by status and frequency plus <NumBadge n={2} /> bulk actions — for a specialist managing dozens of profiles, that's the difference between clicking each one individually and a single action on all of them. Every profile also shows <NumBadge n={3} /> the last two reports along with the next automatic date, and next to it — <NumBadge n={4} /> the status and delivery method.</>,
-          img: "/raporty-manager.png",
+          img: "/raporty-manager.webp",
           imgAlt: "Reports manager",
           reverse: false,
           stack: true,
@@ -359,7 +359,7 @@ export const copy = {
         {
           title: "Email settings",
           desc: "A custom send-from address and reply-to are set once — every following report, manual or automatic, looks like the specialist sent it themselves.",
-          img: "/raporty-email.png",
+          img: "/raporty-email.webp",
           imgAlt: "Email settings",
           reverse: false,
           imgFit: "cover",
@@ -367,7 +367,7 @@ export const copy = {
         {
           title: "Three delivery methods, one screen",
           desc: "Auto-reporting (60% adoption, 44% exclusively auto) sends the report cyclically straight to the client's and specialist's inbox. Alternatively: a login-free link or PDF, to send at any moment.",
-          img: "/raporty-share.png",
+          img: "/raporty-share.webp",
           imgAlt: "Three delivery methods",
           reverse: true,
           imgFit: "cover",
