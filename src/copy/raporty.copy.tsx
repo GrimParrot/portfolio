@@ -57,7 +57,7 @@ export const copy = {
     s03: {
       tag: "03 — Proces",
       h2: "Od eksploracji po zmianę kierunku",
-      intro: "Projekt wystartował z konkretną hipotezą PM-a — inną funkcjonalnością, uznaną wtedy za odpowiedź na problem. Zanim przeszliśmy do projektowania, chciałam sprawdzić, czy to faktycznie adresuje największy pain point użytkowników.",
+      intro: "Projekt wystartował z konkretną hipotezą PM-a — inną funkcjonalnością, uznaną wtedy za odpowiedź na problem. Zanim przeszłam do projektowania, chciałam sprawdzić, czy to faktycznie adresuje największy pain point użytkowników.",
       steps: [
         {
           n: 1,
@@ -68,13 +68,13 @@ export const copy = {
         {
           n: 2,
           title: "Profil klienta końcowego",
-          desc: "Oprócz person naszych użytkowników musieliśmy zdefiniować personę odbiorcy raportu. Z wywiadów zbudowaliśmy jej profil — i to ona, nie nasz standardowy użytkownik, ostatecznie zdecydowała o kształcie raportu.",
+          desc: "Oprócz person naszych użytkowników musiałam zdefiniować personę odbiorcy raportu. Z wywiadów zbudowałam jej profil — i to ona, nie nasz standardowy użytkownik, ostatecznie zdecydowała o kształcie raportu.",
           visual: "profile",
         },
         {
           n: 3,
           title: "Zakres projektu",
-          desc: "Ustaliliśmy, co robimy, a czego zdecydowanie nie — np. świadomie odpuściliśmy edytor styli w mailu, bo to nie tam była dźwignia.",
+          desc: "Ustaliłam, co robię, a czego zdecydowanie nie — np. świadomie odpuściłam edytor styli w mailu, bo to nie tam była dźwignia.",
           visual: "scope",
         },
         {
@@ -89,8 +89,6 @@ export const copy = {
           desc: "Naniosłam poprawki na podstawie feedbacku od użytkowników i Customer Success, po czym projekt trafił do wdrożenia z gotową dokumentacją w Figmie. Przeprowadziłam design QA, nadzorowałam wdrożenie i obserwowałam, jak funkcja jest przyjmowana przez użytkowników.",
         },
       ],
-      devWarningLabel: "Ograniczenia techniczne",
-      devWarningText: "Raport wbudowany w mail musiał mieć bardzo prosty layout ze względu na różnice w renderowaniu HTML przez klienty pocztowe. Razem z devami zminimalizowaliśmy też ryzyko trafiania cyklicznych wysyłek do spamu — m.in. przez autoryzację nadawcy i ograniczenie treści promocyjnej.",
       pivotLabel: "Zmiana kierunku",
       pivotText: <>Zasugerowałam <strong style={{ fontWeight: 800 }}>zmianę kierunku</strong> i <strong style={{ fontWeight: 800 }}>zredefiniowałam problem statement</strong>, upewniając się, że cały zespół patrzy na projekt przez te same kryteria. Celem stało się zamienienie ręcznego składania raportu w <strong style={{ fontWeight: 800 }}>jeden spójny, zautomatyzowany flow</strong>.</>,
       scopeCols: [
@@ -243,13 +241,13 @@ export const copy = {
         {
           n: 2,
           title: "End-client profile",
-          desc: "Besides our users' personas, we had to define a persona for the report recipient. From interviews we built her profile — and it was her, not our standard user, who ultimately decided the shape of the report.",
+          desc: "Besides our users' personas, I had to define a persona for the report recipient. From interviews I built her profile — and it was her, not our standard user, who ultimately decided the shape of the report.",
           visual: "profile",
         },
         {
           n: 3,
           title: "Project scope",
-          desc: "We defined what we're building and what definitely not — e.g. we consciously let go of an in-email style editor, since that wasn't where the leverage was.",
+          desc: "I defined what I'm building and what definitely not — e.g. I consciously let go of an in-email style editor, since that wasn't where the leverage was.",
           visual: "scope",
         },
         {
@@ -264,8 +262,6 @@ export const copy = {
           desc: "I made fixes based on feedback from users and Customer Success, then the project shipped with full documentation in Figma. I ran design QA, oversaw the rollout and monitored how the feature was adopted by users.",
         },
       ],
-      devWarningLabel: "Technical constraints",
-      devWarningText: "The report embedded in the email had to have a very simple layout because of differences in HTML rendering across email clients. Together with the devs we also minimised the risk of recurring sends landing in spam — among other things via sender authentication and limiting promotional content.",
       pivotLabel: "Change of direction",
       pivotText: <>I suggested <strong style={{ fontWeight: 800 }}>changing direction</strong> and <strong style={{ fontWeight: 800 }}>redefined the problem statement</strong>, making sure the whole team looked at the project through the same criteria. The goal became turning the manual report-building process into <strong style={{ fontWeight: 800 }}>one cohesive, automated flow</strong>.</>,
       scopeCols: [
