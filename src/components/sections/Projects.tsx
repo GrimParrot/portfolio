@@ -72,7 +72,7 @@ export function Projects() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           <AnimatePresence mode="popLayout">
           {filtered.map((project) => (
             <motion.div
@@ -87,7 +87,7 @@ export function Projects() {
               key={project.title}
               onClick={() => "href" in project && project.href ? navigate(project.href) : undefined}
               className="group cursor-pointer rounded-2xl border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-colors duration-200 overflow-hidden bg-white relative"
-              style={{ height: 300 }}
+              style={{ height: 380 }}
               onMouseEnter={e => { const panel = e.currentTarget.querySelector<HTMLElement>(".panel"); if (panel) panel.style.height = panel.scrollHeight + "px" }}
               onMouseLeave={e => { const panel = e.currentTarget.querySelector<HTMLElement>(".panel"); if (panel) panel.style.height = "52px" }}
             >
@@ -113,7 +113,7 @@ export function Projects() {
               </div>
 
               {/* White panel — expands on hover */}
-              <div className="panel absolute bottom-0 left-0 right-0 bg-white px-4 pt-3 pb-4 overflow-hidden transition-all duration-300" style={{ height: 52 }}>
+              <div className="panel absolute bottom-0 left-0 right-0 bg-white px-4 pt-3 pb-4 overflow-hidden transition-all duration-300 shadow-[0_-8px_16px_rgba(0,0,0,0.12)]" style={{ height: 52 }}>
                 <p className="font-semibold text-slate-900 leading-snug">{lang === "pl" && project.title_pl ? project.title_pl : project.title}</p>
                 {"description" in project && (lang === "en" ? project.description_en : project.description) && (
                   <p className="text-slate-500 text-[15px] mt-4 leading-snug">

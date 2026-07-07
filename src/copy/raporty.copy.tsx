@@ -18,7 +18,7 @@ export const copy = {
     introProduct: "",
     introSuffix: "",
     roleLabel: "Rola",
-    roleText: "Lead Product Designer: od discovery do handoffu. Badania użytkowników, hipotezy, architektura flow, ekrany, testy użyteczności. Zespół: PM, QA, copywriter, dev.",
+    roleText: "Lead Product Designer: od discovery do handoffu. Badania użytkowników, hipotezy, architektura flow, ekrany, testy użyteczności. Częściowo pełniłam też obowiązki Product Managera w duecie z CEO firmy.",
     meta: [
       { label: "Produkt", value: "Localo" },
       { label: "Skala", value: "8 600+ użytkowników" },
@@ -62,7 +62,7 @@ export const copy = {
         {
           n: 1,
           title: "Synteza badań",
-          desc: "Zebrałam wnioski z wywiadów pogłębionych, ankiet i analizy konkurencji w jedno spójne podsumowanie. Na tej podstawie powstały pierwsze user stories.",
+          desc: "Za pomocą Claude zsyntetyzowałam wnioski z wywiadów pogłębionych, ankiet i analizy konkurencji w jedno spójne podsumowanie. Na tej podstawie powstały pierwsze user stories.",
           visual: "pivot",
         },
         {
@@ -80,7 +80,7 @@ export const copy = {
         {
           n: 4,
           title: "Pierwszy flow i prototyp",
-          desc: "Powstał pierwszy user flow i prototyp, przetestowany z użytkownikami. Zaangażowałam też development i QA, żeby wcześnie wyłapać trudności techniczne.",
+          desc: "Pierwszy prototyp zbudowałam w Claude Code — działający, klikalny flow gotowy do testów z użytkownikami, zanim zaangażowałam development i QA do wyłapania trudności technicznych.",
           visual: "flow",
         },
         {
@@ -90,7 +90,7 @@ export const copy = {
         },
       ],
       pivotLabel: "Zmiana kierunku",
-      pivotText: <>Zasugerowałam <strong style={{ fontWeight: 800 }}>zmianę kierunku</strong> i <strong style={{ fontWeight: 800 }}>zredefiniowałam problem statement</strong>, upewniając się, że cały zespół patrzy na projekt przez te same kryteria. Celem stało się zamienienie ręcznego składania raportu w <strong style={{ fontWeight: 800 }}>jeden spójny, zautomatyzowany flow</strong>.</>,
+      pivotText: <>Zasugerowałam CEO <strong style={{ fontWeight: 800 }}>zmianę kierunku</strong> i <strong style={{ fontWeight: 800 }}>zredefiniowałam problem statement</strong>, upewniając się, że cały zespół patrzy na projekt przez te same kryteria. Celem stało się zamienienie ręcznego składania raportu w <strong style={{ fontWeight: 800 }}>jeden spójny, zautomatyzowany flow</strong>.</>,
       scopeCols: [
         { label: "W zakresie",    inScope: true,  items: ["Kreator raportu z AI", "Auto-raportowanie", "Link bez logowania", "Widok workspace"] },
         { label: "Poza zakresem", inScope: false, items: ["Plany wyłącznie publikacyjne", "Integracje zewnętrzne"] },
@@ -191,7 +191,7 @@ export const copy = {
     introProduct: "",
     introSuffix: "",
     roleLabel: "Role",
-    roleText: "Lead Product Designer: from discovery to handoff. User research, hypotheses, flow architecture, screens, usability testing. Team: PM, QA, copywriter, dev.",
+    roleText: "Lead Product Designer: from discovery to handoff. User research, hypotheses, flow architecture, screens, usability testing. I also partly acted as Product Manager in a duo with the company's CEO.",
     meta: [
       { label: "Product", value: "Localo" },
       { label: "Scale", value: "8,600+ users" },
@@ -235,7 +235,7 @@ export const copy = {
         {
           n: 1,
           title: "Research synthesis",
-          desc: "I brought together findings from in-depth interviews, surveys and competitor analysis into one coherent summary. First user stories were built on that basis.",
+          desc: "Using Claude, I synthesized findings from in-depth interviews, surveys and competitor analysis into one coherent summary. First user stories were built on that basis.",
           visual: "pivot",
         },
         {
@@ -253,7 +253,7 @@ export const copy = {
         {
           n: 4,
           title: "First flow and prototype",
-          desc: "The first user flow and prototype were built and tested with users. I also involved development and QA to catch technical difficulties early.",
+          desc: "I built the first prototype in Claude Code — a working, clickable flow ready for user testing, before involving development and QA to catch technical difficulties.",
           visual: "flow",
         },
         {
@@ -263,7 +263,7 @@ export const copy = {
         },
       ],
       pivotLabel: "Change of direction",
-      pivotText: <>I suggested <strong style={{ fontWeight: 800 }}>changing direction</strong> and <strong style={{ fontWeight: 800 }}>redefined the problem statement</strong>, making sure the whole team looked at the project through the same criteria. The goal became turning the manual report-building process into <strong style={{ fontWeight: 800 }}>one cohesive, automated flow</strong>.</>,
+      pivotText: <>I suggested to the CEO <strong style={{ fontWeight: 800 }}>changing direction</strong> and <strong style={{ fontWeight: 800 }}>redefined the problem statement</strong>, making sure the whole team looked at the project through the same criteria. The goal became turning the manual report-building process into <strong style={{ fontWeight: 800 }}>one cohesive, automated flow</strong>.</>,
       scopeCols: [
         { label: "In scope",     inScope: true,  items: ["AI report builder", "Auto-reporting", "Login-free link", "Workspace view"] },
         { label: "Out of scope", inScope: false, items: ["Publish-only plans", "External integrations"] },
