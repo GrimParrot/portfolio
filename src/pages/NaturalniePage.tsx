@@ -51,7 +51,7 @@ export function NaturalniePage() {
             ))}
           </div>
 
-          <img src="/naturalnie.png" alt="Naturalnie.pl — main view" className="w-full rounded-2xl border border-slate-200 object-cover" />
+          <img src="/naturalnie-cover.webp" alt="Naturalnie.pl — main view" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />

@@ -39,7 +39,7 @@ export const copy = {
     },
     s02: {
       tag: "02 — Odkrycia",
-      h2: "Co pokazały badania",
+      h2: "Kluczowe odkrycie, które ukształtowało finalny projekt",
       insights: [
         { n: 1, title: "Raporty są skanowane, nie analizowane", desc: "Klienci końcowi nie mają czasu analizować liczb. Raport przeglądany jest wzrokowo." },
         { n: 2, title: "Ręczna selekcja danych to codzienne tarcie", desc: "Dane zbierane ręcznie z wielu narzędzi i składane w jedną prezentację — żmudny proces, powtarzający się co miesiąc." },
@@ -98,21 +98,21 @@ export const copy = {
       profileBoxes: [
         {
           icon: "target",
-          title: "Cele",
+          title: "Cel",
           color: "green",
-          tags: ["Prosty wniosek", "Bez technicznej analizy", "Szybka odpowiedź", "Nastawienie na efekt"],
+          tags: ["Szybki sygnał postępu w pozycjonowaniu", "Pewność, że agencja się wywiązuje", "Poczucie, że jest lepiej"],
         },
         {
           icon: "warning",
-          title: "Pain pointy",
+          title: "Pain points",
           color: "blue",
-          tags: ["Przytłoczenie danymi", "Zabiegany", "Nietechniczny", "Frustracja przy wysiłku"],
+          tags: ["Brak czasu na analizę danych", "Przytłoczenie ilością danych", "Niezrozumiałe, techniczne frazy", "Frustracja przy wysiłku bez efektu"],
         },
         {
           icon: "trending",
           title: "Zachowania",
           color: "orange",
-          tags: ["Wzrokowiec", "Szuka podsumowania", "Nie czyta całości", "Rzadko wgłębia się w szczegóły"],
+          tags: ["Skanuje wzrokowo", "Szuka skrótów i podsumowań", "Nie czyta całości", "Rzadko wgłębia się w szczegóły", "Kieruje się kolorem i hasłami"],
         },
       ],
     },
@@ -122,47 +122,43 @@ export const copy = {
       intro: "",
       steps: [
         {
-          title: "Lista raportów",
-          desc: "Status, sposób wysyłki i data kolejnego raportu widoczne od razu przy każdym wpisie, bez wchodzenia w szczegóły.",
-          img: "/raporty-lista.webp",
-          imgAlt: "Lista raportów",
-          reverse: false,
           stack: true,
+          cards: [
+            { title: "Lista raportów", desc: "Wszystko na pierwszy rzut oka — status, sposób wysyłki i data kolejnego raportu widoczne od razu przy każdym wpisie, bez wchodzenia w szczegóły.", img: "/raporty-lista.webp", imgAlt: "Lista raportów", height: 700 },
+          ],
         },
         {
           stack: true,
           cards: [
-            { eyebrow: "Domyślnie włączone", title: "Auto-raportowanie", desc: "Harmonogram do edycji w każdej chwili, bez konieczności konfiguracji od zera.", img: "/raporty-auto.webp", imgAlt: "Auto-raportowanie" },
-            { eyebrow: "Bez ruszania harmonogramu", title: "Raport na żądanie", desc: "Dowolny okres, jednym kliknięciem — automatyczny harmonogram zostaje nietknięty.", img: "/raporty-instant.webp", imgAlt: "Raport na żądanie" },
+            { title: "Auto-raportowanie", desc: "Domyślnie włączone — harmonogram do edycji w każdej chwili, bez konieczności konfiguracji od zera.", img: "/raporty-auto.webp", imgAlt: "Auto-raportowanie" },
+            { title: "Raport na żądanie", desc: "Bez ruszania harmonogramu — dowolny okres, jednym kliknięciem, a automatyczna wysyłka pozostaje nietknięta.", img: "/raporty-instant.webp", imgAlt: "Raport na żądanie" },
           ],
         },
         {
-          title: "Reports manager",
-          desc: <>Jeden widok na wszystkie profile klientów. <NumBadge n={1} /> Filtrowanie po statusie i częstotliwości oraz <NumBadge n={2} /> akcje zbiorcze — kluczowe, gdy zarządzasz wieloma profilami naraz. Przy każdym z nich widać też <NumBadge n={3} /> dwa ostatnie raporty razem z datą kolejnego automatycznego, a obok — <NumBadge n={4} /> status i jaką metodą zostały wysłane.</>,
-          img: "/raporty-manager.webp",
-          imgAlt: "Reports manager",
-          reverse: false,
           stack: true,
+          cards: [
+            { title: "Reports manager", desc: <>Jeden widok na wszystkie profile klientów. <NumBadge n={1} /> Filtrowanie po statusie i częstotliwości oraz <NumBadge n={2} /> akcje zbiorcze — kluczowe, gdy zarządzasz wieloma profilami naraz. Przy każdym z nich widać też <NumBadge n={3} /> dwa ostatnie raporty razem z datą kolejnego automatycznego, a obok — <NumBadge n={4} /> status i jaką metodą zostały wysłane.</>, img: "/raporty-manager.webp", imgAlt: "Reports manager", height: 700 },
+          ],
         },
         {
           title: "Edytor raportu",
           desc: "Specjalista dostaje kompletny raport automatycznie — włącza i wyłącza sekcje, dopasowuje ustawienia, nigdy nie zaczyna od zera.",
           visual: "sidebarSwap",
           stack: true,
+          height: 700,
         },
         {
           title: "Gotowy raport",
           desc: "Raport w mailu ma celowo prosty layout — ograniczony do elementów, które renderują się tak samo w każdym kliencie pocztowym. Ta prostota działa też na treść: pokazuje „było – jest”, a przy trudniejszych sekcjach specjalista może dołączyć krótką notkę edukacyjną dla klienta.",
           visual: "autoScrollReport",
           stack: true,
+          height: 750,
         },
         {
-          title: "Ustawienia maila i dostarczanie",
-          desc: "Własny adres wysyłki i reply-to ustawia się raz — każdy raport, ręczny czy automatyczny, wygląda jakby wysłał go sam specjalista. Dostarczasz go trzema sposobami z jednego ekranu: auto-wysyłka (60% adopcji, 44% wyłącznie tak), link bez logowania lub PDF.",
           stack: true,
-          imgPair: [
-            { img: "/raporty-email.webp", imgAlt: "Ustawienia maila", imgFit: "cover" },
-            { img: "/raporty-share.webp", imgAlt: "Trzy sposoby dostarczenia", imgFit: "cover" },
+          cards: [
+            { title: "Ustawienia maila", desc: "Własny adres wysyłki i reply-to ustawia się raz — każdy raport, ręczny czy automatyczny, wygląda jakby wysłał go sam specjalista.", img: "/raporty-email.webp", imgAlt: "Ustawienia maila" },
+            { title: "Sposoby dostarczenia", desc: "Trzema sposobami z jednego ekranu: auto-wysyłka (60% adopcji, 44% wyłącznie tak), link bez logowania lub PDF.", img: "/raporty-share.webp", imgAlt: "Trzy sposoby dostarczenia" },
           ],
         },
       ],
@@ -210,7 +206,7 @@ export const copy = {
     },
     s02: {
       tag: "02 — Discovery",
-      h2: "What the research showed",
+      h2: "Key finding that shaped the final design",
       insights: [
         { n: 1, title: "Reports are scanned, not analysed", desc: "End clients don't have time to analyse numbers. Reports are reviewed visually." },
         { n: 2, title: "Manual data selection is everyday friction", desc: "Data collected manually from multiple tools and assembled into one presentation — a tedious process, repeated every month." },
@@ -269,21 +265,21 @@ export const copy = {
       profileBoxes: [
         {
           icon: "target",
-          title: "Goals",
+          title: "Goal",
           color: "green",
-          tags: ["Simple takeaway", "No technical analysis", "Fast answer", "Focused on outcome"],
+          tags: ["Quick signal of ranking progress", "Confidence the agency is delivering", "A sense that things are getting better"],
         },
         {
           icon: "warning",
           title: "Pain points",
           color: "blue",
-          tags: ["Overwhelmed by data", "Busy", "Non-technical", "Frustration with effort"],
+          tags: ["No time to analyse data", "Overwhelmed by the amount of data", "Unclear, technical phrases", "Frustration from effort without results"],
         },
         {
           icon: "trending",
           title: "Behaviours",
           color: "orange",
-          tags: ["Visual scanner", "Looks for summary", "Doesn't read it all", "Rarely digs into detail"],
+          tags: ["Scans visually", "Looks for shortcuts and summaries", "Doesn't read it all", "Rarely digs into detail", "Guided by colour and headlines"],
         },
       ],
     },
@@ -293,47 +289,43 @@ export const copy = {
       intro: "",
       steps: [
         {
-          title: "Reports list",
-          desc: "Status, delivery method and the date of the next report are visible right away on every entry, without opening each one.",
-          img: "/raporty-lista.webp",
-          imgAlt: "Reports list",
-          reverse: false,
           stack: true,
+          cards: [
+            { title: "Reports list", desc: "Everything at a glance — status, delivery method and the date of the next report are visible right away on every entry, without opening each one.", img: "/raporty-lista.webp", imgAlt: "Reports list", height: 700 },
+          ],
         },
         {
           stack: true,
           cards: [
-            { eyebrow: "On by default", title: "Auto-reporting", desc: "An editable schedule, ready to adjust anytime, no setup required.", img: "/raporty-auto.webp", imgAlt: "Auto-reporting" },
-            { eyebrow: "Without touching the schedule", title: "On-demand report", desc: "Any period, one click — the automatic schedule stays untouched.", img: "/raporty-instant.webp", imgAlt: "On-demand report" },
+            { title: "Auto-reporting", desc: "On by default — an editable schedule, ready to adjust anytime, no setup required.", img: "/raporty-auto.webp", imgAlt: "Auto-reporting" },
+            { title: "On-demand report", desc: "Without touching the schedule — any period, one click, and the automatic send stays untouched.", img: "/raporty-instant.webp", imgAlt: "On-demand report" },
           ],
         },
         {
-          title: "Reports manager",
-          desc: <>One view of all client profiles. <NumBadge n={1} /> Filtering by status and frequency plus <NumBadge n={2} /> bulk actions — key when you're managing many profiles at once. Each one also shows <NumBadge n={3} /> the last two reports along with the next automatic date, and next to it — <NumBadge n={4} /> the status and delivery method.</>,
-          img: "/raporty-manager.webp",
-          imgAlt: "Reports manager",
-          reverse: false,
           stack: true,
+          cards: [
+            { title: "Reports manager", desc: <>One view of all client profiles. <NumBadge n={1} /> Filtering by status and frequency plus <NumBadge n={2} /> bulk actions — key when you're managing many profiles at once. Each one also shows <NumBadge n={3} /> the last two reports along with the next automatic date, and next to it — <NumBadge n={4} /> the status and delivery method.</>, img: "/raporty-manager.webp", imgAlt: "Reports manager", height: 700 },
+          ],
         },
         {
           title: "Report editor",
           desc: "The specialist gets a complete report automatically — turns sections on and off, adjusts settings, never starts from scratch.",
           visual: "sidebarSwap",
           stack: true,
+          height: 700,
         },
         {
           title: "Final report",
           desc: "The email report has a deliberately simple layout — limited to elements that render the same across every email client. That same simplicity works for the content too: it shows 'before – after', and for harder sections the specialist can add a short educational note for the client.",
           visual: "autoScrollReport",
           stack: true,
+          height: 750,
         },
         {
-          title: "Email settings & delivery",
-          desc: "A custom send-from address and reply-to are set once — every report, manual or automatic, looks like the specialist sent it themselves. You deliver it three ways from one screen: auto-send (60% adoption, 44% exclusively), a login-free link, or a PDF.",
           stack: true,
-          imgPair: [
-            { img: "/raporty-email.webp", imgAlt: "Email settings", imgFit: "cover" },
-            { img: "/raporty-share.webp", imgAlt: "Three delivery methods", imgFit: "cover" },
+          cards: [
+            { title: "Email settings", desc: "A custom send-from address and reply-to are set once — every report, manual or automatic, looks like the specialist sent it themselves.", img: "/raporty-email.webp", imgAlt: "Email settings" },
+            { title: "Delivery methods", desc: "Three ways from one screen: auto-send (60% adoption, 44% exclusively), a login-free link, or a PDF.", img: "/raporty-share.webp", imgAlt: "Three delivery methods" },
           ],
         },
       ],

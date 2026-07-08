@@ -49,7 +49,7 @@ export const projects: Project[] = [
     tag: "UI",
     color: "from-[#32685B] to-[#1a3d34]",
     bg: "bg-[#eaf2f0]",
-    image: "/naturalnie.png",
+    image: "/naturalnie-cover.webp",
     href: "/ui/naturalnie",
   },
   {

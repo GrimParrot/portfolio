@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { useNavigate } from "react-router-dom"
-import { projects, tagStyles, type ProjectTag } from "@/data/projects"
+import { ArrowUpRight } from "lucide-react"
+import { projects, type ProjectTag } from "@/data/projects"
 import { useLang } from "@/i18n/LanguageContext"
 
 type Filter = "all" | ProjectTag
@@ -86,10 +87,8 @@ export function Projects() {
             <div
               key={project.title}
               onClick={() => "href" in project && project.href ? navigate(project.href) : undefined}
-              className="group cursor-pointer rounded-2xl border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-colors duration-200 overflow-hidden bg-white relative"
+              className="group cursor-pointer rounded-2xl border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-colors duration-200 overflow-hidden relative"
               style={{ height: 380 }}
-              onMouseEnter={e => { const panel = e.currentTarget.querySelector<HTMLElement>(".panel"); if (panel) panel.style.height = panel.scrollHeight + "px" }}
-              onMouseLeave={e => { const panel = e.currentTarget.querySelector<HTMLElement>(".panel"); if (panel) panel.style.height = "52px" }}
             >
               {/* Image — full height */}
               <div className={`absolute inset-0 ${project.bg}`}>
@@ -105,21 +104,17 @@ export function Projects() {
                 )}
               </div>
 
-              {/* Tag — top left of image */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className={`text-sm font-semibold px-3 py-1.5 rounded-full ${tagStyles[project.tag]}`}>
+              {/* Bottom overlay — tag, title, arrow, on a darkened transparent scrim */}
+              <div className="absolute bottom-0 left-0 right-0 px-4 pt-10 pb-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
+                <span className="inline-block text-sm font-semibold px-3.5 py-2 rounded-full text-white mb-2" style={{ backgroundColor: "rgba(255,255,255,0.16)", backdropFilter: "blur(4px)" }}>
                   {project.tag}
                 </span>
-              </div>
-
-              {/* White panel — expands on hover */}
-              <div className="panel absolute bottom-0 left-0 right-0 bg-white px-4 pt-3 pb-4 overflow-hidden transition-all duration-300 shadow-[0_-8px_16px_rgba(0,0,0,0.12)]" style={{ height: 52 }}>
-                <p className="font-semibold text-slate-900 leading-snug">{lang === "pl" && project.title_pl ? project.title_pl : project.title}</p>
-                {"description" in project && (lang === "en" ? project.description_en : project.description) && (
-                  <p className="text-slate-500 text-[15px] mt-4 leading-snug">
-                    {lang === "en" ? project.description_en : project.description}
-                  </p>
-                )}
+                <div className="flex items-center justify-between gap-3">
+                  <p className="font-semibold text-white leading-snug">{lang === "pl" && project.title_pl ? project.title_pl : project.title}</p>
+                  <span className="flex-shrink-0 rounded-xl flex items-center justify-center" style={{ width: 32, height: 32, border: "1px solid rgba(255,255,255,0.4)" }}>
+                    <ArrowUpRight className="w-4 h-4 text-white" />
+                  </span>
+                </div>
               </div>
             </div>
             </motion.div>

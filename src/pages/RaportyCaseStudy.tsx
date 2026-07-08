@@ -1,5 +1,8 @@
-import { useEffect, useRef, useState } from "react"
-import { Lightbulb, ArrowLeftRight, AlertTriangle, GraduationCap, Target, TrendingUp } from "lucide-react"
+import { useEffect, useRef, useState, type ReactNode } from "react"
+import { ArrowLeftRight, AlertTriangle, Target, TrendingUp, Eye, MousePointerClick, Clock, GraduationCap, Search, Mail, Zap } from "lucide-react"
+
+const insightIcons = [Eye, MousePointerClick, Clock, GraduationCap]
+const lessonIcons = [Search, Mail, Zap]
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { ProjectNav } from "@/components/ProjectNav"
@@ -66,7 +69,7 @@ function SidebarSettingsSwap({ base, overlay, overlayRect }: { base: string; ove
   }, [])
 
   return (
-    <div className="relative w-full rounded-2xl border border-slate-200 overflow-hidden" style={{ aspectRatio: "16/9" }}>
+    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
       <img src={base} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "top" }} />
       <img
         src={overlay}
@@ -90,7 +93,7 @@ function AutoScrollImage({ src, imageAspect }: { src: string; imageAspect: numbe
   const scrollPct = (1 - imageAspect / containerAspect) * 100
 
   return (
-    <div className="relative w-full rounded-2xl border border-slate-200 overflow-hidden" style={{ aspectRatio: "16/9" }}>
+    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
       <img
         src={src}
         alt=""
@@ -110,20 +113,22 @@ function AutoScrollImage({ src, imageAspect }: { src: string; imageAspect: numbe
   )
 }
 
-function FeatureCard({ eyebrow, title, desc, img, imgAlt }: { eyebrow: string; title: string; desc: string; img: string; imgAlt: string }) {
+/**
+ * Duotone feature card template — reuse for any "flat gray box, title, desc,
+ * image cut off at the bottom" section. Only swap title/desc/img/imgAlt (and
+ * height for a single full-width card that needs more image visible).
+ * The text block always sizes to its own content — no min-height — so the
+ * gap to the image (mt-10) is always exactly 40px, no exceptions. In a
+ * two-card pair with different desc lengths, this means the images may
+ * start at slightly different Y — that's the accepted trade-off; the fixed
+ * 40px gap under the text takes priority over cross-card image alignment.
+ */
+function FeatureCard({ title, desc, img, imgAlt, height = 420 }: { title: string; desc: ReactNode; img: string; imgAlt: string; height?: number }) {
   return (
-    <div className="relative rounded-3xl overflow-hidden" style={{ height: 420, backgroundColor: "#94A3B80D" }}>
-      <div className="pt-8 px-8">
-        <p className="text-sm text-slate-400">{eyebrow}</p>
-        <h3 className="text-2xl font-bold text-[#0F172A] mt-1 mb-3">{title}</h3>
-        <p className="text-slate-500 leading-relaxed">{desc}</p>
-      </div>
-      <img
-        src={img}
-        alt={imgAlt}
-        className="absolute left-1/2 rounded-t-2xl shadow-xl"
-        style={{ width: "92%", top: 180, transform: "translateX(-50%)" }}
-      />
+    <div className="rounded-3xl overflow-hidden pt-10 px-10" style={{ height, backgroundColor: "#94A3B814" }}>
+      <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{title}</h3>
+      <p className="text-slate-500 leading-relaxed">{desc}</p>
+      <img src={img} alt={imgAlt} className="w-full rounded-t-2xl shadow-xl mt-10" />
     </div>
   )
 }
@@ -161,30 +166,32 @@ function useCountUp(target: number, duration: number, active: boolean) {
   return value
 }
 
-function StatCard({ num, caption, color, active, className = "" }: { num: string; caption: string; color: string; active: boolean; className?: string }) {
+function StatCard({ num, caption, color, active, className = "", bgAlpha = "0D", dark = false }: { num: string; caption: string; color: string; active: boolean; className?: string; bgAlpha?: string; dark?: boolean }) {
   const { prefix, numeric, suffix, decimals, staticDisplay } = parseNum(num)
   const count = useCountUp(numeric, 1100, active)
   const formatted = decimals > 0
     ? count.toFixed(decimals).replace(".", ",")
     : Math.round(count).toString()
   const display = staticDisplay ?? `${prefix}${formatted}${suffix}`
+  const patternColor = dark ? "#FFFFFF" : color
+  const textColor = dark ? "#FFFFFF" : "#0F172A"
 
   return (
-    <div className={`relative overflow-hidden rounded-2xl p-6 flex flex-col ${className}`} style={{ backgroundColor: color + "0D" }}>
+    <div className={`relative overflow-hidden rounded-2xl p-6 flex flex-col ${className}`} style={{ backgroundColor: dark ? "#0F172A" : color + bgAlpha }}>
       <div
-        className="absolute top-0 right-0 w-40 h-40"
+        className={`absolute top-0 right-0 ${dark ? "w-full h-full" : "w-40 h-40"}`}
         style={{
           backgroundImage: [
-            `repeating-linear-gradient(0deg, ${color}30 0px, ${color}30 1px, transparent 1px, transparent 22px)`,
-            `repeating-linear-gradient(90deg, ${color}30 0px, ${color}30 1px, transparent 1px, transparent 22px)`,
+            `repeating-linear-gradient(0deg, ${patternColor}30 0px, ${patternColor}30 1px, transparent 1px, transparent 22px)`,
+            `repeating-linear-gradient(90deg, ${patternColor}30 0px, ${patternColor}30 1px, transparent 1px, transparent 22px)`,
           ].join(", "),
-          WebkitMaskImage: "radial-gradient(circle at 100% 0%, black 0%, transparent 75%)",
-          maskImage: "radial-gradient(circle at 100% 0%, black 0%, transparent 75%)",
+          WebkitMaskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${dark ? 100 : 75}%)`,
+          maskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${dark ? 100 : 75}%)`,
         }}
       />
       <div className="relative z-10 flex flex-col">
-        <p className="text-6xl font-black tracking-tight leading-none text-[#0F172A]">{display}</p>
-        <p className="text-sm text-[#0F172A] leading-relaxed mt-5">{caption}</p>
+        <p className="text-6xl font-black tracking-tight leading-none" style={{ color: textColor }}>{display}</p>
+        <p className="text-sm leading-relaxed mt-5" style={{ color: textColor }}>{caption}</p>
       </div>
     </div>
   )
@@ -207,11 +214,11 @@ function MetricsGrid3({ metrics }: { metrics: Array<{ num: string; caption: stri
   const gray = "#94A3B8"
   return (
     <div ref={ref} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", gap: "1.5rem" }}>
-      <StatCard num={a.num} caption={a.caption} color={gray} active={active} />
+      <StatCard num={a.num} caption={a.caption} color={gray} active={active} bgAlpha="14" />
       <div style={{ gridColumn: "2", gridRow: "1 / 3", display: "flex", flexDirection: "column" }}>
-        <StatCard num={c.num} caption={c.caption} color={c.color} active={active} className="h-full" />
+        <StatCard num={c.num} caption={c.caption} color={c.color} active={active} className="h-full" dark />
       </div>
-      <StatCard num={b.num} caption={b.caption} color={gray} active={active} />
+      <StatCard num={b.num} caption={b.caption} color={gray} active={active} bgAlpha="14" />
     </div>
   )
 }
@@ -255,7 +262,7 @@ export function RaportyCaseStudy() {
             ))}
           </div>
 
-          <img src="/raporty-cover.webp" alt="Kreator Raportów" className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9" }} />
+          <img src="/raporty-cover.webp" alt="Kreator Raportów" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
@@ -268,9 +275,9 @@ export function RaportyCaseStudy() {
           <MetricsGrid3 metrics={t.s01.metrics} />
           <p className="text-slate-500 leading-relaxed mt-12">{t.s01.lastPara}</p>
           <blockquote className="mt-16 flex gap-4 items-start">
-            <span className="text-6xl leading-none select-none font-serif flex-shrink-0" style={{ color: PRIMARY }}>&ldquo;</span>
-            <p className="text-slate-700 italic leading-relaxed flex-1" style={{ fontSize: "18px" }}>{t.s01.quote}</p>
-            <span className="text-6xl leading-none select-none font-serif flex-shrink-0 self-end" style={{ color: PRIMARY }}>&rdquo;</span>
+            <span className="text-8xl leading-none select-none font-serif flex-shrink-0" style={{ color: PRIMARY }}>&ldquo;</span>
+            <p className="text-slate-700 font-light text-4xl md:text-5xl flex-1" style={{ lineHeight: 1.5 }}>{t.s01.quote}</p>
+            <span className="text-8xl leading-none select-none font-serif flex-shrink-0 self-end" style={{ color: PRIMARY }}>&rdquo;</span>
           </blockquote>
         </div>
 
@@ -282,20 +289,23 @@ export function RaportyCaseStudy() {
           <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {t.s02.insights.map((item) => (
-              <div key={item.n} className="border border-slate-200 rounded-xl p-6">
-                <Lightbulb style={{ width: 24, height: 24, color: "#F97316" }} />
-                <p className="font-semibold text-slate-900 mt-3 mb-2">{item.title}</p>
-                <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
-              </div>
-            ))}
+            {t.s02.insights.map((item, i) => {
+              const Icon = insightIcons[i % insightIcons.length]
+              return (
+                <div key={item.n} className="border border-slate-200 rounded-xl p-6">
+                  <Icon style={{ width: 32, height: 32, color: PRIMARY }} />
+                  <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{item.title}</p>
+                  <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+                </div>
+              )
+            })}
           </div>
 
           <div className="mt-12">
             <Tag>{t.s02.methodsLabel}</Tag>
             <div className="flex flex-wrap gap-3 mt-3">
               {t.s02.methods.map((m) => (
-                <Badge key={m.label} variant="secondary" className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium [&>svg]:text-[#6366F1]">
+                <Badge key={m.label} variant="secondary" className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-[#94A3B814] hover:bg-[#94A3B814] [&>svg]:text-[#6366F1]">
                   {m.icon}{m.label}
                 </Badge>
               ))}
@@ -384,56 +394,24 @@ export function RaportyCaseStudy() {
 
           {t.s04.steps.map((feature, i) => (
             feature.cards ? (
-              <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+              <div key={i} className={`grid grid-cols-1 ${feature.cards.length > 1 ? "md:grid-cols-2" : ""} gap-6 mb-16`}>
                 {feature.cards.map((c, j) => <FeatureCard key={j} {...c} />)}
               </div>
-            ) : feature.stack ? (
-              <div key={i} className="mb-16">
-                <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{feature.title}</h3>
-                <p className="text-slate-500 leading-relaxed mb-6">{feature.desc}</p>
-                {feature.visual === "sidebarSwap" ? (
-                  <SidebarSettingsSwap
-                    base="/raporty-section.webp"
-                    overlay="/raporty-settings.webp"
-                    overlayRect={{ top: 6.91, left: 0, width: 17.78, height: 109.6 }}
-                  />
-                ) : feature.visual === "autoScrollReport" ? (
-                  <AutoScrollImage src="/raporty-raport.webp" imageAspect={1440 / 3795} />
-                ) : feature.imgPair ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {feature.imgPair.map((p, j) => (
-                      p.imgFit === "cover" ? (
-                        <img key={j} src={p.img} alt={p.imgAlt} className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9", objectPosition: "top" }} />
-                      ) : (
-                        <div key={j} className="w-full rounded-2xl border border-slate-200 flex items-center justify-center" style={{ aspectRatio: "16/9", backgroundColor: "#F5F5F5" }}>
-                          <img src={p.img} alt={p.imgAlt} className="object-contain" style={{ maxWidth: "100%", maxHeight: "100%" }} />
-                        </div>
-                      )
-                    ))}
-                  </div>
-                ) : feature.img ? (
-                  <img src={feature.img} alt={feature.imgAlt} className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9", objectPosition: "top" }} />
-                ) : (
-                  <div className="w-full rounded-2xl border border-slate-200 bg-slate-50" style={{ aspectRatio: "16/9" }} />
-                )}
-              </div>
             ) : (
-              <div key={i} className={`grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-16 ${feature.reverse ? "md:[&>*:first-child]:order-2" : ""}`}>
-                <div>
-                  <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{feature.title}</h3>
-                  <p className="text-slate-500 leading-relaxed">{feature.desc}</p>
-                </div>
-                {feature.img ? (
-                  "imgFit" in feature && feature.imgFit === "cover" ? (
-                    <img src={feature.img} alt={feature.imgAlt} className="w-full rounded-2xl border border-slate-200 object-cover" style={{ aspectRatio: "16/9", objectPosition: "top" }} />
+              <div key={i} className="rounded-3xl overflow-hidden pt-10 px-10 mb-16" style={{ height: feature.height ?? 700, backgroundColor: "#94A3B814" }}>
+                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
+                <p className="text-slate-500 leading-relaxed">{feature.desc}</p>
+                <div className="mt-10">
+                  {feature.visual === "sidebarSwap" ? (
+                    <SidebarSettingsSwap
+                      base="/raporty-section.webp"
+                      overlay="/raporty-settings.webp"
+                      overlayRect={{ top: 6.91, left: 0, width: 17.78, height: 109.6 }}
+                    />
                   ) : (
-                    <div className="w-full rounded-2xl border border-slate-200 flex items-center justify-center" style={{ aspectRatio: "16/9", backgroundColor: "#F5F5F5" }}>
-                      <img src={feature.img} alt={feature.imgAlt} className="object-contain" style={{ maxWidth: "100%", maxHeight: "100%" }} />
-                    </div>
-                  )
-                ) : (
-                  <div className="w-full rounded-2xl border border-slate-200 bg-slate-50" style={{ aspectRatio: "16/9" }} />
-                )}
+                    <AutoScrollImage src="/raporty-raport.webp" imageAspect={1440 / 3795} />
+                  )}
+                </div>
               </div>
             )
           ))}
@@ -461,12 +439,15 @@ export function RaportyCaseStudy() {
           <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-4">{t.s05.h2}</h2>
           <p className="text-slate-500 leading-relaxed mb-12">{t.s05.intro}</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {t.s05.items.map((item, i) => (
-              <div key={i} className="border border-slate-200 rounded-xl p-6">
-                <GraduationCap style={{ width: 24, height: 24, color: "#F97316" }} />
-                <p className="font-semibold text-slate-900 mt-3">{item.title}</p>
-              </div>
-            ))}
+            {t.s05.items.map((item, i) => {
+              const Icon = lessonIcons[i % lessonIcons.length]
+              return (
+                <div key={i} className="border border-slate-200 rounded-xl p-6">
+                  <Icon style={{ width: 32, height: 32, color: PRIMARY }} />
+                  <p className="font-semibold text-slate-900 mt-3">{item.title}</p>
+                </div>
+              )
+            })}
           </div>
         </div>
 
