@@ -39,7 +39,7 @@ export const projects: Project[] = [
     tag: "Case Study",
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-violet-50",
-    image: "/Sales mode.png",
+    image: "/client-acquisition-cover.webp",
     href: "/case-study/localo",
   },
   {

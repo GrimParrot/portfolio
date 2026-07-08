@@ -194,7 +194,7 @@ export function LocaloCaseStudy() {
             ))}
           </div>
 
-          <img src="/Sales mode.png" alt="Client Acquisition — main view" className="w-full rounded-2xl border border-slate-200 object-cover" />
+          <img src="/client-acquisition-cover.webp" alt="Client Acquisition — main view" className="w-full rounded-2xl border border-slate-200 object-cover" />
         </div>
 
         <Divider />
