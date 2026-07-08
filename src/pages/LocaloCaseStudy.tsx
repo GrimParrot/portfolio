@@ -102,7 +102,7 @@ function useCountUp(target: number, duration: number, active: boolean) {
   return value
 }
 
-function StatCard({ num, caption, color, active }: { num: string; caption: string; color: string; active: boolean }) {
+function StatCard({ num, caption, color, active, className = "" }: { num: string; caption: string; color: string; active: boolean; className?: string }) {
   const { prefix, numeric, suffix, decimals } = parseNum(num)
   const count = useCountUp(numeric, 1100, active)
   const formatted = decimals > 0
@@ -111,7 +111,7 @@ function StatCard({ num, caption, color, active }: { num: string; caption: strin
   const display = `${prefix}${formatted}${suffix}`
 
   return (
-    <div className="relative overflow-hidden rounded-2xl p-6 flex flex-col" style={{ backgroundColor: color + "0D" }}>
+    <div className={`relative overflow-hidden rounded-2xl p-8 flex flex-col justify-between h-full ${className}`} style={{ backgroundColor: color + "0D" }}>
       <div
         className="absolute top-0 right-0 w-40 h-40"
         style={{
@@ -123,10 +123,8 @@ function StatCard({ num, caption, color, active }: { num: string; caption: strin
           maskImage: "radial-gradient(circle at 100% 0%, black 0%, transparent 75%)",
         }}
       />
-      <div className="relative z-10 flex flex-col">
-        <p className="text-5xl font-black tracking-tight leading-none" style={{ color }}>{display}</p>
-        <p className="text-sm text-[#0F172A] leading-relaxed mt-5">{caption}</p>
-      </div>
+      <p className="relative z-10 text-5xl font-black tracking-tight leading-none text-[#0F172A]">{display}</p>
+      <p className="relative z-10 text-sm text-[#0F172A] leading-relaxed mt-5">{caption}</p>
     </div>
   )
 }
@@ -144,11 +142,14 @@ function MetricsGrid({ metrics }: { metrics: Array<{ num: string; caption: strin
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
+  const [a, b, c, d] = metrics
+  const gray = "#94A3B8"
   return (
-    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {metrics.map((m) => (
-        <StatCard key={m.caption} num={m.num} caption={m.caption} color={m.color} active={active} />
-      ))}
+    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-[1.6fr_1fr_1fr] sm:grid-rows-2 gap-6">
+      <StatCard num={a.num} caption={a.caption} color={a.color} active={active} className="sm:row-span-2" />
+      <StatCard num={b.num} caption={b.caption} color={gray} active={active} className="sm:row-span-2" />
+      <StatCard num={c.num} caption={c.caption} color={gray} active={active} />
+      <StatCard num={d.num} caption={d.caption} color={gray} active={active} />
     </div>
   )
 }

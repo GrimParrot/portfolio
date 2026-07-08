@@ -110,6 +110,24 @@ function AutoScrollImage({ src, imageAspect }: { src: string; imageAspect: numbe
   )
 }
 
+function FeatureCard({ eyebrow, title, desc, img, imgAlt }: { eyebrow: string; title: string; desc: string; img: string; imgAlt: string }) {
+  return (
+    <div className="relative rounded-3xl overflow-hidden" style={{ height: 420, backgroundColor: "#94A3B80D" }}>
+      <div className="pt-8 px-8">
+        <p className="text-sm text-slate-400">{eyebrow}</p>
+        <h3 className="text-2xl font-bold text-[#0F172A] mt-1 mb-3">{title}</h3>
+        <p className="text-slate-500 leading-relaxed">{desc}</p>
+      </div>
+      <img
+        src={img}
+        alt={imgAlt}
+        className="absolute left-1/2 rounded-t-2xl shadow-xl"
+        style={{ width: "92%", top: 180, transform: "translateX(-50%)" }}
+      />
+    </div>
+  )
+}
+
 function parseNum(str: string) {
   const tilde = str.startsWith("~") ? "~" : ""
   const s0 = tilde ? str.slice(1) : str
@@ -165,7 +183,7 @@ function StatCard({ num, caption, color, active, className = "" }: { num: string
         }}
       />
       <div className="relative z-10 flex flex-col">
-        <p className="text-6xl font-black tracking-tight leading-none" style={{ color }}>{display}</p>
+        <p className="text-6xl font-black tracking-tight leading-none text-[#0F172A]">{display}</p>
         <p className="text-sm text-[#0F172A] leading-relaxed mt-5">{caption}</p>
       </div>
     </div>
@@ -186,13 +204,14 @@ function MetricsGrid3({ metrics }: { metrics: Array<{ num: string; caption: stri
     return () => observer.disconnect()
   }, [])
   const [a, b, c] = metrics
+  const gray = "#94A3B8"
   return (
     <div ref={ref} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", gap: "1.5rem" }}>
-      <StatCard num={a.num} caption={a.caption} color={a.color} active={active} />
+      <StatCard num={a.num} caption={a.caption} color={gray} active={active} />
       <div style={{ gridColumn: "2", gridRow: "1 / 3", display: "flex", flexDirection: "column" }}>
         <StatCard num={c.num} caption={c.caption} color={c.color} active={active} className="h-full" />
       </div>
-      <StatCard num={b.num} caption={b.caption} color={b.color} active={active} />
+      <StatCard num={b.num} caption={b.caption} color={gray} active={active} />
     </div>
   )
 }
@@ -364,7 +383,11 @@ export function RaportyCaseStudy() {
           <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
 
           {t.s04.steps.map((feature, i) => (
-            feature.stack ? (
+            feature.cards ? (
+              <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                {feature.cards.map((c, j) => <FeatureCard key={j} {...c} />)}
+              </div>
+            ) : feature.stack ? (
               <div key={i} className="mb-16">
                 <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{feature.title}</h3>
                 <p className="text-slate-500 leading-relaxed mb-6">{feature.desc}</p>

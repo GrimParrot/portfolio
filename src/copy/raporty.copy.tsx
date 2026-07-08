@@ -130,12 +130,10 @@ export const copy = {
           stack: true,
         },
         {
-          title: "Raportowanie i Auto-raportowanie",
-          desc: "Automatyzacja włączona domyślnie, z harmonogramem do edycji. Użytkownik może w każdej chwili wygenerować raport z dowolnego okresu, nie naruszając harmonogramu.",
           stack: true,
-          imgPair: [
-            { img: "/raporty-auto.webp", imgAlt: "Auto-raportowanie", imgFit: "contain" },
-            { img: "/raporty-instant.webp", imgAlt: "Raport na żądanie", imgFit: "contain" },
+          cards: [
+            { eyebrow: "Domyślnie włączone", title: "Auto-raportowanie", desc: "Harmonogram do edycji w każdej chwili, bez konieczności konfiguracji od zera.", img: "/raporty-auto.webp", imgAlt: "Auto-raportowanie" },
+            { eyebrow: "Bez ruszania harmonogramu", title: "Raport na żądanie", desc: "Dowolny okres, jednym kliknięciem — automatyczny harmonogram zostaje nietknięty.", img: "/raporty-instant.webp", imgAlt: "Raport na żądanie" },
           ],
         },
         {
@@ -303,12 +301,10 @@ export const copy = {
           stack: true,
         },
         {
-          title: "Reporting & Auto-reporting",
-          desc: "Automation is on by default, with an editable schedule. Users can generate a report for any period at any time, without disturbing the schedule.",
           stack: true,
-          imgPair: [
-            { img: "/raporty-auto.webp", imgAlt: "Auto-reporting", imgFit: "contain" },
-            { img: "/raporty-instant.webp", imgAlt: "On-demand report", imgFit: "contain" },
+          cards: [
+            { eyebrow: "On by default", title: "Auto-reporting", desc: "An editable schedule, ready to adjust anytime, no setup required.", img: "/raporty-auto.webp", imgAlt: "Auto-reporting" },
+            { eyebrow: "Without touching the schedule", title: "On-demand report", desc: "Any period, one click — the automatic schedule stays untouched.", img: "/raporty-instant.webp", imgAlt: "On-demand report" },
           ],
         },
         {
