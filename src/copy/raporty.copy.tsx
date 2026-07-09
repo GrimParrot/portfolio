@@ -13,12 +13,12 @@ function NumBadge({ n }: { n: number }) {
 
 export const copy = {
   pl: {
-    h1: "Automatyzacja, która robi raport za specjalistę",
+    h1: "Funkcja automatycznego raportowania, wbudowana w produkt",
     intro: "Specjaliści tracili godziny na ręczne składanie raportów z rozproszonych danych. Nowa funkcja automatycznie generuje i wysyła raporty z działań na wizytówce (np. pozycje, posty, zdjęcia, konkurencja). Dziś to funkcja, której zaufało 60% użytkowników, oddając jej pełną automatyzację wysyłki raportów do klientów.",
     introProduct: "",
     introSuffix: "",
     roleLabel: "Rola",
-    roleText: "Lead Product Designer: od discovery do handoffu. Badania użytkowników, hipotezy, architektura flow, ekrany, testy użyteczności. Częściowo pełniłam też obowiązki Product Managera w duecie z CEO firmy.",
+    roleText: "Lead Product Designer: od discovery po delivery. Badania użytkowników, hipotezy, architektura flow, ekrany, testy użyteczności. Częściowo pełniłam też obowiązki Product Managera w duecie z CEO firmy.",
     meta: [
       { label: "Produkt", value: "Localo" },
       { label: "Skala", value: "8 600+ użytkowników" },
@@ -27,7 +27,7 @@ export const copy = {
     ],
     s01: {
       tag: "01 — Kontekst i wpływ",
-      h2: "Co się stało po wdrożeniu",
+      h2: "Kluczowe metryki",
       body: <>Specjaliści SEO potrzebowali prostego narzędzia, które <strong style={{ color: "#0F172A" }}>jasno i w spersonalizowany sposób prezentowałoby wyniki</strong> <strong style={{ color: "#0F172A" }}>nietechnicznym klientom</strong> — z łatwym wyborem danych, porównaniem w czasie i <strong style={{ color: "#0F172A" }}>automatyczną wysyłką</strong>, by ograniczyć liczbę pytań i <strong style={{ color: "#0F172A" }}>wzmocnić zaufanie do współpracy.</strong></>,
       metrics: [
         { num: "12%", caption: "użytkowników MAU tworzy raport co miesiąc", color: "#0ABA53", icon: "trending" },
@@ -38,8 +38,8 @@ export const copy = {
       lastPara: <><strong style={{ color: "#0F172A", fontWeight: 800 }}>60% użytkowników włączyło auto-wysyłkę</strong>, a 44% korzysta wyłącznie z niej — nigdy nie wysyła raportów ręcznie. To pokazuje duże zaufanie do procesu i realne odciążenie od powtarzalnej, czasochłonnej czynności.</>,
     },
     s02: {
-      tag: "02 — Odkrycia",
-      h2: "Kluczowe odkrycie, które ukształtowało finalny projekt",
+      tag: "02 — Problem",
+      h2: "Kluczowe odkrycia, które ukształtowały finalny projekt",
       insights: [
         { n: 1, title: "Raporty są skanowane, nie analizowane", desc: "Klienci końcowi nie mają czasu analizować liczb. Raport przeglądany jest wzrokowo." },
         { n: 2, title: "Ręczna selekcja danych to codzienne tarcie", desc: "Dane zbierane ręcznie z wielu narzędzi i składane w jedną prezentację — żmudny proces, powtarzający się co miesiąc." },
@@ -62,7 +62,7 @@ export const copy = {
         {
           n: 1,
           title: "Synteza badań",
-          desc: "Za pomocą Claude zsyntetyzowałam wnioski z wywiadów pogłębionych, ankiet i analizy konkurencji w jedno spójne podsumowanie. Na tej podstawie powstały pierwsze user stories.",
+          desc: "Za pomocą Claude zsyntetyzowałam wnioski z wywiadów pogłębionych, ankiet i analizy konkurencji w jedno spójne podsumowanie. Na tej podstawie powstały pierwsze user stories. Za moją sugestią, popartą wynikami badań, wspólnie z CEO zmieniliśmy kierunek projektu.",
           visual: "pivot",
         },
         {
@@ -90,7 +90,8 @@ export const copy = {
         },
       ],
       pivotLabel: "Zmiana kierunku",
-      pivotText: <>Zasugerowałam CEO <strong style={{ fontWeight: 800 }}>zmianę kierunku</strong> i <strong style={{ fontWeight: 800 }}>zredefiniowałam problem statement</strong>, upewniając się, że cały zespół patrzy na projekt przez te same kryteria. Celem stało się zamienienie ręcznego składania raportu w <strong style={{ fontWeight: 800 }}>jeden spójny, zautomatyzowany flow</strong>.</>,
+      pivotGoalTitle: "Cel",
+      pivotGoalDesc: <>Zbudować narzędzie do <strong style={{ fontWeight: 800 }}>automatycznego raportowania</strong>, które jasno pokazuje wyniki nietechnicznym klientom i <strong style={{ fontWeight: 800 }}>buduje zaufanie do współpracy</strong>.</>,
       scopeCols: [
         { label: "W zakresie",    inScope: true,  items: ["Kreator raportu z AI", "Auto-raportowanie", "Link bez logowania", "Widok workspace"] },
         { label: "Poza zakresem", inScope: false, items: ["Plany wyłącznie publikacyjne", "Integracje zewnętrzne"] },
@@ -100,19 +101,19 @@ export const copy = {
           icon: "target",
           title: "Cel",
           color: "green",
-          tags: ["Szybki sygnał postępu w pozycjonowaniu", "Pewność, że agencja się wywiązuje", "Poczucie, że jest lepiej"],
+          tags: ["Szybki progres", "Zaufanie do agencji", "Poczucie poprawy"],
         },
         {
           icon: "warning",
-          title: "Pain points",
+          title: "Pain pointy",
           color: "blue",
-          tags: ["Brak czasu na analizę danych", "Przytłoczenie ilością danych", "Niezrozumiałe, techniczne frazy", "Frustracja przy wysiłku bez efektu"],
+          tags: ["Brak czasu na analizę", "Przytłoczenie danymi", "Niezrozumiałe frazy", "Frustracja bez efektu"],
         },
         {
           icon: "trending",
           title: "Zachowania",
           color: "orange",
-          tags: ["Skanuje wzrokowo", "Szuka skrótów i podsumowań", "Nie czyta całości", "Rzadko wgłębia się w szczegóły", "Kieruje się kolorem i hasłami"],
+          tags: ["Skanuje wzrokowo", "Szuka skrótów", "Nie czyta całości", "Kieruje się kolorem i hasłami"],
         },
       ],
     },
@@ -180,12 +181,12 @@ export const copy = {
     },
   },
   en: {
-    h1: "Automation that does the report for the specialist",
+    h1: "Automatic reporting feature, built into the product",
     intro: "Specialists lost hours manually assembling reports from scattered data. The new feature automatically generates and sends reports on profile activity (e.g. rankings, posts, photos, competitors). Today it's a feature trusted by 60% of users, who hand it full automation of sending reports to clients.",
     introProduct: "",
     introSuffix: "",
     roleLabel: "Role",
-    roleText: "Lead Product Designer: from discovery to handoff. User research, hypotheses, flow architecture, screens, usability testing. I also partly acted as Product Manager in a duo with the company's CEO.",
+    roleText: "Lead Product Designer: from discovery to delivery. User research, hypotheses, flow architecture, screens, usability testing. I also partly acted as Product Manager in a duo with the company's CEO.",
     meta: [
       { label: "Product", value: "Localo" },
       { label: "Scale", value: "8,600+ users" },
@@ -194,7 +195,7 @@ export const copy = {
     ],
     s01: {
       tag: "01 — Context & Impact",
-      h2: "What happened after launch",
+      h2: "Key metrics",
       body: <>SEO specialists needed a simple tool that would <strong style={{ color: "#0F172A" }}>clearly and personally present results</strong> to <strong style={{ color: "#0F172A" }}>non-technical clients</strong> — with easy data selection, comparison over time and <strong style={{ color: "#0F172A" }}>automatic sending</strong>, to reduce the number of questions and <strong style={{ color: "#0F172A" }}>strengthen trust in the collaboration.</strong></>,
       metrics: [
         { num: "12%", caption: "of MAU users create a report every month", color: "#0ABA53", icon: "trending" },
@@ -205,7 +206,7 @@ export const copy = {
       lastPara: <><strong style={{ color: "#0F172A", fontWeight: 800 }}>60% of users turned on auto-send</strong>, and 44% use it exclusively — never sending reports manually. This shows strong trust in the process and real relief from a repetitive, time-consuming task.</>,
     },
     s02: {
-      tag: "02 — Discovery",
+      tag: "02 — Problem",
       h2: "Key finding that shaped the final design",
       insights: [
         { n: 1, title: "Reports are scanned, not analysed", desc: "End clients don't have time to analyse numbers. Reports are reviewed visually." },
@@ -229,7 +230,7 @@ export const copy = {
         {
           n: 1,
           title: "Research synthesis",
-          desc: "Using Claude, I synthesized findings from in-depth interviews, surveys and competitor analysis into one coherent summary. First user stories were built on that basis.",
+          desc: "Using Claude, I synthesized findings from in-depth interviews, surveys and competitor analysis into one coherent summary. First user stories were built on that basis. At my suggestion, backed by research findings, the CEO and I changed the project's direction.",
           visual: "pivot",
         },
         {
@@ -257,7 +258,8 @@ export const copy = {
         },
       ],
       pivotLabel: "Change of direction",
-      pivotText: <>I suggested to the CEO <strong style={{ fontWeight: 800 }}>changing direction</strong> and <strong style={{ fontWeight: 800 }}>redefined the problem statement</strong>, making sure the whole team looked at the project through the same criteria. The goal became turning the manual report-building process into <strong style={{ fontWeight: 800 }}>one cohesive, automated flow</strong>.</>,
+      pivotGoalTitle: "Goal",
+      pivotGoalDesc: <>Build a tool for <strong style={{ fontWeight: 800 }}>automatic reporting</strong> that clearly shows results to non-technical clients and <strong style={{ fontWeight: 800 }}>builds trust in the collaboration</strong>.</>,
       scopeCols: [
         { label: "In scope",     inScope: true,  items: ["AI report builder", "Auto-reporting", "Login-free link", "Workspace view"] },
         { label: "Out of scope", inScope: false, items: ["Publish-only plans", "External integrations"] },
@@ -267,19 +269,19 @@ export const copy = {
           icon: "target",
           title: "Goal",
           color: "green",
-          tags: ["Quick signal of ranking progress", "Confidence the agency is delivering", "A sense that things are getting better"],
+          tags: ["Quick progress", "Trust in the agency", "Sense of improvement"],
         },
         {
           icon: "warning",
           title: "Pain points",
           color: "blue",
-          tags: ["No time to analyse data", "Overwhelmed by the amount of data", "Unclear, technical phrases", "Frustration from effort without results"],
+          tags: ["No time to analyse", "Overwhelmed by data", "Unclear phrases", "Frustration without results"],
         },
         {
           icon: "trending",
           title: "Behaviours",
           color: "orange",
-          tags: ["Scans visually", "Looks for shortcuts and summaries", "Doesn't read it all", "Rarely digs into detail", "Guided by colour and headlines"],
+          tags: ["Scans visually", "Looks for shortcuts", "Doesn't read it all", "Guided by colour and headlines"],
         },
       ],
     },

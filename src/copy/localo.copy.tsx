@@ -7,7 +7,7 @@ export const copy = {
     introProduct: "Client Acquisition",
     introSuffix: " — jedno narzędzie z dwoma modułami, spójne i samowyjaśniające się, bez wychodzenia do zewnętrznych aplikacji.",
     roleLabel: "Moja rola",
-    roleText: "Lead Product Designer: od discovery do handoffu. Badania użytkowników, hipotezy, architektura flow, ekrany, testy użyteczności. Zespół: PM, QA, copywriter, dev.",
+    roleText: "Lead Product Designer: od discovery po delivery. Badania użytkowników, hipotezy, architektura flow, ekrany, testy użyteczności. Zespół: PM, QA, copywriter, dev.",
     meta: [
       { label: "Produkt", value: "Localo" },
       { label: "Skala", value: "5 000+ użytkowników" },
@@ -16,7 +16,7 @@ export const copy = {
     ],
     s01: {
       tag: "01 — Efekty",
-      h2: "Co się zmieniło po wdrożeniu",
+      h2: "Kluczowe metryki",
       body: <><strong className="text-slate-700">Dwa osobne narzędzia</strong> — Research mode i Sales mode — zostały zastąpione <strong className="text-slate-700">jednym spójnym flow</strong> z dwoma modułami: Leads Finder i Visibility Scans. Użytkownik <strong className="text-slate-700">nie przeskakuje między trybami</strong>: wynik z jednego modułu naturalnie prowadzi do drugiego. Narzędzie jest <strong className="text-slate-700">samowyjaśniające się</strong> i nie wymaga zewnętrznych aplikacji do dokończenia zadania.</>,
       metrics: [
         { num: "9×", caption: "Wyższe blended LTV na użytkowniku funkcji", color: "#0ABA53", icon: "ltv" },
@@ -27,8 +27,8 @@ export const copy = {
       lastPara: <>Funkcja zwiększyła postrzeganą wartość wyższych tierów i obniżyła <strong className="text-slate-700">churn</strong> wśród agencji z wieloma klientami. Zanotowaliśmy wzrost <strong style={{ color: "#0F172A", fontWeight: 800 }}>adopcji funkcji</strong> oraz pośredni wpływ na <strong className="text-slate-700">liczbę zarządzanych profili</strong> — kluczową metrykę przychodu platformy.</>,
     },
     s02: {
-      tag: "02 — Discovery",
-      h2: "Kluczowe odkrycie, które ukształtowało finalny projekt",
+      tag: "02 — Problem",
+      h2: "Kluczowe odkrycia, które ukształtowały finalny projekt",
       pullQuote: <>Złożoność funkcji wymusza{" "}<span className="font-black" style={{ color: "#466AFA" }}>ręczny onboarding</span>{" "}i wypycha użytkowników do{" "}<span className="font-black" style={{ color: "#466AFA" }}>narzędzi zewnętrznych</span>, podnosząc{" "}<span className="font-black" style={{ color: "#466AFA" }}>próg wejścia</span>{" "}i ograniczając adopcję.</>,
       insights: [
         { n: "1", title: "Brak ciągłości", desc: "Leady w Sales mode, dane o widoczności w Research, bez wspólnego kontekstu." },
@@ -55,7 +55,7 @@ export const copy = {
         { label: "Poza scope", inScope: false, items: ["Zmiany w sposobie dodawania keywordów", "Historia", "Redesign pozostałych sekcji produktu"] },
       ],
       goalLabel: "Cel",
-      goalText: "obniżyć barierę wejścia, wyeliminować zewnętrzne narzędzia i zwiększyć skuteczność prospectingu — tak, by użytkownik sam zrozumiał wartość funkcji i przełożył ją na deale.",
+      goalText: <><strong style={{ fontWeight: 800 }}>Obniżyć barierę wejścia</strong>, wyeliminować zewnętrzne narzędzia i zwiększyć skuteczność prospectingu — tak, by użytkownik sam zrozumiał wartość funkcji i <strong style={{ fontWeight: 800 }}>przełożył ją na deale</strong>.</>,
       flowH3: "Architektura flow",
       flowDesc: "Zmapowałam oba istniejące flow, żeby znaleźć miejsca przecięcia i utraty kontekstu. Oba częściowo pokrywały ten sam obszar, ale żadne nie domykało go w całości.",
       synthesisH3: "Synteza badań",
@@ -77,12 +77,12 @@ export const copy = {
       h2: "Jeden flow — od odkrycia do onboardingu",
       intro: "Użytkownik zaczyna od Leads Finder — szuka firm w danej niszy i lokalizacji, buduje listę potencjalnych klientów. Gdy znajdzie interesującego leada, uruchamia Visibility Scan i sprawdza jego widoczność online. Wynik staje się argumentem sprzedażowym i gotowym kontekstem do oferty lub cold maila. Cały proces — od wyszukiwania do aktywacji klienta — w jednym miejscu.",
       steps: [
-        { step: "01", title: "Lista leadów", desc: "Użytkownik wpisuje kategorię i lokalizację, system zwraca profile Google Business z kluczowymi danymi: brak WWW, liczba opinii, link do map. Kluczowa decyzja: żadnego pustego stanu — wynik natychmiast, bez konfiguracji i onboardingu.", carousel: true, height: 700 },
+        { step: "01", title: "Lista leadów", desc: "Użytkownik wpisuje kategorię i lokalizację, system zwraca profile Google Business z kluczowymi danymi: brak WWW, liczba opinii, link do map. Kluczowa decyzja: żadnego pustego stanu — wynik natychmiast, bez konfiguracji i onboardingu.", laptopMockup: true, laptopImages: ["/modal.png", "/lead list.png"] },
         { smallCards: [
           { step: "02", title: "Growth Potential", desc: "Jeden scoring zamiast metryk do analizy — kalkulacja zdjęta z użytkownika.", img: "/growth potential.png", imgAlt: "Growth Potential score" },
           { step: "03", title: "Skan widoczności z poziomu leada", desc: "Szybkie sprawdzenie widoczności firmy jako gotowy argument sprzedażowy.", img: "/pin map.png", imgAlt: "Visibility Scan — mapa z pinami" },
         ], bigCard: { step: "04", title: "Zarządzanie statusem leadów", desc: "Mini-CRM wbudowany w produkt. Użytkownik nie musi wychodzić do arkusza.", img: "/status.png", imgAlt: "Status leadów i komentarze" } },
-        { step: "05", title: "Pogłębiona analiza", desc: "Kolejne skany widoczności dla dodatkowych słów kluczowych — wynik, keywordy, pozycja na tle konkurencji — to gotowy materiał do rozmowy, bez przepisywania.", img: "/visibility scans.png", imgAlt: "Visibility Scans", height: 700 },
+        { step: "05", title: "Pogłębiona analiza", desc: "Kolejne skany widoczności dla dodatkowych słów kluczowych — wynik, keywordy, pozycja na tle konkurencji — to gotowy materiał do rozmowy, bez przepisywania.", img: "/localo-analiza.webp", imgAlt: "Pogłębiona analiza", bleedImg: true },
         { step: "06", title: "Onboarding", desc: "Kiedy klient mówi tak — aktywacja profilu jednym kliknięciem, bez wychodzenia z widoku. Pełna pętla: od leada do pierwszego dnia współpracy.", img: "/confirmation.webp", imgAlt: "Aktywacja profilu", height: 480, companionImg: "/mobile.webp", companionImgAlt: "Widok mobilny — generowanie leadów" },
       ],
       rejectedTag: "Odrzucone kierunki",
@@ -108,7 +108,7 @@ export const copy = {
     introProduct: "Client Acquisition",
     introSuffix: " — one tool with two modules, coherent and self-explanatory, without leaving to external apps.",
     roleLabel: "My role",
-    roleText: "Lead Product Designer: from discovery to handoff. User research, hypotheses, flow architecture, screens, usability tests. Team: PM, QA, copywriter, dev.",
+    roleText: "Lead Product Designer: from discovery to delivery. User research, hypotheses, flow architecture, screens, usability tests. Team: PM, QA, copywriter, dev.",
     meta: [
       { label: "Product", value: "Localo" },
       { label: "Scale", value: "5,000+ users" },
@@ -117,7 +117,7 @@ export const copy = {
     ],
     s01: {
       tag: "01 — Results",
-      h2: "What changed after launch",
+      h2: "Key metrics",
       body: <><strong className="text-slate-700">Two separate tools</strong> — Research mode and Sales mode — were replaced by <strong className="text-slate-700">one coherent flow</strong> with two modules: Leads Finder and Visibility Scans. The user <strong className="text-slate-700">doesn't jump between modes</strong>: the output of one module naturally leads to the next. The tool is <strong className="text-slate-700">self-explanatory</strong> and doesn't require external apps to complete a task.</>,
       metrics: [
         { num: "9×", caption: "Higher blended LTV per feature user", color: "#0ABA53", icon: "ltv" },
@@ -128,7 +128,7 @@ export const copy = {
       lastPara: <>The feature increased the perceived value of higher tiers and lowered <strong className="text-slate-700">churn</strong> among agencies with multiple clients. We saw growth in <strong style={{ color: "#0F172A", fontWeight: 800 }}>feature adoption</strong> and an indirect impact on <strong className="text-slate-700">growth in managed profiles</strong> — a key revenue metric for the platform.</>,
     },
     s02: {
-      tag: "02 — Discovery",
+      tag: "02 — Problem",
       h2: "Key finding that shaped the final design",
       pullQuote: <>The features' complexity forces{" "}<span className="font-black" style={{ color: "#466AFA" }}>manual onboarding</span>{" "}and pushes users to{" "}<span className="font-black" style={{ color: "#466AFA" }}>external tools</span>, raising the{" "}<span className="font-black" style={{ color: "#466AFA" }}>entry barrier</span>{" "}and limiting adoption.</>,
       insights: [
@@ -156,7 +156,7 @@ export const copy = {
         { label: "Out of scope", inScope: false, items: ["Changes to keyword management", "History", "Redesign of other product sections"] },
       ],
       goalLabel: "Goal",
-      goalText: "lower the entry barrier, eliminate external tools and increase prospecting effectiveness — so the user understands the feature's value and translates it into deals.",
+      goalText: <><strong style={{ fontWeight: 800 }}>Lower the entry barrier</strong>, eliminate external tools and increase prospecting effectiveness — so the user understands the feature's value and <strong style={{ fontWeight: 800 }}>translates it into deals</strong>.</>,
       flowH3: "Flow architecture",
       flowDesc: "I mapped both existing flows to find where they intersect and where context gets lost. Both partially covered the same area, but neither closed it completely.",
       synthesisH3: "Research synthesis",
@@ -178,12 +178,12 @@ export const copy = {
       h2: "One flow — from discovery to onboarding",
       intro: "The user starts with Leads Finder — searching for businesses in a given niche and location, building a list of potential clients. When they find an interesting lead, they trigger a Visibility Scan and check the business's online visibility. The result becomes a sales argument and ready context for a proposal or cold email. The entire process — from search to client activation — in one place.",
       steps: [
-        { step: "01", title: "Leads list", desc: "The user enters a category and location, the system returns Google Business profiles with key data: no website, review count, maps link. Key decision: no empty state — results immediately, no configuration or onboarding.", carousel: true, height: 700 },
+        { step: "01", title: "Leads list", desc: "The user enters a category and location, the system returns Google Business profiles with key data: no website, review count, maps link. Key decision: no empty state — results immediately, no configuration or onboarding.", laptopMockup: true, laptopImages: ["/modal.png", "/lead list.png"] },
         { smallCards: [
           { step: "02", title: "Growth Potential", desc: "One score instead of metrics to analyze — calculation lifted from the user.", img: "/growth potential.png", imgAlt: "Growth Potential score" },
           { step: "03", title: "Visibility scan from the lead", desc: "A quick visibility check as a ready sales argument.", img: "/pin map.png", imgAlt: "Visibility Scan — pin map" },
         ], bigCard: { step: "04", title: "Lead status management", desc: "Mini-CRM built into the product. The user doesn't need to go to a spreadsheet.", img: "/status.png", imgAlt: "Lead status and comments" } },
-        { step: "05", title: "In-depth analysis", desc: "Additional visibility scans for more keywords — the result, keywords, and position vs. competition become ready material for a conversation, without copy-pasting.", img: "/visibility scans.png", imgAlt: "Visibility Scans", height: 700 },
+        { step: "05", title: "In-depth analysis", desc: "Additional visibility scans for more keywords — the result, keywords, and position vs. competition become ready material for a conversation, without copy-pasting.", img: "/localo-analiza.webp", imgAlt: "In-depth analysis", bleedImg: true },
         { step: "06", title: "Onboarding", desc: "When the client says yes — profile activation in one click, without leaving the view. The full loop: from lead to day one of cooperation.", img: "/confirmation.webp", imgAlt: "Profile activation", height: 480, companionImg: "/mobile.webp", companionImgAlt: "Mobile view — lead generation" },
       ],
       rejectedTag: "Rejected directions",

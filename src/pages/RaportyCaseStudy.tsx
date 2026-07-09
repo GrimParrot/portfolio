@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react"
-import { ArrowLeftRight, AlertTriangle, Target, TrendingUp, Eye, MousePointerClick, Clock, GraduationCap, Search, Mail, Zap } from "lucide-react"
+import { Target, AlertTriangle, TrendingUp, Frown, Search, Mail, Zap } from "lucide-react"
 
-const insightIcons = [Eye, MousePointerClick, Clock, GraduationCap]
 const lessonIcons = [Search, Mail, Zap]
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
@@ -22,6 +21,26 @@ function Tag({ children, color }: { children: React.ReactNode; color?: string })
 
 function Divider() {
   return <hr className="border-t border-slate-100 my-0" />
+}
+
+function ProfileBox({ box, rotate }: { box: { icon: string; title: string; tags: string[] }; rotate: number }) {
+  return (
+    <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm" style={{ transform: `rotate(${rotate}deg)`, minHeight: 230 }}>
+      <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: PRIMARY + "1A" }}>
+        {box.icon === "target" && <Target style={{ width: 28, height: 28, color: PRIMARY }} />}
+        {box.icon === "warning" && <AlertTriangle style={{ width: 28, height: 28, color: PRIMARY }} />}
+        {box.icon === "trending" && <TrendingUp style={{ width: 28, height: 28, color: PRIMARY }} />}
+      </div>
+      <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{box.title}</p>
+      <div className="flex flex-wrap gap-2">
+        {box.tags.map((tag) => (
+          <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-[#94A3B814] hover:bg-[#94A3B814]">
+            {tag}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 function ImageCarousel({ images }: { images: string[] }) {
@@ -213,9 +232,9 @@ function MetricsGrid3({ metrics }: { metrics: Array<{ num: string; caption: stri
   const [a, b, c] = metrics
   const gray = "#94A3B8"
   return (
-    <div ref={ref} style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", gap: "1.5rem" }}>
+    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 gap-6">
       <StatCard num={a.num} caption={a.caption} color={gray} active={active} bgAlpha="14" />
-      <div style={{ gridColumn: "2", gridRow: "1 / 3", display: "flex", flexDirection: "column" }}>
+      <div className="flex flex-col sm:col-start-2 sm:row-start-1 sm:row-span-2">
         <StatCard num={c.num} caption={c.caption} color={c.color} active={active} className="h-full" dark />
       </div>
       <StatCard num={b.num} caption={b.caption} color={gray} active={active} bgAlpha="14" />
@@ -289,16 +308,15 @@ export function RaportyCaseStudy() {
           <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {t.s02.insights.map((item, i) => {
-              const Icon = insightIcons[i % insightIcons.length]
-              return (
-                <div key={item.n} className="border border-slate-200 rounded-xl p-6">
-                  <Icon style={{ width: 32, height: 32, color: PRIMARY }} />
-                  <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{item.title}</p>
-                  <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+            {t.s02.insights.map((item) => (
+              <div key={item.n} className="border border-slate-200 rounded-xl p-6">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: "#ef44441A" }}>
+                  <Frown style={{ width: 28, height: 28, color: "#ef4444" }} />
                 </div>
-              )
-            })}
+                <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{item.title}</p>
+                <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
           <div className="mt-12">
@@ -310,6 +328,16 @@ export function RaportyCaseStudy() {
                 </Badge>
               ))}
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            <div className="md:col-span-2 rounded-3xl p-10" style={{ backgroundColor: "#22C55E14" }}>
+              <div className="mb-3">
+                <Tag color="#16A34A">{t.s03.pivotGoalTitle}</Tag>
+              </div>
+              <p className="text-2xl font-light" style={{ color: "#16A34A" }}>{t.s03.pivotGoalDesc}</p>
+            </div>
+            <img src="/raporty-direction.webp" alt="" className="w-full h-full rounded-3xl object-cover" />
           </div>
         </div>
 
@@ -332,42 +360,21 @@ export function RaportyCaseStudy() {
                     </div>
                     <img src="/raporty-user-stories.webp" alt="User stories" className="w-full rounded-2xl border border-slate-200 object-cover" />
                   </div>
+                ) : step.visual === "profile" ? (
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#0F172A] mb-2">{step.title}</h3>
+                    <p className="text-slate-500 leading-relaxed">{step.desc}</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8" style={{ marginTop: 60, marginBottom: 12 }}>
+                      <ProfileBox box={t.s03.profileBoxes[0]} rotate={-4} />
+                      <ProfileBox box={t.s03.profileBoxes[1]} rotate={3} />
+                      <ProfileBox box={t.s03.profileBoxes[2]} rotate={-3} />
+                    </div>
+                  </div>
                 ) : (
                   <div>
                     <h3 className="text-lg font-semibold text-[#0F172A] mb-2">{step.title}</h3>
                     <p className="text-slate-500 leading-relaxed">{step.desc}</p>
                   </div>
-                )}
-
-                {step.visual === "pivot" && (
-                  <div className="flex gap-3 items-start rounded-lg px-6 py-5 mt-10" style={{ background: "#EEF2FF" }}>
-                    <ArrowLeftRight className="flex-shrink-0" style={{ width: 18, height: 18, color: PRIMARY, marginTop: 2 }} />
-                    <p className="leading-relaxed" style={{ color: PRIMARY }}>{t.s03.pivotText}</p>
-                  </div>
-                )}
-
-                {step.visual === "profile" && (
-                  <>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                      {t.s03.profileBoxes.map((box) => (
-                        <div key={box.title} className="border border-slate-200 rounded-xl p-6">
-                          <div className="flex items-center gap-2 mb-3">
-                            {box.icon === "target" && <Target style={{ width: 20, height: 20, color: PRIMARY }} />}
-                            {box.icon === "warning" && <AlertTriangle style={{ width: 20, height: 20, color: PRIMARY }} />}
-                            {box.icon === "trending" && <TrendingUp style={{ width: 20, height: 20, color: PRIMARY }} />}
-                            <p className="font-semibold text-slate-900">{box.title}</p>
-                          </div>
-                          <ul className="flex flex-col gap-1.5">
-                            {box.tags.map((tag) => (
-                              <li key={tag} className="text-slate-500 text-[14px] leading-relaxed">
-                                · {tag}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
-                  </>
                 )}
 
                 {step.visual === "scope" && (
@@ -443,7 +450,9 @@ export function RaportyCaseStudy() {
               const Icon = lessonIcons[i % lessonIcons.length]
               return (
                 <div key={i} className="border border-slate-200 rounded-xl p-6">
-                  <Icon style={{ width: 32, height: 32, color: PRIMARY }} />
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: PRIMARY + "1A" }}>
+                    <Icon style={{ width: 28, height: 28, color: PRIMARY }} />
+                  </div>
                   <p className="font-semibold text-slate-900 mt-3">{item.title}</p>
                 </div>
               )

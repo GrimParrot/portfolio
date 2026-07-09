@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react"
-import { Unlink, ExternalLink, Lock, FlaskConical, Users, ClipboardCheck } from "lucide-react"
+import { Frown, FlaskConical, Users, ClipboardCheck } from "lucide-react"
 
-const insightIcons = [Unlink, ExternalLink, Lock]
 const lessonIcons = [FlaskConical, Users, ClipboardCheck]
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
@@ -12,7 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy } from "@/copy/localo.copy"
 
-function CrossfadeImage({ images, interval }: { images: string[]; interval: number }) {
+function CrossfadeImage({ images, interval, fill = false }: { images: string[]; interval: number; fill?: boolean }) {
   const [index, setIndex] = useState(0)
   const [next, setNext] = useState<number | null>(null)
   const [animating, setAnimating] = useState(false)
@@ -38,7 +37,7 @@ function CrossfadeImage({ images, interval }: { images: string[]; interval: numb
   const fromRight = next !== null && next % 2 === 1
 
   return (
-    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
+    <div className={fill ? "absolute inset-0 overflow-hidden" : "relative w-full rounded-2xl shadow-xl overflow-hidden"} style={fill ? undefined : { aspectRatio: "16/9" }}>
       <img
         src={images[index]}
         alt=""
@@ -62,7 +61,18 @@ function CrossfadeImage({ images, interval }: { images: string[]; interval: numb
   )
 }
 
-function StepCard({ step, title, desc, img, imgAlt, carousel, contain, height = 420 }: { step: string; title: string; desc: string; img?: string; imgAlt?: string; carousel?: boolean; contain?: boolean; height?: number }) {
+function LaptopMockup({ images, interval = 2000 }: { images: string[]; interval?: number }) {
+  return (
+    <div className="relative w-full">
+      <img src="/localo-laptop-mockup.webp" alt="" className="w-full block" />
+      <div className="absolute overflow-hidden" style={{ left: "20.88%", top: "13.16%", width: "60.52%", height: "59.3%" }}>
+        <CrossfadeImage images={images} interval={interval} fill />
+      </div>
+    </div>
+  )
+}
+
+function StepCard({ step, title, desc, img, imgAlt, contain, height = 420 }: { step: string; title: string; desc: string; img?: string; imgAlt?: string; contain?: boolean; height?: number }) {
   return (
     <div className="rounded-3xl overflow-hidden pt-10 px-10" style={{ height, backgroundColor: "#94A3B814" }}>
       <div className="flex items-start justify-between gap-4 mb-3">
@@ -71,9 +81,7 @@ function StepCard({ step, title, desc, img, imgAlt, carousel, contain, height = 
       </div>
       <p className="text-slate-500 leading-relaxed">{desc}</p>
       <div className="mt-10">
-        {carousel ? (
-          <CrossfadeImage images={["/modal.png", "/lead list.png"]} interval={2000} />
-        ) : contain ? (
+        {contain ? (
           <div className="w-full rounded-2xl shadow-xl flex items-center justify-center" style={{ aspectRatio: "16/9", backgroundColor: "#F5F5F5" }}>
             <img src={img} alt={imgAlt} className="object-contain" style={{ maxWidth: "100%", maxHeight: "100%" }} />
           </div>
@@ -280,16 +288,15 @@ export function LocaloCaseStudy() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.s02.insights.map((item, i) => {
-              const Icon = insightIcons[i % insightIcons.length]
-              return (
-                <div key={item.n} className="border border-slate-200 rounded-xl p-6">
-                  <Icon style={{ width: 32, height: 32, color: PRIMARY }} />
-                  <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{item.title}</p>
-                  <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+            {t.s02.insights.map((item) => (
+              <div key={item.n} className="border border-slate-200 rounded-xl p-6">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: "#ef44441A" }}>
+                  <Frown style={{ width: 28, height: 28, color: "#ef4444" }} />
                 </div>
-              )
-            })}
+                <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{item.title}</p>
+                <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
           <div className="mt-12">
@@ -301,6 +308,13 @@ export function LocaloCaseStudy() {
                 </Badge>
               ))}
             </div>
+          </div>
+
+          <div className="rounded-3xl p-10 mt-10" style={{ backgroundColor: "#22C55E14" }}>
+            <div className="mb-3">
+              <Tag color="#16A34A">{t.s03.goalLabel}</Tag>
+            </div>
+            <p className="text-2xl font-light" style={{ color: "#16A34A" }}>{t.s03.goalText}</p>
           </div>
         </div>
 
@@ -319,12 +333,12 @@ export function LocaloCaseStudy() {
               </div>
               <div className="grid grid-cols-2 gap-6">
                 {t.s03.scopeCols.map((col) => (
-                  <div key={col.label} className="rounded-xl p-5" style={{ backgroundColor: col.inScope ? "#E7FFF2" : "#FFE2E2" }}>
+                  <div key={col.label} className="rounded-xl p-5" style={{ backgroundColor: col.inScope ? "#22C55E14" : "#FFE2E2" }}>
                     <p className="text-[13px] font-medium tracking-widest uppercase text-slate-400 mb-3">{col.label}</p>
                     <ul className="flex flex-col gap-2">
                       {col.items.map((item) => (
-                        <li key={item} className="flex gap-2 text-[13px]" style={{ color: col.inScope ? "#15803d" : "#b91c1c" }}>
-                          <span className="flex-shrink-0 font-bold text-[13px]" style={{ color: col.inScope ? "#22c55e" : "#ef4444" }}>
+                        <li key={item} className="flex gap-2 text-[13px]" style={{ color: col.inScope ? "#16A34A" : "#b91c1c" }}>
+                          <span className="flex-shrink-0 font-bold text-[13px]" style={{ color: col.inScope ? "#16A34A" : "#ef4444" }}>
                             {col.inScope ? "✓" : "✕"}
                           </span>
                           {item}
@@ -336,12 +350,6 @@ export function LocaloCaseStudy() {
               </div>
             </div>
 
-            <div className="flex gap-3 items-start rounded-lg px-6 py-5 mt-10" style={{ background: "#EEF2FF" }}>
-              <span className="font-medium flex-shrink-0 mt-0.5" style={{ color: PRIMARY }}>↗</span>
-              <p style={{ color: PRIMARY }}>
-                <strong className="font-semibold">{t.s03.goalLabel}</strong> — {t.s03.goalText}
-              </p>
-            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-12 md:[&>*:first-child]:order-2">
@@ -376,7 +384,13 @@ export function LocaloCaseStudy() {
           <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
 
           {t.s04.steps.map((feature, i) => (
-            "smallCards" in feature ? (
+            "laptopMockup" in feature && feature.laptopMockup ? (
+              <div key={i} className="mb-16">
+                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
+                <p className="text-slate-500 leading-relaxed mb-10">{feature.desc}</p>
+                <LaptopMockup images={feature.laptopImages ?? []} />
+              </div>
+            ) : "smallCards" in feature ? (
               <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                 <div className="grid grid-rows-2 gap-6">
                   {feature.smallCards?.map((c, j) => <StepCard key={j} {...c} height={338} />)}
@@ -387,6 +401,12 @@ export function LocaloCaseStudy() {
               <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
                 <StepCard {...feature} />
                 <ImageCard img={feature.companionImg} imgAlt={feature.companionImgAlt ?? ""} height={feature.height} />
+              </div>
+            ) : "bleedImg" in feature && feature.bleedImg ? (
+              <div key={i} className="mb-16">
+                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
+                <p className="text-slate-500 leading-relaxed mb-10">{feature.desc}</p>
+                <img src={feature.img} alt={feature.imgAlt ?? ""} className="w-full" />
               </div>
             ) : (
               <div key={i} className="mb-16">
@@ -422,7 +442,9 @@ export function LocaloCaseStudy() {
               const Icon = lessonIcons[i % lessonIcons.length]
               return (
                 <div key={i} className="border border-slate-200 rounded-xl p-6">
-                  <Icon style={{ width: 32, height: 32, color: PRIMARY }} />
+                  <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: PRIMARY + "1A" }}>
+                    <Icon style={{ width: 28, height: 28, color: PRIMARY }} />
+                  </div>
                   <p className="font-semibold text-slate-900 mt-3">{item.title}</p>
                 </div>
               )

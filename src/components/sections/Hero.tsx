@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useLang } from "@/i18n/LanguageContext"
 
-const tags = ["Lead product designer", "B2B", "B2C", "SaaS", "8+ years exp", "AI-augmented"]
+const tags = ["Lead product designer", "B2B", "B2C", "SaaS", "8+ years exp", "Discovery & Delivery", "AI-powered"]
 
 const copy = {
   pl: {
