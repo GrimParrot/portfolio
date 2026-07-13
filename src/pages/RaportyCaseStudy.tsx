@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from "react"
+import { motion, useReducedMotion } from "motion/react"
 import { Target, AlertTriangle, TrendingUp, Frown, Search, Mail, Zap } from "lucide-react"
 
 const lessonIcons = [Search, Mail, Zap]
@@ -10,6 +11,112 @@ import { Contact } from "@/components/sections/Contact"
 import { Badge } from "@/components/ui/badge"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy } from "@/copy/raporty.copy"
+
+const PRIMARY = "#466AFA"
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const } },
+}
+
+const staggerParent = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+}
+
+function Reveal({ children, className, style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
+  const reduce = useReducedMotion()
+  return (
+    <motion.div
+      className={className}
+      style={style}
+      initial={reduce ? false : "hidden"}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={fadeUp}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function StaggerGroup({ children, className }: { children: React.ReactNode; className?: string }) {
+  const reduce = useReducedMotion()
+  return (
+    <motion.div
+      className={className}
+      initial={reduce ? false : "hidden"}
+      whileInView="show"
+      viewport={{ once: true, amount: 0.2 }}
+      variants={staggerParent}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function StaggerItem({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <motion.div className={className} variants={fadeUp}>
+      {children}
+    </motion.div>
+  )
+}
+
+function HeroStagger({ children }: { children: React.ReactNode }) {
+  const reduce = useReducedMotion()
+  return (
+    <motion.div initial={reduce ? false : "hidden"} animate="show" variants={staggerParent}>
+      {children}
+    </motion.div>
+  )
+}
+
+function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] }) {
+  const [active, setActive] = useState(chapters[0]?.id)
+
+  useEffect(() => {
+    const sections = chapters
+      .map((c) => document.getElementById(c.id))
+      .filter((el): el is HTMLElement => !!el)
+    if (sections.length === 0) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(entry.target.id)
+        })
+      },
+      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
+    )
+    sections.forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [chapters])
+
+  return (
+    <div className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 flex-col items-center gap-4 z-40">
+      {chapters.map((c) => (
+        <button
+          key={c.id}
+          onClick={() => document.getElementById(c.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          className="group relative flex items-center justify-center w-4 h-4"
+          aria-label={c.label}
+        >
+          <span
+            className="rounded-full transition-all duration-300"
+            style={{
+              width: active === c.id ? 8 : 6,
+              height: active === c.id ? 8 : 6,
+              backgroundColor: active === c.id ? PRIMARY : "#CBD5E1",
+            }}
+          />
+          <span className="absolute right-6 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md bg-[#0F172A] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+            {c.label}
+          </span>
+        </button>
+      ))}
+    </div>
+  )
+}
 
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
@@ -144,10 +251,10 @@ function AutoScrollImage({ src, imageAspect }: { src: string; imageAspect: numbe
  */
 function FeatureCard({ title, desc, img, imgAlt, height = 420 }: { title: string; desc: ReactNode; img: string; imgAlt: string; height?: number }) {
   return (
-    <div className="rounded-3xl overflow-hidden pt-10 px-10" style={{ height, backgroundColor: "#94A3B814" }}>
+    <div className="group rounded-3xl overflow-hidden pt-10 px-10" style={{ height, backgroundColor: "#94A3B814" }}>
       <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{title}</h3>
       <p className="text-slate-500 leading-relaxed">{desc}</p>
-      <img src={img} alt={imgAlt} className="w-full rounded-t-2xl shadow-xl mt-10" />
+      <img src={img} alt={imgAlt} className="w-full rounded-t-2xl shadow-xl mt-10 transition-transform duration-500 group-hover:scale-[1.02]" />
     </div>
   )
 }
@@ -196,7 +303,7 @@ function StatCard({ num, caption, color, active, className = "", bgAlpha = "0D",
   const textColor = dark ? "#FFFFFF" : "#0F172A"
 
   return (
-    <div className={`relative overflow-hidden rounded-2xl p-6 flex flex-col ${className}`} style={{ backgroundColor: dark ? "#0F172A" : color + bgAlpha }}>
+    <div className={`relative overflow-hidden rounded-2xl p-6 flex flex-col transition-transform duration-300 hover:-translate-y-1 ${className}`} style={{ backgroundColor: dark ? "#0F172A" : color + bgAlpha }}>
       <div
         className={`absolute top-0 right-0 ${dark ? "w-full h-full" : "w-40 h-40"}`}
         style={{
@@ -242,84 +349,117 @@ function MetricsGrid3({ metrics }: { metrics: Array<{ num: string; caption: stri
   )
 }
 
-const PRIMARY = "#466AFA"
-
 export function RaportyCaseStudy() {
   const { lang } = useLang()
   const t = copy[lang]
 
+  const chapters = [
+    { id: "hero", label: t.chapters.hero },
+    { id: "s01", label: t.chapters.s01 },
+    { id: "s02", label: t.chapters.s02 },
+    { id: "s03", label: t.chapters.s03 },
+    { id: "s04", label: t.chapters.s04 },
+    { id: "s05", label: t.chapters.s05 },
+  ]
+
   return (
     <div className="min-h-screen bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
       <Navbar />
+      <ProgressRail chapters={chapters} />
 
       <div className="max-w-[1100px] mx-auto px-6 pt-24 pb-16 md:pb-32">
 
         {/* HERO */}
-        <div className="py-8 md:py-16">
+        <div id="hero" className="py-8 md:py-16">
           <ProjectNav currentHref="/case-study/raporty" />
-          <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
-            {t.h1}
-          </h1>
-          <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0ABA53] text-white">Case Study</span>
+          <HeroStagger>
+            <StaggerItem>
+              <h1 className="text-4xl md:text-6xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.15 }}>
+                {t.h1}<br className="hidden md:block" />{" "}
+                <span style={{ color: PRIMARY }}>{t.h1Accent}</span>
+              </h1>
+            </StaggerItem>
 
-          <p className="text-slate-500 leading-relaxed mb-10">
-            {t.intro}<strong className="text-slate-700">{t.introProduct}</strong>{t.introSuffix}
-          </p>
-          <div className="flex gap-3 items-start rounded-lg px-6 py-5 mb-10" style={{ background: "#EEF2FF" }}>
-            <span className="font-medium flex-shrink-0 mt-0.5" style={{ color: PRIMARY }}>↗</span>
-            <p style={{ color: PRIMARY }}>
-              <strong className="font-semibold">{t.roleLabel}</strong> — {t.roleText}
-            </p>
-          </div>
+            <StaggerItem>
+              <span className="inline-block mb-10 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0ABA53] text-white">Case Study</span>
+            </StaggerItem>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-b border-slate-100 py-6 mb-10">
-            {t.meta.map((item) => (
-              <div key={item.label} className="flex flex-col">
-                <Tag>{item.label}</Tag>
-                <p className="font-semibold text-slate-900 mt-1">{item.value}</p>
+            <StaggerItem>
+              <p className="text-slate-500 leading-relaxed mb-10">
+                {t.intro}<strong className="text-slate-700">{t.introProduct}</strong>{t.introSuffix}
+              </p>
+            </StaggerItem>
+
+            <StaggerItem>
+              <div className="flex gap-3 items-start rounded-lg px-6 py-5 mb-10" style={{ background: "#EEF2FF" }}>
+                <span className="font-medium flex-shrink-0 mt-0.5" style={{ color: PRIMARY }}>↗</span>
+                <p style={{ color: PRIMARY }}>
+                  <strong className="font-semibold">{t.roleLabel}:</strong> {t.roleText}
+                </p>
               </div>
-            ))}
-          </div>
+            </StaggerItem>
 
-          <img src="/raporty-cover.webp" alt="Kreator Raportów" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <StaggerItem>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-b border-slate-100 py-6 mb-10">
+                {t.meta.map((item) => (
+                  <div key={item.label} className="flex flex-col">
+                    <Tag>{item.label}</Tag>
+                    <p className="font-semibold text-slate-900 mt-1">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            </StaggerItem>
+
+            <StaggerItem>
+              <img src="/raporty-cover.webp" alt="Kreator Raportów" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            </StaggerItem>
+          </HeroStagger>
         </div>
 
         <Divider />
 
         {/* 01 */}
-        <div className="py-20">
-          <Tag color={PRIMARY}>{t.s01.tag}</Tag>
-          {t.s01.h2 && <h2 className="text-3xl font-bold text-[#0F172A] mt-6 mb-8">{t.s01.h2}</h2>}
-          <p className="text-slate-500 leading-relaxed mb-16">{t.s01.body}</p>
-          <MetricsGrid3 metrics={t.s01.metrics} />
-          <p className="text-slate-500 leading-relaxed mt-12">{t.s01.lastPara}</p>
-          <blockquote className="mt-16 flex gap-4 items-start">
-            <span className="text-8xl leading-none select-none font-serif flex-shrink-0" style={{ color: PRIMARY }}>&ldquo;</span>
-            <p className="text-slate-700 font-light text-4xl md:text-5xl flex-1" style={{ lineHeight: 1.5 }}>{t.s01.quote}</p>
-            <span className="text-8xl leading-none select-none font-serif flex-shrink-0 self-end" style={{ color: PRIMARY }}>&rdquo;</span>
-          </blockquote>
+        <div id="s01" className="py-20 md:py-28">
+          <Reveal>
+            {t.s01.h2 && <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-8">{t.s01.h2}</h2>}
+            <p className="text-slate-500 leading-relaxed mb-16">{t.s01.body}</p>
+          </Reveal>
+          <Reveal>
+            <MetricsGrid3 metrics={t.s01.metrics} />
+          </Reveal>
+          <Reveal>
+            <p className="text-slate-500 leading-relaxed mt-12">{t.s01.lastPara}</p>
+          </Reveal>
+          <Reveal className="mt-16 flex gap-4 items-start">
+            <blockquote className="flex gap-4 items-start">
+              <span className="text-8xl leading-none select-none font-serif flex-shrink-0" style={{ color: PRIMARY }}>&ldquo;</span>
+              <p className="text-slate-700 font-light text-4xl md:text-5xl flex-1" style={{ lineHeight: 1.5 }}>{t.s01.quote}</p>
+              <span className="text-8xl leading-none select-none font-serif flex-shrink-0 self-end" style={{ color: PRIMARY }}>&rdquo;</span>
+            </blockquote>
+          </Reveal>
         </div>
 
         <Divider />
 
         {/* 02 */}
-        <div className="py-20">
-          <Tag color={PRIMARY}>{t.s02.tag}</Tag>
-          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-12">{t.s02.h2}</h2>
+        <div id="s02" className="py-20 md:py-28">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s02.h2}</h2>
+          </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {t.s02.insights.map((item) => (
-              <div key={item.n} className="border border-slate-200 rounded-xl p-6">
+              <StaggerItem key={item.n} className="border border-slate-200 rounded-xl p-6">
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: "#ef44441A" }}>
                   <Frown style={{ width: 28, height: 28, color: "#ef4444" }} />
                 </div>
                 <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{item.title}</p>
                 <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
-              </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
 
-          <div className="mt-12">
+          <Reveal className="mt-12">
             <Tag>{t.s02.methodsLabel}</Tag>
             <div className="flex flex-wrap gap-3 mt-3">
               {t.s02.methods.map((m) => (
@@ -328,9 +468,9 @@ export function RaportyCaseStudy() {
                 </Badge>
               ))}
             </div>
-          </div>
+          </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          <Reveal className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             <div className="md:col-span-2 rounded-3xl p-10" style={{ backgroundColor: "#22C55E14" }}>
               <div className="mb-3">
                 <Tag color="#16A34A">{t.s03.pivotGoalTitle}</Tag>
@@ -338,20 +478,21 @@ export function RaportyCaseStudy() {
               <p className="text-2xl font-light" style={{ color: "#16A34A" }}>{t.s03.pivotGoalDesc}</p>
             </div>
             <img src="/raporty-direction.webp" alt="" className="w-full h-full rounded-3xl object-cover" />
-          </div>
+          </Reveal>
         </div>
 
         <Divider />
 
         {/* 03 */}
-        <div className="py-20">
-          <Tag color={PRIMARY}>{t.s03.tag}</Tag>
-          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-6">{t.s03.h2}</h2>
-          <p className="text-slate-500 leading-relaxed mb-14">{t.s03.intro}</p>
+        <div id="s03" className="py-20 md:py-28">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s03.h2}</h2>
+            <p className="text-slate-500 leading-relaxed mb-14">{t.s03.intro}</p>
+          </Reveal>
 
           <div className="flex flex-col gap-12">
             {t.s03.steps.map((step) => (
-              <div key={step.n}>
+              <Reveal key={step.n}>
                 {step.visual === "pivot" ? (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     <div>
@@ -386,7 +527,7 @@ export function RaportyCaseStudy() {
                     <ImageCarousel images={["/raporty-flow-1.webp", "/raporty-flow-2.webp", "/raporty-flow-3.webp"]} />
                   </div>
                 )}
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -394,18 +535,19 @@ export function RaportyCaseStudy() {
         <Divider />
 
         {/* 04 */}
-        <div className="py-20">
-          <Tag color={PRIMARY}>{t.s04.tag}</Tag>
-          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-6">{t.s04.h2}</h2>
-          <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
+        <div id="s04" className="py-20 md:py-28">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s04.h2}</h2>
+            <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
+          </Reveal>
 
           {t.s04.steps.map((feature, i) => (
             feature.cards ? (
-              <div key={i} className={`grid grid-cols-1 ${feature.cards.length > 1 ? "md:grid-cols-2" : ""} gap-6 mb-16`}>
+              <Reveal key={i} className={`grid grid-cols-1 ${feature.cards.length > 1 ? "md:grid-cols-2" : ""} gap-6 mb-16`}>
                 {feature.cards.map((c, j) => <FeatureCard key={j} {...c} />)}
-              </div>
+              </Reveal>
             ) : (
-              <div key={i} className="rounded-3xl overflow-hidden pt-10 px-10 mb-16" style={{ height: feature.height ?? 700, backgroundColor: "#94A3B814" }}>
+              <Reveal key={i} className="rounded-3xl overflow-hidden pt-10 px-10 mb-16" style={{ height: feature.height ?? 700, backgroundColor: "#94A3B814" }}>
                 <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
                 <p className="text-slate-500 leading-relaxed">{feature.desc}</p>
                 <div className="mt-10">
@@ -419,45 +561,46 @@ export function RaportyCaseStudy() {
                     <AutoScrollImage src="/raporty-raport.webp" imageAspect={1440 / 3795} />
                   )}
                 </div>
-              </div>
+              </Reveal>
             )
           ))}
 
-          <div className="border-t border-slate-100 pt-10">
+          <Reveal className="border-t border-slate-100 pt-10">
             <Tag color="#64748b">{t.s04.rejectedTag}</Tag>
-            <div className="flex flex-col gap-3 mt-6">
+            <div className="flex flex-col divide-y divide-slate-100 mt-6">
               {t.s04.rejected.map((r) => (
-                <div key={r.title} className="flex gap-3 items-center bg-red-50 rounded-lg px-6 py-5">
-                  <span className="text-red-400 font-medium flex-shrink-0">✕</span>
-                  <p className="text-red-900 text-[15px]">
-                    <strong className="font-semibold">{r.title}</strong> — {r.reason}
+                <div key={r.title} className="flex items-start gap-3 py-5">
+                  <span className="text-slate-300 font-medium flex-shrink-0 mt-0.5">✕</span>
+                  <p className="text-[15px]">
+                    <span className="line-through decoration-slate-300 text-slate-400 font-semibold">{r.title}</span>
+                    <span className="block text-slate-500 mt-1">{r.reason}</span>
                   </p>
                 </div>
               ))}
             </div>
-          </div>
+          </Reveal>
         </div>
 
         <Divider />
 
         {/* 05 */}
-        <div className="py-20">
-          <Tag color={PRIMARY}>{t.s05.tag}</Tag>
-          <h2 className="text-3xl font-bold text-[#0F172A] mt-4 mb-4">{t.s05.h2}</h2>
-          <p className="text-slate-500 leading-relaxed mb-12">{t.s05.intro}</p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div id="s05" className="py-20 md:py-28">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s05.h2}</h2>
+          </Reveal>
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {t.s05.items.map((item, i) => {
               const Icon = lessonIcons[i % lessonIcons.length]
               return (
-                <div key={i} className="border border-slate-200 rounded-xl p-6">
+                <StaggerItem key={i} className="border border-slate-200 rounded-xl p-6 transition-transform duration-300 hover:-translate-y-1">
                   <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: PRIMARY + "1A" }}>
                     <Icon style={{ width: 28, height: 28, color: PRIMARY }} />
                   </div>
                   <p className="font-semibold text-slate-900 mt-3">{item.title}</p>
-                </div>
+                </StaggerItem>
               )
             })}
-          </div>
+          </StaggerGroup>
         </div>
 
         <NextProject currentHref="/case-study/raporty" />
