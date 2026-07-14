@@ -330,7 +330,7 @@ function MetricsBento({ metrics, heroTag }: { metrics: Array<{ num: string; capt
   return (
     <div ref={ref} className="metrics-bento">
       <div
-        className="tile-hero relative overflow-hidden rounded-[18px] flex flex-col justify-between text-white"
+        className="tile-hero relative overflow-hidden rounded-[18px] flex flex-col justify-between text-white transition-transform duration-300 hover:-translate-y-1"
         style={{ backgroundColor: "#030715", backgroundImage: "url(/raporty-metrics-hero-bg.webp)", backgroundSize: "cover", backgroundPosition: "center", padding: "40px 42px" }}
       >
         <span
