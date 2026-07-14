@@ -292,38 +292,28 @@ function useCountUp(target: number, duration: number, active: boolean) {
   return value
 }
 
-function StatCard({ num, caption, color, active, className = "", bgAlpha = "0D", dark = false, large = false }: { num: string; caption: string; color: string; active: boolean; className?: string; bgAlpha?: string; dark?: boolean; large?: boolean }) {
+function AnimatedNum({ num, active, className, style }: { num: string; active: boolean; className?: string; style?: React.CSSProperties }) {
   const { prefix, numeric, suffix, decimals, staticDisplay } = parseNum(num)
-  const count = useCountUp(numeric, 1100, active)
+  const count = useCountUp(numeric, 1400, active)
   const formatted = decimals > 0
     ? count.toFixed(decimals).replace(".", ",")
     : Math.round(count).toString()
   const display = staticDisplay ?? `${prefix}${formatted}${suffix}`
-  const patternColor = dark ? "#FFFFFF" : color
-  const textColor = dark ? "#FFFFFF" : "#0F172A"
-
   return (
-    <div className={`relative overflow-hidden rounded-2xl p-6 flex flex-col transition-transform duration-300 hover:-translate-y-1 ${className}`} style={{ backgroundColor: dark ? "#0F172A" : color + bgAlpha }}>
-      <div
-        className={`absolute top-0 right-0 ${large ? "w-full h-full" : "w-40 h-40"}`}
-        style={{
-          backgroundImage: [
-            `repeating-linear-gradient(0deg, ${patternColor}30 0px, ${patternColor}30 1px, transparent 1px, transparent 22px)`,
-            `repeating-linear-gradient(90deg, ${patternColor}30 0px, ${patternColor}30 1px, transparent 1px, transparent 22px)`,
-          ].join(", "),
-          WebkitMaskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${large ? 100 : 75}%)`,
-          maskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${large ? 100 : 75}%)`,
-        }}
-      />
-      <div className="relative z-10 flex flex-col">
-        <p className={`font-black tracking-tight leading-none ${large ? "text-[148px]" : "text-6xl"}`} style={{ color: textColor }}>{display}</p>
-        <p className="text-sm leading-relaxed mt-5" style={{ color: textColor }}>{caption}</p>
-      </div>
+    <p className={`relative font-extrabold tabular-nums tracking-tight ${className ?? ""}`} style={style}>{display}</p>
+  )
+}
+
+function SmallMetricTile({ areaClass, metric, active }: { areaClass: string; metric: { num: string; caption: string }; active: boolean }) {
+  return (
+    <div className={`${areaClass} relative overflow-hidden rounded-[18px] flex flex-col justify-between transition-transform duration-300 hover:-translate-y-1`} style={{ backgroundColor: "#94A3B814", padding: "26px 28px" }}>
+      <AnimatedNum num={metric.num} active={active} className="leading-[0.9]" style={{ fontSize: 64, letterSpacing: "-0.04em", color: "#16181D" }} />
+      <p className="relative text-[13.5px] leading-[1.4]" style={{ color: "#0F172A" }}>{metric.caption}</p>
     </div>
   )
 }
 
-function MetricsGrid5({ metrics }: { metrics: Array<{ num: string; caption: string; color: string; icon: string }> }) {
+function MetricsBento({ metrics, heroTag }: { metrics: Array<{ num: string; caption: string }>; heroTag: string }) {
   const ref = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
   useEffect(() => {
@@ -336,17 +326,42 @@ function MetricsGrid5({ metrics }: { metrics: Array<{ num: string; caption: stri
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
-  const [a, b, c, d, e] = metrics
-  const gray = "#94A3B8"
+  const [hero, m12, m20, m60, m44] = metrics
   return (
-    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <StatCard num={a.num} caption={a.caption} color={a.color} active={active} className="h-full" dark large />
-      <div className="grid grid-cols-2 gap-6">
-        <StatCard num={b.num} caption={b.caption} color={gray} active={active} bgAlpha="14" />
-        <StatCard num={c.num} caption={c.caption} color={gray} active={active} bgAlpha="14" />
-        <StatCard num={d.num} caption={d.caption} color={gray} active={active} bgAlpha="14" />
-        <StatCard num={e.num} caption={e.caption} color={gray} active={active} bgAlpha="14" />
+    <div ref={ref} className="metrics-bento">
+      <div
+        className="tile-hero relative overflow-hidden rounded-[18px] flex flex-col justify-between text-white"
+        style={{ backgroundColor: "#030715", backgroundImage: "url(/raporty-metrics-hero-bg.webp)", backgroundSize: "cover", backgroundPosition: "center", padding: "40px 42px" }}
+      >
+        <span
+          className="relative inline-flex items-center gap-[7px] self-start rounded-full font-extrabold text-[10px] uppercase"
+          style={{ letterSpacing: "0.14em", color: "rgba(255,255,255,.85)", backgroundColor: "rgba(255,255,255,.08)", border: "1px solid rgba(255,255,255,.18)", padding: "6px 13px" }}
+        >
+          <span className="rounded-full flex-shrink-0" style={{ width: 6, height: 6, backgroundColor: "#6AA0FF", boxShadow: "0 0 8px 1px rgba(106,160,255,.8)" }} />
+          {heroTag}
+        </span>
+        <AnimatedNum num={hero.num} active={active} className="text-white text-[72px] sm:text-[110px] md:text-[150px]" style={{ lineHeight: 0.82, letterSpacing: "-0.05em" }} />
+        <p className="relative" style={{ fontSize: 16, lineHeight: 1.5, maxWidth: 380, color: "rgba(255,255,255,.7)" }}>{hero.caption}</p>
       </div>
+      <SmallMetricTile areaClass="tile-m12" metric={m12} active={active} />
+      <SmallMetricTile areaClass="tile-m20" metric={m20} active={active} />
+      <SmallMetricTile areaClass="tile-m60" metric={m60} active={active} />
+      <SmallMetricTile areaClass="tile-m44" metric={m44} active={active} />
+      <style>{`
+        .metrics-bento { display: grid; gap: 14px; grid-template-columns: 1fr; }
+        @media (min-width: 768px) {
+          .metrics-bento {
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(175px, auto);
+            grid-template-areas: "m12 m20 hero hero" "m60 m44 hero hero";
+          }
+          .tile-hero { grid-area: hero; }
+          .tile-m12 { grid-area: m12; }
+          .tile-m20 { grid-area: m20; }
+          .tile-m60 { grid-area: m60; }
+          .tile-m44 { grid-area: m44; }
+        }
+      `}</style>
     </div>
   )
 }
@@ -427,7 +442,7 @@ export function RaportyCaseStudy() {
             <p className="text-slate-500 leading-relaxed mb-16">{t.s01.body}</p>
           </Reveal>
           <Reveal>
-            <MetricsGrid5 metrics={t.s01.metrics} />
+            <MetricsBento metrics={t.s01.metrics} heroTag={t.s01.heroTag} />
           </Reveal>
           <Reveal>
             <p className="text-slate-500 leading-relaxed mt-12">{t.s01.lastPara}</p>

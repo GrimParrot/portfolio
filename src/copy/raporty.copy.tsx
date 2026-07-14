@@ -37,8 +37,9 @@ export const copy = {
     s01: {
       h2: "Kluczowe metryki",
       body: <>Specjaliści SEO potrzebowali prostego narzędzia, które <strong style={{ color: "#0F172A" }}>jasno i w spersonalizowany sposób prezentowałoby wyniki</strong> <strong style={{ color: "#0F172A" }}>nietechnicznym klientom</strong>, z łatwym wyborem danych, porównaniem w czasie i <strong style={{ color: "#0F172A" }}>automatyczną wysyłką</strong>, by ograniczyć liczbę pytań i <strong style={{ color: "#0F172A" }}>wzmocnić zaufanie do współpracy.</strong></>,
+      heroTag: "Najsilniejszy zmierzony sygnał",
       metrics: [
-        { num: "~11×", caption: "częściej płacą niż reszta bazy, najsilniejszy sygnał wartości zmierzony do tej pory", color: "#0ABA53", icon: "chart" },
+        { num: "~11×", caption: "częściej płacą niż reszta bazy", color: "#0ABA53", icon: "chart" },
         { num: "12%", caption: "użytkowników MAU tworzy raport co miesiąc", color: "#0ABA53", icon: "trending" },
         { num: "20×", caption: "wyższe Blended LTV vs. reszta bazy", color: "#0ABA53", icon: "users" },
         { num: "60%", caption: "użytkowników włączyło auto-wysyłkę", color: "#0ABA53", icon: "auto" },
@@ -211,8 +212,9 @@ export const copy = {
     s01: {
       h2: "Key metrics",
       body: <>SEO specialists needed a simple tool that would <strong style={{ color: "#0F172A" }}>clearly and personally present results</strong> to <strong style={{ color: "#0F172A" }}>non-technical clients</strong>, with easy data selection, comparison over time and <strong style={{ color: "#0F172A" }}>automatic sending</strong>, to reduce the number of questions and <strong style={{ color: "#0F172A" }}>strengthen trust in the collaboration.</strong></>,
+      heroTag: "Strongest signal measured",
       metrics: [
-        { num: "~11×", caption: "more often they pay compared to the rest of the base, the strongest value signal measured so far", color: "#0ABA53", icon: "chart" },
+        { num: "~11×", caption: "more often they pay compared to the rest of the base", color: "#0ABA53", icon: "chart" },
         { num: "12%", caption: "of MAU users create a report every month", color: "#0ABA53", icon: "trending" },
         { num: "20×", caption: "higher Blended LTV vs. the rest of the base", color: "#0ABA53", icon: "users" },
         { num: "60%", caption: "of users turned on auto-send", color: "#0ABA53", icon: "auto" },
