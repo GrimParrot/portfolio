@@ -317,8 +317,8 @@ function StatCard({ num, caption, active, className = "", dark = false, large = 
       }}
     >
       <p
-        className="relative font-extrabold tabular-nums"
-        style={{ color: numberColor, fontSize: large ? 100 : 64, lineHeight: large ? 0.85 : 0.9, letterSpacing: large ? "-0.05em" : "-0.04em" }}
+        className={`relative font-extrabold tabular-nums ${large ? "text-[72px] sm:text-[110px] md:text-[150px]" : "text-[64px]"}`}
+        style={{ color: numberColor, lineHeight: large ? 0.82 : 0.9, letterSpacing: large ? "-0.05em" : "-0.04em" }}
       >
         {display}
       </p>
@@ -342,9 +342,9 @@ function MetricsGrid({ metrics }: { metrics: Array<{ num: string; caption: strin
   }, [])
   const [a, b, c, d] = metrics
   return (
-    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-[1.6fr_1fr_1fr] sm:grid-rows-2 gap-6">
+    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-[1.6fr_1fr_1fr] sm:grid-rows-[repeat(2,minmax(175px,auto))] gap-6">
       <StatCard num={a.num} caption={a.caption} active={active} className="sm:row-span-2" dark large image="/localo-metrics-hero-bg.webp" />
-      <StatCard num={b.num} caption={b.caption} active={active} className="sm:row-span-2" large />
+      <StatCard num={b.num} caption={b.caption} active={active} className="sm:row-span-2" />
       <StatCard num={c.num} caption={c.caption} active={active} />
       <StatCard num={d.num} caption={d.caption} active={active} />
     </div>
