@@ -342,7 +342,7 @@ function MetricsGrid({ metrics }: { metrics: Array<{ num: string; caption: strin
   }, [])
   const [a, b, c, d] = metrics
   return (
-    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-[1.6fr_1fr_1fr] sm:grid-rows-[repeat(2,minmax(321px,auto))] gap-6">
+    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-[1.6fr_1fr_1fr] sm:grid-rows-[repeat(2,minmax(168px,auto))] gap-6">
       <StatCard num={a.num} caption={a.caption} active={active} className="sm:row-span-2" dark large image="/localo-metrics-hero-bg.webp" />
       <StatCard num={b.num} caption={b.caption} active={active} className="sm:row-span-2" />
       <StatCard num={c.num} caption={c.caption} active={active} />
