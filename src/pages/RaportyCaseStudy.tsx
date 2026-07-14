@@ -344,7 +344,7 @@ function MetricsGrid5({ metrics }: { metrics: Array<{ num: string; caption: stri
       <div className="grid grid-cols-2 gap-6">
         <StatCard num={b.num} caption={b.caption} color={gray} active={active} bgAlpha="14" />
         <StatCard num={c.num} caption={c.caption} color={gray} active={active} bgAlpha="14" />
-        <StatCard num={d.num} caption={d.caption} color={gray} active={active} dark />
+        <StatCard num={d.num} caption={d.caption} color={gray} active={active} bgAlpha="14" />
         <StatCard num={e.num} caption={e.caption} color={gray} active={active} bgAlpha="14" />
       </div>
     </div>
