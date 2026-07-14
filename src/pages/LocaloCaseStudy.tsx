@@ -297,31 +297,28 @@ function useCountUp(target: number, duration: number, active: boolean) {
   return value
 }
 
-function StatCard({ num, caption, color, active, className = "", bgAlpha = "0D", dark = false, large = false }: { num: string; caption: string; color: string; active: boolean; className?: string; bgAlpha?: string; dark?: boolean; large?: boolean }) {
+function StatCard({ num, caption, active, className = "", dark = false, large = false }: { num: string; caption: string; active: boolean; className?: string; dark?: boolean; large?: boolean }) {
   const { prefix, numeric, suffix, decimals } = parseNum(num)
-  const count = useCountUp(numeric, 1100, active)
+  const count = useCountUp(numeric, 1400, active)
   const formatted = decimals > 0
     ? count.toFixed(decimals).replace(".", ",")
     : Math.round(count).toString()
   const display = `${prefix}${formatted}${suffix}`
-  const patternColor = dark ? "#FFFFFF" : color
-  const textColor = dark ? "#FFFFFF" : "#0F172A"
+  const numberColor = dark ? "#FFFFFF" : "#16181D"
+  const captionColor = dark ? "rgba(255,255,255,.7)" : "#0F172A"
 
   return (
-    <div className={`relative overflow-hidden rounded-2xl p-8 flex flex-col justify-between h-full transition-transform duration-300 hover:-translate-y-1 ${className}`} style={{ backgroundColor: dark ? "#0F172A" : color + bgAlpha }}>
-      <div
-        className={`absolute top-0 right-0 ${large ? "w-full h-full" : "w-40 h-40"}`}
-        style={{
-          backgroundImage: [
-            `repeating-linear-gradient(0deg, ${patternColor}30 0px, ${patternColor}30 1px, transparent 1px, transparent 22px)`,
-            `repeating-linear-gradient(90deg, ${patternColor}30 0px, ${patternColor}30 1px, transparent 1px, transparent 22px)`,
-          ].join(", "),
-          WebkitMaskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${large ? 100 : 75}%)`,
-          maskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${large ? 100 : 75}%)`,
-        }}
-      />
-      <p className={`relative z-10 font-black tracking-tight leading-none ${large ? "text-7xl" : "text-5xl"}`} style={{ color: textColor }}>{display}</p>
-      <p className="relative z-10 text-sm leading-relaxed mt-5" style={{ color: textColor }}>{caption}</p>
+    <div
+      className={`relative overflow-hidden rounded-[18px] flex flex-col justify-between h-full transition-transform duration-300 hover:-translate-y-1 ${className}`}
+      style={{ backgroundColor: dark ? "#0F172A" : "#94A3B814", padding: large ? "40px 42px" : "26px 28px" }}
+    >
+      <p
+        className="relative font-extrabold tabular-nums"
+        style={{ color: numberColor, fontSize: large ? 100 : 64, lineHeight: large ? 0.85 : 0.9, letterSpacing: large ? "-0.05em" : "-0.04em" }}
+      >
+        {display}
+      </p>
+      <p className="relative" style={{ color: captionColor, fontSize: large ? 16 : 13.5, lineHeight: large ? 1.5 : 1.4, marginTop: large ? 20 : 0 }}>{caption}</p>
     </div>
   )
 }
@@ -340,13 +337,12 @@ function MetricsGrid({ metrics }: { metrics: Array<{ num: string; caption: strin
     return () => observer.disconnect()
   }, [])
   const [a, b, c, d] = metrics
-  const gray = "#94A3B8"
   return (
     <div ref={ref} className="grid grid-cols-1 sm:grid-cols-[1.6fr_1fr_1fr] sm:grid-rows-2 gap-6">
-      <StatCard num={a.num} caption={a.caption} color={a.color} active={active} className="sm:row-span-2" dark large />
-      <StatCard num={b.num} caption={b.caption} color={gray} active={active} className="sm:row-span-2" bgAlpha="14" large />
-      <StatCard num={c.num} caption={c.caption} color={gray} active={active} bgAlpha="14" />
-      <StatCard num={d.num} caption={d.caption} color={gray} active={active} bgAlpha="14" />
+      <StatCard num={a.num} caption={a.caption} active={active} className="sm:row-span-2" dark large />
+      <StatCard num={b.num} caption={b.caption} active={active} className="sm:row-span-2" large />
+      <StatCard num={c.num} caption={c.caption} active={active} />
+      <StatCard num={d.num} caption={d.caption} active={active} />
     </div>
   )
 }
