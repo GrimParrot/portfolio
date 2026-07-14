@@ -24,7 +24,7 @@ export function Hero() {
 
   return (
     <section className="px-6 pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white">
-      <div className="max-w-[1100px] mx-auto text-center">
+      <div className="max-w-[1200px] mx-auto text-center">
         <h1 className="text-5xl md:text-7xl font-black text-[#0F172A] leading-tight mb-12">
           {t.heading}
         </h1>

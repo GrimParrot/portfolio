@@ -125,7 +125,7 @@ export function NaturalniePage() {
       <Navbar />
       <ProgressRail chapters={chapters} />
 
-      <div className="max-w-[1100px] mx-auto px-6 pt-24 pb-16 md:pb-32">
+      <div className="max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32">
 
         {/* ── HERO ── */}
         <div id="hero" className="py-8 md:py-16">

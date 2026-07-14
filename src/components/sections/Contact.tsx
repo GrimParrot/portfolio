@@ -52,7 +52,7 @@ export function Contact() {
 
   return (
     <section id="contact" className="py-12 md:py-24 px-6 bg-secondary overflow-hidden">
-      <div className="max-w-[1100px] mx-auto grid md:grid-cols-2 gap-16 items-center">
+      <div className="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-16 items-center">
         <div>
           <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>
           <h2 className="text-3xl font-black text-slate-900 mb-8 leading-tight">
