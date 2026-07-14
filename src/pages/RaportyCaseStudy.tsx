@@ -292,7 +292,7 @@ function useCountUp(target: number, duration: number, active: boolean) {
   return value
 }
 
-function StatCard({ num, caption, color, active, className = "", bgAlpha = "0D", dark = false }: { num: string; caption: string; color: string; active: boolean; className?: string; bgAlpha?: string; dark?: boolean }) {
+function StatCard({ num, caption, color, active, className = "", bgAlpha = "0D", dark = false, large = false }: { num: string; caption: string; color: string; active: boolean; className?: string; bgAlpha?: string; dark?: boolean; large?: boolean }) {
   const { prefix, numeric, suffix, decimals, staticDisplay } = parseNum(num)
   const count = useCountUp(numeric, 1100, active)
   const formatted = decimals > 0
@@ -305,25 +305,25 @@ function StatCard({ num, caption, color, active, className = "", bgAlpha = "0D",
   return (
     <div className={`relative overflow-hidden rounded-2xl p-6 flex flex-col transition-transform duration-300 hover:-translate-y-1 ${className}`} style={{ backgroundColor: dark ? "#0F172A" : color + bgAlpha }}>
       <div
-        className={`absolute top-0 right-0 ${dark ? "w-full h-full" : "w-40 h-40"}`}
+        className={`absolute top-0 right-0 ${large ? "w-full h-full" : "w-40 h-40"}`}
         style={{
           backgroundImage: [
             `repeating-linear-gradient(0deg, ${patternColor}30 0px, ${patternColor}30 1px, transparent 1px, transparent 22px)`,
             `repeating-linear-gradient(90deg, ${patternColor}30 0px, ${patternColor}30 1px, transparent 1px, transparent 22px)`,
           ].join(", "),
-          WebkitMaskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${dark ? 100 : 75}%)`,
-          maskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${dark ? 100 : 75}%)`,
+          WebkitMaskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${large ? 100 : 75}%)`,
+          maskImage: `radial-gradient(circle at 100% 0%, black 0%, transparent ${large ? 100 : 75}%)`,
         }}
       />
       <div className="relative z-10 flex flex-col">
-        <p className="text-6xl font-black tracking-tight leading-none" style={{ color: textColor }}>{display}</p>
+        <p className={`font-black tracking-tight leading-none ${large ? "text-[148px]" : "text-6xl"}`} style={{ color: textColor }}>{display}</p>
         <p className="text-sm leading-relaxed mt-5" style={{ color: textColor }}>{caption}</p>
       </div>
     </div>
   )
 }
 
-function MetricsGrid3({ metrics }: { metrics: Array<{ num: string; caption: string; color: string; icon: string }> }) {
+function MetricsGrid5({ metrics }: { metrics: Array<{ num: string; caption: string; color: string; icon: string }> }) {
   const ref = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(false)
   useEffect(() => {
@@ -336,15 +336,17 @@ function MetricsGrid3({ metrics }: { metrics: Array<{ num: string; caption: stri
     observer.observe(el)
     return () => observer.disconnect()
   }, [])
-  const [a, b, c] = metrics
+  const [a, b, c, d, e] = metrics
   const gray = "#94A3B8"
   return (
-    <div ref={ref} className="grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2 gap-6">
-      <StatCard num={a.num} caption={a.caption} color={gray} active={active} bgAlpha="14" />
-      <div className="flex flex-col sm:col-start-2 sm:row-start-1 sm:row-span-2">
-        <StatCard num={c.num} caption={c.caption} color={c.color} active={active} className="h-full" dark />
+    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <StatCard num={a.num} caption={a.caption} color={a.color} active={active} className="h-full" dark large />
+      <div className="grid grid-cols-2 gap-6">
+        <StatCard num={b.num} caption={b.caption} color={gray} active={active} bgAlpha="14" />
+        <StatCard num={c.num} caption={c.caption} color={gray} active={active} bgAlpha="14" />
+        <StatCard num={d.num} caption={d.caption} color={gray} active={active} dark />
+        <StatCard num={e.num} caption={e.caption} color={gray} active={active} bgAlpha="14" />
       </div>
-      <StatCard num={b.num} caption={b.caption} color={gray} active={active} bgAlpha="14" />
     </div>
   )
 }
@@ -425,7 +427,7 @@ export function RaportyCaseStudy() {
             <p className="text-slate-500 leading-relaxed mb-16">{t.s01.body}</p>
           </Reveal>
           <Reveal>
-            <MetricsGrid3 metrics={t.s01.metrics} />
+            <MetricsGrid5 metrics={t.s01.metrics} />
           </Reveal>
           <Reveal>
             <p className="text-slate-500 leading-relaxed mt-12">{t.s01.lastPara}</p>
