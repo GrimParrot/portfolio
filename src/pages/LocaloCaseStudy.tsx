@@ -297,7 +297,7 @@ function useCountUp(target: number, duration: number, active: boolean) {
   return value
 }
 
-function StatCard({ num, caption, active, className = "", dark = false, large = false }: { num: string; caption: string; active: boolean; className?: string; dark?: boolean; large?: boolean }) {
+function StatCard({ num, caption, active, className = "", dark = false, large = false, image }: { num: string; caption: string; active: boolean; className?: string; dark?: boolean; large?: boolean; image?: string }) {
   const { prefix, numeric, suffix, decimals } = parseNum(num)
   const count = useCountUp(numeric, 1400, active)
   const formatted = decimals > 0
@@ -310,7 +310,11 @@ function StatCard({ num, caption, active, className = "", dark = false, large = 
   return (
     <div
       className={`relative overflow-hidden rounded-[18px] flex flex-col justify-between h-full transition-transform duration-300 hover:-translate-y-1 ${className}`}
-      style={{ backgroundColor: dark ? "#0F172A" : "#94A3B814", padding: large ? "40px 42px" : "26px 28px" }}
+      style={{
+        backgroundColor: dark ? "#0F172A" : "#94A3B814",
+        padding: large ? "40px 42px" : "26px 28px",
+        ...(image ? { backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" } : {}),
+      }}
     >
       <p
         className="relative font-extrabold tabular-nums"
@@ -339,7 +343,7 @@ function MetricsGrid({ metrics }: { metrics: Array<{ num: string; caption: strin
   const [a, b, c, d] = metrics
   return (
     <div ref={ref} className="grid grid-cols-1 sm:grid-cols-[1.6fr_1fr_1fr] sm:grid-rows-2 gap-6">
-      <StatCard num={a.num} caption={a.caption} active={active} className="sm:row-span-2" dark large />
+      <StatCard num={a.num} caption={a.caption} active={active} className="sm:row-span-2" dark large image="/localo-metrics-hero-bg.webp" />
       <StatCard num={b.num} caption={b.caption} active={active} className="sm:row-span-2" large />
       <StatCard num={c.num} caption={c.caption} active={active} />
       <StatCard num={d.num} caption={d.caption} active={active} />
