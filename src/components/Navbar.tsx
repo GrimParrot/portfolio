@@ -48,7 +48,7 @@ export function Navbar() {
         <div
           className={`max-w-[1200px] mx-auto rounded-2xl px-6 h-16 flex items-center justify-between transition-all duration-300 border ${
             scrolled
-              ? "bg-white/70 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
+              ? "bg-white/90 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
               : "bg-transparent shadow-none border-transparent"
           }`}
         >
