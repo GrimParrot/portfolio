@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useLang } from "@/i18n/LanguageContext"
@@ -16,6 +16,14 @@ export function Navbar() {
   const { lang, setLang } = useLang()
   const t = copy[lang]
   const [open, setOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   const handleProjects = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -37,7 +45,13 @@ export function Navbar() {
   return (
     <>
       <nav className="fixed top-4 inset-x-4 md:top-5 md:inset-x-8 z-50">
-        <div className="max-w-[1200px] mx-auto bg-white/70 backdrop-blur-md rounded-2xl shadow-lg shadow-slate-900/[0.08] border border-white/40 px-6 h-16 flex items-center justify-between">
+        <div
+          className={`max-w-[1200px] mx-auto rounded-2xl px-6 h-16 flex items-center justify-between transition-all duration-300 border ${
+            scrolled
+              ? "bg-white/70 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
+              : "bg-transparent shadow-none border-transparent"
+          }`}
+        >
           <Link to="/" onClick={() => setOpen(false)}>
             <img src="/pixelnow.svg" alt="Pixel Now" className="h-8" />
           </Link>
