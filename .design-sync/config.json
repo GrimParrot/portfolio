@@ -1,3 +1,12 @@
 {
-  "projectId": "2e785461-0087-4829-bd16-9309f0f06cee"
+  "projectId": "2e785461-0087-4829-bd16-9309f0f06cee",
+  "shape": "package",
+  "pkg": "portfolio",
+  "globalName": "PortfolioUI",
+  "srcDir": "src/components/ui",
+  "tsconfig": "tsconfig.app.json",
+  "tokensGlob": "src/design-tokens.css",
+  "cssEntry": "dist/assets/index-nP6J0rRG.css",
+  "runtimeFontPrefixes": ["Manrope", "Cambria"],
+  "readmeHeader": ".design-sync/conventions.md"
 }
