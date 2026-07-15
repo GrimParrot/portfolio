@@ -36,8 +36,8 @@ export function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
-        <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
+      <nav className="fixed top-4 inset-x-4 md:top-5 md:inset-x-8 z-50">
+        <div className="max-w-[1200px] mx-auto bg-white rounded-2xl shadow-lg shadow-slate-900/[0.08] border border-slate-100 px-6 h-16 flex items-center justify-between">
           <Link to="/" onClick={() => setOpen(false)}>
             <img src="/pixelnow.svg" alt="Pixel Now" className="h-8" />
           </Link>
