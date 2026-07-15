@@ -1,0 +1,40 @@
+/* Design tokens — CSS custom properties mirroring docs/DESIGN_SYSTEM.md.
+   Declarative only: nothing in the existing case study pages reads these
+   variables yet (they still use inline hex/Tailwind arbitrary values).
+   This file is the single machine-readable source for those same values. */
+
+:root {
+  /* Global */
+  --color-primary: #0F172A;
+  --color-primary-hover: #1E293B;
+  --color-accent-green: #0ABA53;
+
+  /* Standard "flat box" gray (case study cards) */
+  --color-box-gray: #94A3B814;      /* ~8% opacity — FeatureCard/StepCard/ImageCard, StatCard gray tiles */
+  --color-box-gray-soft: #94A3B80D; /* ~5% opacity — StatCard colored-tile default bgAlpha */
+
+  /* Callout box */
+  --color-callout-bg: #EEF2FF;
+
+  /* Per case study accent */
+  --color-accent-localo: #466AFA;
+  --color-accent-localo-deep: #1E2E8C;
+  --color-accent-localo-soft: #8FA6FF;
+  --color-accent-raporty: #466AFA;       /* same blue as Localo */
+  --color-accent-raporty-icon: #6366F1;  /* "Metody badawcze" badge icons only, not the page's main accent */
+  --color-accent-naturalnie: #32685B;
+  --color-accent-kafejeto: #8EBD3F;
+  --color-accent-banneroza: #DD8100;
+  --color-banneroza-card-gradient-start: #FEC400; /* homepage project card only, distinct from in-page accent */
+  --color-banneroza-card-gradient-end: #d4a300;
+
+  /* Spacing */
+  --spacing-card-padding: 2.5rem; /* 40px — FeatureCard/StepCard top/left/right padding + desc-to-image gap */
+  --spacing-grid-gap: 1.5rem;     /* 24px — gap-6, standard grid gap between cards */
+
+  /* Radius */
+  --radius-button: 0.75rem;  /* 12px — rounded-xl, buttons/badges */
+  --radius-box: 1.5rem;      /* 24px — rounded-3xl, FeatureCard/StepCard/ImageCard */
+  --radius-statcard: 1.125rem; /* 18px — StatCard */
+  --radius-callout: 0.5rem;  /* 8px — rounded-lg, callout box */
+}
