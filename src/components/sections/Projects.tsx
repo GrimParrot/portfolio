@@ -39,8 +39,8 @@ export function Projects() {
     : projects.filter((p) => p.tag === active)
 
   return (
-    <section id="projects" className="pt-10 pb-24 px-6 bg-white">
-      <div className="max-w-[1200px] mx-auto">
+    <section id="projects" className="pt-10 pb-24 bg-white">
+      <div className="max-w-[1200px] mx-auto px-6">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
             <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>

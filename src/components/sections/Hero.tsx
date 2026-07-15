@@ -23,8 +23,8 @@ export function Hero() {
   const t = copy[lang]
 
   return (
-    <section className="px-6 pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white">
-      <div className="max-w-[1200px] mx-auto text-center">
+    <section className="pt-28 pb-16 bg-gradient-to-b from-slate-50 to-white">
+      <div className="max-w-[1200px] mx-auto px-6 text-center">
         <h1 className="text-5xl md:text-7xl font-black text-[#0F172A] leading-tight mb-12">
           {t.heading}
         </h1>
