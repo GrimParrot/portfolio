@@ -299,24 +299,11 @@ export function BannerozaPage() {
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-14 rounded-3xl p-10 grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-8 md:gap-16 items-center" style={{ backgroundColor: "#94A3B814" }}>
-                <div className="order-2 md:order-none">
-                  <span className="block text-[13px] font-extrabold tracking-[0.24em] uppercase mb-3.5" style={{ color: PRIMARY }}>{t.roleLabel}</span>
-                  <p className="font-medium text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 1.1875rem)", lineHeight: 1.6 }}>
-                    <strong className="font-bold text-[#0F172A]">{t.roleLead}</strong> {t.roleDesc}
-                  </p>
-                </div>
-                <AutoFitHeading
-                  className="font-extrabold text-[#0F172A] order-1 md:order-none"
-                  style={{ fontSize: "clamp(2.375rem, 6vw, 4.25rem)", lineHeight: 1, letterSpacing: "-0.035em" }}
-                  maxLines={2}
-                  heading={false}
-                  activeKey={lang}
-                  variants={[
-                    { key: "pl", content: <>{copy.pl.roleTitle} <span style={{ color: PRIMARY }}>{copy.pl.roleTitleAccent}</span></> },
-                    { key: "en", content: <>{copy.en.roleTitle} <span style={{ color: PRIMARY }}>{copy.en.roleTitleAccent}</span></> },
-                  ]}
-                />
+              <div className="mt-14 rounded-3xl p-10" style={{ backgroundColor: "#94A3B814" }}>
+                <span className="block text-[13px] font-extrabold tracking-[0.24em] uppercase mb-3.5" style={{ color: PRIMARY }}>{t.roleLabel}</span>
+                <p className="font-medium text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 1.1875rem)", lineHeight: 1.6 }}>
+                  <strong className="font-bold text-[#0F172A]">{t.roleLead}</strong> {t.roleDesc}
+                </p>
               </div>
             </StaggerItem>
           </HeroStagger>

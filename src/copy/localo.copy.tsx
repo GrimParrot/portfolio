@@ -41,19 +41,14 @@ export const copy = {
     },
     s02: {
       h2: "Kluczowe odkrycia, które ukształtowały finalny projekt",
-      pullQuote: [
-        { text: "Złożoność funkcji wymusza " },
-        { text: "ręczny onboarding", accent: true },
-        { text: " i wypycha użytkowników do " },
-        { text: "narzędzi zewnętrznych", accent: true },
-        { text: ", podnosząc " },
-        { text: "próg wejścia", accent: true },
-        { text: " i ograniczając adopcję." },
-      ],
+      findingTitle: "",
+      findingTitleAccent: "Próg wejścia",
+      findingTitleSuffix: " i ograniczona adopcja.",
+      findingLead: "Złożoność funkcji wymusza ręczny onboarding i wypycha użytkowników do narzędzi zewnętrznych.",
       insights: [
-        { n: "1", title: "Brak ciągłości", desc: "Leady w Sales mode, dane o widoczności w Research, bez wspólnego kontekstu." },
         { n: "2", title: "Zewnętrzne narzędzia", desc: "Jedno zadanie, kilka wyjść z narzędzia." },
         { n: "3", title: "Wysoka bariera wejścia", desc: "Każdy nowy użytkownik wymagał onboardingu od CS." },
+        { n: "1", title: "Brak ciągłości", desc: "Leady w Sales mode, dane o widoczności w Research, bez wspólnego kontekstu." },
       ],
       methodsLabel: "Metody badawcze",
       methods: [
@@ -159,19 +154,14 @@ export const copy = {
     },
     s02: {
       h2: "Key finding that shaped the final design",
-      pullQuote: [
-        { text: "The feature's complexity forces " },
-        { text: "manual onboarding", accent: true },
-        { text: " and pushes users to " },
-        { text: "external tools", accent: true },
-        { text: ", raising the " },
-        { text: "entry barrier", accent: true },
-        { text: " and limiting adoption." },
-      ],
+      findingTitle: "",
+      findingTitleAccent: "Entry barrier",
+      findingTitleSuffix: " and limiting adoption.",
+      findingLead: "The feature's complexity forces manual onboarding and pushes users to external tools.",
       insights: [
-        { n: "1", title: "No continuity", desc: "Leads in Sales mode, visibility data in Research, with no shared context." },
         { n: "2", title: "External tools", desc: "One task, several trips out of the tool." },
         { n: "3", title: "High entry barrier", desc: "Every new user needed onboarding from CS." },
+        { n: "1", title: "No continuity", desc: "Leads in Sales mode, visibility data in Research, with no shared context." },
       ],
       methodsLabel: "Research methods",
       methods: [

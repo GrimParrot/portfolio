@@ -54,18 +54,21 @@ export const copy = {
     },
     s02: {
       h2: "Kluczowe odkrycia, które ukształtowały finalny projekt",
+      findingTitle: "Raporty są",
+      findingTitleAccent: "skanowane",
+      findingTitleSuffix: ", nie analizowane.",
+      findingLead: "Klienci końcowi nie mają czasu analizować liczb. Raport przeglądany jest wzrokowo.",
       insights: [
-        { n: 1, title: "Raporty są skanowane, nie analizowane", desc: "Klienci końcowi nie mają czasu analizować liczb. Raport przeglądany jest wzrokowo." },
         { n: 2, title: "Ręczna selekcja danych to codzienne tarcie", desc: "Dane zbierane ręcznie z wielu narzędzi i składane w jedną prezentację: żmudny proces, powtarzający się co miesiąc." },
         { n: 3, title: "Brak automatyzacji", desc: "Składanie raportu zajmowało godziny. Użytkownicy mówili wprost, że to uciążliwe i chętnie by to oddelegowali." },
         { n: 4, title: "Potrzeba edukacji klienta", desc: "Do raportów często dołączano osobne wyjaśnienia: czym są dane i dlaczego mają znaczenie dla klienta." },
       ],
       methodsLabel: "Metody badawcze",
       methods: [
-        { icon: <Users size={14} />, label: "Wywiady z użytkownikami" },
-        { icon: <FileText size={14} />, label: "Ankieta" },
-        { icon: <TrendingUp size={14} />, label: "Feedback Customer Success" },
-        { icon: <BarChart2 size={14} />, label: "Analiza konkurencji" },
+        { icon: <Users size={15} />, label: "Wywiady z użytkownikami" },
+        { icon: <FileText size={15} />, label: "Ankieta" },
+        { icon: <TrendingUp size={15} />, label: "Feedback Customer Success" },
+        { icon: <BarChart2 size={15} />, label: "Analiza konkurencji" },
       ],
     },
     s03: {
@@ -233,18 +236,21 @@ export const copy = {
     },
     s02: {
       h2: "Key finding that shaped the final design",
+      findingTitle: "Reports are",
+      findingTitleAccent: "scanned",
+      findingTitleSuffix: ", not analysed.",
+      findingLead: "End clients don't have time to analyse numbers. Reports are reviewed visually.",
       insights: [
-        { n: 1, title: "Reports are scanned, not analysed", desc: "End clients don't have time to analyse numbers. Reports are reviewed visually." },
         { n: 2, title: "Manual data selection is everyday friction", desc: "Data collected manually from multiple tools and assembled into one presentation: a tedious process, repeated every month." },
         { n: 3, title: "No automation", desc: "Putting a report together took hours. Users said outright it was tedious and they'd happily delegate it." },
         { n: 4, title: "Need for client education", desc: "Reports often came with separate explanations: what the data is and why it matters to the client." },
       ],
       methodsLabel: "Research methods",
       methods: [
-        { icon: <Users size={14} />, label: "User interviews" },
-        { icon: <FileText size={14} />, label: "Survey" },
-        { icon: <TrendingUp size={14} />, label: "Customer Success feedback" },
-        { icon: <BarChart2 size={14} />, label: "Competitor analysis" },
+        { icon: <Users size={15} />, label: "User interviews" },
+        { icon: <FileText size={15} />, label: "Survey" },
+        { icon: <TrendingUp size={15} />, label: "Customer Success feedback" },
+        { icon: <BarChart2 size={15} />, label: "Competitor analysis" },
       ],
     },
     s03: {

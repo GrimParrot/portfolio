@@ -1,18 +1,19 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react"
 import { Link } from "react-router-dom"
-import { motion, useReducedMotion } from "motion/react"
-import { Frown, FlaskConical, Users, ClipboardCheck, ArrowLeft } from "lucide-react"
+import { motion, useReducedMotion, type TargetAndTransition } from "motion/react"
+import { FlaskConical, Users, ClipboardCheck, ArrowLeft, ExternalLink, DoorClosed, Unlink } from "lucide-react"
 
 const lessonIcons = [FlaskConical, Users, ClipboardCheck]
+const findingIcons = [ExternalLink, DoorClosed, Unlink]
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
-import { Badge } from "@/components/ui/badge"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy } from "@/copy/localo.copy"
 
 const PRIMARY = "#466AFA"
+const ACCENT_DARK = "#6F8BFB"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -55,9 +56,9 @@ function StaggerGroup({ children, className }: { children: React.ReactNode; clas
   )
 }
 
-function StaggerItem({ children, className, style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
+function StaggerItem({ children, className, style, whileHover }: { children: React.ReactNode; className?: string; style?: React.CSSProperties; whileHover?: TargetAndTransition }) {
   return (
-    <motion.div className={className} style={style} variants={fadeUp}>
+    <motion.div className={className} style={style} variants={fadeUp} whileHover={whileHover}>
       {children}
     </motion.div>
   )
@@ -160,31 +161,6 @@ function AutoFitHeading({ variants, activeKey, className, style, maxLines = 3, m
         )
       })}
     </>
-  )
-}
-
-function PullQuote({ segments }: { segments: { text: string; accent?: boolean }[] }) {
-  const reduce = useReducedMotion()
-  return (
-    <motion.p
-      className="font-light text-[#0F172A] mt-4 mb-12 pl-6 border-l-4 text-4xl md:text-5xl"
-      style={{ lineHeight: 1.5, borderColor: PRIMARY }}
-      initial={reduce ? false : "hidden"}
-      whileInView="show"
-      viewport={{ once: true, amount: 0.4 }}
-      variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
-    >
-      {segments.map((seg, i) => (
-        <motion.span
-          key={i}
-          variants={{ hidden: { opacity: reduce ? 1 : 0.22 }, show: { opacity: 1, transition: { duration: 0.4 } } }}
-          className={seg.accent ? "font-black" : undefined}
-          style={seg.accent ? { color: PRIMARY } : undefined}
-        >
-          {seg.text}
-        </motion.span>
-      ))}
-    </motion.p>
   )
 }
 
@@ -460,7 +436,7 @@ export function LocaloCaseStudy() {
       <Navbar />
       <ProgressRail chapters={chapters} />
 
-      <div className="max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32">
+      <div className="max-w-[1200px] mx-auto px-6 pt-24">
 
         {/* ── HERO ── */}
         <div id="hero" className="py-8 md:py-16">
@@ -562,48 +538,70 @@ export function LocaloCaseStudy() {
             <p className="text-slate-500 leading-relaxed mt-12">{t.s01.lastPara}</p>
           </Reveal>
         </div>
+      </div>
 
-        <Divider />
-
-        {/* ── 02 ── */}
-        <div id="s02" className="py-20 md:py-28">
+      {/* ── 02: THE FINDING (full-bleed dark) ── */}
+      <div id="s02" className="text-white" style={{ backgroundColor: "#111112" }}>
+        <div className="max-w-[1200px] mx-auto px-6 py-24 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s02.h2}</h2>
+            <Tag color={ACCENT_DARK}>{t.s02.h2}</Tag>
+          </Reveal>
+          <Reveal>
+            <h2 className="font-extrabold mt-7" style={{ fontSize: "clamp(2.5rem, 9vw, 7.75rem)", lineHeight: 1.1, letterSpacing: "-0.04em", maxWidth: "14ch" }}>
+              {t.s02.findingTitle} <span style={{ color: ACCENT_DARK }}>{t.s02.findingTitleAccent}</span>{t.s02.findingTitleSuffix}
+            </h2>
+          </Reveal>
+          <Reveal>
+            <p className="mt-8 text-zinc-400" style={{ fontSize: "clamp(1.1875rem, 2.2vw, 1.5rem)", maxWidth: "50ch", lineHeight: 1.55 }}>
+              {t.s02.findingLead}
+            </p>
           </Reveal>
 
-          <PullQuote segments={t.s02.pullQuote} />
-
-          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {t.s02.insights.map((item) => (
-              <StaggerItem key={item.n} className="border border-slate-200 rounded-xl p-6">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: "#ef44441A" }}>
-                  <Frown style={{ width: 28, height: 28, color: "#ef4444" }} />
-                </div>
-                <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{item.title}</p>
-                <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
-              </StaggerItem>
-            ))}
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+            {t.s02.insights.map((item, i) => {
+              const Icon = findingIcons[i % findingIcons.length]
+              return (
+                <StaggerItem
+                  key={item.n}
+                  className="rounded-[20px] p-8 bg-[#1c1c1f] border border-[#2e2e33]"
+                  whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
+                >
+                  <div className="inline-flex items-center justify-center rounded-2xl" style={{ width: 52, height: 52, backgroundColor: "rgba(111,139,251,.16)" }}>
+                    <Icon style={{ width: 26, height: 26, color: ACCENT_DARK }} />
+                  </div>
+                  <p className="font-extrabold text-white mt-5 mb-2.5" style={{ fontSize: 21, letterSpacing: "-0.01em" }}>{item.title}</p>
+                  <p className="text-zinc-400 text-[15px] leading-relaxed">{item.desc}</p>
+                </StaggerItem>
+              )
+            })}
           </StaggerGroup>
 
-          <Reveal className="mt-12">
-            <Tag>{t.s02.methodsLabel}</Tag>
-            <div className="flex flex-wrap gap-3 mt-3">
-              {t.s02.methods.map((m) => (
-                <Badge key={m.label} variant="secondary" className="flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium bg-[#94A3B814] hover:bg-[#94A3B814] [&>svg]:text-[#466AFA]">
-                  {m.icon}{m.label}
-                </Badge>
-              ))}
-            </div>
-          </Reveal>
-
-          <Reveal className="rounded-3xl p-10 mt-10" style={{ backgroundColor: "#22C55E14" }}>
-            <div className="mb-3">
-              <Tag color="#16A34A">{t.s03.goalLabel}</Tag>
-            </div>
-            <p className="text-2xl font-light" style={{ color: "#16A34A" }}>{t.s03.goalText}</p>
+          <Reveal className="mt-14 flex flex-wrap items-center gap-3 pt-8" style={{ borderTop: "1px solid #2e2e33" }}>
+            <span className="font-extrabold text-xs uppercase mr-2" style={{ letterSpacing: "0.2em", color: ACCENT_DARK }}>{t.s02.methodsLabel}</span>
+            {t.s02.methods.map((m) => (
+              <span key={m.label} className="inline-flex items-center gap-2 rounded-2xl px-[18px] py-[9px] font-bold text-[15px] text-white [&>svg]:text-[#6F8BFB]" style={{ border: "1px solid #2e2e33" }}>
+                {m.icon}{m.label}
+              </span>
+            ))}
           </Reveal>
         </div>
+      </div>
 
+      {/* ── THE GOAL (full-bleed accent) ── */}
+      <div className="text-white" style={{ backgroundColor: PRIMARY }}>
+        <div className="max-w-[1200px] mx-auto px-6 py-24 md:py-28 text-center">
+          <Reveal>
+            <Tag color="rgba(255,255,255,.75)">{t.s03.goalLabel}</Tag>
+          </Reveal>
+          <Reveal>
+            <p className="mt-7 mx-auto" style={{ fontSize: "clamp(1.625rem, 3.4vw, 2.75rem)", lineHeight: 1.3, letterSpacing: "-0.02em", maxWidth: "34ch" }}>
+              {t.s03.goalText}
+            </p>
+          </Reveal>
+        </div>
+      </div>
+
+      <div className="max-w-[1200px] mx-auto px-6 pb-16 md:pb-32">
         <Divider />
 
         {/* ── 03 ── */}

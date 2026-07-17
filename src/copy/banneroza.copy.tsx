@@ -7,8 +7,6 @@ export const copy = {
     roleLabel: "Moja rola",
     roleLead: "Research → prototyp",
     roleDesc: "— wywiady z użytkownikami, analiza, wireframes, testy użyteczności. Projekt powstał w ramach studiów podyplomowych UX design | web analytics na Politechnice Białostockiej.",
-    roleTitle: "Design lead,",
-    roleTitleAccent: "od A do Z.",
     chapters: {
       hero: "Start",
       s01: "Problem",
@@ -89,8 +87,6 @@ export const copy = {
     roleLabel: "My role",
     roleLead: "Research → prototype",
     roleDesc: "— user interviews, analysis, wireframes, usability tests. Project created as part of postgraduate studies in UX design | web analytics at Białystok University of Technology.",
-    roleTitle: "Design lead,",
-    roleTitleAccent: "end to end.",
     chapters: {
       hero: "Start",
       s01: "Problem",
