@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react"
+import { Link } from "react-router-dom"
 import { motion, useReducedMotion } from "motion/react"
+import { ArrowLeft } from "lucide-react"
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
-import { ProjectNav } from "@/components/ProjectNav"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
@@ -49,6 +50,97 @@ function HeroStagger({ children }: { children: React.ReactNode }) {
     <motion.div initial={reduce ? false : "hidden"} animate="show" variants={staggerParent}>
       {children}
     </motion.div>
+  )
+}
+
+/**
+ * Shrinks font-size (never grows past the CSS-defined size) until the
+ * rendered text fits within `maxLines`. Needed because the hero H1 uses a
+ * huge fluid clamp() — long translations can wrap past 3 lines at some
+ * viewport widths, and there's no pure-CSS way to cap line count by shrinking type.
+ *
+ * Measures ALL `variants` (e.g. every language) at once, off-screen, and
+ * locks the whole heading to the smallest size any variant needs — so
+ * switching the active variant (language toggle) never jumps the font size.
+ */
+function AutoFitHeading({ variants, activeKey, className, style, maxLines = 3, minFontPx = 26, heading = true }: { variants: { key: string; content: ReactNode }[]; activeKey: string; className?: string; style?: React.CSSProperties; maxLines?: number; minFontPx?: number; heading?: boolean }) {
+  const refs = useRef<Record<string, HTMLElement | null>>({})
+  const naturalFontSize = style?.fontSize as string | undefined
+
+  useLayoutEffect(() => {
+    const els = variants.map((v) => refs.current[v.key]).filter((el): el is HTMLElement => !!el)
+    if (els.length === 0 || !naturalFontSize) return
+
+    function countLines(node: HTMLElement) {
+      const range = document.createRange()
+      range.selectNodeContents(node)
+      const tops = new Set<number>()
+      for (const rect of range.getClientRects()) tops.add(Math.round(rect.top))
+      return tops.size
+    }
+
+    function fit() {
+      const active = refs.current[activeKey]
+      if (!active) return
+      // Clear any width/max-width pinned by a PREVIOUS fit() call first, so the
+      // active element (still in normal flow) reports its true natural layout
+      // width for the current viewport rather than a stale pinned value.
+      // max-width stays cleared for the rest of this function: a ch-based
+      // max-width shrinks in lockstep with font-size, so once it's narrower
+      // than the natural width it locks the wrap ratio and no amount of
+      // further shrinking can reduce the line count — an infinite floor.
+      active.style.width = ""
+      active.style.maxWidth = "none"
+      const width = active.getBoundingClientRect().width
+
+      // Reset to the CSS clamp() expression (not a px value) so it re-resolves for the current viewport width.
+      active.style.fontSize = naturalFontSize!
+      let size = parseFloat(getComputedStyle(active).fontSize)
+
+      els.forEach((el) => {
+        el.style.width = `${width}px`
+        el.style.maxWidth = "none"
+        el.style.fontSize = `${size}px`
+      })
+
+      let guard = 0
+      // Count actual rendered lines rather than approximating via scrollHeight /
+      // line-height math — that formula runs a few px short of the true rendered
+      // height and the gap compounds, over-shrinking the font past the floor.
+      while (els.some((el) => countLines(el) > maxLines) && size > minFontPx && guard < 200) {
+        size -= 1
+        els.forEach((el) => { el.style.fontSize = `${size}px` })
+        guard++
+      }
+    }
+
+    fit()
+    window.addEventListener("resize", fit)
+    // Manrope loads via Google Fonts with display=swap; the fallback font's
+    // metrics differ, so re-fit once the real font swaps in and reflows.
+    document.fonts?.ready?.then(fit)
+    return () => window.removeEventListener("resize", fit)
+  }, [variants, activeKey, maxLines, minFontPx, naturalFontSize])
+
+  return (
+    <>
+      {variants.map((v) => {
+        const isActive = v.key === activeKey
+        return (
+          <div
+            key={v.key}
+            ref={(el) => { refs.current[v.key] = el }}
+            className={className}
+            style={isActive ? style : { ...style, position: "fixed", top: 0, left: -99999, visibility: "hidden", pointerEvents: "none" }}
+            role={isActive && heading ? "heading" : undefined}
+            aria-level={isActive && heading ? 1 : undefined}
+            aria-hidden={isActive ? undefined : true}
+          >
+            {v.content}
+          </div>
+        )
+      })}
+    </>
   )
 }
 
@@ -130,35 +222,58 @@ export function KafejetoPage() {
 
         {/* ── HERO ── */}
         <div id="hero" className="py-8 md:py-16">
-          <ProjectNav currentHref="/ui/kafejeto" />
           <HeroStagger>
             <StaggerItem>
-              <h1 className="text-4xl md:text-5xl font-black text-[#0F172A] mt-4 mb-4 tracking-tight" style={{ lineHeight: 1.4 }}>
-                Kafejeto.pl
-              </h1>
+              <div className="flex items-center gap-4">
+                <Link
+                  to="/"
+                  onClick={() => setTimeout(() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "center" }), 100)}
+                  aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
+                  className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
+                >
+                  <ArrowLeft className="w-4 h-4 animate-bounce-left" />
+                </Link>
+                <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase" style={{ color: PRIMARY }}>UI</span>
+              </div>
             </StaggerItem>
 
             <StaggerItem>
-              <span className="inline-block mb-6 text-sm font-semibold px-3 py-1.5 rounded-full bg-[#0F172A] text-white">UI</span>
+              <AutoFitHeading
+                className="mt-8 font-extrabold text-[#0F172A]"
+                style={{ fontSize: "clamp(3rem, 10vw, 8.25rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}
+                maxLines={3}
+                activeKey={lang}
+                variants={[
+                  { key: "pl", content: <>Kafejeto.pl</> },
+                  { key: "en", content: <>Kafejeto.pl</> },
+                ]}
+              />
             </StaggerItem>
 
             <StaggerItem>
-              <p className="text-slate-500 leading-relaxed mb-10">{t.desc}</p>
+              <p
+                className="mt-10 text-slate-600 font-medium"
+                style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)", maxWidth: "56ch", lineHeight: 1.5 }}
+              >
+                {t.desc}
+              </p>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-b border-slate-100 py-6 mb-10">
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-px rounded-[20px] border border-[#eef1f5] bg-[#eef1f5] overflow-hidden">
                 {t.meta.map((item) => (
-                  <div key={item.label} className="flex flex-col">
-                    <Tag>{item.label}</Tag>
-                    <p className="font-semibold text-slate-900 mt-1">{item.value}</p>
+                  <div key={item.label} className="bg-white px-6 py-6">
+                    <Tag color={PRIMARY}>{item.label}</Tag>
+                    <p className="font-extrabold text-lg text-[#0F172A] mt-2">{item.value}</p>
                   </div>
                 ))}
               </div>
             </StaggerItem>
 
             <StaggerItem>
-              <img src="/kafejeto/okladka.jpg" alt="Kafejeto, cover" className="w-full rounded-2xl border border-slate-200 object-cover" />
+              <div className="mt-10 rounded-[28px] overflow-hidden shadow-2xl" style={{ aspectRatio: "16/9" }}>
+                <img src="/kafejeto/okladka.jpg" alt="Kafejeto, cover" className="w-full h-full object-cover" />
+              </div>
             </StaggerItem>
           </HeroStagger>
         </div>

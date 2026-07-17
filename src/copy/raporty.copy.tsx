@@ -13,13 +13,17 @@ function NumBadge({ n }: { n: number }) {
 
 export const copy = {
   pl: {
-    h1: "Funkcja automatycznego raportowania.",
-    h1Accent: "Wbudowana w produkt.",
-    intro: "Specjaliści tracili godziny na ręczne składanie raportów z rozproszonych danych. Nowa funkcja automatycznie generuje i wysyła raporty z działań na wizytówce (np. pozycje, posty, zdjęcia, konkurencja). Dziś to funkcja, której zaufało 60% użytkowników, oddając jej pełną automatyzację wysyłki raportów do klientów.",
+    h1: "Automatyczne raporty, wbudowane w",
+    h1Accent: "produkt.",
+    heroEyebrow: "Localo · Kreator Raportów",
+    intro: "Specjaliści tracili godziny na ręczne składanie raportów z rozproszonych danych. Nowa funkcja automatycznie je generuje i wysyła — dziś zaufało jej 60% użytkowników.",
     introProduct: "",
     introSuffix: "",
     roleLabel: "Rola",
-    roleText: "Lead Product Designer: od discovery po delivery. Badania użytkowników, hipotezy, architektura flow, ekrany, testy użyteczności. Częściowo pełniłam też obowiązki Product Managera w duecie z CEO firmy.",
+    roleLead: "Discovery → delivery",
+    roleDesc: "— badania użytkowników, hipotezy, architektura flow, ekrany i testy użyteczności. Częściowo pełniłam też obowiązki Product Managera w duecie z CEO.",
+    roleTitle: "Design lead,",
+    roleTitleAccent: "od A do Z.",
     chapters: {
       hero: "Start",
       s01: "Efekty",
@@ -188,13 +192,17 @@ export const copy = {
     },
   },
   en: {
-    h1: "Automatic reporting feature.",
-    h1Accent: "Built into the product.",
-    intro: "Specialists lost hours manually assembling reports from scattered data. The new feature automatically generates and sends reports on profile activity (e.g. rankings, posts, photos, competitors). Today it's a feature trusted by 60% of users, who hand it full automation of sending reports to clients.",
+    h1: "Automatic reporting, built into the",
+    h1Accent: "product.",
+    heroEyebrow: "Localo · Report Builder",
+    intro: "Specialists lost hours manually assembling reports from scattered data. The new feature automatically generates and sends them — trusted today by 60% of users.",
     introProduct: "",
     introSuffix: "",
     roleLabel: "Role",
-    roleText: "Lead Product Designer: from discovery to delivery. User research, hypotheses, flow architecture, screens, usability testing. I also partly acted as Product Manager in a duo with the company's CEO.",
+    roleLead: "Discovery → delivery",
+    roleDesc: "— user research, hypotheses, flow architecture, screens & usability testing. Partly acted as Product Manager in a duo with the CEO.",
+    roleTitle: "Design lead,",
+    roleTitleAccent: "end to end.",
     chapters: {
       hero: "Start",
       s01: "Results",
