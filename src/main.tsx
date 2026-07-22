@@ -14,6 +14,7 @@ import { NaturalniePage } from './pages/NaturalniePage.tsx'
 import { KafejetoPage } from './pages/KafejetoPage.tsx'
 import { BannerozaPage } from './pages/BannerozaPage.tsx'
 import { RaportyCaseStudy } from './pages/RaportyCaseStudy.tsx'
+import { StatsPage } from './pages/StatsPage.tsx'
 import { LanguageProvider } from './i18n/LanguageContext.tsx'
 
 createRoot(document.getElementById('root')!).render(
@@ -28,6 +29,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/ui/kafejeto" element={<KafejetoPage />} />
           <Route path="/case-study/banneroza" element={<BannerozaPage />} />
           <Route path="/case-study/raporty" element={<RaportyCaseStudy />} />
+          <Route path="/ui/stats" element={<StatsPage />} />
         </Routes>
       </BrowserRouter>
     </LanguageProvider>

@@ -218,7 +218,7 @@ function Divider() {
   return <hr className="border-t border-slate-100 my-0" />
 }
 
-export function BannerozaPage() {
+export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {}) {
   const { lang } = useLang()
   const t = copy[lang]
 
@@ -233,25 +233,27 @@ export function BannerozaPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
-      <Navbar />
-      <ProgressRail chapters={chapters} />
+    <div className={embedded ? "bg-white" : "min-h-screen bg-white"} style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
+      {!embedded && <Navbar />}
+      {!embedded && <ProgressRail chapters={chapters} />}
 
-      <div className="max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32">
+      <div className={embedded ? "px-6 sm:px-10 pt-14 pb-10" : "max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32"}>
 
         {/* ── HERO ── */}
         <div id="hero" className="py-8 md:py-16">
           <HeroStagger>
             <StaggerItem>
               <div className="flex items-center gap-4">
-                <Link
-                  to="/"
-                  onClick={() => setTimeout(() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "center" }), 100)}
-                  aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                  className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
-                >
-                  <ArrowLeft className="w-4 h-4 animate-bounce-left" />
-                </Link>
+                {!embedded && (
+                  <Link
+                    to="/"
+                    onClick={() => setTimeout(() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "center" }), 100)}
+                    aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
+                  >
+                    <ArrowLeft className="w-4 h-4 animate-bounce-left" />
+                  </Link>
+                )}
                 <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-[#0F172A]">
                   Case Study<span className="mx-2 opacity-40">—</span>
                   <span style={{ color: PRIMARY }}>{t.heroEyebrow}</span>
@@ -293,7 +295,7 @@ export function BannerozaPage() {
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-10 rounded-[28px] overflow-hidden shadow-2xl" style={{ aspectRatio: "16/9" }}>
+              <div className="mt-10 rounded-[28px] overflow-hidden" style={{ aspectRatio: "4/3" }}>
                 <img src="/banneroza/cover2.jpg" alt="Banneroza, cover" className="w-full h-full object-cover" />
               </div>
             </StaggerItem>
@@ -443,11 +445,11 @@ export function BannerozaPage() {
           </Reveal>
         </div>
 
-        <NextProject currentHref="/case-study/banneroza" />
+        {!embedded && <NextProject currentHref="/case-study/banneroza" />}
 
       </div>
-      <Contact />
-      <Footer />
+      {!embedded && <Contact />}
+      {!embedded && <Footer />}
     </div>
   )
 }

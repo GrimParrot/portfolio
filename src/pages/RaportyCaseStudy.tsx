@@ -533,7 +533,7 @@ export function RaportyCaseStudy() {
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-10 rounded-[28px] overflow-hidden shadow-2xl" style={{ aspectRatio: "16/9" }}>
+              <div className="mt-10 rounded-[28px] overflow-hidden" style={{ aspectRatio: "4/3" }}>
                 <img src="/raporty-cover.webp" alt="Kreator Raportów" className="w-full h-full object-cover" />
               </div>
             </StaggerItem>

@@ -38,6 +38,7 @@
 
   html {
     scroll-behavior: smooth;
+    scrollbar-gutter: stable;
   }
 
   @keyframes bounce-left {
@@ -92,4 +93,24 @@
     transform-origin: 70% 70%;
     animation: wave 2.5s ease-in-out infinite;
   }
+}
+
+.pretty-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+.pretty-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.pretty-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.pretty-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+.pretty-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
 }

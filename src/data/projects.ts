@@ -1,8 +1,9 @@
-export type ProjectTag = "UI" | "Case Study"
+export type ProjectTag = "UI" | "Case Study" | "Web"
 
 export const tagStyles: Record<ProjectTag, string> = {
   "UI": "bg-[#0F172A] text-white",
   "Case Study": "bg-[#0ABA53] text-white",
+  "Web": "bg-[#466AFA] text-white",
 }
 
 export interface Project {
@@ -11,6 +12,7 @@ export interface Project {
   description?: string
   description_en?: string
   tag: ProjectTag
+  featured?: boolean
   color: string
   bg: string
   image?: string
@@ -20,11 +22,12 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Reporting · Localo",
-    title_pl: "Raportowanie · Localo",
+    title: "Reporting",
+    title_pl: "Raportowanie",
     description: "Automatyzacja, która robi raport za specjalistę.",
     description_en: "Automation that does the report for the specialist.",
     tag: "Case Study",
+    featured: true,
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-indigo-50",
     image: "/raporty-cover.webp",
@@ -32,11 +35,12 @@ export const projects: Project[] = [
     href: "/case-study/raporty",
   },
   {
-    title: "Client Acquisition · Localo",
-    title_pl: "Pozyskiwanie klientów · Localo",
+    title: "Client Acquisition",
+    title_pl: "Pozyskiwanie klientów",
     description: "Od dwóch osobnych narzędzi do jednego flow end-to-end.",
     description_en: "Two separate tools replaced by one flow — from lead to client onboarding.",
     tag: "Case Study",
+    featured: true,
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-violet-50",
     image: "/client-acquisition-cover.webp",
@@ -63,11 +67,21 @@ export const projects: Project[] = [
     href: "/ui/kafejeto",
   },
   {
+    title: "Stats Redesign",
+    description: "Przeprojektowałam kluczowy ekran statystyk — nowy układ, wykresy zamiast surowych liczb.",
+    description_en: "Redesigned the core stats screen — new layout, charts instead of raw numbers.",
+    tag: "Web",
+    color: "from-[#466AFA] to-indigo-500",
+    bg: "bg-slate-50",
+    image: "/stats-cover.webp",
+    href: "/ui/stats",
+  },
+  {
     title: "Banner Revolution",
     title_pl: "Szyldowe rewolucje",
     description: "Strona konkursu dla projektantów walczącego z chaosem reklamowym w przestrzeni miejskiej.",
     description_en: "Competition website for designers fighting advertising chaos in urban space.",
-    tag: "Case Study",
+    tag: "Web",
     color: "from-[#FEC400] to-[#d4a300]",
     bg: "bg-[#fffbeb]",
     image: "/banneroza/cover2.jpg",

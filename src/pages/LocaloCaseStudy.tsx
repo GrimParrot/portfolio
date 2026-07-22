@@ -492,7 +492,7 @@ export function LocaloCaseStudy() {
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-10 rounded-[28px] overflow-hidden shadow-2xl" style={{ aspectRatio: "16/9" }}>
+              <div className="mt-10 rounded-[28px] overflow-hidden" style={{ aspectRatio: "4/3" }}>
                 <img src="/client-acquisition-cover.webp" alt="Client Acquisition, main view" className="w-full h-full object-cover" />
               </div>
             </StaggerItem>

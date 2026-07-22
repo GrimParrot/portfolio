@@ -28,7 +28,7 @@ export function NextProject({ currentHref, dark = true }: NextProjectProps) {
       <div className="flex-1 min-w-0">
         <span className={`text-[13px] font-medium tracking-widest uppercase ${dark ? "text-white/40" : "text-slate-400"}`}>{t.label}</span>
         <div className="mt-3">
-          <span className={`inline-block text-sm font-semibold px-3 py-1.5 rounded-full ${dark && next.tag === "UI" ? "bg-white text-[#0F172A]" : tagStyles[next.tag]}`}>{next.tag}</span>
+          <span className={`inline-block text-sm font-semibold px-3 py-1.5 rounded-xl ${dark && next.tag === "UI" ? "bg-white text-[#0F172A]" : tagStyles[next.tag]}`}>{next.tag}</span>
         </div>
         <h3
           onClick={goToNext}
