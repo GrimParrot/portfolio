@@ -467,8 +467,8 @@ export function RaportyCaseStudy() {
     { id: "hero", label: t.chapters.hero },
     { id: "s01", label: t.chapters.s01 },
     { id: "s02", label: t.chapters.s02 },
-    { id: "s03", label: t.chapters.s03 },
     { id: "s04", label: t.chapters.s04 },
+    { id: "s03", label: t.chapters.s03 },
     { id: "s05", label: t.chapters.s05 },
   ]
 
@@ -567,8 +567,7 @@ export function RaportyCaseStudy() {
         {/* 01 */}
         <div id="s01" className="py-20 md:py-28">
           <Reveal>
-            {t.s01.h2 && <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-8">{t.s01.h2}</h2>}
-            <p className="text-slate-500 leading-relaxed mb-16">{t.s01.body}</p>
+            {t.s01.h2 && <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-16">{t.s01.h2}</h2>}
           </Reveal>
           <Reveal>
             <MetricsBento metrics={t.s01.metrics} heroTag={t.s01.heroTag} />
@@ -650,6 +649,40 @@ export function RaportyCaseStudy() {
       <div className="max-w-[1200px] mx-auto px-6 pb-16 md:pb-32">
         <Divider />
 
+        {/* 04 */}
+        <div id="s04" className="py-20 md:py-28">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s04.h2}</h2>
+            <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
+          </Reveal>
+
+          {t.s04.steps.map((feature, i) => (
+            feature.cards ? (
+              <Reveal key={i} className={`grid grid-cols-1 ${feature.cards.length > 1 ? "md:grid-cols-2" : ""} gap-6 mb-16`}>
+                {feature.cards.map((c, j) => <FeatureCard key={j} {...c} />)}
+              </Reveal>
+            ) : (
+              <Reveal key={i} className="rounded-3xl overflow-hidden pt-10 px-10 mb-16" style={{ height: feature.height ?? 700, backgroundColor: "#94A3B814" }}>
+                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
+                <p className="text-slate-500 leading-relaxed">{feature.desc}</p>
+                <div className="mt-10">
+                  {feature.visual === "sidebarSwap" ? (
+                    <SidebarSettingsSwap
+                      base="/raporty-section.webp"
+                      overlay="/raporty-settings.webp"
+                      overlayRect={{ top: 6.91, left: 0, width: 17.78, height: 109.6 }}
+                    />
+                  ) : (
+                    <AutoScrollImage src="/raporty-raport.webp" imageAspect={1440 / 3795} />
+                  )}
+                </div>
+              </Reveal>
+            )
+          ))}
+        </div>
+
+        <Divider />
+
         {/* 03 */}
         <div id="s03" className="py-20 md:py-28">
           <Reveal>
@@ -697,42 +730,8 @@ export function RaportyCaseStudy() {
               </Reveal>
             ))}
           </div>
-        </div>
 
-        <Divider />
-
-        {/* 04 */}
-        <div id="s04" className="py-20 md:py-28">
-          <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s04.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
-          </Reveal>
-
-          {t.s04.steps.map((feature, i) => (
-            feature.cards ? (
-              <Reveal key={i} className={`grid grid-cols-1 ${feature.cards.length > 1 ? "md:grid-cols-2" : ""} gap-6 mb-16`}>
-                {feature.cards.map((c, j) => <FeatureCard key={j} {...c} />)}
-              </Reveal>
-            ) : (
-              <Reveal key={i} className="rounded-3xl overflow-hidden pt-10 px-10 mb-16" style={{ height: feature.height ?? 700, backgroundColor: "#94A3B814" }}>
-                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
-                <p className="text-slate-500 leading-relaxed">{feature.desc}</p>
-                <div className="mt-10">
-                  {feature.visual === "sidebarSwap" ? (
-                    <SidebarSettingsSwap
-                      base="/raporty-section.webp"
-                      overlay="/raporty-settings.webp"
-                      overlayRect={{ top: 6.91, left: 0, width: 17.78, height: 109.6 }}
-                    />
-                  ) : (
-                    <AutoScrollImage src="/raporty-raport.webp" imageAspect={1440 / 3795} />
-                  )}
-                </div>
-              </Reveal>
-            )
-          ))}
-
-          <Reveal className="border-t border-slate-100 pt-10">
+          <Reveal className="border-t border-slate-100 pt-10 mt-12">
             <Tag color="#64748b">{t.s04.rejectedTag}</Tag>
             <div className="flex flex-col divide-y divide-slate-100 mt-6">
               {t.s04.rejected.map((r) => (

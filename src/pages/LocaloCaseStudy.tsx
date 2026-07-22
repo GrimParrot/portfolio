@@ -426,8 +426,8 @@ export function LocaloCaseStudy() {
     { id: "hero", label: t.chapters.hero },
     { id: "s01", label: t.chapters.s01 },
     { id: "s02", label: t.chapters.s02 },
-    { id: "s03", label: t.chapters.s03 },
     { id: "s04", label: t.chapters.s04 },
+    { id: "s03", label: t.chapters.s03 },
     { id: "s05", label: t.chapters.s05 },
   ]
 
@@ -526,8 +526,7 @@ export function LocaloCaseStudy() {
         {/* ── 01 ── */}
         <div id="s01" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-4">{t.s01.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s01.body}</p>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s01.h2}</h2>
           </Reveal>
 
           <Reveal>
@@ -604,6 +603,48 @@ export function LocaloCaseStudy() {
       <div className="max-w-[1200px] mx-auto px-6 pb-16 md:pb-32">
         <Divider />
 
+        {/* ── 04 ── */}
+        <div id="s04" className="py-20 md:py-28">
+          <Reveal>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s04.h2}</h2>
+            <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
+          </Reveal>
+
+          {t.s04.steps.map((feature, i) => (
+            "laptopMockup" in feature && feature.laptopMockup ? (
+              <Reveal key={i} className="mb-16">
+                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
+                <p className="text-slate-500 leading-relaxed mb-10">{feature.desc}</p>
+                <LaptopMockup images={feature.laptopImages ?? []} />
+              </Reveal>
+            ) : "smallCards" in feature ? (
+              <Reveal key={i} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <div className="grid grid-rows-2 gap-6">
+                  {feature.smallCards?.map((c, j) => <StepCard key={j} {...c} height={338} />)}
+                </div>
+                {feature.bigCard && <StepCard {...feature.bigCard} height={700} />}
+              </Reveal>
+            ) : "companionImg" in feature && feature.companionImg ? (
+              <Reveal key={i} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <StepCard {...feature} />
+                <ImageCard img={feature.companionImg} imgAlt={feature.companionImgAlt ?? ""} height={feature.height} />
+              </Reveal>
+            ) : "bleedImg" in feature && feature.bleedImg ? (
+              <Reveal key={i} className="mb-16">
+                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
+                <p className="text-slate-500 leading-relaxed mb-10">{feature.desc}</p>
+                <img src={feature.img} alt={feature.imgAlt ?? ""} className="w-full" />
+              </Reveal>
+            ) : (
+              <Reveal key={i} className="mb-16">
+                <StepCard {...feature} />
+              </Reveal>
+            )
+          ))}
+        </div>
+
+        <Divider />
+
         {/* ── 03 ── */}
         <div id="s03" className="py-20 md:py-28">
           <Reveal>
@@ -657,48 +698,6 @@ export function LocaloCaseStudy() {
               <ImageMarquee images={t.s03.lofiImages.slice(4, 8)} height={280} reverse />
             </div>
           </Reveal>
-        </div>
-
-        <Divider />
-
-        {/* ── 04 ── */}
-        <div id="s04" className="py-20 md:py-28">
-          <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s04.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
-          </Reveal>
-
-          {t.s04.steps.map((feature, i) => (
-            "laptopMockup" in feature && feature.laptopMockup ? (
-              <Reveal key={i} className="mb-16">
-                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
-                <p className="text-slate-500 leading-relaxed mb-10">{feature.desc}</p>
-                <LaptopMockup images={feature.laptopImages ?? []} />
-              </Reveal>
-            ) : "smallCards" in feature ? (
-              <Reveal key={i} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-                <div className="grid grid-rows-2 gap-6">
-                  {feature.smallCards?.map((c, j) => <StepCard key={j} {...c} height={338} />)}
-                </div>
-                {feature.bigCard && <StepCard {...feature.bigCard} height={700} />}
-              </Reveal>
-            ) : "companionImg" in feature && feature.companionImg ? (
-              <Reveal key={i} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-                <StepCard {...feature} />
-                <ImageCard img={feature.companionImg} imgAlt={feature.companionImgAlt ?? ""} height={feature.height} />
-              </Reveal>
-            ) : "bleedImg" in feature && feature.bleedImg ? (
-              <Reveal key={i} className="mb-16">
-                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
-                <p className="text-slate-500 leading-relaxed mb-10">{feature.desc}</p>
-                <img src={feature.img} alt={feature.imgAlt ?? ""} className="w-full" />
-              </Reveal>
-            ) : (
-              <Reveal key={i} className="mb-16">
-                <StepCard {...feature} />
-              </Reveal>
-            )
-          ))}
 
           <Reveal className="border-t border-slate-100 pt-10">
             <Tag color="#64748b">{t.s04.rejectedTag}</Tag>

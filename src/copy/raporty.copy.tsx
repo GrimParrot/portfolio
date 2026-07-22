@@ -16,12 +16,12 @@ export const copy = {
     h1: "Automatyczne raporty, wbudowane w",
     h1Accent: "produkt.",
     heroEyebrow: "Localo · Kreator Raportów",
-    intro: "Specjaliści tracili godziny na ręczne składanie raportów z rozproszonych danych. Nowa funkcja automatycznie je generuje i wysyła — dziś zaufało jej 60% użytkowników.",
+    intro: "Projekt wystartował z innej hipotezy. Przeprowadziłam badania, by sprawdzić, czy rozwiązuje właściwy problem. Razem z CEO zmieniliśmy kierunek. Prowadziłam to sama, od początku do końca — badania, architektura flow, ekrany, testy użyteczności.",
     introProduct: "",
     introSuffix: "",
     roleLabel: "Rola",
     roleLead: "Discovery → delivery",
-    roleDesc: "— badania użytkowników, hipotezy, architektura flow, ekrany i testy użyteczności. Częściowo pełniłam też obowiązki Product Managera w duecie z CEO.",
+    roleDesc: "— badania użytkowników, architektura flow, projektowanie UI i testy użyteczności, od początku do końca. Jeden z wielu projektów zrealizowanych w ciągu 2 lat jako jedyna product designerka w Localo.",
     roleTitle: "Design lead,",
     roleTitleAccent: "od A do Z.",
     chapters: {
@@ -39,8 +39,7 @@ export const copy = {
       { label: "Użytkownicy", value: "Specjaliści SEO i agencje" },
     ],
     s01: {
-      h2: "Kluczowe metryki",
-      body: <>Specjaliści SEO potrzebowali prostego narzędzia, które <strong style={{ color: "#0F172A" }}>jasno i w spersonalizowany sposób prezentowałoby wyniki</strong> <strong style={{ color: "#0F172A" }}>nietechnicznym klientom</strong>, z łatwym wyborem danych, porównaniem w czasie i <strong style={{ color: "#0F172A" }}>automatyczną wysyłką</strong>, by ograniczyć liczbę pytań i <strong style={{ color: "#0F172A" }}>wzmocnić zaufanie do współpracy.</strong></>,
+      h2: "Zobacz, co to dało.",
       heroTag: "Najsilniejszy zmierzony sygnał",
       metrics: [
         { num: "~11×", caption: "częściej płacą niż reszta bazy", color: "#0ABA53", icon: "chart" },
@@ -53,7 +52,7 @@ export const copy = {
       lastPara: "To pokazuje duże zaufanie do procesu i realne odciążenie od powtarzalnej, czasochłonnej czynności.",
     },
     s02: {
-      h2: "Kluczowe odkrycia, które ukształtowały finalny projekt",
+      h2: "Kluczowe odkrycia",
       findingTitle: "Raporty są",
       findingTitleAccent: "skanowane",
       findingTitleSuffix: ", nie analizowane.",
@@ -198,12 +197,12 @@ export const copy = {
     h1: "Automatic reporting, built into the",
     h1Accent: "product.",
     heroEyebrow: "Localo · Report Builder",
-    intro: "Specialists lost hours manually assembling reports from scattered data. The new feature automatically generates and sends them — trusted today by 60% of users.",
+    intro: "The project started from a different hypothesis. I ran research to check whether it solved the right problem. The CEO and I pivoted the direction. I ran solo, end to end — research, flow architecture, screens, usability testing.",
     introProduct: "",
     introSuffix: "",
     roleLabel: "Role",
     roleLead: "Discovery → delivery",
-    roleDesc: "— user research, hypotheses, flow architecture, screens & usability testing. Partly acted as Product Manager in a duo with the CEO.",
+    roleDesc: "— user research, flow architecture, UI design, and usability testing, end to end. One of many projects across 2 years as Localo's sole product designer.",
     roleTitle: "Design lead,",
     roleTitleAccent: "end to end.",
     chapters: {
@@ -221,8 +220,7 @@ export const copy = {
       { label: "Users", value: "SEO specialists & agencies" },
     ],
     s01: {
-      h2: "Key metrics",
-      body: <>SEO specialists needed a simple tool that would <strong style={{ color: "#0F172A" }}>clearly and personally present results</strong> to <strong style={{ color: "#0F172A" }}>non-technical clients</strong>, with easy data selection, comparison over time and <strong style={{ color: "#0F172A" }}>automatic sending</strong>, to reduce the number of questions and <strong style={{ color: "#0F172A" }}>strengthen trust in the collaboration.</strong></>,
+      h2: "Here's what it delivered.",
       heroTag: "Strongest signal measured",
       metrics: [
         { num: "~11×", caption: "more often they pay compared to the rest of the base", color: "#0ABA53", icon: "chart" },
@@ -235,7 +233,7 @@ export const copy = {
       lastPara: "This shows strong trust in the process and real relief from a repetitive, time-consuming task.",
     },
     s02: {
-      h2: "Key finding that shaped the final design",
+      h2: "Key findings",
       findingTitle: "Reports are",
       findingTitleAccent: "scanned",
       findingTitleSuffix: ", not analysed.",

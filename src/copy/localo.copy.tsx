@@ -11,7 +11,7 @@ export const copy = {
     introSuffix: ": jedno narzędzie z dwoma modułami, spójne i samowyjaśniające się, bez wychodzenia do zewnętrznych aplikacji.",
     roleLabel: "Moja rola",
     roleLead: "Discovery → delivery",
-    roleDesc: "— badania użytkowników, hipotezy, architektura flow, ekrany i testy użyteczności. Zespół: PM, QA, copywriter, dev.",
+    roleDesc: "— badania użytkowników, architektura flow, projektowanie UI i testy użyteczności, od początku do końca. Jeden z wielu projektów zrealizowanych w ciągu 2 lat jako jedyna product designerka w Localo.",
     roleTitle: "Design lead,",
     roleTitleAccent: "od A do Z.",
     chapters: {
@@ -30,7 +30,6 @@ export const copy = {
     ],
     s01: {
       h2: "Kluczowe metryki",
-      body: <><strong className="text-slate-700">Dwa osobne narzędzia</strong> — Research mode i Sales mode — zostały zastąpione <strong className="text-slate-700">jednym spójnym flow</strong> z dwoma modułami: Leads Finder i Visibility Scans. Użytkownik <strong className="text-slate-700">nie przeskakuje między trybami</strong>: wynik z jednego modułu naturalnie prowadzi do drugiego. Narzędzie jest <strong className="text-slate-700">samowyjaśniające się</strong> i nie wymaga zewnętrznych aplikacji do dokończenia zadania.</>,
       metrics: [
         { num: "9×", caption: "Wyższe blended LTV na użytkowniku funkcji", color: "#0ABA53", icon: "ltv" },
         { num: "+81%", caption: "Dłuższy czas sesji na funkcji", color: "#0ABA53", icon: "time" },
@@ -40,7 +39,7 @@ export const copy = {
       lastPara: <>Funkcja zwiększyła postrzeganą wartość wyższych tierów i obniżyła <strong className="text-slate-700">churn</strong> wśród agencji z wieloma klientami. Zanotowaliśmy wzrost <strong style={{ color: "#0F172A", fontWeight: 800 }}>adopcji funkcji</strong> oraz pośredni wpływ na <strong className="text-slate-700">liczbę zarządzanych profili</strong>, kluczową metrykę przychodu platformy.</>,
     },
     s02: {
-      h2: "Kluczowe odkrycia, które ukształtowały finalny projekt",
+      h2: "Kluczowe odkrycia",
       findingTitle: "",
       findingTitleAccent: "Próg wejścia",
       findingTitleSuffix: " i ograniczona adopcja.",
@@ -124,7 +123,7 @@ export const copy = {
     introSuffix: ": one tool with two modules, coherent and self-explanatory, without leaving to external apps.",
     roleLabel: "My role",
     roleLead: "Discovery → delivery",
-    roleDesc: "— user research, hypotheses, flow architecture, screens, usability tests. Team: PM, QA, copywriter, dev.",
+    roleDesc: "— user research, flow architecture, UI design, and usability testing, end to end. One of many projects across 2 years as Localo's sole product designer.",
     roleTitle: "Design lead,",
     roleTitleAccent: "end to end.",
     chapters: {
@@ -143,7 +142,6 @@ export const copy = {
     ],
     s01: {
       h2: "Key metrics",
-      body: <><strong className="text-slate-700">Two separate tools</strong> — Research mode and Sales mode — were replaced by <strong className="text-slate-700">one coherent flow</strong> with two modules: Leads Finder and Visibility Scans. The user <strong className="text-slate-700">doesn't jump between modes</strong>: the output of one module naturally leads to the next. The tool is <strong className="text-slate-700">self-explanatory</strong> and doesn't require external apps to complete a task.</>,
       metrics: [
         { num: "9×", caption: "Higher blended LTV per feature user", color: "#0ABA53", icon: "ltv" },
         { num: "+81%", caption: "Longer session time on the feature", color: "#0ABA53", icon: "time" },
@@ -153,7 +151,7 @@ export const copy = {
       lastPara: <>The feature increased the perceived value of higher tiers and lowered <strong className="text-slate-700">churn</strong> among agencies with multiple clients. We saw growth in <strong style={{ color: "#0F172A", fontWeight: 800 }}>feature adoption</strong> and an indirect impact on <strong className="text-slate-700">growth in managed profiles</strong>, a key revenue metric for the platform.</>,
     },
     s02: {
-      h2: "Key finding that shaped the final design",
+      h2: "Key findings",
       findingTitle: "",
       findingTitleAccent: "Entry barrier",
       findingTitleSuffix: " and limiting adoption.",
