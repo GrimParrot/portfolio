@@ -17,6 +17,7 @@ export interface Project {
   bg: string
   image?: string
   imagePosition?: string
+  video?: string
   href?: string
 }
 
@@ -74,7 +75,18 @@ export const projects: Project[] = [
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-slate-50",
     image: "/stats-cover.webp",
+    video: "/stats-macbook.webm",
     href: "/ui/stats",
+  },
+  {
+    title: "Profile Dashboard",
+    description: "Główny pulpit Localo — widoczność, zadania, recenzje i konkurencja w jednym widoku.",
+    description_en: "Localo's main dashboard — visibility, tasks, reviews and competitors in one view.",
+    tag: "Web",
+    color: "from-[#466AFA] to-indigo-500",
+    bg: "bg-slate-50",
+    image: "/dashboard-cover.webp",
+    href: "/ui/dashboard",
   },
   {
     title: "Banner Revolution",

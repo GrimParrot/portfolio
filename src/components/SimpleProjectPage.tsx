@@ -77,6 +77,30 @@ function FitHeading({ children, maxLines = 2, minFontPx = 28, className, style }
   )
 }
 
+/** Cover video that only plays while hovered — pauses and rewinds on mouse leave. */
+function HoverVideoCover({ src, poster }: { src: string; poster?: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      className="w-full h-full object-cover"
+      onMouseEnter={() => ref.current?.play()}
+      onMouseLeave={() => {
+        const el = ref.current
+        if (!el) return
+        el.pause()
+        el.currentTime = 0
+      }}
+    />
+  )
+}
+
 export interface ProjectImage {
   img: string
   alt: string
@@ -93,7 +117,7 @@ export interface SimpleProjectCopy {
   title: React.ReactNode
   tags: string[]
   cover: ProjectImage
-  coverEmbed?: string
+  coverVideo?: { src: string; poster?: string }
   caption: string
   sections: ProjectSection[]
 }
@@ -141,23 +165,12 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
           </Reveal>
 
           <Reveal className="rounded-[28px] overflow-hidden" style={{ aspectRatio: "4/3" }}>
-            <img src={copy.cover.img} alt={copy.cover.alt} className="w-full h-full object-cover" />
+            {copy.coverVideo ? (
+              <HoverVideoCover src={copy.coverVideo.src} poster={copy.coverVideo.poster ?? copy.cover.img} />
+            ) : (
+              <img src={copy.cover.img} alt={copy.cover.alt} className="w-full h-full object-cover" />
+            )}
           </Reveal>
-
-          {copy.coverEmbed && (
-            <Reveal className="rounded-[28px] overflow-hidden" style={{ aspectRatio: "4/3" }}>
-              <script async src="https://embed.mckp.live/embed.js" />
-              <mockup-player
-                mockup-id={copy.coverEmbed}
-                aspect-ratio="4 / 3"
-                trigger="load"
-                trigger-loop="true"
-                cursor-affect-page="false"
-                cursor-range="3-50-3-50"
-                camera-zoom="38"
-              />
-            </Reveal>
-          )}
 
           {copy.sections.map((section, i) => (
             <Fragment key={i}>

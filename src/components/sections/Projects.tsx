@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { useNavigate } from "react-router-dom"
 import { ArrowUpRight } from "lucide-react"
@@ -9,6 +9,7 @@ import { NaturalniePage } from "@/pages/NaturalniePage"
 import { KafejetoPage } from "@/pages/KafejetoPage"
 import { BannerozaPage } from "@/pages/BannerozaPage"
 import { StatsPage } from "@/pages/StatsPage"
+import { DashboardPage } from "@/pages/DashboardPage"
 
 type Filter = "all" | ProjectTag
 
@@ -17,6 +18,7 @@ const modalContent: Record<string, () => React.ReactNode> = {
   "/ui/kafejeto": () => <KafejetoPage embedded />,
   "/case-study/banneroza": () => <BannerozaPage embedded />,
   "/ui/stats": () => <StatsPage embedded />,
+  "/ui/dashboard": () => <DashboardPage embedded />,
 }
 
 const copy = {
@@ -42,6 +44,30 @@ const copy = {
   },
 }
 
+/** Tile cover video — plays only while hovered, pauses and rewinds on mouse leave. */
+function HoverVideo({ src, poster }: { src: string; poster?: string }) {
+  const ref = useRef<HTMLVideoElement>(null)
+  return (
+    <video
+      ref={ref}
+      src={src}
+      poster={poster}
+      muted
+      loop
+      playsInline
+      preload="metadata"
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      onMouseEnter={() => ref.current?.play()}
+      onMouseLeave={() => {
+        const el = ref.current
+        if (!el) return
+        el.pause()
+        el.currentTime = 0
+      }}
+    />
+  )
+}
+
 function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: boolean; onOpen: (project: Project) => void }) {
   const { lang } = useLang()
 
@@ -53,7 +79,9 @@ function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: 
     >
       {/* Image — full height */}
       <div className={`absolute inset-0 ${project.bg}`}>
-        {"image" in project && project.image ? (
+        {project.video ? (
+          <HoverVideo src={project.video} poster={project.image} />
+        ) : "image" in project && project.image ? (
           <img
             src={project.image}
             alt={project.title}
