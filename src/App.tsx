@@ -1,5 +1,5 @@
 import { Navbar } from "@/components/Navbar"
-import { Hero } from "@/components/sections/Hero"
+import { HeroV2 } from "@/components/sections/HeroV2"
 import { Projects } from "@/components/sections/Projects"
 import { Contact } from "@/components/sections/Contact"
 import { Footer } from "@/components/Footer"
@@ -7,9 +7,9 @@ import { Footer } from "@/components/Footer"
 export default function App() {
   return (
     <div className="min-h-screen bg-white">
-      <Navbar />
+      <Navbar dark />
       <main>
-        <Hero />
+        <HeroV2 />
         <Projects />
         <Contact />
       </main>
