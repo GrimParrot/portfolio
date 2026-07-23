@@ -14,8 +14,12 @@ export function FlowBackground() {
     const canvas = canvasRef.current
     if (!container || !canvas) return
 
-    function start() {
+    function start(e: PointerEvent) {
       if (startedRef.current) return
+      // Ignore the "phantom" pointermove browsers fire on load/hover-state
+      // reconciliation when the cursor already happens to rest over the
+      // section — only a genuine movement delta should trigger the fluid.
+      if (Math.abs(e.movementX) < 2 && Math.abs(e.movementY) < 2) return
       startedRef.current = true
       container!.removeEventListener("pointermove", start)
 
@@ -23,15 +27,19 @@ export function FlowBackground() {
         TRIGGER: "hover",
         IMMEDIATE: false,
         AUTO: false,
-        SPLAT_RADIUS: 0.11,
-        SPLAT_FORCE: 1900,
-        DENSITY_DISSIPATION: 2.5,
-        VELOCITY_DISSIPATION: 1.2,
+        SIM_RESOLUTION: 48,
+        SPLAT_RADIUS: 0.35,
+        SPLAT_FORCE: 450,
+        DENSITY_DISSIPATION: 0.6,
+        VELOCITY_DISSIPATION: 0.08,
+        CURL: 2,
         BLOOM: false,
+        SHADING: false,
+        SUNRAYS: false,
         BACK_COLOR: { r: 11, g: 18, b: 32 },
         TRANSPARENT: false,
         COLORFUL: false,
-        SPLAT_COLOR: { r: 0.22, g: 0.15, b: 0.65 },
+        SPLAT_COLOR: { r: 0.16, g: 0.1, b: 0.48 },
       })
     }
 
