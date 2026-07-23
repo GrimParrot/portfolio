@@ -54,7 +54,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             scrolled
               ? "bg-slate-50/90 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
               : dark
-                ? "bg-black/40 backdrop-blur-md shadow-lg shadow-black/30 border-white/10"
+                ? "bg-[#1B2438]/70 backdrop-blur-md shadow-lg shadow-black/30 border-white/10"
                 : "bg-transparent shadow-none border-transparent"
           }`}
         >
