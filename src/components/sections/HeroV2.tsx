@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { ArrowDown, ArrowUpRight, ChevronDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useLang } from "@/i18n/LanguageContext"
@@ -78,6 +78,8 @@ export function HeroV2() {
           </Button>
         </div>
       </div>
+
+      <ChevronDown className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 w-6 h-6 text-white/50 animate-bounce" />
     </section>
   )
 }

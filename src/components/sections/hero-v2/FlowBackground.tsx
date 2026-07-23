@@ -28,7 +28,7 @@ export function FlowBackground() {
         IMMEDIATE: false,
         AUTO: false,
         SIM_RESOLUTION: 48,
-        SPLAT_RADIUS: 0.15,
+        SPLAT_RADIUS: 0.2,
         SPLAT_FORCE: 450,
         DENSITY_DISSIPATION: 0.6,
         VELOCITY_DISSIPATION: 0.08,
