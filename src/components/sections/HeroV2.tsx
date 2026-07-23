@@ -26,7 +26,7 @@ export function HeroV2() {
   const t = copy[lang]
 
   return (
-    <section className="relative overflow-hidden pt-28 pb-16 bg-[#0B1220]">
+    <section className="relative overflow-hidden min-h-screen flex items-center bg-[#0B1220]">
       <style>{`
         @keyframes hero-flicker {
           0%, 92%, 100% { opacity: 1; text-shadow: 0 0 24px rgba(10,186,83,0.35); }
@@ -47,7 +47,7 @@ export function HeroV2() {
       `}</style>
       <FlowBackground />
 
-      <div className="relative z-10 max-w-[1200px] mx-auto px-6 text-center">
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pointer-events-none">
         <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-12">
           {t.headingPre}
           <span className="hero-flicker">{t.headingFlicker}</span>
@@ -66,12 +66,12 @@ export function HeroV2() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-3">
-          <Button asChild size="lg" className="bg-white text-[#0F172A] hover:bg-slate-200">
+          <Button asChild size="lg" className="pointer-events-auto bg-white text-[#0F172A] hover:bg-slate-200">
             <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">
               {t.cvBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="border-white/40 bg-transparent text-white hover:bg-white/10">
+          <Button asChild size="lg" variant="outline" className="pointer-events-auto border-white/40 bg-transparent text-white hover:bg-white/10">
             <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">
               LinkedIn <ArrowUpRight className="w-4 h-4 animate-nudge-ur" />
             </a>
