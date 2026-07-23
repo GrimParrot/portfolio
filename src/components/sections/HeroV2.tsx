@@ -8,14 +8,14 @@ const tags = ["Lead product designer", "B2B", "B2C", "SaaS", "8+ years exp", "Di
 
 const copy = {
   pl: {
-    headingPre: "Projektuj z ",
-    headingFlicker: "wyobraźnią",
+    headingPre: "Cześć, jestem ",
+    headingFlicker: "Edyta",
     tagline: "projektuję cyfrowe produkty B2B end to end. Pomagam zespołom zdecydować, co budować — i czego nie budować",
     cvBtn: "Zobacz CV",
   },
   en: {
-    headingPre: "Design with ",
-    headingFlicker: "imagination",
+    headingPre: "Hi, I'm ",
+    headingFlicker: "Edyta",
     tagline: "I design digital B2B products end to end. I help teams decide what to build — and what not to build",
     cvBtn: "View CV",
   },
