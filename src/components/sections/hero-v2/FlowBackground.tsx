@@ -28,9 +28,9 @@ export function FlowBackground() {
         IMMEDIATE: false,
         AUTO: false,
         SIM_RESOLUTION: 48,
-        SPLAT_RADIUS: 0.4,
-        SPLAT_FORCE: 200,
-        DENSITY_DISSIPATION: 1,
+        SPLAT_RADIUS: 0.15,
+        SPLAT_FORCE: 450,
+        DENSITY_DISSIPATION: 0.6,
         VELOCITY_DISSIPATION: 0.08,
         CURL: 0,
         BLOOM: false,
@@ -39,7 +39,7 @@ export function FlowBackground() {
         BACK_COLOR: { r: 11, g: 18, b: 32 },
         TRANSPARENT: false,
         COLORFUL: false,
-        SPLAT_COLOR: { r: 0.1, g: 0.04, b: 0.55 },
+        SPLAT_COLOR: { r: 0.16, g: 0.1, b: 0.48 },
       })
     }
 
