@@ -55,7 +55,7 @@ function HoverVideo({ src, poster }: { src: string; poster?: string }) {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       onMouseEnter={() => ref.current?.play()}
       onMouseLeave={() => {

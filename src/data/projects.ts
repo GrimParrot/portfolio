@@ -75,7 +75,6 @@ export const projects: Project[] = [
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-slate-50",
     image: "/stats-cover.webp",
-    video: "/stats-macbook.webm",
     href: "/ui/stats",
   },
   {

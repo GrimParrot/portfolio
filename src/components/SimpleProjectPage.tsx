@@ -88,7 +88,7 @@ function HoverVideoCover({ src, poster }: { src: string; poster?: string }) {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       className="w-full h-full object-cover"
       onMouseEnter={() => ref.current?.play()}
       onMouseLeave={() => {
@@ -106,7 +106,12 @@ export interface ProjectImage {
   alt: string
 }
 
-export type ProjectImageRow = ProjectImage | ProjectImage[]
+export interface ProjectVideo {
+  video: string
+  poster?: string
+}
+
+export type ProjectImageRow = ProjectImage | ProjectImage[] | ProjectVideo
 
 export interface ProjectSection {
   title?: string
@@ -185,6 +190,10 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
                     {row.map((image) => (
                       <img key={image.img} src={image.img} alt={image.alt} className="w-full h-auto block rounded-2xl border border-slate-200" />
                     ))}
+                  </Reveal>
+                ) : "video" in row ? (
+                  <Reveal key={row.video} className="rounded-2xl overflow-hidden border border-slate-200" style={{ aspectRatio: "4/3" }}>
+                    <HoverVideoCover src={row.video} poster={row.poster} />
                   </Reveal>
                 ) : (
                   <Reveal key={row.img}>
