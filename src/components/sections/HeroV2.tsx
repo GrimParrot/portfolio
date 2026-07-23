@@ -1,4 +1,4 @@
-import { ArrowDown, ChevronDown } from "lucide-react"
+import { ArrowDown, ArrowUpRight, ChevronDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useLang } from "@/i18n/LanguageContext"
@@ -71,9 +71,9 @@ export function HeroV2() {
               {t.cvBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
             </a>
           </Button>
-          <Button asChild size="lg" variant="outline" className="pointer-events-auto border-white/40 bg-transparent text-white hover:bg-white/10 [&_svg]:size-5">
+          <Button asChild size="lg" variant="outline" className="pointer-events-auto border-white/40 bg-transparent text-white hover:bg-white/10">
             <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">
-              LinkedIn <ArrowDown className="w-5 h-5 animate-bounce" />
+              LinkedIn <ArrowUpRight className="w-4 h-4 animate-nudge-ur" />
             </a>
           </Button>
         </div>
