@@ -32,7 +32,7 @@ export function FlowBackground() {
         SPLAT_FORCE: 450,
         DENSITY_DISSIPATION: 0.6,
         VELOCITY_DISSIPATION: 0.08,
-        CURL: 2,
+        CURL: 0,
         BLOOM: false,
         SHADING: false,
         SUNRAYS: false,
