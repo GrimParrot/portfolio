@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useMemo, useRef } from "react"
 import { useReducedMotion } from "motion/react"
 
 type Blob = {
@@ -21,12 +21,27 @@ const BLOBS: Blob[] = [
   { color: "#0ABA53", opacity: 0.18, size: 380, baseX: 78, baseY: 72, driftRadius: 45, speedX: 0.00023, speedY: 0.00019, phase: 1.3, parallax: 0.04 },
 ]
 
+const PARTICLE_COUNT = 18
+
+type Particle = { left: number; top: number; size: number; duration: number; delay: number }
+
+function makeParticles(): Particle[] {
+  return Array.from({ length: PARTICLE_COUNT }, () => ({
+    left: Math.random() * 100,
+    top: Math.random() * 100,
+    size: 2 + Math.random() * 2,
+    duration: 6 + Math.random() * 8,
+    delay: Math.random() * -10,
+  }))
+}
+
 export function FlowBackground() {
   const reduceMotion = useReducedMotion()
   const containerRef = useRef<HTMLDivElement>(null)
   const blobRefs = useRef<(HTMLDivElement | null)[]>([])
   const spotlightRef = useRef<HTMLDivElement>(null)
   const pointer = useRef({ x: 0, y: 0, targetX: 0, targetY: 0 })
+  const particles = useMemo(makeParticles, [])
 
   useEffect(() => {
     if (reduceMotion) return
@@ -106,6 +121,28 @@ export function FlowBackground() {
           }}
         />
       )}
+
+      {!reduceMotion && particles.map((p, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-white/40"
+          style={{
+            left: `${p.left}%`,
+            top: `${p.top}%`,
+            width: p.size,
+            height: p.size,
+            filter: "blur(1px)",
+            animation: `hero-particle-float ${p.duration}s ease-in-out ${p.delay}s infinite`,
+          }}
+        />
+      ))}
+
+      <style>{`
+        @keyframes hero-particle-float {
+          0%, 100% { transform: translateY(0); opacity: 0.15; }
+          50% { transform: translateY(-14px); opacity: 0.5; }
+        }
+      `}</style>
     </div>
   )
 }
