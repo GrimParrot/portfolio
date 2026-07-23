@@ -406,9 +406,9 @@ function DesignProcess({ eyebrow, title, steps, extras, rejectedTag, rejected }:
   return (
     <div ref={trackRef} style={{ height: `${steps.length * 45}vh` }}>
       <div style={{ position: "sticky", top: STICKY_TOP }}>
-        <div className="bg-white" style={{ paddingTop: 8, paddingBottom: 24 }}>
+        <div className="bg-white" style={{ paddingTop: 8, paddingBottom: 56 }}>
           <p className="font-extrabold uppercase mb-3" style={{ fontSize: 12, letterSpacing: "0.24em", color: PRIMARY }}>{eyebrow}</p>
-          <h2 className="font-extrabold tracking-tight text-[#0F172A]" style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", lineHeight: 1, letterSpacing: "-0.02em" }}>{title}</h2>
+          <h2 className="font-extrabold tracking-tight text-[#0F172A]" style={{ fontSize: "clamp(2.5rem, 5.5vw, 4rem)", lineHeight: 1, letterSpacing: "-0.02em" }}>{title}</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 md:gap-16 items-start" style={{ minHeight: 600 }}>
       <nav className="flex flex-col gap-2.5">
