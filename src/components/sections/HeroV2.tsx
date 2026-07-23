@@ -27,6 +27,24 @@ export function HeroV2() {
 
   return (
     <section className="relative overflow-hidden pt-28 pb-16 bg-[#0B1220]">
+      <style>{`
+        @keyframes hero-flicker {
+          0%, 92%, 100% { opacity: 1; text-shadow: 0 0 24px rgba(10,186,83,0.35); }
+          93% { opacity: 0.4; text-shadow: none; }
+          94% { opacity: 1; text-shadow: 0 0 24px rgba(10,186,83,0.35); }
+          95% { opacity: 0.2; text-shadow: none; }
+          96%, 99% { opacity: 1; text-shadow: 0 0 24px rgba(10,186,83,0.35); }
+        }
+        .hero-flicker {
+          animation: hero-flicker 8s linear infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-flicker {
+            animation: none;
+            text-shadow: 0 0 24px rgba(10,186,83,0.35);
+          }
+        }
+      `}</style>
       <FlowBackground />
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 text-center">
