@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react"
 import { Link } from "react-router-dom"
-import { motion, useReducedMotion, type TargetAndTransition } from "motion/react"
+import { motion, AnimatePresence, useReducedMotion, type TargetAndTransition } from "motion/react"
 import { Target, AlertTriangle, TrendingUp, Search, Mail, Zap, ArrowLeft, Layers, Clock, GraduationCap } from "lucide-react"
 
 const lessonIcons = [Search, Mail, Zap]
@@ -223,62 +223,6 @@ function Divider() {
   return <hr className="border-t border-slate-100 my-0" />
 }
 
-function ProfileBox({ box, rotate }: { box: { icon: string; title: string; tags: string[] }; rotate: number }) {
-  return (
-    <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm" style={{ transform: `rotate(${rotate}deg)`, minHeight: 230 }}>
-      <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: PRIMARY + "1A" }}>
-        {box.icon === "target" && <Target style={{ width: 28, height: 28, color: PRIMARY }} />}
-        {box.icon === "warning" && <AlertTriangle style={{ width: 28, height: 28, color: PRIMARY }} />}
-        {box.icon === "trending" && <TrendingUp style={{ width: 28, height: 28, color: PRIMARY }} />}
-      </div>
-      <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{box.title}</p>
-      <div className="flex flex-wrap gap-2">
-        {box.tags.map((tag) => (
-          <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-[#94A3B814] hover:bg-[#94A3B814]">
-            {tag}
-          </Badge>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function ImageCarousel({ images }: { images: string[] }) {
-  const [index, setIndex] = useState(0)
-  const n = images.length
-
-  useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % n), 2800)
-    return () => clearInterval(id)
-  }, [n])
-
-  const prevIndex = (index - 1 + n) % n
-
-  return (
-    <div className="relative w-full rounded-2xl border border-slate-200 overflow-hidden" style={{ aspectRatio: "1440/802" }}>
-      {images.map((src, i) => {
-        const isCurrent = i === index
-        const isPrev = i === prevIndex
-        const translate = isCurrent ? "0%" : isPrev ? "-100%" : "100%"
-        return (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              objectPosition: "center top",
-              transition: isCurrent || isPrev ? "transform 0.6s ease" : "none",
-              transform: `translateX(${translate})`,
-              zIndex: isCurrent ? 1 : 0,
-            }}
-          />
-        )
-      })}
-    </div>
-  )
-}
-
 function SidebarSettingsSwap({ base, overlay, overlayRect }: { base: string; overlay: string; overlayRect: { top: number; left: number; width: number; height: number } }) {
   const [showOverlay, setShowOverlay] = useState(false)
 
@@ -328,6 +272,258 @@ function AutoScrollImage({ src, imageAspect }: { src: string; imageAspect: numbe
           100% { transform: translateY(0%); }
         }
       `}</style>
+    </div>
+  )
+}
+
+function MiniCarousel({ images }: { images: string[] }) {
+  const [index, setIndex] = useState(0)
+  const n = images.length
+
+  useEffect(() => {
+    const id = setInterval(() => setIndex((i) => (i + 1) % n), 2800)
+    return () => clearInterval(id)
+  }, [n])
+
+  const prevIndex = (index - 1 + n) % n
+
+  return (
+    <div className="relative w-full h-full">
+      {images.map((src, i) => {
+        const isCurrent = i === index
+        const isPrev = i === prevIndex
+        const translate = isCurrent ? "0%" : isPrev ? "-100%" : "100%"
+        return (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              transition: isCurrent || isPrev ? "transform 0.6s ease" : "none",
+              transform: `translateX(${translate})`,
+              zIndex: isCurrent ? 1 : 0,
+            }}
+          />
+        )
+      })}
+    </div>
+  )
+}
+
+function ProfileBox({ box, rotate }: { box: { icon: string; title: string; tags: string[] }; rotate: number }) {
+  return (
+    <div className="border border-slate-200 rounded-2xl p-6 bg-white shadow-sm" style={{ transform: `rotate(${rotate}deg)`, minHeight: 230 }}>
+      <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl" style={{ backgroundColor: PRIMARY + "1A" }}>
+        {box.icon === "target" && <Target style={{ width: 28, height: 28, color: PRIMARY }} />}
+        {box.icon === "warning" && <AlertTriangle style={{ width: 28, height: 28, color: PRIMARY }} />}
+        {box.icon === "trending" && <TrendingUp style={{ width: 28, height: 28, color: PRIMARY }} />}
+      </div>
+      <p className="font-semibold text-slate-900 text-lg mt-4 mb-4">{box.title}</p>
+      <div className="flex flex-wrap gap-2">
+        {box.tags.map((tag) => (
+          <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-[#94A3B814] hover:bg-[#94A3B814]">
+            {tag}
+          </Badge>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function PersonaTags({ boxes }: { boxes: { icon: string; title: string; tags: string[] }[] }) {
+  // boxes come in as [Goal, Pain points, Behaviours]; Pain points has the most
+  // chips, so it goes on top full-width and the other two sit below it.
+  const [goal, painPoints, behaviours] = boxes
+  const rotations = [2, -2]
+  return (
+    <div className="flex flex-col gap-10 mt-6 px-2">
+      {painPoints && <ProfileBox box={painPoints} rotate={-2} />}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+        {[goal, behaviours].map((box, i) => box && (
+          <ProfileBox key={box.title} box={box} rotate={rotations[i % rotations.length]} />
+        ))}
+      </div>
+    </div>
+  )
+}
+
+interface ProcessStep {
+  n: number
+  title: string
+  navDesc: string
+  desc: string
+  images?: string[]
+  imagesLayout?: "carousel" | "stack" | "columns"
+}
+
+/**
+ * Sticky-pinned step list + content panel: the whole block pins in place
+ * (CSS position:sticky) while the page scrolls through a tall track behind
+ * it, and scroll progress through that track picks the active step — same
+ * idea as the earlier wheel-hijacking version, but driven by real scroll
+ * position instead of intercepting wheel events. That earlier approach
+ * needed `preventDefault()` on every wheel tick to stop the page slipping
+ * through, which was fragile (fast scrolls could still leak through, and it
+ * fought with the fixed navbar). Plain scroll + sticky has neither problem:
+ * nothing is prevented, so native/momentum scrolling and fixed elements
+ * behave normally regardless of scroll speed or cursor position.
+ */
+function DesignProcess({ eyebrow, title, steps, extras, rejectedTag, rejected }: { eyebrow: string; title: ReactNode; steps: ProcessStep[]; extras?: Record<number, ReactNode>; rejectedTag: string; rejected: { title: string; reason: string }[] }) {
+  const [active, setActive] = useState(0)
+  const step = steps[active]
+  const trackRef = useRef<HTMLDivElement>(null)
+  const STICKY_TOP = 110
+
+  useEffect(() => {
+    let raf = 0
+    const pick = () => {
+      const track = trackRef.current
+      if (!track) return
+      const rect = track.getBoundingClientRect()
+      const scrollable = rect.height - window.innerHeight
+      if (scrollable <= 0) return
+      const progress = Math.min(1, Math.max(0, -rect.top / scrollable))
+      const idx = Math.min(steps.length - 1, Math.floor(progress * steps.length))
+      setActive(idx)
+    }
+    const onScroll = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(pick) }
+    window.addEventListener("scroll", onScroll, { passive: true })
+    pick()
+    return () => { window.removeEventListener("scroll", onScroll); cancelAnimationFrame(raf) }
+  }, [steps.length])
+
+  const scrollToStep = (i: number) => {
+    const track = trackRef.current
+    if (!track) return
+    const rect = track.getBoundingClientRect()
+    const scrollable = rect.height - window.innerHeight
+    if (scrollable <= 0) return
+    const targetProgress = (i + 0.5) / steps.length
+    window.scrollTo({ top: window.scrollY + rect.top + targetProgress * scrollable, behavior: "smooth" })
+  }
+
+  return (
+    <div ref={trackRef} style={{ height: `${steps.length * 45}vh` }}>
+      <div style={{ position: "sticky", top: STICKY_TOP }}>
+        <div className="bg-white" style={{ paddingTop: 8, paddingBottom: 24 }}>
+          <p className="font-extrabold uppercase mb-3" style={{ fontSize: 12, letterSpacing: "0.24em", color: PRIMARY }}>{eyebrow}</p>
+          <h2 className="font-extrabold tracking-tight text-[#0F172A]" style={{ fontSize: "clamp(1.75rem, 4vw, 2.75rem)", lineHeight: 1, letterSpacing: "-0.02em" }}>{title}</h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-[280px_1fr] gap-10 md:gap-16 items-start" style={{ minHeight: 600 }}>
+      <nav className="flex flex-col gap-2.5">
+        {steps.map((s, i) => {
+          const isActive = i === active
+          return (
+            <div
+              key={s.n}
+              onClick={() => scrollToStep(i)}
+              className="cursor-pointer rounded-[14px] border"
+              style={{
+                borderColor: isActive ? PRIMARY : "#eceef1",
+                backgroundColor: isActive ? `${PRIMARY}12` : "transparent",
+                padding: isActive ? "18px 20px" : "12px 20px",
+                transition: "border-color .3s, background-color .3s, padding .3s",
+              }}
+            >
+              <div className="flex items-baseline gap-3 font-extrabold" style={{ fontSize: 16, letterSpacing: "-0.01em", color: isActive ? "#0F172A" : "#94A3B8", transition: "color .3s" }}>
+                <span style={{ fontSize: 13, fontWeight: 800, color: isActive ? PRIMARY : "#94A3B8" }}>{String(s.n).padStart(2, "0")}</span>
+                {s.title}
+              </div>
+              <div
+                className="overflow-hidden text-slate-500 font-medium"
+                style={{
+                  fontSize: 13,
+                  lineHeight: 1.5,
+                  maxHeight: isActive ? 90 : 0,
+                  opacity: isActive ? 1 : 0,
+                  marginTop: isActive ? 8 : 0,
+                  transition: "max-height .35s cubic-bezier(.16,1,.3,1), opacity .3s, margin-top .35s",
+                }}
+              >
+                {s.navDesc}
+              </div>
+            </div>
+          )
+        })}
+      </nav>
+
+      <motion.div layout transition={{ layout: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}>
+        <div className="flex items-center gap-1.5">
+          {steps.map((_, di) => (
+            <span
+              key={di}
+              className="rounded-full flex-shrink-0"
+              style={
+                di === active
+                  ? { width: 22, height: 6, borderRadius: 3, backgroundColor: PRIMARY, transition: "background-color .3s" }
+                  : { width: 6, height: 6, backgroundColor: di < active ? PRIMARY : "#dfe3ea", transition: "background-color .3s" }
+              }
+            />
+          ))}
+        </div>
+
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={step.n}
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.94 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <h3 className="mt-2.5 font-extrabold text-[#0F172A]" style={{ fontSize: "clamp(26px,3vw,40px)", letterSpacing: "-0.02em" }}>{step.title}</h3>
+            <p className="mt-4 text-slate-500" style={{ fontSize: 17, lineHeight: 1.7 }}>{step.desc}</p>
+            {extras?.[step.n]}
+            {step.images && step.images.length > 0 && (
+              step.imagesLayout === "stack" ? (
+                <div className="mt-6 flex flex-col gap-4">
+                  {step.images.map((src) => (
+                    <div key={src} className="rounded-[20px] overflow-hidden border border-slate-200" style={{ height: 380, backgroundColor: "#94A3B814" }}>
+                      <img src={src} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+              ) : step.imagesLayout === "columns" ? (
+                <div className="mt-6 grid grid-cols-2 gap-4">
+                  {step.images.map((src) => (
+                    <div key={src} className="rounded-[20px] overflow-hidden border border-slate-200" style={{ height: 380, backgroundColor: "#94A3B814" }}>
+                      <img src={src} alt="" className="w-full h-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+              ) : step.images.length === 1 ? (
+                <div className="mt-6 rounded-[20px] overflow-hidden border border-slate-200" style={{ height: 380, backgroundColor: "#94A3B814" }}>
+                  <img src={step.images[0]} alt="" className="w-full h-full object-cover" />
+                </div>
+              ) : (
+                // Fixed height (like the other layouts) crops these screenshots
+                // hard — they're all a consistent 1000×557, so match that ratio
+                // instead of forcing a taller box and cutting off top/bottom.
+                <div className="mt-6 rounded-[20px] overflow-hidden border border-slate-200" style={{ aspectRatio: "1000/557", backgroundColor: "#94A3B814" }}>
+                  <MiniCarousel images={step.images} />
+                </div>
+              )
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </motion.div>
+        </div>
+
+        <div className="border-t border-slate-100 pt-8 mt-10">
+          <Tag color="#64748b">{rejectedTag}</Tag>
+          <div className="flex flex-col divide-y divide-slate-100 mt-4">
+            {rejected.map((r) => (
+              <div key={r.title} className="flex items-start gap-3 py-4">
+                <span className="text-slate-300 font-medium flex-shrink-0 mt-0.5">✕</span>
+                <p className="text-[15px]">
+                  <span className="line-through decoration-slate-300 text-slate-400 font-semibold">{r.title}</span>
+                  <span className="block text-slate-500 mt-1">{r.reason}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
@@ -686,64 +882,16 @@ export function RaportyCaseStudy() {
         {/* 03 */}
         <div id="s03" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s03.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-14">{t.s03.intro}</p>
-          </Reveal>
-
-          <div className="flex flex-col gap-12">
-            {t.s03.steps.map((step) => (
-              <Reveal key={step.n}>
-                {step.visual === "pivot" ? (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-                    <div>
-                      <h3 className="text-lg font-semibold text-[#0F172A] mb-2">{step.title}</h3>
-                      <p className="text-slate-500 leading-relaxed">{step.desc}</p>
-                    </div>
-                    <img src="/raporty-user-stories.webp" alt="User stories" className="w-full rounded-2xl border border-slate-200 object-cover" />
-                  </div>
-                ) : step.visual === "profile" ? (
-                  <div>
-                    <h3 className="text-lg font-semibold text-[#0F172A] mb-2">{step.title}</h3>
-                    <p className="text-slate-500 leading-relaxed">{step.desc}</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-8" style={{ marginTop: 60, marginBottom: 12 }}>
-                      <ProfileBox box={t.s03.profileBoxes[0]} rotate={-4} />
-                      <ProfileBox box={t.s03.profileBoxes[1]} rotate={3} />
-                      <ProfileBox box={t.s03.profileBoxes[2]} rotate={-3} />
-                    </div>
-                  </div>
-                ) : (
-                  <div>
-                    <h3 className="text-lg font-semibold text-[#0F172A] mb-2">{step.title}</h3>
-                    <p className="text-slate-500 leading-relaxed">{step.desc}</p>
-                  </div>
-                )}
-
-                {step.visual === "scope" && (
-                  <img src="/raporty-scope.webp" alt="Zakres projektu" className="w-full rounded-2xl border border-slate-200 mt-10 object-cover" />
-                )}
-
-                {step.visual === "flow" && (
-                  <div className="mt-10">
-                    <ImageCarousel images={["/raporty-flow-1.webp", "/raporty-flow-2.webp", "/raporty-flow-3.webp"]} />
-                  </div>
-                )}
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal className="border-t border-slate-100 pt-10 mt-12">
-            <Tag color="#64748b">{t.s04.rejectedTag}</Tag>
-            <div className="flex flex-col divide-y divide-slate-100 mt-6">
-              {t.s04.rejected.map((r) => (
-                <div key={r.title} className="flex items-start gap-3 py-5">
-                  <span className="text-slate-300 font-medium flex-shrink-0 mt-0.5">✕</span>
-                  <p className="text-[15px]">
-                    <span className="line-through decoration-slate-300 text-slate-400 font-semibold">{r.title}</span>
-                    <span className="block text-slate-500 mt-1">{r.reason}</span>
-                  </p>
-                </div>
-              ))}
-            </div>
+            <DesignProcess
+              eyebrow={t.chapters.s03}
+              title={t.s03.h2}
+              steps={t.s03.steps}
+              extras={{
+                1: <PersonaTags boxes={t.s03.profileBoxes} />,
+              }}
+              rejectedTag={t.s04.rejectedTag}
+              rejected={t.s04.rejected}
+            />
           </Reveal>
         </div>
 
