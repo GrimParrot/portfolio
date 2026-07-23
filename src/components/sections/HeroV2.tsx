@@ -2,6 +2,7 @@ import { ArrowDown, ArrowUpRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useLang } from "@/i18n/LanguageContext"
+import { FlowBackground } from "./hero-v2/FlowBackground"
 
 const tags = ["Lead product designer", "B2B", "B2C", "SaaS", "8+ years exp", "Discovery & Delivery", "AI-powered"]
 
@@ -26,6 +27,8 @@ export function HeroV2() {
 
   return (
     <section className="relative overflow-hidden pt-28 pb-16 bg-[#0B1220]">
+      <FlowBackground />
+
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 text-center">
         <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-12">
           {t.headingPre}
