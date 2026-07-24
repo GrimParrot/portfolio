@@ -26,14 +26,14 @@ export function SkillsMarquee() {
 
   if (reduceMotion) {
     return (
-      <section className="overflow-hidden bg-[#0B1220] py-8 border-y border-white/10">
+      <section className="overflow-hidden bg-[#0A0A0A] py-8 border-y border-white/10">
         <MarqueeRow phrases={phrases} />
       </section>
     )
   }
 
   return (
-    <section className="overflow-hidden bg-[#0B1220] py-8 border-y border-white/10">
+    <section className="overflow-hidden bg-[#0A0A0A] py-8 border-y border-white/10">
       <style>{`
         @keyframes skills-marquee-scroll {
           from { transform: translateX(0); }

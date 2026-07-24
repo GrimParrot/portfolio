@@ -29,7 +29,7 @@ export function FlowBackground() {
         BLOOM: false,
         SHADING: false,
         SUNRAYS: false,
-        BACK_COLOR: { r: 11, g: 18, b: 32 },
+        BACK_COLOR: { r: 10, g: 10, b: 10 },
         TRANSPARENT: false,
         COLORFUL: false,
         SPLAT_COLOR: { r: 0.16, g: 0.1, b: 0.48 },
@@ -61,7 +61,7 @@ export function FlowBackground() {
   }, [reduceMotion])
 
   if (reduceMotion) {
-    return <div className="absolute inset-0" style={{ background: "#0B1220" }} />
+    return <div className="absolute inset-0" style={{ background: "#0A0A0A" }} />
   }
 
   return (
