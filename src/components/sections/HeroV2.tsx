@@ -26,7 +26,7 @@ export function HeroV2() {
   const t = copy[lang]
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center bg-[#0B1220]">
+    <section id="hero-dark" className="relative overflow-hidden min-h-screen flex items-center bg-[#0B1220]">
       <style>{`
         @keyframes hero-flicker {
           0%, 92%, 100% { opacity: 1; text-shadow: 0 0 24px rgba(10,186,83,0.35); }

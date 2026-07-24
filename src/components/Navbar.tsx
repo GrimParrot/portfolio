@@ -23,11 +23,25 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
   const lightOnDark = dark && !scrolled
 
   useEffect(() => {
+    // On a dark hero, the switch to the light pill should happen exactly
+    // when the dark section scrolls out from under the navbar — not after
+    // an arbitrary scroll distance, which flips too early on a tall hero.
+    const darkTarget = dark ? document.getElementById("hero-dark") : null
+
+    if (darkTarget) {
+      const observer = new IntersectionObserver(
+        ([entry]) => setScrolled(!entry.isIntersecting),
+        { rootMargin: "-88px 0px 0px 0px", threshold: 0 }
+      )
+      observer.observe(darkTarget)
+      return () => observer.disconnect()
+    }
+
     const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  }, [dark])
 
   const handleProjects = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -54,7 +68,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             scrolled
               ? "bg-slate-50/90 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
               : dark
-                ? "bg-[#111827]/60 backdrop-blur-md shadow-lg shadow-black/30 border-white/10"
+                ? "bg-[#0B1220]/60 backdrop-blur-md shadow-none border-white/10"
                 : "bg-transparent shadow-none border-transparent"
           }`}
         >
