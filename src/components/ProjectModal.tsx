@@ -1,9 +1,14 @@
-import { useEffect } from "react"
+import { useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "motion/react"
 import { X } from "lucide-react"
+import Lenis from "lenis"
+import { LENIS_OPTIONS } from "@/lib/lenis"
 
 export function ProjectModal({ open, onClose, layoutId, children }: { open: boolean; onClose: () => void; layoutId?: string; children: React.ReactNode }) {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose() }
@@ -15,6 +20,30 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
       document.body.style.overflow = prevOverflow
     }
   }, [open, onClose])
+
+  // The page's own Lenis instance is scoped to the window and would otherwise
+  // eat wheel events over the modal too (data-lenis-prevent below stops that).
+  // This second instance is scoped to just the modal's own scroll container,
+  // so scrolling inside it feels exactly like scrolling the rest of the site.
+  useEffect(() => {
+    if (!open) return
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    if (prefersReducedMotion || !scrollRef.current || !contentRef.current) return
+
+    const modalLenis = new Lenis({ ...LENIS_OPTIONS, wrapper: scrollRef.current, content: contentRef.current })
+
+    let rafId: number
+    function raf(time: number) {
+      modalLenis.raf(time)
+      rafId = requestAnimationFrame(raf)
+    }
+    rafId = requestAnimationFrame(raf)
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      modalLenis.destroy()
+    }
+  }, [open])
 
   return createPortal(
     <AnimatePresence>
@@ -45,8 +74,8 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
             >
               <X className="w-4 h-4" />
             </button>
-            <div className="pretty-scrollbar overflow-y-auto rounded-3xl" style={{ maxHeight: "90vh" }}>
-              <div className="max-w-[1200px] mx-auto">
+            <div ref={scrollRef} className="pretty-scrollbar overflow-y-auto rounded-3xl" data-lenis-prevent style={{ maxHeight: "90vh" }}>
+              <div ref={contentRef} className="max-w-[1200px] mx-auto">
                 {children}
               </div>
             </div>
