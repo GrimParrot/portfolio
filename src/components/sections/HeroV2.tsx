@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { useLang } from "@/i18n/LanguageContext"
 import { FlowBackground } from "./hero-v2/FlowBackground"
 
-const tags = ["Design", "B2B", "B2C", "SaaS", "8+ years exp", "Discovery & Delivery", "AI-powered", "End-to-End"]
+const tags = ["B2B", "B2C", "SaaS", "8+ years exp", "AI-powered"]
 
 const copy = {
   pl: {
