@@ -65,8 +65,8 @@ export function FlowBackground() {
   }
 
   return (
-    <div ref={containerRef} className="absolute inset-0">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
+    <div ref={containerRef} className="absolute inset-0" style={{ touchAction: "pan-y" }}>
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ touchAction: "pan-y" }} />
     </div>
   )
 }
