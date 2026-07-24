@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react"
+import { ArrowDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useLang } from "@/i18n/LanguageContext"
@@ -11,13 +11,13 @@ const copy = {
     headingPre: "Cześć, jestem ",
     headingFlicker: "Edyta",
     tagline: "projektuję cyfrowe produkty B2B end to end. Pomagam zespołom zdecydować, co budować — i czego nie budować",
-    cvBtn: "Zobacz CV",
+    workBtn: "Zobacz moje projekty",
   },
   en: {
     headingPre: "Hi, I'm ",
     headingFlicker: "Edyta",
     tagline: "I design digital B2B products end to end. I help teams decide what to build — and what not to build",
-    cvBtn: "View CV",
+    workBtn: "See my work",
   },
 }
 
@@ -66,26 +66,15 @@ export function HeroV2() {
         </p>
 
         <div className="flex flex-wrap justify-center gap-3">
-          <Button asChild size="lg" className="pointer-events-auto bg-white text-[#0F172A] hover:bg-slate-200">
-            <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">
-              {t.cvBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
-            </a>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="pointer-events-auto border-white/40 bg-transparent text-white hover:bg-white/10">
-            <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">
-              LinkedIn <ArrowUpRight className="w-4 h-4 animate-nudge-ur" />
-            </a>
+          <Button
+            size="lg"
+            className="pointer-events-auto bg-white text-[#0F172A] hover:bg-slate-200"
+            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          >
+            {t.workBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
           </Button>
         </div>
       </div>
-
-      <Button
-        size="icon"
-        variant="outline"
-        className="pointer-events-auto absolute bottom-8 left-1/2 -translate-x-1/2 z-10 border-white/40 bg-transparent text-white hover:bg-white/10"
-      >
-        <ArrowDown className="w-4 h-4 animate-bounce" />
-      </Button>
     </section>
   )
 }

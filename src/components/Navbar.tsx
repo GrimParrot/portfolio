@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "motion/react"
 
 const copy = {
   pl: { projects: "Projekty", contact: "Kontakt" },
-  en: { projects: "Projects", contact: "Contact" },
+  en: { projects: "My work", contact: "Contact" },
 }
 
 export function Navbar({ dark = false }: { dark?: boolean }) {
