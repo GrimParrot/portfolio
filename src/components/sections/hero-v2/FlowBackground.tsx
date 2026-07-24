@@ -14,19 +14,12 @@ export function FlowBackground() {
     const canvas = canvasRef.current
     if (!container || !canvas) return
 
-    function start(e: PointerEvent) {
+    function init(overrides: { IMMEDIATE: boolean; AUTO: boolean; INTERVAL?: number }) {
       if (startedRef.current) return
-      // Ignore the "phantom" pointermove browsers fire on load/hover-state
-      // reconciliation when the cursor already happens to rest over the
-      // section — only a genuine movement delta should trigger the fluid.
-      if (Math.abs(e.movementX) < 2 && Math.abs(e.movementY) < 2) return
       startedRef.current = true
-      container!.removeEventListener("pointermove", start)
 
       WebGLFluid(canvas!, {
         TRIGGER: "hover",
-        IMMEDIATE: false,
-        AUTO: false,
         SIM_RESOLUTION: 48,
         SPLAT_RADIUS: 0.2,
         SPLAT_FORCE: 450,
@@ -40,7 +33,27 @@ export function FlowBackground() {
         TRANSPARENT: false,
         COLORFUL: false,
         SPLAT_COLOR: { r: 0.16, g: 0.1, b: 0.48 },
+        ...overrides,
       })
+    }
+
+    // No mouse on touch devices — there's nothing to "hover", so let the
+    // fluid play a gentle ambient animation on its own instead of staying
+    // fully static.
+    const isHoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)").matches
+    if (!isHoverCapable) {
+      init({ IMMEDIATE: true, AUTO: true, INTERVAL: 3500 })
+      return
+    }
+
+    function start(e: PointerEvent) {
+      if (startedRef.current) return
+      // Ignore the "phantom" pointermove browsers fire on load/hover-state
+      // reconciliation when the cursor already happens to rest over the
+      // section — only a genuine movement delta should trigger the fluid.
+      if (Math.abs(e.movementX) < 2 && Math.abs(e.movementY) < 2) return
+      container!.removeEventListener("pointermove", start)
+      init({ IMMEDIATE: false, AUTO: false })
     }
 
     container.addEventListener("pointermove", start)
