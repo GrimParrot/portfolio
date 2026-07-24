@@ -149,6 +149,7 @@ export function Projects() {
             <motion.div
               key={project.title}
               layout
+              layoutId={`project-card-${project.title}`}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
@@ -161,7 +162,11 @@ export function Projects() {
         </div>
       </div>
 
-      <ProjectModal open={openProject !== null} onClose={() => setOpenProject(null)}>
+      <ProjectModal
+        open={openProject !== null}
+        onClose={() => setOpenProject(null)}
+        layoutId={openProject ? `project-card-${openProject.title}` : undefined}
+      >
         {openProject?.href && modalContent[openProject.href]?.()}
       </ProjectModal>
     </section>
