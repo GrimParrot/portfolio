@@ -11,14 +11,14 @@ const tags = ["B2B", "B2C", "SaaS", "8+ years exp", "AI-powered"]
 const copy = {
   pl: {
     name: "Edyta Suprun",
-    headingLine1: "Projektowanie produktu",
+    headingLine1: "Product Designer",
     headingLine2Pre: "z ",
     words: ["troską", "pasją", "sercem", "empatią", "dbałością"],
     workBtn: "Zobacz moje projekty",
   },
   en: {
     name: "Edyta Suprun",
-    headingLine1: "Product Design",
+    headingLine1: "Product Designer",
     headingLine2Pre: "with ",
     words: ["care", "passion", "purpose", "craft", "empathy"],
     workBtn: "See my work",
