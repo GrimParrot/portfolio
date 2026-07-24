@@ -14,7 +14,6 @@ const copy = {
     headingLine1: "Projektowanie produktu",
     headingLine2Pre: "z ",
     words: ["troską", "pasją", "sercem", "empatią", "dbałością"],
-    tagline: "projektuję cyfrowe produkty B2B end to end. Pomagam zespołom zdecydować, co budować — i czego nie budować",
     workBtn: "Zobacz moje projekty",
   },
   en: {
@@ -22,7 +21,6 @@ const copy = {
     headingLine1: "Product Design",
     headingLine2Pre: "with ",
     words: ["care", "passion", "purpose", "craft", "empathy"],
-    tagline: "I design digital B2B products end to end. I help teams decide what to build — and what not to build",
     workBtn: "See my work",
   },
 }
@@ -63,17 +61,17 @@ export function HeroV2() {
     <section id="hero-dark" className="relative overflow-hidden min-h-screen flex items-center bg-[#0B1220]">
       <FlowBackground />
 
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pointer-events-none">
-        <p className="text-white/70 text-sm md:text-base font-medium mb-4">{t.name}</p>
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-left pointer-events-none">
+        <p className="text-white/70 text-base md:text-lg font-medium mb-5">{t.name}</p>
 
-        <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-12">
+        <h1 className="text-6xl md:text-8xl font-black text-white leading-tight mb-12">
           {t.headingLine1}
           <br />
           {t.headingLine2Pre}
           <CyclingWord words={t.words} />
         </h1>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-4">
+        <div className="flex flex-wrap justify-start gap-2 mb-10">
           {tags.map((tag) => (
             <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-white/10 text-white hover:bg-white/15">
               {tag}
@@ -81,11 +79,7 @@ export function HeroV2() {
           ))}
         </div>
 
-        <p className="text-lg text-slate-300 max-w-xl mx-auto mb-10 leading-relaxed">
-          {t.tagline}
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-3">
+        <div className="flex flex-wrap justify-start gap-3">
           <Button
             size="lg"
             className="pointer-events-auto bg-white text-[#0F172A] hover:bg-slate-200"
