@@ -89,7 +89,13 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
               <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? (lightOnDark ? "text-white font-bold" : "text-slate-900 font-bold") : (lightOnDark ? "text-white/40 hover:text-white/70" : "text-slate-400 hover:text-slate-600")}`}>EN</button>
             </div>
 
-            <Button size="sm" className="bg-[#0F172A] hover:bg-[#1E293B] px-5" onClick={handleContact}><Mail className="w-4 h-4" /> {t.contact}</Button>
+            <Button
+              size="sm"
+              className={`px-5 transition-colors duration-300 ${lightOnDark ? "bg-white text-[#0F172A] hover:bg-slate-200" : "bg-[#0F172A] text-white hover:bg-[#1E293B]"}`}
+              onClick={handleContact}
+            >
+              <Mail className="w-4 h-4" /> {t.contact}
+            </Button>
           </div>
 
           {/* Hamburger */}
