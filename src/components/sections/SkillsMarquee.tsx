@@ -11,7 +11,7 @@ function MarqueeRow({ phrases, ariaHidden }: { phrases: string[]; ariaHidden?: b
     <div className="flex items-center flex-shrink-0" aria-hidden={ariaHidden}>
       {phrases.map((phrase, i) => (
         <span key={i} className="flex items-center whitespace-nowrap">
-          <span className="text-xl md:text-2xl font-bold text-white px-6">{phrase}</span>
+          <span className="text-xl md:text-2xl font-bold text-white px-6" style={{ fontFamily: "'Space Grotesk', 'Manrope', system-ui, sans-serif" }}>{phrase}</span>
           <span className="text-[#8B5CF6] text-lg" aria-hidden="true">◆</span>
         </span>
       ))}
