@@ -64,7 +64,7 @@ export function HeroV2() {
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-left pointer-events-none">
         <p className="text-white/70 text-base md:text-lg font-medium mb-5">{t.name}</p>
 
-        <h1 className="text-6xl md:text-8xl font-black text-white leading-tight mb-12">
+        <h1 className="text-7xl md:text-9xl font-black text-white leading-[0.95] mb-12">
           {t.headingLine1}
           <br />
           {t.headingLine2Pre}
