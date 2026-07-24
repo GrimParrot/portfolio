@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 import { Link, useNavigate } from "react-router-dom"
 import { projects } from "@/data/projects"
 import { useLang } from "@/i18n/LanguageContext"
+import { smoothScrollTo } from "@/lib/lenis"
 
 interface ProjectNavProps {
   currentHref: string
@@ -23,7 +24,7 @@ export function ProjectNav({ currentHref }: ProjectNavProps) {
     <div className="flex items-center justify-between mb-8">
       <Link
         to="/"
-        onClick={() => setTimeout(() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "center" }), 100)}
+        onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
         className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
       >
         <ArrowLeft className="w-4 h-4 animate-bounce-left" /> {t.back}

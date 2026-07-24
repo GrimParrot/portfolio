@@ -4,6 +4,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useLang } from "@/i18n/LanguageContext"
 import { Menu, X, Mail } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
+import { smoothScrollTo } from "@/lib/lenis"
 
 const copy = {
   pl: { projects: "Projekty", contact: "Kontakt" },
@@ -47,17 +48,17 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
     e.preventDefault()
     setOpen(false)
     if (location.pathname === "/") {
-      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "center" })
+      smoothScrollTo("#projects")
     } else {
       navigate("/")
-      setTimeout(() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "center" }), 300)
+      setTimeout(() => smoothScrollTo("#projects"), 300)
     }
   }
 
   const handleContact = (e: React.MouseEvent) => {
     e.preventDefault()
     setOpen(false)
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" })
+    smoothScrollTo("#contact")
   }
 
   return (
@@ -68,7 +69,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             scrolled
               ? "bg-slate-50/90 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
               : dark
-                ? "bg-[#0B1220]/60 backdrop-blur-md shadow-none border-white/10"
+                ? "bg-[#0A0A0A]/60 backdrop-blur-md shadow-none border-white/10"
                 : "bg-transparent shadow-none border-transparent"
           }`}
         >

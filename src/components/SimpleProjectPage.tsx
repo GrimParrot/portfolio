@@ -8,6 +8,7 @@ import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { Badge } from "@/components/ui/badge"
 import { useLang } from "@/i18n/LanguageContext"
+import { smoothScrollTo } from "@/lib/lenis"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -138,7 +139,7 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
         {!embedded && (
           <Link
             to="/"
-            onClick={() => setTimeout(() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "center" }), 100)}
+            onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
             aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
             className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors mb-12"
           >

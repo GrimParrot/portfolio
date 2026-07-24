@@ -11,6 +11,7 @@ import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { Badge } from "@/components/ui/badge"
 import { useLang } from "@/i18n/LanguageContext"
+import { smoothScrollTo } from "@/lib/lenis"
 import { copy } from "@/copy/raporty.copy"
 
 const PRIMARY = "#466AFA"
@@ -190,7 +191,7 @@ function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] 
       {chapters.map((c) => (
         <button
           key={c.id}
-          onClick={() => document.getElementById(c.id)?.scrollIntoView({ behavior: "smooth", block: "start" })}
+          onClick={() => smoothScrollTo(`#${c.id}`)}
           className="group relative flex items-center justify-center w-4 h-4"
           aria-label={c.label}
         >
@@ -682,7 +683,7 @@ export function RaportyCaseStudy() {
               <div className="flex items-center gap-4">
                 <Link
                   to="/"
-                  onClick={() => setTimeout(() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "center" }), 100)}
+                  onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
                   aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
                   className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
                 >

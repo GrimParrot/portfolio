@@ -2,6 +2,7 @@ import { ArrowDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useLang } from "@/i18n/LanguageContext"
+import { smoothScrollTo } from "@/lib/lenis"
 import { FlowBackground } from "./hero-v2/FlowBackground"
 
 const tags = ["B2B", "B2C", "SaaS", "8+ years exp", "AI-powered"]
@@ -26,7 +27,7 @@ export function HeroV2() {
   const t = copy[lang]
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center bg-[#0B1220]">
+    <section className="relative overflow-hidden min-h-screen flex items-center bg-[#0A0A0A]">
       <FlowBackground />
 
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-left pointer-events-none">
@@ -50,7 +51,7 @@ export function HeroV2() {
           <Button
             size="lg"
             className="pointer-events-auto bg-white text-[#0F172A] hover:bg-slate-200"
-            onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+            onClick={() => smoothScrollTo("#projects")}
           >
             {t.workBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
           </Button>
