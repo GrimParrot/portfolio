@@ -1,24 +1,58 @@
+import { useEffect, useState } from "react"
+import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 import { ArrowDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { useLang } from "@/i18n/LanguageContext"
 import { FlowBackground } from "./hero-v2/FlowBackground"
 
-const tags = ["Lead product designer", "B2B", "B2C", "SaaS", "8+ years exp", "Discovery & Delivery", "AI-powered"]
+const tags = ["Design", "B2B", "B2C", "SaaS", "8+ years exp", "Discovery & Delivery", "AI-powered", "End-to-End"]
 
 const copy = {
   pl: {
-    headingPre: "Cześć, jestem ",
-    headingFlicker: "Edyta",
+    name: "Edyta Suprun",
+    headingLine1: "Projektowanie produktu",
+    headingLine2Pre: "z ",
+    words: ["troską", "pasją", "sercem", "empatią", "dbałością"],
     tagline: "projektuję cyfrowe produkty B2B end to end. Pomagam zespołom zdecydować, co budować — i czego nie budować",
     workBtn: "Zobacz moje projekty",
   },
   en: {
-    headingPre: "Hi, I'm ",
-    headingFlicker: "Edyta",
+    name: "Edyta Suprun",
+    headingLine1: "Product Design",
+    headingLine2Pre: "with ",
+    words: ["care", "passion", "purpose", "craft", "empathy"],
     tagline: "I design digital B2B products end to end. I help teams decide what to build — and what not to build",
     workBtn: "See my work",
   },
+}
+
+function CyclingWord({ words }: { words: string[] }) {
+  const reduceMotion = useReducedMotion()
+  const [index, setIndex] = useState(0)
+
+  useEffect(() => {
+    if (reduceMotion) return
+    const id = setInterval(() => setIndex((i) => (i + 1) % words.length), 2400)
+    return () => clearInterval(id)
+  }, [reduceMotion, words.length])
+
+  return (
+    <span className="inline-grid">
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={words[index]}
+          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={reduceMotion ? undefined : { opacity: 0, y: -12 }}
+          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="col-start-1 row-start-1"
+        >
+          {words[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  )
 }
 
 export function HeroV2() {
@@ -27,30 +61,16 @@ export function HeroV2() {
 
   return (
     <section id="hero-dark" className="relative overflow-hidden min-h-screen flex items-center bg-[#0B1220]">
-      <style>{`
-        @keyframes hero-flicker {
-          0%, 92%, 100% { opacity: 1; text-shadow: 0 0 24px rgba(10,186,83,0.35); }
-          93% { opacity: 0.4; text-shadow: none; }
-          94% { opacity: 1; text-shadow: 0 0 24px rgba(10,186,83,0.35); }
-          95% { opacity: 0.2; text-shadow: none; }
-          96%, 99% { opacity: 1; text-shadow: 0 0 24px rgba(10,186,83,0.35); }
-        }
-        .hero-flicker {
-          animation: hero-flicker 8s linear infinite;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .hero-flicker {
-            animation: none;
-            text-shadow: 0 0 24px rgba(10,186,83,0.35);
-          }
-        }
-      `}</style>
       <FlowBackground />
 
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center pointer-events-none">
+        <p className="text-white/70 text-sm md:text-base font-medium mb-4">{t.name}</p>
+
         <h1 className="text-5xl md:text-7xl font-black text-white leading-tight mb-12">
-          {t.headingPre}
-          <span className="hero-flicker">{t.headingFlicker}</span>
+          {t.headingLine1}
+          <br />
+          {t.headingLine2Pre}
+          <CyclingWord words={t.words} />
         </h1>
 
         <div className="flex flex-wrap justify-center gap-2 mb-4">
