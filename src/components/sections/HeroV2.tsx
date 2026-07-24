@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react"
-import { AnimatePresence, motion, useReducedMotion } from "motion/react"
 import { ArrowDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -11,46 +9,16 @@ const tags = ["B2B", "B2C", "SaaS", "8+ years exp", "AI-powered"]
 const copy = {
   pl: {
     name: "Edyta Suprun",
-    headingLine1: "Product Designer",
-    headingLine2Pre: "z ",
-    words: ["troską", "pasją", "sercem", "empatią", "dbałością"],
+    headingLine1: "Product",
+    headingLine2: "Designer",
     workBtn: "Zobacz moje projekty",
   },
   en: {
     name: "Edyta Suprun",
-    headingLine1: "Product Designer",
-    headingLine2Pre: "with ",
-    words: ["care", "passion", "purpose", "craft", "empathy"],
+    headingLine1: "Product",
+    headingLine2: "Designer",
     workBtn: "See my work",
   },
-}
-
-function CyclingWord({ words }: { words: string[] }) {
-  const reduceMotion = useReducedMotion()
-  const [index, setIndex] = useState(0)
-
-  useEffect(() => {
-    if (reduceMotion) return
-    const id = setInterval(() => setIndex((i) => (i + 1) % words.length), 2400)
-    return () => clearInterval(id)
-  }, [reduceMotion, words.length])
-
-  return (
-    <span className="inline-grid">
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={words[index]}
-          initial={reduceMotion ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={reduceMotion ? undefined : { opacity: 0, y: -12 }}
-          transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="col-start-1 row-start-1"
-        >
-          {words[index]}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  )
 }
 
 export function HeroV2() {
@@ -64,11 +32,10 @@ export function HeroV2() {
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-left pointer-events-none">
         <p className="text-white/70 text-base md:text-lg font-medium mb-5">{t.name}</p>
 
-        <h1 className="text-7xl md:text-9xl font-black text-white leading-[0.95] mb-12">
+        <h1 className="text-9xl md:text-[13rem] font-black text-white leading-[0.9] mb-12">
           {t.headingLine1}
           <br />
-          {t.headingLine2Pre}
-          <CyclingWord words={t.words} />
+          {t.headingLine2}
         </h1>
 
         <div className="flex flex-wrap justify-start gap-2 mb-10">
