@@ -26,7 +26,7 @@ export function HeroV2() {
   const t = copy[lang]
 
   return (
-    <section id="hero-dark" className="relative overflow-hidden min-h-screen flex items-center bg-[#0B1220]">
+    <section className="relative overflow-hidden min-h-screen flex items-center bg-[#0B1220]">
       <FlowBackground />
 
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-left pointer-events-none">
