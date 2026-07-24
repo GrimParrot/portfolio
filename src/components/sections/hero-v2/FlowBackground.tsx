@@ -1,20 +1,27 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useReducedMotion } from "motion/react"
 import WebGLFluid from "webgl-fluid"
+
+function getIsHoverCapable() {
+  if (typeof window === "undefined") return true
+  return window.matchMedia("(hover: hover) and (pointer: fine)").matches
+}
 
 export function FlowBackground() {
   const reduceMotion = useReducedMotion()
   const containerRef = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const startedRef = useRef(false)
+  const [isHoverCapable] = useState(getIsHoverCapable)
+  const skipCanvas = reduceMotion || !isHoverCapable
 
   useEffect(() => {
-    if (reduceMotion) return
+    if (skipCanvas) return
     const container = containerRef.current
     const canvas = canvasRef.current
     if (!container || !canvas) return
 
-    function init(overrides: { IMMEDIATE: boolean; AUTO: boolean; INTERVAL?: number }) {
+    function init(overrides: { IMMEDIATE: boolean; AUTO: boolean }) {
       if (startedRef.current) return
       startedRef.current = true
 
@@ -37,15 +44,6 @@ export function FlowBackground() {
       })
     }
 
-    // No mouse on touch devices — there's nothing to "hover", so let the
-    // fluid play a gentle ambient animation on its own instead of staying
-    // fully static.
-    const isHoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)").matches
-    if (!isHoverCapable) {
-      init({ IMMEDIATE: true, AUTO: true, INTERVAL: 3500 })
-      return
-    }
-
     function start(e: PointerEvent) {
       if (startedRef.current) return
       // Ignore the "phantom" pointermove browsers fire on load/hover-state
@@ -58,15 +56,27 @@ export function FlowBackground() {
 
     container.addEventListener("pointermove", start)
     return () => container.removeEventListener("pointermove", start)
-  }, [reduceMotion])
+  }, [skipCanvas])
 
-  if (reduceMotion) {
-    return <div className="absolute inset-0" style={{ background: "#0A0A0A" }} />
+  // The webgl-fluid library attaches its own touchstart/touchmove listeners
+  // with preventDefault(), which blocks native page scrolling — there's no
+  // CSS way around that. So touch/no-hover devices never get the canvas at
+  // all and fall back to a static gradient instead.
+  if (skipCanvas) {
+    return (
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at 30% 75%, rgba(139,92,246,0.22), transparent 60%), #0A0A0A",
+        }}
+      />
+    )
   }
 
   return (
-    <div ref={containerRef} className="absolute inset-0" style={{ touchAction: "pan-y" }}>
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" style={{ touchAction: "pan-y" }} />
+    <div ref={containerRef} className="absolute inset-0">
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
     </div>
   )
 }

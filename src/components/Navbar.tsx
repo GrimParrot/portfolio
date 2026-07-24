@@ -66,11 +66,13 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
       <nav className="fixed top-4 inset-x-4 md:top-5 md:inset-x-8 z-50">
         <div
           className={`max-w-[1200px] mx-auto rounded-2xl px-6 h-16 flex items-center justify-between transition-all duration-300 border ${
-            scrolled
-              ? "bg-slate-50/90 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
-              : dark
-                ? "bg-[#0A0A0A]/60 backdrop-blur-md shadow-none border-white/10"
-                : "bg-transparent shadow-none border-transparent"
+            open
+              ? "bg-transparent shadow-none border-transparent"
+              : scrolled
+                ? "bg-slate-50/90 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
+                : dark
+                  ? "bg-[#0A0A0A]/60 backdrop-blur-md shadow-none border-white/10"
+                  : "bg-transparent shadow-none border-transparent"
           }`}
         >
           <Link to="/" onClick={() => setOpen(false)}>
