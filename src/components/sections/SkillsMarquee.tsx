@@ -1,52 +1,22 @@
-import { useReducedMotion } from "motion/react"
 import { useLang } from "@/i18n/LanguageContext"
+import { CurvedMarquee } from "@/components/CurvedMarquee"
 
 const copy = {
-  pl: ["Strategia produktowa", "Badania użytkowników", "Design Systems", "Prototypowanie", "Discovery & Delivery", "B2B SaaS", "End-to-End", "Visual Craft"],
-  en: ["Product Strategy", "User Research", "Design Systems", "Prototyping", "Discovery & Delivery", "B2B SaaS", "End-to-End", "Visual Craft"],
-}
-
-function MarqueeRow({ phrases, ariaHidden }: { phrases: string[]; ariaHidden?: boolean }) {
-  return (
-    <div className="flex items-center flex-shrink-0" aria-hidden={ariaHidden}>
-      {phrases.map((phrase, i) => (
-        <span key={i} className="flex items-center whitespace-nowrap">
-          <span className="text-xl md:text-2xl font-bold text-white px-6" style={{ fontFamily: "'Space Grotesk', 'Manrope', system-ui, sans-serif" }}>{phrase}</span>
-          <span className="text-[#8B5CF6] text-lg" aria-hidden="true">◆</span>
-        </span>
-      ))}
-    </div>
-  )
+  pl: ["Strategia produktowa", "Badania użytkowników", "Design Systems", "Prototypowanie", "Discovery & Delivery", "B2B SaaS", "End-to-End", "Visual Craft", "UI", "UX", "AI"],
+  en: ["Product Strategy", "User Research", "Design Systems", "Prototyping", "Discovery & Delivery", "B2B SaaS", "End-to-End", "Visual Craft", "UI", "UX", "AI"],
 }
 
 export function SkillsMarquee() {
-  const reduceMotion = useReducedMotion()
   const { lang } = useLang()
   const phrases = copy[lang]
-
-  if (reduceMotion) {
-    return (
-      <section className="overflow-hidden bg-[#0A0A0A] py-8 border-y border-white/10">
-        <MarqueeRow phrases={phrases} />
-      </section>
-    )
-  }
+  const text = phrases.join(" • ") + " • "
 
   return (
-    <section className="overflow-hidden bg-[#0A0A0A] py-8 border-y border-white/10">
-      <style>{`
-        @keyframes skills-marquee-scroll {
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        .skills-marquee-track {
-          animation: skills-marquee-scroll 42s linear infinite;
-        }
-      `}</style>
-      <div className="flex skills-marquee-track" style={{ width: "max-content" }}>
-        <MarqueeRow phrases={phrases} />
-        <MarqueeRow phrases={phrases} ariaHidden />
+    <section className="absolute inset-x-0 bottom-0 z-20 overflow-hidden bg-[#0A0A0A]/60 backdrop-blur-md py-4">
+      <div aria-hidden="true">
+        <CurvedMarquee text={text} pathType="wave" amplitude={20} wavelength={300} speed={85} fontSize={28} height={88} color="#FFFFFF" separatorColor="#8B5CF6" />
       </div>
+      <span className="sr-only">{phrases.join(", ")}</span>
     </section>
   )
 }

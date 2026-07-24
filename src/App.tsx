@@ -10,7 +10,7 @@ export default function App() {
     <div className="min-h-screen bg-white">
       <Navbar dark />
       <main>
-        <div id="hero-dark">
+        <div id="hero-dark" className="relative">
           <HeroV2 />
           <SkillsMarquee />
         </div>
