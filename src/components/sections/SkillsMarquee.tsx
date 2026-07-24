@@ -2,8 +2,8 @@ import { useReducedMotion } from "motion/react"
 import { useLang } from "@/i18n/LanguageContext"
 
 const copy = {
-  pl: ["Strategia produktowa", "Badania użytkowników", "Design Systems", "Prototypowanie", "Discovery & Delivery", "B2B SaaS"],
-  en: ["Product Strategy", "User Research", "Design Systems", "Prototyping", "Discovery & Delivery", "B2B SaaS"],
+  pl: ["Strategia produktowa", "Badania użytkowników", "Design Systems", "Prototypowanie", "Discovery & Delivery", "B2B SaaS", "End-to-End", "Visual Craft"],
+  en: ["Product Strategy", "User Research", "Design Systems", "Prototyping", "Discovery & Delivery", "B2B SaaS", "End-to-End", "Visual Craft"],
 }
 
 function MarqueeRow({ phrases, ariaHidden }: { phrases: string[]; ariaHidden?: boolean }) {
