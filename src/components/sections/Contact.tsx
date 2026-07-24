@@ -1,4 +1,5 @@
 import { Mail, ArrowUpRight } from "lucide-react"
+import { Magnetic } from "@/components/Magnetic"
 import { useLang } from "@/i18n/LanguageContext"
 
 const copy = {
@@ -65,34 +66,35 @@ export function Contact() {
 
         <div className="flex flex-col gap-3">
           {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-              className={`flex items-center justify-between px-5 py-4 rounded-2xl border transition-all group ${
-                link.dark
-                  ? "bg-slate-900 border-slate-900 text-white hover:bg-slate-800"
-                  : "bg-white border-slate-200 text-slate-900 hover:border-slate-300 hover:shadow-sm"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                {link.icon && (
-                  <div className={`w-12 h-12 flex items-center justify-center ${link.dark ? "bg-white/10" : "bg-secondary"}`} style={{ borderRadius: 8 }}>
-                    {link.icon}
+            <Magnetic key={link.label} strength={0.25} className="block">
+              <a
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                className={`flex items-center justify-between px-5 py-4 rounded-2xl border transition-all group ${
+                  link.dark
+                    ? "bg-slate-900 border-slate-900 text-white hover:bg-slate-800"
+                    : "bg-white border-slate-200 text-slate-900 hover:border-slate-300 hover:shadow-sm"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  {link.icon && (
+                    <div className={`w-12 h-12 flex items-center justify-center ${link.dark ? "bg-white/10" : "bg-secondary"}`} style={{ borderRadius: 8 }}>
+                      {link.icon}
+                    </div>
+                  )}
+                  <div>
+                    <p className="text-[13px] text-slate-400 mb-0.5">
+                      {link.label}
+                    </p>
+                    <p className={`font-medium ${link.dark ? "text-white" : "text-slate-900"}`}>
+                      {link.value}
+                    </p>
                   </div>
-                )}
-                <div>
-                  <p className="text-[13px] text-slate-400 mb-0.5">
-                    {link.label}
-                  </p>
-                  <p className={`font-medium ${link.dark ? "text-white" : "text-slate-900"}`}>
-                    {link.value}
-                  </p>
                 </div>
-              </div>
-              <ArrowUpRight className={`w-4 h-4 animate-nudge-ur ${link.dark ? "text-slate-400" : "text-slate-400"}`} />
-            </a>
+                <ArrowUpRight className={`w-4 h-4 animate-nudge-ur ${link.dark ? "text-slate-400" : "text-slate-400"}`} />
+              </a>
+            </Magnetic>
           ))}
         </div>
       </div>

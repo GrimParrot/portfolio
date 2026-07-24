@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Magnetic } from "@/components/Magnetic"
 import { useLang } from "@/i18n/LanguageContext"
 import { smoothScrollTo } from "@/lib/lenis"
 import { FlowBackground } from "./hero-v2/FlowBackground"
@@ -48,13 +49,15 @@ export function HeroV2() {
         </div>
 
         <div className="flex flex-wrap justify-start gap-3">
-          <Button
-            size="lg"
-            className="pointer-events-auto bg-white text-[#0F172A] hover:bg-slate-200"
-            onClick={() => smoothScrollTo("#projects")}
-          >
-            {t.workBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
-          </Button>
+          <Magnetic strength={0.3} className="pointer-events-auto inline-block">
+            <Button
+              size="lg"
+              className="bg-white text-[#0F172A] hover:bg-slate-200"
+              onClick={() => smoothScrollTo("#projects")}
+            >
+              {t.workBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
+            </Button>
+          </Magnetic>
         </div>
       </div>
     </section>
