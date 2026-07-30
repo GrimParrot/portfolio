@@ -63,50 +63,50 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
 
   return (
     <>
-      <nav className="fixed top-4 inset-x-4 md:top-5 md:inset-x-8 z-50">
+      <nav className="fixed top-s inset-x-s md:top-m md:inset-x-l z-50">
         <div
-          className={`max-w-[1200px] mx-auto rounded-2xl px-6 h-16 flex items-center justify-between transition-all duration-300 border ${
+          className={`max-w-container mx-auto rounded-2xl px-m h-2xl flex items-center justify-between transition-all duration-300 border ${
             open
               ? "bg-transparent shadow-none border-transparent"
               : scrolled
-                ? "bg-slate-50/90 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
+                ? "bg-primary-50/90 backdrop-blur-md shadow-lg shadow-primary-900/[0.08] border-white/40"
                 : dark
-                  ? "bg-[#0A0A0A]/60 backdrop-blur-md shadow-none border-white/10"
+                  ? "bg-primary-900/60 backdrop-blur-md shadow-none border-white/10"
                   : "bg-transparent shadow-none border-transparent"
           }`}
         >
           <Link to="/" onClick={() => setOpen(false)}>
-            <img src="/pixelnow.svg" alt="Pixel Now" className={`h-8 transition-[filter] duration-300 ${lightOnDark && !open ? "brightness-0 invert" : ""}`} />
+            <img src="/pixelnow.svg" alt="Pixel Now" className={`h-l transition-[filter] duration-300 ${lightOnDark && !open ? "brightness-0 invert" : ""}`} />
           </Link>
 
           {/* Desktop */}
-          <div className={`hidden md:flex items-center gap-8 text-sm transition-colors duration-300 ${lightOnDark ? "text-white/80" : "text-slate-600"}`}>
-            <a href="#projects" onClick={handleProjects} className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-slate-900 hover:bg-secondary"}`}>{t.projects}</a>
-            <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className={`px-3 py-1.5 rounded-md transition-colors ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-slate-900 hover:bg-secondary"}`}>CV</a>
-            <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className={`px-3 py-1.5 rounded-md transition-colors ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-slate-900 hover:bg-secondary"}`}>LinkedIn</a>
+          <div className={`hidden md:flex items-center gap-l font-body text-caption transition-colors duration-300 ${lightOnDark ? "text-white/80" : "text-primary-700"}`}>
+            <a href="#projects" onClick={handleProjects} className={`px-s py-xs rounded-md transition-colors cursor-pointer ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-primary-900 hover:bg-secondary"}`}>{t.projects}</a>
+            <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className={`px-s py-xs rounded-md transition-colors ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-primary-900 hover:bg-secondary"}`}>CV</a>
+            <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className={`px-s py-xs rounded-md transition-colors ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-primary-900 hover:bg-secondary"}`}>LinkedIn</a>
 
-            <div className="flex items-center gap-1 text-sm font-medium">
-              <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? (lightOnDark ? "text-white font-bold" : "text-slate-900 font-bold") : (lightOnDark ? "text-white/40 hover:text-white/70" : "text-slate-400 hover:text-slate-600")}`}>PL</button>
-              <span className={lightOnDark ? "text-white/20" : "text-slate-200"}>/</span>
-              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? (lightOnDark ? "text-white font-bold" : "text-slate-900 font-bold") : (lightOnDark ? "text-white/40 hover:text-white/70" : "text-slate-400 hover:text-slate-600")}`}>EN</button>
+            <div className="flex items-center gap-micro font-body text-caption font-medium">
+              <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? (lightOnDark ? "text-white font-bold" : "text-primary-900 font-bold") : (lightOnDark ? "text-white/40 hover:text-white/70" : "text-primary-500 hover:text-primary-700")}`}>PL</button>
+              <span className={lightOnDark ? "text-white/20" : "text-primary-300"}>/</span>
+              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? (lightOnDark ? "text-white font-bold" : "text-primary-900 font-bold") : (lightOnDark ? "text-white/40 hover:text-white/70" : "text-primary-500 hover:text-primary-700")}`}>EN</button>
             </div>
 
             <Button
               size="sm"
-              className={`px-5 transition-colors duration-300 ${lightOnDark ? "bg-white text-[#0F172A] hover:bg-slate-200" : "bg-[#0F172A] text-white hover:bg-[#1E293B]"}`}
+              className={`px-m transition-colors duration-300 ${lightOnDark ? "bg-white text-primary-900 hover:bg-primary-50" : "bg-primary-900 text-white hover:bg-primary-700"}`}
               onClick={handleContact}
             >
-              <Mail className="w-4 h-4" /> {t.contact}
+              <Mail className="w-s h-s" /> {t.contact}
             </Button>
           </div>
 
           {/* Hamburger */}
           <button
-            className={`md:hidden p-2 transition-colors ${lightOnDark && !open ? "text-white/80 hover:text-white" : "text-slate-700 hover:text-slate-900"}`}
+            className={`md:hidden p-xs transition-colors ${lightOnDark && !open ? "text-white/80 hover:text-white" : "text-primary-700 hover:text-primary-900"}`}
             onClick={() => setOpen((o) => !o)}
             aria-label="Menu"
           >
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {open ? <X className="w-m h-m" /> : <Menu className="w-m h-m" />}
           </button>
         </div>
       </nav>
@@ -119,19 +119,19 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className="fixed inset-0 z-40 bg-white pt-16 flex flex-col px-6 py-8 gap-6 text-lg font-medium text-slate-700 md:hidden"
+          className="fixed inset-0 z-40 bg-white pt-2xl flex flex-col px-m py-l gap-m font-body text-body font-medium text-primary-700 md:hidden"
         >
-          <a href="#projects" onClick={handleProjects} className="py-3 border-b border-slate-100">{t.projects}</a>
-          <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className="py-3 border-b border-slate-100" onClick={() => setOpen(false)}>CV</a>
-          <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className="py-3 border-b border-slate-100" onClick={() => setOpen(false)}>LinkedIn</a>
+          <a href="#projects" onClick={handleProjects} className="py-s border-b border-primary-100">{t.projects}</a>
+          <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className="py-s border-b border-primary-100" onClick={() => setOpen(false)}>CV</a>
+          <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className="py-s border-b border-primary-100" onClick={() => setOpen(false)}>LinkedIn</a>
 
-          <div className="flex items-center gap-3 py-3 border-b border-slate-100">
-            <button onClick={() => { setLang("pl"); setOpen(false) }} className={`transition-colors ${lang === "pl" ? "text-slate-900 font-bold" : "text-slate-400"}`}>PL</button>
-            <span className="text-slate-200">/</span>
-            <button onClick={() => { setLang("en"); setOpen(false) }} className={`transition-colors ${lang === "en" ? "text-slate-900 font-bold" : "text-slate-400"}`}>EN</button>
+          <div className="flex items-center gap-s py-s border-b border-primary-100">
+            <button onClick={() => { setLang("pl"); setOpen(false) }} className={`transition-colors ${lang === "pl" ? "text-primary-900 font-bold" : "text-primary-500"}`}>PL</button>
+            <span className="text-primary-300">/</span>
+            <button onClick={() => { setLang("en"); setOpen(false) }} className={`transition-colors ${lang === "en" ? "text-primary-900 font-bold" : "text-primary-500"}`}>EN</button>
           </div>
 
-          <Button className="bg-[#0F172A] hover:bg-[#1E293B] w-full mt-2" onClick={handleContact}>{t.contact}</Button>
+          <Button className="bg-primary-900 hover:bg-primary-700 w-full mt-xs" onClick={handleContact}>{t.contact}</Button>
         </motion.div>
       )}
       </AnimatePresence>

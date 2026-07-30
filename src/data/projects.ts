@@ -1,9 +1,9 @@
 export type ProjectTag = "UI" | "Case Study" | "Web"
 
 export const tagStyles: Record<ProjectTag, string> = {
-  "UI": "bg-[#0F172A] text-white",
-  "Case Study": "bg-[#0ABA53] text-white",
-  "Web": "bg-[#466AFA] text-white",
+  "UI": "bg-primary-900 text-white",
+  "Case Study": "bg-[var(--color-accent-green)] text-white",
+  "Web": "bg-accent-500 text-white",
 }
 
 export interface Project {
@@ -29,8 +29,8 @@ export const projects: Project[] = [
     description_en: "Automation that does the report for the specialist.",
     tag: "Case Study",
     featured: true,
-    color: "from-[#466AFA] to-indigo-500",
-    bg: "bg-indigo-50",
+    color: "from-accent-500 to-accent-700",
+    bg: "bg-primary-50",
     image: "/raporty-cover.webp",
     imagePosition: "left center",
     href: "/case-study/raporty",
@@ -42,8 +42,8 @@ export const projects: Project[] = [
     description_en: "Two separate tools replaced by one flow — from lead to client onboarding.",
     tag: "Case Study",
     featured: true,
-    color: "from-[#466AFA] to-indigo-500",
-    bg: "bg-violet-50",
+    color: "from-accent-500 to-accent-700",
+    bg: "bg-primary-50",
     image: "/client-acquisition-cover.webp",
     href: "/case-study/localo",
   },
@@ -72,8 +72,8 @@ export const projects: Project[] = [
     description: "Przeprojektowałam kluczowy ekran statystyk — nowy układ, wykresy zamiast surowych liczb.",
     description_en: "Redesigned the core stats screen — new layout, charts instead of raw numbers.",
     tag: "Web",
-    color: "from-[#466AFA] to-indigo-500",
-    bg: "bg-slate-50",
+    color: "from-accent-500 to-accent-700",
+    bg: "bg-primary-50",
     image: "/stats-cover.webp",
     href: "/ui/stats",
   },
@@ -82,8 +82,8 @@ export const projects: Project[] = [
     description: "Główny pulpit Localo — widoczność, zadania, recenzje i konkurencja w jednym widoku.",
     description_en: "Localo's main dashboard — visibility, tasks, reviews and competitors in one view.",
     tag: "Web",
-    color: "from-[#466AFA] to-indigo-500",
-    bg: "bg-slate-50",
+    color: "from-accent-500 to-accent-700",
+    bg: "bg-primary-50",
     image: "/dashboard-cover.webp",
     href: "/ui/dashboard",
   },

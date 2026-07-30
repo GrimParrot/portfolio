@@ -49,14 +49,14 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-8"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-l"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
           <motion.div
-            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-primary-900/60 backdrop-blur-sm"
             onClick={onClose}
           />
           <motion.div
@@ -70,12 +70,12 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
             <button
               onClick={onClose}
               aria-label="Close"
-              className="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-9 h-9 rounded-xl bg-white/90 border border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-300 transition-colors shadow-sm"
+              className="absolute top-s right-s z-10 inline-flex items-center justify-center w-l h-l rounded-xl bg-white/90 border border-primary-100 text-primary-500 hover:text-primary-900 hover:border-primary-300 transition-colors shadow-sm"
             >
-              <X className="w-4 h-4" />
+              <X className="w-s h-s" />
             </button>
             <div ref={scrollRef} className="pretty-scrollbar overflow-y-auto rounded-3xl" data-lenis-prevent style={{ maxHeight: "90vh" }}>
-              <div ref={contentRef} className="max-w-[1200px] mx-auto">
+              <div ref={contentRef} className="max-w-container mx-auto">
                 {children}
               </div>
             </div>

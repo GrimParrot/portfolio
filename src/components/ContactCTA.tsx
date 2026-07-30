@@ -18,14 +18,14 @@ export function ContactCTA() {
   const t = copy[lang]
 
   return (
-    <div className="mt-8 bg-[#0F172A] rounded-2xl px-10 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <div className="mt-l bg-primary-900 rounded-2xl px-xl py-l flex flex-col md:flex-row items-center justify-between gap-m">
       <div>
-        <p className="text-white font-black text-xl mb-1">{t.heading}</p>
-        <p className="text-white/50">{t.body}</p>
+        <p className="font-heading text-h4 text-white mb-micro">{t.heading}</p>
+        <p className="font-body text-body text-white/50">{t.body}</p>
       </div>
       <a
         href="mailto:suprun.edyta@gmail.com"
-        className="w-full md:w-auto text-center whitespace-nowrap bg-white text-[#0F172A] font-semibold px-6 py-3 rounded-xl hover:bg-slate-100 transition-colors"
+        className="w-full md:w-auto text-center whitespace-nowrap bg-white text-primary-900 font-semibold px-m py-s rounded-xl hover:bg-primary-50 transition-colors"
       >
         {t.cta}
       </a>

@@ -1,6 +1,6 @@
 export function Footer() {
   return (
-    <footer className="text-center text-sm text-slate-400 py-8 px-6">
+    <footer className="text-center font-body text-caption text-primary-500 py-l px-m">
       © 2026 Edyta Suprun · Designed with ♥
     </footer>
   )

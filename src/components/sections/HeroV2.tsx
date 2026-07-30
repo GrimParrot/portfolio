@@ -28,37 +28,34 @@ export function HeroV2() {
   const t = copy[lang]
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center bg-[#0A0A0A]">
+    <section className="relative overflow-hidden min-h-screen flex items-center bg-primary-900">
       <FlowBackground />
 
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-left pointer-events-none">
-        <p className="text-white/70 text-base md:text-lg font-medium mb-5">{t.name}</p>
+      <div className="relative z-10 w-full max-w-container mx-auto px-m text-left pointer-events-none">
+        <p className="font-body text-caption md:text-body text-white/70 font-medium mb-m">{t.name}</p>
 
-        <h1
-          className="font-black text-white leading-[0.9] mb-12"
-          style={{ fontSize: "clamp(2.75rem, 13vw, 13rem)" }}
-        >
+        <h1 className="font-heading text-h1 text-white mb-xl">
           {t.headingLine1}
           <br />
           {t.headingLine2}
         </h1>
 
-        <div className="flex flex-wrap justify-start gap-2 mb-10">
+        <div className="flex flex-wrap justify-start gap-xs mb-xl">
           {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-white/10 text-white hover:bg-white/15">
+            <Badge key={tag} variant="secondary" className="px-s py-xs font-body text-caption font-medium bg-white/10 text-white hover:bg-white/15">
               {tag}
             </Badge>
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-start gap-3">
+        <div className="flex flex-wrap justify-start gap-s">
           <Magnetic strength={0.3} className="pointer-events-auto inline-block">
             <Button
               size="lg"
-              className="bg-white text-[#0F172A] hover:bg-slate-200"
+              className="bg-white text-primary-900 hover:bg-primary-50"
               onClick={() => smoothScrollTo("#projects")}
             >
-              {t.workBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
+              {t.workBtn} <ArrowDown className="w-s h-s animate-bounce" />
             </Button>
           </Magnetic>
         </div>

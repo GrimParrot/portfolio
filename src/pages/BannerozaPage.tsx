@@ -10,7 +10,7 @@ import { useLang } from "@/i18n/LanguageContext"
 import { smoothScrollTo } from "@/lib/lenis"
 import { copy } from "@/copy/banneroza.copy"
 
-const PRIMARY = "#DD8100"
+const PRIMARY = "var(--color-accent-banneroza)"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -182,12 +182,12 @@ function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] 
   }, [chapters])
 
   return (
-    <div className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 flex-col items-center gap-4 z-40">
+    <div className="hidden lg:flex fixed right-l top-1/2 -translate-y-1/2 flex-col items-center gap-s z-40">
       {chapters.map((c) => (
         <button
           key={c.id}
           onClick={() => smoothScrollTo(`#${c.id}`)}
-          className="group relative flex items-center justify-center w-4 h-4"
+          className="group relative flex items-center justify-center w-s h-s"
           aria-label={c.label}
         >
           <span
@@ -195,10 +195,10 @@ function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] 
             style={{
               width: active === c.id ? 8 : 6,
               height: active === c.id ? 8 : 6,
-              backgroundColor: active === c.id ? PRIMARY : "#CBD5E1",
+              backgroundColor: active === c.id ? PRIMARY : "var(--primary-300)",
             }}
           />
-          <span className="absolute right-6 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md bg-[#0F172A] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+          <span className="absolute right-m whitespace-nowrap font-body text-caption font-medium px-xs py-micro rounded-md bg-primary-900 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             {c.label}
           </span>
         </button>
@@ -209,14 +209,14 @@ function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] 
 
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
-    <span className="text-[13px] font-bold tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
+    <span className="font-body text-overline uppercase text-primary-500" style={color ? { color } : undefined}>
       {children}
     </span>
   )
 }
 
 function Divider() {
-  return <hr className="border-t border-slate-100 my-0" />
+  return <hr className="border-t border-primary-100 my-0" />
 }
 
 export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {}) {
@@ -238,25 +238,25 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
       {!embedded && <Navbar />}
       {!embedded && <ProgressRail chapters={chapters} />}
 
-      <div className={embedded ? "px-6 sm:px-10 pt-14 pb-10" : "max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32"}>
+      <div className={embedded ? "px-m sm:px-xl pt-2xl pb-xl" : "max-w-container mx-auto px-m pt-3xl pb-2xl md:pb-4xl"}>
 
         {/* ── HERO ── */}
-        <div id="hero" className="py-8 md:py-16">
+        <div id="hero" className="py-s md:py-2xl">
           <HeroStagger>
             <StaggerItem>
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-s">
                 {!embedded && (
                   <Link
                     to="/"
                     onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
                     aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
+                    className="inline-flex items-center justify-center w-l h-l rounded-xl border border-primary-100 text-primary-900 flex-shrink-0 hover:border-primary-300 transition-colors"
                   >
-                    <ArrowLeft className="w-4 h-4 animate-bounce-left" />
+                    <ArrowLeft className="w-s h-s animate-bounce-left" />
                   </Link>
                 )}
-                <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-[#0F172A]">
-                  Case Study<span className="mx-2 opacity-40">—</span>
+                <span className="font-body text-overline uppercase text-primary-900">
+                  Case Study<span className="mx-xs opacity-40">—</span>
                   <span style={{ color: PRIMARY }}>{t.heroEyebrow}</span>
                 </span>
               </div>
@@ -264,8 +264,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
 
             <StaggerItem>
               <AutoFitHeading
-                className="mt-8 font-extrabold text-[#0F172A]"
-                style={{ fontSize: "clamp(3rem, 10vw, 8.25rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}
+                className="mt-l font-heading text-h1 text-primary-900"
                 maxLines={3}
                 activeKey={lang}
                 variants={[
@@ -277,35 +276,35 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
 
             <StaggerItem>
               <p
-                className="mt-10 text-slate-600 font-medium"
-                style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)", maxWidth: "56ch", lineHeight: 1.5 }}
+                className="mt-xl font-body text-body-lg text-primary-700"
+                style={{ maxWidth: "56ch" }}
               >
                 {t.body}
               </p>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-px rounded-[20px] border border-[#eef1f5] bg-[#eef1f5] overflow-hidden">
+              <div className="mt-xl grid grid-cols-2 md:grid-cols-4 gap-px rounded-[20px] border border-primary-100 bg-primary-50 overflow-hidden">
                 {t.meta.map((item) => (
-                  <div key={item.label} className="bg-white px-6 py-6">
+                  <div key={item.label} className="bg-white px-m py-m">
                     <Tag color={PRIMARY}>{item.label}</Tag>
-                    <p className="font-extrabold text-lg text-[#0F172A] mt-2">{item.value}</p>
+                    <p className="font-body text-body font-extrabold text-primary-900 mt-xs">{item.value}</p>
                   </div>
                 ))}
               </div>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-10 rounded-[28px] overflow-hidden" style={{ aspectRatio: "4/3" }}>
+              <div className="mt-xl rounded-[28px] overflow-hidden" style={{ aspectRatio: "4/3" }}>
                 <img src="/banneroza/cover2.jpg" alt="Banneroza, cover" className="w-full h-full object-cover" />
               </div>
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-14 rounded-3xl p-10" style={{ backgroundColor: "#94A3B814" }}>
-                <span className="block text-[13px] font-extrabold tracking-[0.24em] uppercase mb-3.5" style={{ color: PRIMARY }}>{t.roleLabel}</span>
-                <p className="font-medium text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 1.1875rem)", lineHeight: 1.6 }}>
-                  <strong className="font-bold text-[#0F172A]">{t.roleLead}</strong> {t.roleDesc}
+              <div className="mt-2xl rounded-3xl p-xl" style={{ backgroundColor: "var(--primary-50)" }}>
+                <span className="block font-body text-overline uppercase mb-s" style={{ color: PRIMARY }}>{t.roleLabel}</span>
+                <p className="font-body text-body text-primary-700">
+                  <strong className="font-bold text-primary-900">{t.roleLead}</strong> {t.roleDesc}
                 </p>
               </div>
             </StaggerItem>
@@ -315,50 +314,50 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         <Divider />
 
         {/* ── PROBLEM ── */}
-        <div id="s01" className="py-20 md:py-28">
+        <div id="s01" className="py-3xl md:py-4xl">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-8">{t.s01.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-6">{t.s01.p1}</p>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s01.p2}</p>
+            <h2 className="font-heading text-h2 text-primary-900 mb-l">{t.s01.h2}</h2>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-m">{t.s01.p1}</p>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-xl">{t.s01.p2}</p>
           </Reveal>
           <Reveal>
-            <img src="/banneroza/1.jpg" alt="Problem, banners in cities" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <img src="/banneroza/1.jpg" alt="Problem, banners in cities" className="w-full rounded-2xl border border-primary-100 object-cover" />
           </Reveal>
         </div>
 
         <Divider />
 
         {/* ── SOLUTION ── */}
-        <div id="s02" className="py-20 md:py-28">
+        <div id="s02" className="py-3xl md:py-4xl">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s02.h2}</h2>
+            <h2 className="font-heading text-h2 text-primary-900 mb-xl">{t.s02.h2}</h2>
           </Reveal>
 
-          <Reveal className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+          <Reveal className="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
             <div>
-              <p className="text-slate-500 leading-relaxed mb-6">{t.s02.p1}</p>
-              <p className="text-slate-500 leading-relaxed mb-6">{t.s02.p2}</p>
-              <p className="text-slate-500 leading-relaxed">{t.s02.p3}</p>
+              <p className="font-body text-body text-primary-700 leading-relaxed mb-m">{t.s02.p1}</p>
+              <p className="font-body text-body text-primary-700 leading-relaxed mb-m">{t.s02.p2}</p>
+              <p className="font-body text-body text-primary-700 leading-relaxed">{t.s02.p3}</p>
             </div>
-            <img src="/banneroza/3.jpg" alt="Szyldowe Rewolucje, solution" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <img src="/banneroza/3.jpg" alt="Szyldowe Rewolucje, solution" className="w-full rounded-2xl border border-primary-100 object-cover" />
           </Reveal>
         </div>
 
         <Divider />
 
         {/* ── DISCOVERY ── */}
-        <div id="s03" className="py-20 md:py-28">
+        <div id="s03" className="py-3xl md:py-4xl">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-8">{t.s03.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-6">{t.s03.p1}</p>
-            <p className="text-slate-500 leading-relaxed mb-8">{t.s03.p2}</p>
+            <h2 className="font-heading text-h2 text-primary-900 mb-l">{t.s03.h2}</h2>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-m">{t.s03.p1}</p>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-l">{t.s03.p2}</p>
           </Reveal>
 
-          <Reveal className="rounded-xl px-6 py-5 mb-12" style={{ background: "#FFF3E0" }}>
-            <p className="text-[13px] font-medium tracking-widest uppercase mb-4" style={{ color: PRIMARY }}>{t.s03.questionsLabel}</p>
-            <ul className="flex flex-col gap-2">
+          <Reveal className="rounded-xl px-m py-m mb-xl" style={{ background: "#FFF3E0" }}>
+            <p className="font-body text-overline uppercase mb-s" style={{ color: PRIMARY }}>{t.s03.questionsLabel}</p>
+            <ul className="flex flex-col gap-xs">
               {t.s03.questions.map((q) => (
-                <li key={q} className="flex gap-3 text-[15px]" style={{ color: "#6b3a00" }}>
+                <li key={q} className="flex gap-s font-body text-caption" style={{ color: "#6b3a00" }}>
                   <span style={{ color: PRIMARY }} className="flex-shrink-0 font-bold">→</span>
                   {q}
                 </li>
@@ -367,79 +366,79 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
           </Reveal>
 
           <Reveal>
-            <img src="/banneroza/4.jpg" alt="Research, quantitative data" className="w-full rounded-2xl border border-slate-200 object-cover mb-12" />
+            <img src="/banneroza/4.jpg" alt="Research, quantitative data" className="w-full rounded-2xl border border-primary-100 object-cover mb-xl" />
           </Reveal>
 
           <Reveal>
-            <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s03.insightsH3}</h3>
+            <h3 className="font-heading text-h3 text-primary-900 mb-s">{t.s03.insightsH3}</h3>
           </Reveal>
-          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-m mb-xl">
             {t.s03.insights.map((item) => (
-              <StaggerItem key={item.title} className="border border-slate-200 rounded-xl p-6 transition-transform duration-300 hover:-translate-y-1">
-                <Lightbulb style={{ width: 24, height: 24, color: PRIMARY }} className="mb-3" />
-                <p className="font-semibold text-slate-900 mb-2">{item.title}</p>
-                <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+              <StaggerItem key={item.title} className="border border-primary-100 rounded-xl p-m transition-transform duration-300 hover:-translate-y-1">
+                <Lightbulb style={{ width: 24, height: 24, color: PRIMARY }} className="mb-s" />
+                <p className="font-body font-semibold text-primary-900 mb-xs">{item.title}</p>
+                <p className="font-body text-caption text-primary-700 leading-relaxed">{item.desc}</p>
               </StaggerItem>
             ))}
           </StaggerGroup>
 
           <Reveal>
-            <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s03.personaH3}</h3>
-            <p className="text-slate-500 leading-relaxed mb-8">{t.s03.personaDesc}</p>
-            <img src="/banneroza/5.jpg" alt="Persona" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <h3 className="font-heading text-h3 text-primary-900 mb-s">{t.s03.personaH3}</h3>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-l">{t.s03.personaDesc}</p>
+            <img src="/banneroza/5.jpg" alt="Persona" className="w-full rounded-2xl border border-primary-100 object-cover" />
           </Reveal>
         </div>
 
         <Divider />
 
         {/* ── PROCES ── */}
-        <div id="s04" className="py-20 md:py-28">
+        <div id="s04" className="py-3xl md:py-4xl">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-8">{t.s04.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s04.p}</p>
+            <h2 className="font-heading text-h2 text-primary-900 mb-l">{t.s04.h2}</h2>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-xl">{t.s04.p}</p>
           </Reveal>
           <Reveal>
-            <img src="/banneroza/6.jpg" alt="Information architecture" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <img src="/banneroza/6.jpg" alt="Information architecture" className="w-full rounded-2xl border border-primary-100 object-cover" />
           </Reveal>
         </div>
 
         <Divider />
 
         {/* ── DESIGN ── */}
-        <div id="s05" className="py-20 md:py-28">
+        <div id="s05" className="py-3xl md:py-4xl">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s05.h2}</h2>
+            <h2 className="font-heading text-h2 text-primary-900 mb-xl">{t.s05.h2}</h2>
           </Reveal>
 
           <Reveal>
-            <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s05.lofiH3}</h3>
-            <p className="text-slate-500 leading-relaxed mb-8">{t.s05.lofiP}</p>
-            <img src="/banneroza/7.jpg" alt="Low fidelity wireframes" className="w-full rounded-2xl border border-slate-200 object-cover mb-12" />
+            <h3 className="font-heading text-h3 text-primary-900 mb-s">{t.s05.lofiH3}</h3>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-l">{t.s05.lofiP}</p>
+            <img src="/banneroza/7.jpg" alt="Low fidelity wireframes" className="w-full rounded-2xl border border-primary-100 object-cover mb-xl" />
           </Reveal>
 
           <Reveal>
-            <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s05.hifiH3}</h3>
-            <p className="text-slate-500 leading-relaxed mb-8">{t.s05.hifiP}</p>
-            <img src="/banneroza/8.jpg" alt="High fidelity mockup" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <h3 className="font-heading text-h3 text-primary-900 mb-s">{t.s05.hifiH3}</h3>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-l">{t.s05.hifiP}</p>
+            <img src="/banneroza/8.jpg" alt="High fidelity mockup" className="w-full rounded-2xl border border-primary-100 object-cover" />
           </Reveal>
         </div>
 
         <Divider />
 
         {/* ── WNIOSKI ── */}
-        <div id="s06" className="py-20 md:py-28">
+        <div id="s06" className="py-3xl md:py-4xl">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-4">{t.s06.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s06.intro}</p>
+            <h2 className="font-heading text-h2 text-primary-900 mb-s">{t.s06.h2}</h2>
+            <p className="font-body text-body text-primary-700 leading-relaxed mb-xl">{t.s06.intro}</p>
           </Reveal>
 
-          <Reveal className="border border-slate-200 rounded-xl divide-y divide-slate-100 mb-12">
+          <Reveal className="border border-primary-100 rounded-xl divide-y divide-primary-100 mb-xl">
             {t.s06.items.map((item, i) => (
-              <div key={i} className="flex gap-5 px-7 py-6">
-                <span className="font-semibold text-slate-400 flex-shrink-0 mt-0.5">{i + 1}</span>
+              <div key={i} className="flex gap-m px-l py-m">
+                <span className="font-semibold text-primary-500 flex-shrink-0 mt-micro">{i + 1}</span>
                 <div>
-                  <p className="font-semibold text-slate-900 mb-1">{item.title}</p>
-                  <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+                  <p className="font-body font-semibold text-primary-900 mb-micro">{item.title}</p>
+                  <p className="font-body text-caption text-primary-700 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             ))}

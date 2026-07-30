@@ -74,7 +74,7 @@ function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: 
   return (
     <div
       onClick={() => onOpen(project)}
-      className="group cursor-pointer rounded-2xl border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-colors duration-200 overflow-hidden relative"
+      className="group cursor-pointer rounded-2xl border border-primary-100 hover:border-primary-300 hover:shadow-sm transition-colors duration-200 overflow-hidden relative"
       style={{ aspectRatio: "4/3" }}
     >
       {/* Image — full height */}
@@ -94,16 +94,16 @@ function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: 
       </div>
 
       {/* Bottom overlay — tag, title, arrow, on a darkened transparent scrim */}
-      <div className="absolute bottom-0 left-0 right-0 px-4 pt-10 pb-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
+      <div className="absolute bottom-0 left-0 right-0 px-s pt-xl pb-s" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
         {showTag && (
-          <span className="inline-block text-sm font-semibold px-3.5 py-2 rounded-xl text-white mb-2" style={{ backgroundColor: "rgba(255,255,255,0.16)", backdropFilter: "blur(4px)" }}>
+          <span className="inline-block font-body text-caption font-semibold px-s py-xs rounded-xl text-white mb-xs" style={{ backgroundColor: "rgba(255,255,255,0.16)", backdropFilter: "blur(4px)" }}>
             {project.tag}
           </span>
         )}
-        <div className="flex items-center justify-between gap-3">
-          <p className="font-semibold text-white leading-snug">{lang === "pl" && project.title_pl ? project.title_pl : project.title}</p>
-          <span className="flex-shrink-0 rounded-xl flex items-center justify-center" style={{ width: 32, height: 32, border: "1px solid rgba(255,255,255,0.4)" }}>
-            <ArrowUpRight className="w-4 h-4 text-white" />
+        <div className="flex items-center justify-between gap-s">
+          <p className="font-body font-semibold text-white leading-snug">{lang === "pl" && project.title_pl ? project.title_pl : project.title}</p>
+          <span className="flex-shrink-0 w-l h-l rounded-xl flex items-center justify-center" style={{ border: "1px solid rgba(255,255,255,0.4)" }}>
+            <ArrowUpRight className="w-s h-s text-white" />
           </span>
         </div>
       </div>
@@ -128,22 +128,22 @@ export function Projects() {
   const openInModal = (project: Project) => setOpenProject(project)
 
   return (
-    <section id="projects" className="pt-10 pb-24 bg-white">
-      <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>
+    <section id="projects" className="pt-xl pb-3xl bg-white">
+      <div className="max-w-container mx-auto px-m">
+        <p className="font-body text-overline uppercase text-primary-700 mb-s">{t.label}</p>
 
         {/* Case study — featured, unfiltered */}
-        <h2 className="text-3xl font-black text-slate-900 mb-6">{t.caseStudyHeading}</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-20">
+        <h2 className="font-heading text-h2 text-primary-900 mb-m">{t.caseStudyHeading}</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-m mb-3xl">
           {featured.map((project) => (
             <ProjectTile key={project.title} project={project} showTag={false} onOpen={openFeatured} />
           ))}
         </div>
 
         {/* Other projects */}
-        <h2 className="text-3xl font-black text-slate-900 mb-12">{t.otherHeading}</h2>
+        <h2 className="font-heading text-h2 text-primary-900 mb-xl">{t.otherHeading}</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-m">
           <AnimatePresence mode="popLayout">
           {filtered.map((project) => (
             <motion.div

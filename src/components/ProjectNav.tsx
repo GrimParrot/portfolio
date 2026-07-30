@@ -21,20 +21,20 @@ export function ProjectNav({ currentHref }: ProjectNavProps) {
   const next = projects[(currentIndex + 1) % projects.length]
 
   return (
-    <div className="flex items-center justify-between mb-8">
+    <div className="flex items-center justify-between mb-l">
       <Link
         to="/"
         onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
-        className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+        className="flex items-center gap-xs font-body text-caption text-primary-500 hover:text-primary-900 transition-colors"
       >
-        <ArrowLeft className="w-4 h-4 animate-bounce-left" /> {t.back}
+        <ArrowLeft className="w-s h-s animate-bounce-left" /> {t.back}
       </Link>
       {next.href && (
         <button
           onClick={() => navigate(next.href!)}
-          className="flex items-center gap-2 text-sm text-slate-500 hover:text-slate-900 transition-colors"
+          className="flex items-center gap-xs font-body text-caption text-primary-500 hover:text-primary-900 transition-colors"
         >
-          {t.next} <ArrowRight className="w-4 h-4 animate-bounce-right" />
+          {t.next} <ArrowRight className="w-s h-s animate-bounce-right" />
         </button>
       )}
     </div>

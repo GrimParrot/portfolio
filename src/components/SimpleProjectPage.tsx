@@ -135,35 +135,34 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
     <div className={embedded ? "bg-white" : "min-h-screen bg-white"} style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
       {!embedded && <Navbar />}
 
-      <div className={embedded ? "px-6 sm:px-10 pt-14 pb-10" : "max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32"}>
+      <div className={embedded ? "px-m sm:px-xl pt-2xl pb-xl" : "max-w-container mx-auto px-m pt-3xl pb-2xl md:pb-4xl"}>
         {!embedded && (
           <Link
             to="/"
             onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
             aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-            className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors mb-12"
+            className="inline-flex items-center justify-center w-l h-l rounded-xl border border-primary-100 text-primary-900 flex-shrink-0 hover:border-primary-300 transition-colors mb-xl"
           >
-            <ArrowLeft className="w-4 h-4 animate-bounce-left" />
+            <ArrowLeft className="w-s h-s animate-bounce-left" />
           </Link>
         )}
 
-        <div className="flex flex-col gap-[60px]">
-          <Reveal className="flex flex-col gap-6">
+        <div className="flex flex-col gap-2xl">
+          <Reveal className="flex flex-col gap-m">
             <FitHeading
               maxLines={2}
-              className="font-extrabold text-[#0F172A]"
-              style={{ fontSize: "clamp(3rem, 10vw, 8.25rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}
+              className="font-heading text-h1 text-primary-900"
             >
               {copy.title}
             </FitHeading>
 
-            <p className="text-slate-600 font-medium" style={{ fontSize: "clamp(1.125rem, 1.8vw, 1.375rem)", maxWidth: "64ch", lineHeight: 1.5 }}>
+            <p className="font-body text-body-lg text-primary-700" style={{ maxWidth: "64ch" }}>
               {copy.caption}
             </p>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-xs">
               {copy.tags.map((tag) => (
-                <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium">
+                <Badge key={tag} variant="secondary" className="px-s py-xs font-body text-caption font-medium">
                   {tag}
                 </Badge>
               ))}
@@ -182,23 +181,23 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
             <Fragment key={i}>
               {section.title && (
                 <Reveal>
-                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#0F172A]">{section.title}</h2>
+                  <h2 className="font-heading text-h2 text-primary-900">{section.title}</h2>
                 </Reveal>
               )}
               {section.images.map((row, j) =>
                 Array.isArray(row) ? (
-                  <Reveal key={j} className="grid grid-cols-2 gap-6 items-start">
+                  <Reveal key={j} className="grid grid-cols-2 gap-m items-start">
                     {row.map((image) => (
-                      <img key={image.img} src={image.img} alt={image.alt} className="w-full h-auto block rounded-2xl border border-slate-200" />
+                      <img key={image.img} src={image.img} alt={image.alt} className="w-full h-auto block rounded-2xl border border-primary-100" />
                     ))}
                   </Reveal>
                 ) : "video" in row ? (
-                  <Reveal key={row.video} className="rounded-2xl overflow-hidden border border-slate-200" style={{ aspectRatio: "4/3" }}>
+                  <Reveal key={row.video} className="rounded-2xl overflow-hidden border border-primary-100" style={{ aspectRatio: "4/3" }}>
                     <HoverVideoCover src={row.video} poster={row.poster} />
                   </Reveal>
                 ) : (
                   <Reveal key={row.img}>
-                    <img src={row.img} alt={row.alt} className="w-full block rounded-2xl border border-slate-200" />
+                    <img src={row.img} alt={row.alt} className="w-full block rounded-2xl border border-primary-100" />
                   </Reveal>
                 )
               )}
