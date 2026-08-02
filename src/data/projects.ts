@@ -24,7 +24,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Reporting",
-    title_pl: "Raportowanie",
+    title_pl: "Case study - Automatyczne raporty",
     description: "Automatyzacja, która robi raport za specjalistę.",
     description_en: "Automation that does the report for the specialist.",
     tag: "Case Study",
@@ -37,7 +37,7 @@ export const projects: Project[] = [
   },
   {
     title: "Client Acquisition",
-    title_pl: "Pozyskiwanie klientów",
+    title_pl: "Case study - Moduł pozyskiwania klientów",
     description: "Od dwóch osobnych narzędzi do jednego flow end-to-end.",
     description_en: "Two separate tools replaced by one flow — from lead to client onboarding.",
     tag: "Case Study",
