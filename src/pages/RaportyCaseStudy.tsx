@@ -253,7 +253,7 @@ export function RaportyCaseStudy() {
               lead={t.heroLead}
             />
             <MetaBar items={t.metaBar} />
-            <Figure src="/raporty-cover.webp" height={560} alt={t.heroTitle} />
+            <Figure src="/raporty-ds-cover.webp" height={560} alt={t.heroTitle} />
           </StaggerItem>
         </HeroStagger>
       </Section>
