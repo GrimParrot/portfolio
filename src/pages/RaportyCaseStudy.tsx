@@ -519,7 +519,7 @@ export function RaportyCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <div style={{ width: "100%", marginBottom: "clamp(-56px, -3vw, -24px)", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
               <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.decyzje.mainDecision.title}</span>
-              <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
+              <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 16 }} />
               <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "stretch", justifyContent: "center" }}>
                 <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[0].label}</span>
@@ -561,7 +561,7 @@ export function RaportyCaseStudy() {
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <h3 className="pf-h3">{t.decyzje.builtTitle}</h3>
               <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.builtText}</p>
-              <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-surface-accent)", padding: 48, boxSizing: "border-box" }}>
+              <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-accent-50)", padding: 48, boxSizing: "border-box" }}>
                 <ImageCarousel images={["/raporty-flow-1.webp", "/raporty-flow-2.webp", "/raporty-flow-3.webp"]} />
               </div>
             </div>
