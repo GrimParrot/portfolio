@@ -8,10 +8,11 @@ export interface StatCardProps {
   /** @default 'subtle' — 'dark' renders the 80px hero variant on the circle field. */
   tone?: "subtle" | "white" | "dark"
   style?: React.CSSProperties
+  labelStyle?: React.CSSProperties
 }
 
 /** Single headline number with a supporting line. */
-export function StatCard({ value, label, tone = "subtle", style }: StatCardProps) {
+export function StatCard({ value, label, tone = "subtle", style, labelStyle }: StatCardProps) {
   const dark = tone === "dark"
   const base: React.CSSProperties = {
     position: "relative", overflow: "hidden", borderRadius: 24, padding: dark ? 48 : 32,
@@ -28,7 +29,7 @@ export function StatCard({ value, label, tone = "subtle", style }: StatCardProps
         fontWeight: dark ? 700 : 600, fontSize: dark ? 80 : 48, lineHeight: dark ? "108px" : "72px",
         letterSpacing: "0.02em", color: dark ? "var(--pf-text-on-dark)" : "var(--pf-text-primary)" }}>{value}</span>
       <span style={{ position: "relative", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px",
-        color: dark ? "var(--pf-primary-50)" : "var(--pf-text-body)" }}>{label}</span>
+        color: dark ? "var(--pf-primary-50)" : "var(--pf-text-body)", ...labelStyle }}>{label}</span>
     </div>
   )
 }

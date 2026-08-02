@@ -218,7 +218,7 @@ export function RaportyCaseStudy() {
             </div>
             <div style={{ width: 336, flexShrink: 0, display: "flex", gap: 24, alignItems: "flex-start" }}>
               {t.discovery.stats.map((s, i) => (
-                <StatCard key={i} value={s.value} label={s.label} style={{ padding: 16, gap: 32 }} />
+                <StatCard key={i} value={s.value} label={s.label} style={{ padding: 16, gap: 32 }} labelStyle={i === 1 ? { marginTop: 48 } : undefined} />
               ))}
             </div>
           </div>

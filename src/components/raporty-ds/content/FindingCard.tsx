@@ -14,7 +14,7 @@ export function FindingCard({ number, title, children, style }: FindingCardProps
       <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end" }}>
         <span style={{ opacity: 0.3, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: 80, lineHeight: "108px",
           letterSpacing: "0.02em", color: "var(--pf-primary-700)" }}>{number}</span>
-        <span style={{ alignSelf: "stretch", fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px",
+        <span style={{ position: "relative", zIndex: 1, width: "100%", marginTop: -50, fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px",
           color: "var(--pf-text-on-dark)" }}>{title}</span>
       </div>
       <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px",
