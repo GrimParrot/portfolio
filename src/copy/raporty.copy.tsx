@@ -1,5 +1,3 @@
-import { NumBadge } from "./raporty-num-badge"
-
 export const copy = {
   pl: {
     heroEyebrow: "CASE STUDY · LOCALO — KREATOR RAPORTÓW",
@@ -9,9 +7,9 @@ export const copy = {
       "Nie zaprosiliśmy klientów do narzędzia. Wysłaliśmy raport do nich. Teraz 60% użytkowników funkcji korzysta z auto-generowania w Localo.",
     metaBar: [
       { label: "PRODUKT", value: "Localo" },
-      { label: "ROLA", value: "Design Lead" },
       { label: "SKALA", value: "8 600+ użytkowników" },
-      { label: "DANE", value: "X 2025 – VI 2026" },
+      { label: "BRANŻA", value: "Local SEO / B2B SaaS" },
+      { label: "UŻYTKOWNICY", value: "Specjaliści SEO i agencje" },
     ],
     chapters: {
       skrot: "01 W skrócie",
@@ -27,16 +25,16 @@ export const copy = {
     skrot: {
       eyebrow: "01 · KONTEKST, EFEKT I ROLA",
       title: "W skrócie",
-      intro:
-        "Localo to narzędzie dla osób, które zarządzają wizytówkami Google — jedną albo kilkudziesięcioma naraz. Automatyzuje pracę i mówi, co zrobić dalej: lista zadań na tydzień z priorytetami dla każdej wizytówki, audyty w kilka sekund, raporty gotowe do wysłania klientowi w kilka minut.",
+      introBold: "Localo to narzędzie dla osób, które zarządzają wizytówkami Google",
+      introRest:
+        " — jedną albo kilkudziesięcioma naraz. Automatyzuje pracę i mówi, co zrobić dalej: lista zadań na tydzień z priorytetami dla każdej wizytówki, audyty w kilka sekund, raporty gotowe do wysłania klientowi w kilka minut.",
       contextPanel: {
         title: "Kontekst projektu",
-        text:
-          "CEO przyszedł z gotowym rozwiązaniem: dajmy użytkownikom możliwość zapraszania klientów do Localo. Klient agencji loguje się i sprawdza dane, specjaliści przestają tracić czas na raportowanie. Logiczne. Problem pod spodem był prawdziwy.\nJednak zbudowaliśmy coś dokładnie odwrotnego. Zamiast wpuszczać klienta agencji do Localo, zbudowaliśmy raport, który sam się generuje i wysyła jednym kliknięciem.",
+        text: "CEO przyszedł z gotowym rozwiązaniem: dajmy użytkownikom możliwość zapraszania klientów do Localo. Klient agencji loguje się i sprawdza dane, specjaliści przestają tracić czas na raportowanie. Logiczne. Problem pod spodem był prawdziwy.\nJednak zbudowaliśmy coś dokładnie odwrotnego. Zamiast wpuszczać klienta agencji do Localo, zbudowaliśmy raport, ",
+        textBold: "który sam się generuje i wysyła jednym kliknięciem.",
       },
       statsIntroTitle: "Efekty — trzy liczby",
-      statsIntroDesc:
-        "Pokazują duże zaufanie do procesu i realne odciążenie od powtarzalnej, czasochłonnej czynności.",
+      statsIntroDesc: "Pokazują duże zaufanie do procesu i realne odciążenie od powtarzalnej, czasochłonnej czynności.",
       stats: [
         { value: "44%", label: "Użytkowników raportów nigdy nie tworzy raportu ręcznie. Automat jest u nich trybem domyślnym, nie dodatkiem." },
         { value: "11–13%", label: "Tyle aktywnych użytkowników robi raport w danym miesiącu — stabilnie przez dziewięć miesięcy." },
@@ -50,7 +48,7 @@ export const copy = {
         "testowałam z użytkownikami i iterowałam",
         "doradzałam, co wchodzi na roadmapę, a co nie",
         "rozwijałam design system i utrzymywałam go wspólnie z devami",
-        "chodziłam na rozmowy z klientami",
+        "chodziłam na rozmowy z klientami, żeby nie opierać się na cudzych notatkach",
         "mentorowałam młodszą projektantkę",
       ],
       scopePanel: {
@@ -64,8 +62,11 @@ export const copy = {
     problem: {
       eyebrow: "02 · PROBLEM FRAMING",
       title: "Problem był prawdziwy. Rozwiązanie nie było oczywiste.",
-      intro:
-        "Zanim powstały raporty, użytkownicy sklejali je ręcznie. Zrzuty ekranu z kilku narzędzi – m.in. Localo i Ahrefs – poskładane w prezentację, własny komentarz, podstawione dane, wysyłka do klienta. Osobno dla każdego zarządzanego profilu. W wywiadach mówili, że schodzi im na to kilka godzin miesięcznie.\n\nPropozycja CEO odpowiadała na to wprost: skoro problemem jest ręczne przygotowywanie raportu, usuńmy raport z równania i wpuśćmy klienta do narzędzia.",
+      introBold: "Zanim powstały raporty",
+      introRest:
+        ", użytkownicy sklejali je ręcznie. Zrzuty ekranu z kilku narzędzi – m.in. Localo i Ahrefs – poskładane w prezentację, własny komentarz, podstawione dane, wysyłka do klienta. Osobno dla każdego zarządzanego profilu. W wywiadach mówili, że schodzi im na to kilka godzin miesięcznie.\n\n",
+      introBold2: "Propozycja CEO odpowiadała na to wprost",
+      introRest2: ": skoro problemem jest ręczne przygotowywanie raportu, usuńmy raport z równania i wpuśćmy klienta do narzędzia.",
       researchTitle: "Pytania badawcze",
       researchDesc: "Aby unikać ślepych hipotez, musieliśmy zmierzyć się z pytaniami o podstawy.",
       questions: [
@@ -77,22 +78,35 @@ export const copy = {
         "Czego potrzebują i jak czytają te raporty?",
       ],
       alert: "Żadnej z tych odpowiedzi nie mieliśmy, a każda z nich mogła wywrócić projekt już po zbudowaniu.",
-      closing:
-        "Przekonałam CEO, że to moment, w którym warto zainwestować czas w pogłębienie problemu: dwa czy trzy miesiące pracy nad źle postawioną diagnozą kosztują firmę znacznie więcej niż sprint na dodatkowe badania.",
-      problemStatement:
-        "Specjaliści SEO muszą regularnie dowodzić klientom, że ich praca działa. Składają te podsumowania ręcznie, osobno per profil, kilka godzin miesięcznie. Klient jest nietechniczny i nigdy wcześniej nie logował się do naszego narzędzia. Skrócić raport można więc tylko kosztem zrozumiałości. A wtedy wracają pytania i spada zaufanie.",
+      closingBold: "dwa czy trzy miesiące pracy nad źle postawioną diagnozą kosztują firmę znacznie więcej niż sprint na dodatkowe badania.",
+      closingLead: "Przekonałam CEO, że to moment, w którym warto zainwestować czas w pogłębienie problemu: ",
+      problemStatement: "Specjaliści SEO muszą regularnie dowodzić klientom, że ich praca działa. Składają te podsumowania ",
+      problemStatementBold1: "ręcznie",
+      problemStatementMid1: ", osobno per profil, ",
+      problemStatementBold2: "kilka godzin miesięcznie",
+      problemStatementMid2: ". Klient jest ",
+      problemStatementBold3: "nietechniczny",
+      problemStatementRest: " i nigdy wcześniej nie logował się do naszego narzędzia. Skrócić raport można więc tylko kosztem zrozumiałości. A wtedy wracają pytania i spada zaufanie.",
     },
     discovery: {
       eyebrow: "03 · DISCOVERY",
       title: "Czego nie wiedzieliśmy o klientach naszych klientów.",
-      intro1:
-        "Miałam na discovery dwa tygodnie i robiłam je sama. Przy takich warunkach zdecydowałam się na osiem wywiadów pogłębionych — mix agencji i freelancerów — żeby zrozumieć kształt problemu: jak raportują dzisiaj i o co pytają ich klienci, jakich narzędzi, słów, kolorów i form używają, co klient robi z raportem po otrzymaniu.\n\nRównolegle przygotowałam ankietę ilościową (około 100 odpowiedzi), żeby wiedzieć, co i jak często użytkownicy raportują. Wywiad mówi, dlaczego ktoś coś robi. Ankieta mówi, ile osób robi to samo.",
+      intro1Bold: "osiem wywiadów pogłębionych",
+      intro1Pre: "Miałam na discovery dwa tygodnie i robiłam je sama. Przy takich warunkach zdecydowałam się na ",
+      intro1Rest:
+        " — mix agencji i freelancerów — żeby zrozumieć kształt problemu: jak raportują dzisiaj i o co pytają ich klienci, jakich narzędzi, słów, kolorów i form używają, co klient robi z raportem po otrzymaniu. Najbardziej interesował mnie język, w jakim tłumaczą wyniki komuś, kto nie zna się na SEO. I to, kim są twórcy raportów, a kim ich odbiorcy.",
+      intro2Pre: "Równolegle przygotowałam ",
+      intro2Bold: "ankietę ilościową (około 100 odpowiedzi)",
+      intro2Rest:
+        " żeby wiedzieć, co i jak często użytkownicy raportują. Wywiad mówi, dlaczego ktoś coś robi. Ankieta mówi, ile osób robi to samo. Od tego zależało, co znajdzie się w raporcie, a domyślny raport miał być tym, którego nikt nie musi poprawiać.",
       stats: [
         { value: "8", label: "Wywiadów pogłębionych" },
         { value: "100+", label: "Odpowiedzi\nz ankiet" },
       ],
-      intro2:
-        "Trzecim źródłem był zespół customer success. Są blisko użytkowników i ich problemów na co dzień, więc poza spotkaniem przejrzeliśmy razem zgłoszenia.\n\nPołączyłam dane jakościowe i ilościowe w jeden spójny obraz, używając do tego AI. Przeanalizował dla mnie materiały z badań ilościowych, jakościowych oraz transkrypty ze spotkań.",
+      intro3Bold: "Trzecim źródłem był zespół customer success",
+      intro3Rest:
+        ". Są blisko użytkowników i ich problemów na co dzień, więc poza spotkaniem przejrzeliśmy razem zgłoszenia. Stąd wiem, ile z nich dotyczyło pytań o API do Localo — wrócę do tego przy kluczowych decyzjach — i jakim językiem nasi użytkownicy mówią o swoich klientach.",
+      intro4: "Połączyłam dane jakościowe i ilościowe w jeden spójny obraz używając do tego AI w postaci Clauda aby przyspieszyć ten etap pracy. Przeanalizował dla mnie materiały z badań ilościowych, jakościowych oraz transkrypty ze spotkań.",
       findingsTitle: "Kluczowe odkrycia",
       findings: [
         { number: "01", title: "Raport jest skanowany, nie analizowany", text: "Klient końcowy prowadzi własną firmę i nie siada do analizy liczb. Przelatuje raport wzrokiem." },
@@ -100,8 +114,8 @@ export const copy = {
         { number: "03", title: "Potrzeba edukacji klienta", text: "Do raportów często dołączano osobne wyjaśnienia: czym są dane i dlaczego mają znaczenie dla klienta." },
       ],
       personaTitle: "Klienci naszych klientów — persona",
-      personaIntro:
-        "Raporty mają dwóch odbiorców. Specjalista tworzy raport i pokazuje nim klientowi, że praca przynosi efekty. Klient końcowy tylko go skanuje. Projektowałam więc także dla kogoś, kto nie jest użytkownikiem naszego produktu.",
+      personaIntroBold: "Raporty mają dwóch odbiorców.",
+      personaIntroRest: " Specjalista tworzy raport i pokazuje nim klientowi, że praca przynosi efekty. Klient końcowy tylko go skanuje. Projektowałam więc także dla kogoś, kto nie jest użytkownikiem naszego produktu.",
       personaCards: [
         { title: "Kim jest", text: "Nietechniczny właściciel firmy. Nie zna się na SEO i nie ma konta w Localo." },
         { title: "Czego chce", text: "Dwóch odpowiedzi: „czy jest lepiej” i „co mi to daje”." },
@@ -111,8 +125,7 @@ export const copy = {
     reframing: {
       eyebrow: "04 · RE-FRAMING",
       title: "Problemem nie był dostęp, tylko wysiłek",
-      text:
-        "Hipoteza, z którą zaczynaliśmy, nie obroniła się w badaniach. Problemem nie był dostęp do danych — tylko wysiłek i zaangażowanie, których wejście do narzędzia wymagałoby od klienta. To odwróciło kierunek: zamiast wpuszczać klienta do Localo, trzeba było wypchnąć raport do niego.\nPrzedstawiłam CEO wyniki badań, sformułowany problem i nową hipotezę. Przyjął je bez oporu — dane były jednoznaczne.",
+      text: "Hipoteza, z którą zaczynaliśmy, nie obroniła się w badaniach. Problemem nie był dostęp do danych — tylko wysiłek i zaangażowanie, których wejście do narzędzia wymagałoby od klienta. To odwróciło kierunek: zamiast wpuszczać klienta do Localo, trzeba było wypchnąć raport do niego.\n\nPrzedstawiłam CEO wyniki badań, sformułowany problem i nową hipotezę. Przyjął je bez oporu — dane były jednoznaczne.",
       shiftTitle: "Zmiana kierunku",
       hypothesisRejected: {
         title: "Hipoteza na starcie",
@@ -125,7 +138,11 @@ export const copy = {
         note: "Sprawdzian: jaki udział użytkowników raportów włącza automat i jaka część z nich nie generuje ręcznie w ogóle.",
         text: "Jeśli raport będzie powstawał sam i trafiał do klienta, specjaliści przejdą na autoraportowanie i przestaną tworzyć raporty ręcznie.",
       },
-      goal: "Zbudować narzędzie do automatycznego raportowania, które jasno pokazuje wyniki nietechnicznym klientom i buduje zaufanie do współpracy.",
+      goalLabel: "Zbudować narzędzie do ",
+      goalBold1: "automatycznego raportowania",
+      goalMid: ", które jasno pokazuje wyniki nietechnicznym klientom i ",
+      goalBold2: "buduje zaufanie do współpracy",
+      goalEnd: ".",
     },
     decyzje: {
       eyebrow: "05 · KLUCZOWE DECYZJE I KOMPROMISY",
@@ -134,80 +151,89 @@ export const copy = {
         title: "Generowanie z pełnych danych, selekcja dopiero przed wysyłką raportu",
         steps: [
           { label: "Odrzucony wariant:", text: "Wybór elementów raportu przed generowaniem wydawał się logicznym flow. Utwórz raport → z okresu → wybierz dane → generuj." },
-          { label: "Powód:", text: "Każdy nowy raport generuje mapę pozycji, a to kosztuje. Przy wyborze przed generowaniem użytkownik produkowałby nowy raport przy każdej zmianie zdania." },
+          { label: "Powód:", bullets: [
+            { text: "każdy nowy raport generuje mapę pozycji, ", bold: "a to kosztuje" },
+            { text: "przy wyborze przed generowaniem użytkownik produkowałby nowy raport przy każdej zmianie zdania", bold: "" },
+          ] },
           { label: "Efekt:", text: "Niższy koszt po naszej stronie i mniejsze tarcie po stronie użytkownika. Jedna decyzja, dwa wygrane fronty." },
         ],
       },
       pair: [
         {
-          title: "Kreator jako asystent, nie pusty formularz",
-          text: "Raport generuje się sam, a użytkownik dostaje gotowy draft. Zmienia, akceptuje i wysyła. Ostatnie słowo zostaje po jego stronie: automat przygotowuje, ale nie decyduje za niego.\n\nPowód: projektowanie w zgodzie z misją firmy — automatyzacja wykonania, nie zastąpienie rozumienia.",
+          title: "Kreator jako\nasystent, nie pusty formularz",
+          image: "/raporty-ds-smart-creator.webp",
+          text1: "Raport generuje się sam, a użytkownik dostaje gotowy draft. Zmienia/Akceptuje i wysyła. Ostatnie słowo zostaje po jego stronie: automat przygotowuje, ale ",
+          text1Bold: "nie decyduje za niego.",
+          text2Bold: "Powód:",
+          text2: "Projektowanie w zgodzie z misją firmy: automatyzacja wykonania, nie zastąpienie rozumienia.",
         },
         {
-          title: "Bez API, z linkiem i PDF-em",
-          text: "Część zgłoszeń supportu dotyczyła API do Localo. Zamiast budować integrację dla nielicznych, daliśmy raport w trzech formach: wysyłka mailem, link i PDF.\n\nEfekt: ta sama potrzeba obsłużona ułamkiem kosztu.",
+          title: "Nie zbudowaliśmy API",
+          image: "/raporty-ds-api-stop.webp",
+          text1: "Użytkownicy wprost prosili o API do samodzielnego tworzenia raportów we własnym frameworku. Nie poszliśmy tą drogą: funkcja odpowiadała na potrzebę wąskiej grupy, a wymagała dużo pracy po stronie developmentu.",
+          text1Bold: "",
+          text2Bold: "Efekt:",
+          text2: "Na obecnym etapie nakład pracy był nieproporcjonalny do zysku. Zapisaliśmy ten pomysł do backlogu.",
         },
       ],
+      builtTitle: "Co zbudowałam",
+      builtText: "Raportowanie i autoraportowanie. Użytkownik ustawia — globalnie albo osobno dla konkretnej wizytówki — jak często ma się generować raport. Wybiera na przykład raz w miesiącu i co miesiąc dostaje gotowy dokument z najważniejszymi informacjami o wizytówce: pozycjami słów kluczowych i ich zmianami, aktywnością na profilu, opiniami. Może włączać i wyłączać poszczególne sekcje, żeby nie zaśmiecać raportu tym, co dla jego klienta nie ma znaczenia. Dodaje adres i wysyła.",
+      kreatorPlaceholder: "Zrzut kreatora raportów",
+      testsTitle: "Testy użyteczności",
+      testsText: "Zmapowałam pełny flow tworzenia raportu, zbudowałam klikalny prototyp w Claude Code aby przetestować go z użytkownikami, zanim zaangażowałam development i QA. Przygotowałam scenariusze aby odpowiedzieć na 3 pytania:",
+      testsQuestions: [
+        "Czy kroki w procesie tworzenia raportu są przewidywalne?",
+        "Czy użytkownik bez problemu odnajduje raport konkretnej wizytówki w managerze raportów i czy rozumie status?",
+        "Czy kreator (edycja draftu i wysyłka) jest łatwy w obsłudze?",
+      ],
+      testsFindings: [
+        { title: "Lista była zorganizowana odwrotnie niż praca użytkownika.", text1: "Manager pokazywał wszystkie raporty wygenerowane dla wszystkich wizytówek. Użytkownicy gubili się na tej liście i mieli problem z nawigacją.", text2: "Powód okazał się fundamentalny: ich codzienna praca jest zorganizowana per wizytówka, więc myślą w kolejności profil → raport. Moja lista pokazywała odwrotnie: raport → dla profilu XYZ. To nie był problem etykiet, tylko niedopasowania do modelu mentalnego." },
+        { title: "Historia raportów była nieprzydatna.", text1: "Jedyna informacja, której respondenci naprawdę szukali, brzmiała: czy najnowszy raport jest jeszcze szkicem, czy poszedł już do klienta.", text2: "" },
+      ],
+      testsClosing: "W kolejnej turze wszyscy respondenci poruszali się po funkcji bez zająknięcia. Sprawnie radzili sobie z zadaniami np. znajdź najnowszy raport dla wizytówki xyz lub wygeneruj raport dla 4 wizytówek na raz. Wersje po zmianach pokażę w kolejnych krokach.",
     },
     handoff: {
       eyebrow: "06 · HANDOFF I DEVELOPMENT",
       title: "Handoff to coś więcej niż przekazanie makiet",
-      intro:
-        "Devowie dostali makiety w Figmie ułożone we flow, a nie luźne ekrany: wszystkie stany, przykłady notyfikacji, wersje mobilne i adnotacje wdrożeniowe w miejscach, które wymagały decyzji. Do tego opis sytuacji brzegowych, tokeny z design systemu i klikalny prototyp.\n\nByłam z devami w kontakcie na bieżąco, więc pytania rozstrzygały się od ręki. Sprawdzałam wdrożenie na środowisku testowym i zgłaszałam różnice względem projektu.",
+      introBold: "w Figmie ułożone we flow",
+      introPre: "Devowie dostali makiety ",
+      introMid: ", a nie luźne ekrany: wszystkie stany, przykłady notyfikacji, wersje mobilne i adnotacje wdrożeniowe w miejscach, które wymagały decyzji. ",
+      introBold2: "Do tego opis sytuacji brzegowych",
+      introRest: " — co się dzieje, kiedy danych nie ma — tokeny z design systemu i klikalny prototyp, żeby dało się przejść całość przed napisaniem pierwszej linijki kodu.",
+      intro2Pre: "Byłam z devami ",
+      intro2Bold: "w kontakcie na bieżąco",
+      intro2Rest: ", więc pytania rozstrzygały się od ręki, zamiast czekać na review. Sprawdzałam wdrożenie na środowisku testowym i zgłaszałam różnice względem projektu. Wspierałam QA przy definiowaniu tego, co trzeba sprawdzić, a po wdrożeniu zbierałam poprawki.",
       infraTitle: "Jedna z funkcji przegrała z infrastrukturą",
-      infraText:
-        "W raportach wysyłanych mailem miały być interaktywne mapy pozycji. Funkcja była gotowa i nie weszła. Zobaczyliśmy to przed releasem: klienty pocztowe radzą sobie z linkami słabo — filtry je wykrywały i testowe wiadomości trafiały do spamu.\n\nTo najbardziej frustrujący moment tego projektu. Funkcja działała i była dobra — przegrała z infrastrukturą. Dobra wiadomość jest taka, że dowiedzieliśmy się o tym my, a nie użytkownicy.",
+      infraText1: "W raportach wysyłanych mailem miały być interaktywne mapy pozycji. Kliknięcie w mapę otwierałoby link, w którym klient mógłby sam pozmieniać ustawienia i podejrzeć dane. Funkcja była gotowa i nie weszła. Zobaczyliśmy to przed releasem: klienty pocztowe radzą sobie z linkami słabo — filtry je wykrywały i testowe wiadomości trafiały do spamu. Nie mieliśmy dość czasu, żeby to obejść, więc wycięliśmy interaktywne mapy z raportów wysyłanych mailem.",
+      infraText2: "To najbardziej frustrujący moment tego projektu. Funkcja działała i była dobra — przegrała z infrastrukturą. Dobra wiadomość jest taka, że dowiedzieliśmy się o tym my, a nie użytkownicy.",
     },
     rozwiazanie: {
       eyebrow: "07 · ROZWIĄZANIE",
-      title: "Raporty, które robią się same",
-      steps: [
-        {
-          stack: true,
-          cards: [
-            { title: "Lista raportów", desc: "Wszystko na pierwszy rzut oka: status, sposób wysyłki i data kolejnego raportu widoczne od razu przy każdym wpisie, bez wchodzenia w szczegóły.", img: "/raporty-lista.webp", imgAlt: "Lista raportów", height: 700 },
-          ],
-        },
-        {
-          stack: true,
-          cards: [
-            { title: "Auto-raportowanie", desc: "Domyślnie włączone: harmonogram do edycji w każdej chwili, bez konieczności konfiguracji od zera.", img: "/raporty-auto.webp", imgAlt: "Auto-raportowanie" },
-            { title: "Raport na żądanie", desc: "Bez ruszania harmonogramu: dowolny okres, jednym kliknięciem, a automatyczna wysyłka pozostaje nietknięta.", img: "/raporty-instant.webp", imgAlt: "Raport na żądanie" },
-          ],
-        },
-        {
-          stack: true,
-          cards: [
-            { title: "Reports manager", desc: <>Jeden widok na wszystkie profile klientów. <NumBadge n={1} /> Filtrowanie po statusie i częstotliwości oraz <NumBadge n={2} /> akcje zbiorcze, kluczowe, gdy zarządzasz wieloma profilami naraz. Przy każdym z nich widać też <NumBadge n={3} /> dwa ostatnie raporty razem z datą kolejnego automatycznego, a obok <NumBadge n={4} /> status i jaką metodą zostały wysłane.</>, img: "/raporty-manager.webp", imgAlt: "Reports manager", height: 700 },
-          ],
-        },
-        {
-          title: "Edytor raportu",
-          desc: "Specjalista dostaje kompletny raport automatycznie: włącza i wyłącza sekcje, dopasowuje ustawienia, nigdy nie zaczyna od zera.",
-          visual: "sidebarSwap",
-          stack: true,
-          height: 700,
-        },
-        {
-          title: "Gotowy raport",
-          desc: "Raport w mailu ma celowo prosty layout: ograniczony do elementów, które renderują się tak samo w każdym kliencie pocztowym. Ta prostota działa też na treść: pokazuje „było / jest”, a przy trudniejszych sekcjach specjalista może dołączyć krótką notkę edukacyjną dla klienta.",
-          visual: "autoScrollReport",
-          stack: true,
-          height: 750,
-        },
-        {
-          stack: true,
-          cards: [
-            { title: "Ustawienia maila", desc: "Własny adres wysyłki i reply-to ustawia się raz: każdy raport, ręczny czy automatyczny, wygląda jakby wysłał go sam specjalista.", img: "/raporty-email.webp", imgAlt: "Ustawienia maila" },
-            { title: "Sposoby dostarczenia", desc: "Trzema sposobami z jednego ekranu: auto-wysyłka (60% adopcji, 44% wyłącznie tak), link bez logowania lub PDF.", img: "/raporty-share.webp", imgAlt: "Trzy sposoby dostarczenia" },
-          ],
-        },
+      title: "Jak to wyszło — raport od ręki",
+      intro: "Poniżej finalna wersja modułu raportów i managera raportów – ta, która weszła na produkcję i z której użytkownicy korzystają na co dzień. Od listy raportów pojedynczej wizytówki, przez sam raport, po zarządzanie całym portfolio klientów.",
+      s1Title: "Lista raportów – historia jednej wizytówki",
+      s1CardTitle: "Draft już czeka",
+      s1CardText: "Użytkownik nie zaczyna od pustego kreatora. Otwiera wizytówkę, a draft za bieżący okres już tam jest – zostaje przejrzeć i wysłać. Każdy raport na liście ma okres, datę wygenerowania i status. Stąd też ustawia się auto-raportowanie.",
+      s2Title: "Raport",
+      s2Text: "Raport startuje kompletny – statystyki, frazy z mapami pozycji, opinie, treści, cytowania i konkurencja. Wszystko z okresu, nic nie trzeba dobierać. Logo agencji na górze, a przy metrykach krótkie wyjaśnienie, co znaczą.",
+      s2Pair: [
+        { title: "Dopasowuję do konkretnego klienta", text: "Odznacza to, nad czym w tym miesiącu nie pracował. Raport ma odpowiadać na „czy jest lepiej”, a nie pokazywać wszystko, co system umie policzyć." },
+        { title: "Auto-raportowanie", text: "Auto-raporty włączone są domyślnie. Można edytować zakres danych – np. miesiąc – i częstotliwość generowania w dowolnym momencie." },
       ],
-      rejectedTag: "Odrzucone kierunki",
-      rejected: [
-        { title: "Wymóg logowania do narzędzia", reason: "Dodatkowe tarcie dla kogoś, kto chce tylko rzucić okiem." },
-        { title: "Wykresy i surowe metryki jako domyślna forma", reason: "Przytłaczające, wymagają czasu na analizę, którego klient nie ma." },
+      s3Title: "Manager — lista wizytówek, nie lista raportów",
+      s3CardTitle: "Widok z lotu ptaka",
+      s3CardText: "Kto ma pod sobą kilkanaście wizytówek, potrzebuje widoku na całe portfolio klientów. To układ po testach użyteczności: najpierw klient, potem jego raport.",
+      s3Pair: [
+        { title: "Statusy i harmonogram", text: "Widzi, co poszło do klienta i kiedy wygeneruje się następny raport. Bez wchodzenia w każdą wizytówkę osobno." },
+        { title: "Wiele raportów na raz", text: "Jeśli potrzebuje raportu poza stałym harmonogramem, zrobi to akcją zbiorczą." },
       ],
+      s3Triple: [
+        { title: "Wysyłka", text: "Trzema sposobami z jednego ekranu: auto-wysyłka, link bez logowania lub PDF." },
+        { title: "Wysyłka mailem", text: "Raport idzie do klienta – klient nie idzie do raportu." },
+        { title: "Wysyłam mailem", text: "Raport idzie do klienta – klient nie idzie do raportu." },
+      ],
+      s4Title: "Komponenty i stany",
+      s4Text: "Każdy komponent musiał obsłużyć wszystkie stany – pusty, w trakcie generowania, wysłany, błąd. Notyfikacje, empty state'y, dropdowny i tagi wzięłam z design systemu, który rozwijałam razem z devami.",
     },
     wynik: {
       eyebrow: "08 · WYNIK I DOWODY",
@@ -221,21 +247,27 @@ export const copy = {
       ],
       dataCaption: "Dane z okresu październik 2025 – czerwiec 2026, od analityka danych w Localo.",
       whatItMeansTitle: "Co za tymi liczbami stoi",
-      paras: [
-        "Przez dziewięć miesięcy udział twórców raportów trzyma się w przedziale 11–13%. Po premierze urósł, w grudniu sięgnął szczytu, potem osiadł nieco niżej — ale się utrzymał. To nie jest krzywa świeżej funkcji, tylko nowy nawyk.",
-        "44% to nie jest adopcja, to zmiana nawyku. Ci ludzie przestali robić ręcznie coś, co robili ręcznie od zawsze. Auto jest tu trybem dominującym, nie dodatkiem — i to jest dla mnie najmocniejsza liczba na tej liście.",
-        "Użytkownicy raportów płacą ~11× częściej niż reszta bazy i mają ~20× wyższe blended LTV. Nie wiemy, czy raporty stworzyły takie konta. Wiemy, że je w narzędziu trzymają.",
-      ],
-      quote: "Są klienci, którzy płacą tylko za to. Ta funkcja rozwiązała problem użytkowników, co zmniejszyło tarcie i churn.",
+      para1: "Przez dziewięć miesięcy udział twórców raportów trzyma się w przedziale 11–13%. Po premierze urósł, w grudniu sięgnął szczytu, potem osiadł nieco niżej — ale się utrzymał. ",
+      para1Bold: "To nie jest krzywa świeżej funkcji, tylko nowy nawyk.",
+      para2: "44% z kolei to nie jest adopcja, ",
+      para2Bold: "to zmiana nawyku",
+      para2Rest: ". Ci ludzie przestali robić ręcznie coś, co robili ręcznie od zawsze. Auto jest tu trybem dominującym, nie dodatkiem — i to jest dla mnie najmocniejsza liczba na tej liście.",
+      para3: "Użytkownicy raportów płacą ~11× częściej niż reszta bazy i mają ~20× wyższe blended LTV. Po funkcję sięga więc segment, który zostawia w Localo najwięcej: duże, zaangażowane agencje i specjaliści. Najbardziej wartościowa persona dostała narzędzie, z którego faktycznie korzysta. Nie wiemy czy raporty stworzyły takie konta — nie izolowaliśmy takiego wpływu. Wiemy, że je w narzędziu trzymają. To ",
+      para3Bold: "funkcja-kotwica",
+      para3Rest: " dla segmentu, na którym firmie bardzo zależy.",
+      quotePre: "„Są klienci, którzy ",
+      quoteAccent1: "płacą tylko za to",
+      quoteMid: ". Ta funkcja rozwiązała problem użytkowników, co ",
+      quoteAccent2: "zmniejszyło tarcie i churn",
+      quoteEnd: ".”",
       quoteAttribution: "Localo CEO",
     },
     podsumowanie: {
       eyebrow: "09 · PODSUMOWANIE",
       title: "Projekt nie skończył się na wdrożeniu",
-      intro:
-        "Przez kolejne tygodnie obserwowaliśmy adaptację do nowej funkcji. Analizowałam nagrania w Clarity, żeby zobaczyć, jak użytkownicy radzą sobie z raportami. Sprawdzałam, czy w ticketach supportu nie pojawiają się zgłoszenia dotyczące tej funkcji.",
+      intro: "Przez kolejne tygodnie obserwowaliśmy adaptację do nowej funkcji. Analizowałam nagrania w Clarity, żeby zobaczyć, jak użytkownicy radzą sobie z raportami. Sprawdzałam, czy w ticketach supportu nie pojawiają się zgłoszenia dotyczące tej funkcji. Zbieraliśmy pomysły na kolejne iteracje, część z nich dodaliśmy, m.in. pokazanie statusu czy raport został wysłany bezpośrednio, został wygenerowany link, czy PDF.",
       lessons: [
-        { title: "Wiem, że nic nie wiem", text: "Najcenniejsze w tym projekcie nie było samo badanie, tylko to, że zanim cokolwiek zaczęliśmy budować, wypisaliśmy listę rzeczy, których nie wiemy. Hipoteza CEO nie upadła dlatego, że była głupia — była rozsądna." },
+        { title: "Wiem, że nic nie wiem", text: "Najcenniejsze w tym projekcie nie było samo badanie, tylko to, że zanim cokolwiek zaczęliśmy budować, wypisaliśmy listę rzeczy, których nie wiemy. Hipoteza CEO nie upadła dlatego, że była głupia — była rozsądna. Upadła dlatego, że opierała się na założeniach o ludziach, których nigdy nie pytaliśmy." },
         { title: "Techniczne nie znaczy później", text: "Wciągnięcie developerów na etapie koncepcji, a nie handoffu, zmieniło kształt produktu. Ograniczenia klientów pocztowych nie były detalem implementacyjnym — były czynnikiem, który zdefiniował, jak wygląda raport." },
       ],
       nextProjectLabel: "Zobacz kolejny projekt",
@@ -249,9 +281,9 @@ export const copy = {
       "We didn't invite clients into the tool. We sent the report to them instead. Now 60% of feature users rely on auto-generation in Localo.",
     metaBar: [
       { label: "PRODUCT", value: "Localo" },
-      { label: "ROLE", value: "Design Lead" },
       { label: "SCALE", value: "8,600+ users" },
-      { label: "DATA", value: "Oct 2025 – Jun 2026" },
+      { label: "INDUSTRY", value: "Local SEO / B2B SaaS" },
+      { label: "USERS", value: "SEO specialists & agencies" },
     ],
     chapters: {
       skrot: "01 At a glance",
@@ -267,16 +299,16 @@ export const copy = {
     skrot: {
       eyebrow: "01 · CONTEXT, IMPACT & ROLE",
       title: "At a glance",
-      intro:
-        "Localo is a tool for people managing Google Business Profiles — one or dozens at a time. It automates the work and tells you what to do next: a weekly task list with priorities for every profile, audits in seconds, reports ready to send to a client in minutes.",
+      introBold: "Localo is a tool for people managing Google Business Profiles",
+      introRest:
+        " — one or dozens at a time. It automates the work and tells you what to do next: a weekly task list with priorities for every profile, audits in seconds, reports ready to send to a client in minutes.",
       contextPanel: {
         title: "Project context",
-        text:
-          "The CEO came in with a ready-made solution: let users invite their clients into Localo. The agency's client logs in and checks the data, specialists stop wasting time on reporting. Logical. The problem underneath was real.\nWe ended up building the exact opposite. Instead of letting the agency's client into Localo, we built a report that generates and sends itself with one click.",
+        text: "The CEO came in with a ready-made solution: let users invite their clients into Localo. The agency's client logs in and checks the data, specialists stop wasting time on reporting. Logical. The problem underneath was real.\nWe ended up building the exact opposite. Instead of letting the agency's client into Localo, we built a report ",
+        textBold: "that generates and sends itself with one click.",
       },
       statsIntroTitle: "The impact — three numbers",
-      statsIntroDesc:
-        "They show strong trust in the process and real relief from a repetitive, time-consuming task.",
+      statsIntroDesc: "They show strong trust in the process and real relief from a repetitive, time-consuming task.",
       stats: [
         { value: "44%", label: "Of report users never create a report manually. Automation is their default mode, not an add-on." },
         { value: "11–13%", label: "Share of active users who create a report in a given month — stable for nine months straight." },
@@ -290,7 +322,7 @@ export const copy = {
         "tested with users and iterated",
         "advised on what made the roadmap and what didn't",
         "grew the design system and maintained it together with engineering",
-        "joined client calls",
+        "joined client calls, so I wasn't relying on someone else's notes",
         "mentored a junior product designer",
       ],
       scopePanel: {
@@ -304,8 +336,11 @@ export const copy = {
     problem: {
       eyebrow: "02 · PROBLEM FRAMING",
       title: "The problem was real. The solution wasn't obvious.",
-      intro:
-        "Before reports existed, users stitched them together by hand. Screenshots from several tools — Localo and Ahrefs among them — pasted into a presentation, their own commentary, data filled in, sent to the client. Separately for every managed profile. In interviews they said it took a few hours a month.\n\nThe CEO's proposal answered that directly: if the problem is assembling the report by hand, remove the report from the equation and let the client into the tool.",
+      introBold: "Before reports existed",
+      introRest:
+        ", users stitched them together by hand. Screenshots from several tools — Localo and Ahrefs among them — pasted into a presentation, their own commentary, data filled in, sent to the client. Separately for every managed profile. In interviews they said it took a few hours a month.\n\n",
+      introBold2: "The CEO's proposal answered that directly",
+      introRest2: ": if the problem is assembling the report by hand, remove the report from the equation and let the client into the tool.",
       researchTitle: "Research questions",
       researchDesc: "To avoid blind hypotheses, we had to confront the basics.",
       questions: [
@@ -317,22 +352,35 @@ export const copy = {
         "What do they need, and how do they read these reports?",
       ],
       alert: "We had none of these answers, and any one of them could have derailed the project after it was already built.",
-      closing:
-        "I convinced the CEO that this was the moment to invest time in deepening the problem: two or three months of work on a wrongly framed diagnosis costs the company far more than a sprint of extra research.",
-      problemStatement:
-        "SEO specialists have to regularly prove to clients that their work is paying off. They put these summaries together by hand, separately per profile, a few hours every month. The client is non-technical and has never logged into our tool before. So the report can only be shortened at the cost of clarity. And then the questions come back, and trust drops.",
+      closingBold: "two or three months of work on a wrongly framed diagnosis costs the company far more than a sprint of extra research.",
+      closingLead: "I convinced the CEO that this was the moment to invest time in deepening the problem: ",
+      problemStatement: "SEO specialists have to regularly prove to clients that their work is paying off. They put these summaries together ",
+      problemStatementBold1: "by hand",
+      problemStatementMid1: ", separately per profile, ",
+      problemStatementBold2: "a few hours every month",
+      problemStatementMid2: ". The client is ",
+      problemStatementBold3: "non-technical",
+      problemStatementRest: " and has never logged into our tool before. So the report can only be shortened at the cost of clarity. And then the questions come back, and trust drops.",
     },
     discovery: {
       eyebrow: "03 · DISCOVERY",
       title: "What we didn't know about our clients' clients.",
-      intro1:
-        "I had two weeks for discovery and ran it solo. Under those conditions I settled on eight in-depth interviews — a mix of agencies and freelancers — to understand the shape of the problem: how they report today and what their clients ask, which tools, words, colours and formats they use, what the client does with the report after receiving it.\n\nIn parallel I ran a quantitative survey (around 100 responses) to know what and how often users report. An interview tells you why someone does something. A survey tells you how many people do the same thing.",
+      intro1Bold: "eight in-depth interviews",
+      intro1Pre: "I had two weeks for discovery and ran it solo. Under those conditions I settled on ",
+      intro1Rest:
+        " — a mix of agencies and freelancers — to understand the shape of the problem: how they report today and what their clients ask, which tools, words, colours and formats they use, what the client does with the report after receiving it. What interested me most was the language they use to translate results for someone who doesn't know SEO. And who creates reports versus who receives them.",
+      intro2Pre: "In parallel I ran a ",
+      intro2Bold: "quantitative survey (around 100 responses)",
+      intro2Rest:
+        " to know what and how often users report. An interview tells you why someone does something. A survey tells you how many people do the same thing. That decided what made it into the report — the default report was meant to be the one nobody has to fix.",
       stats: [
         { value: "8", label: "In-depth interviews" },
         { value: "100+", label: "Survey\nresponses" },
       ],
-      intro2:
-        "The third source was the customer success team. They're close to users and their problems day to day, so besides a meeting we went through tickets together.\n\nI combined the qualitative and quantitative data into one coherent picture using AI. It analysed the quantitative and qualitative research materials and the meeting transcripts for me.",
+      intro3Bold: "The third source was the customer success team",
+      intro3Rest:
+        ". They're close to users and their problems day to day, so besides a meeting we went through tickets together. That's how I know how many of them were about the Localo API — I'll come back to that under key decisions — and the language our users use for their own clients.",
+      intro4: "I combined the qualitative and quantitative data into one coherent picture using Claude to speed up this stage of the work. It analysed the quantitative and qualitative research materials and the meeting transcripts for me.",
       findingsTitle: "Key findings",
       findings: [
         { number: "01", title: "Reports are scanned, not analysed", text: "The end client runs their own business and doesn't sit down to analyse numbers. They skim the report." },
@@ -340,8 +388,8 @@ export const copy = {
         { number: "03", title: "Need for client education", text: "Reports often came with separate explanations: what the data is and why it matters to the client." },
       ],
       personaTitle: "Our clients' clients — the persona",
-      personaIntro:
-        "Reports have two audiences. The specialist creates the report and uses it to show the client the work is paying off. The end client only scans it. So I was also designing for someone who isn't a user of our product.",
+      personaIntroBold: "Reports have two audiences.",
+      personaIntroRest: " The specialist creates the report and uses it to show the client the work is paying off. The end client only scans it. So I was also designing for someone who isn't a user of our product.",
       personaCards: [
         { title: "Who they are", text: "A non-technical business owner. Doesn't know SEO and doesn't have a Localo account." },
         { title: "What they want", text: "Two answers: \"is it getting better\" and \"what's in it for me\"." },
@@ -351,8 +399,7 @@ export const copy = {
     reframing: {
       eyebrow: "04 · RE-FRAMING",
       title: "The problem wasn't access — it was effort",
-      text:
-        "The hypothesis we started with didn't hold up in research. The problem wasn't access to the data — it was the effort and commitment that entering the tool would demand from the client. That flipped the direction: instead of letting the client into Localo, we had to push the report out to them.\nI presented the CEO with the research findings, the framed problem and the new hypothesis. He accepted them without resistance — the data was unambiguous.",
+      text: "The hypothesis we started with didn't hold up in research. The problem wasn't access to the data — it was the effort and commitment that entering the tool would demand from the client. That flipped the direction: instead of letting the client into Localo, we had to push the report out to them.\n\nI presented the CEO with the research findings, the framed problem and the new hypothesis. He accepted them without resistance — the data was unambiguous.",
       shiftTitle: "Change of direction",
       hypothesisRejected: {
         title: "Starting hypothesis",
@@ -365,7 +412,11 @@ export const copy = {
         note: "Test: what share of report users turns on automation, and how many never generate manually at all.",
         text: "If the report builds itself and reaches the client, specialists will switch to auto-reporting and stop creating reports manually.",
       },
-      goal: "Build a tool for automatic reporting that clearly shows results to non-technical clients and builds trust in the collaboration.",
+      goalLabel: "Build a tool for ",
+      goalBold1: "automatic reporting",
+      goalMid: " that clearly shows results to non-technical clients and ",
+      goalBold2: "builds trust in the collaboration",
+      goalEnd: ".",
     },
     decyzje: {
       eyebrow: "05 · KEY DECISIONS & TRADE-OFFS",
@@ -374,80 +425,89 @@ export const copy = {
         title: "Generate from the full dataset, select only before sending the report",
         steps: [
           { label: "Rejected option:", text: "Choosing report elements before generation seemed like the logical flow. Create report → pick a period → choose data → generate." },
-          { label: "Reason:", text: "Every new report generates a rank map, and that costs money. Selecting before generation meant the user would produce a new report every time they changed their mind." },
+          { label: "Reason:", bullets: [
+            { text: "every new report generates a rank map, ", bold: "and that costs money" },
+            { text: "selecting before generation meant the user would produce a new report every time they changed their mind", bold: "" },
+          ] },
           { label: "Effect:", text: "Lower cost on our side and less friction on the user's side. One decision, two wins." },
         ],
       },
       pair: [
         {
-          title: "The builder as an assistant, not an empty form",
-          text: "The report generates itself, and the user gets a ready draft. They edit, approve and send. The final word stays with them: the automation prepares, it doesn't decide for them.\n\nReason: designing in line with the company's mission — automating execution, not replacing understanding.",
+          title: "The builder as an\nassistant, not an empty form",
+          image: "/raporty-ds-smart-creator.webp",
+          text1: "The report generates itself, and the user gets a ready draft. They edit/approve and send. The final word stays with them: the automation prepares, but it ",
+          text1Bold: "doesn't decide for them.",
+          text2Bold: "Reason:",
+          text2: "Designing in line with the company's mission: automating execution, not replacing understanding.",
         },
         {
-          title: "No API — a link and a PDF instead",
-          text: "Some support tickets asked for a Localo API. Instead of building an integration for the few, we shipped the report in three forms: email, link, or PDF.\n\nEffect: the same need covered at a fraction of the cost.",
+          title: "We didn't build an API",
+          image: "/raporty-ds-api-stop.webp",
+          text1: "Users directly asked for an API to build their own reports in their own framework. We didn't go that route: the feature answered a narrow group's need and demanded a lot of development work.",
+          text1Bold: "",
+          text2Bold: "Effect:",
+          text2: "At this stage the effort was disproportionate to the payoff. We logged the idea in the backlog.",
         },
       ],
+      builtTitle: "What I built",
+      builtText: "Reporting and auto-reporting. The user sets — globally or separately per profile — how often a report should generate. They pick, say, once a month, and every month get a ready document with the profile's key information: keyword rankings and their changes, profile activity, reviews. They can turn individual sections on and off, so the report isn't cluttered with things that don't matter to their client. Add an address, and send.",
+      kreatorPlaceholder: "Report builder screenshot",
+      testsTitle: "Usability testing",
+      testsText: "I mapped the full report-creation flow, built a clickable prototype in Claude Code to test it with users before involving development and QA. I prepared scenarios to answer 3 questions:",
+      testsQuestions: [
+        "Are the steps in the report-creation process predictable?",
+        "Does the user easily find a specific profile's report in the reports manager, and do they understand the status?",
+        "Is the builder (editing the draft and sending) easy to use?",
+      ],
+      testsFindings: [
+        { title: "The list was organised the opposite way from how users work.", text1: "The manager showed every report generated for every profile. Users got lost in that list and had trouble navigating.", text2: "The reason turned out to be fundamental: their daily work is organised per profile, so they think profile → report. My list showed the reverse: report → for profile XYZ. It wasn't a labelling problem, it was a mismatch with their mental model." },
+        { title: "Report history wasn't useful.", text1: "The only thing respondents actually looked for was: is the latest report still a draft, or has it already gone to the client.", text2: "" },
+      ],
+      testsClosing: "In the next round every respondent moved through the feature without hesitation. They handled tasks smoothly — e.g. find the latest report for profile xyz, or generate a report for 4 profiles at once. I'll show the updated versions in the next steps.",
     },
     handoff: {
       eyebrow: "06 · HANDOFF & DEVELOPMENT",
       title: "Handoff is more than passing over mockups",
-      intro:
-        "Engineers got Figma mockups arranged into flows, not loose screens: every state, notification examples, mobile versions, and implementation notes wherever a decision was needed. Plus a write-up of edge cases, design-system tokens, and a clickable prototype.\n\nI stayed in constant contact with the developers, so questions got resolved on the spot. I checked the build on the test environment and flagged differences from the design.",
+      introBold: "arranged into flows in Figma",
+      introPre: "Engineers got mockups ",
+      introMid: ", not loose screens: every state, notification examples, mobile versions, and implementation notes wherever a decision was needed. ",
+      introBold2: "Plus a write-up of edge cases",
+      introRest: " — what happens when there's no data — design-system tokens, and a clickable prototype, so the whole thing could be walked through before writing the first line of code.",
+      intro2Pre: "I stayed ",
+      intro2Bold: "in constant contact",
+      intro2Rest: " with the developers, so questions got resolved on the spot instead of waiting for review. I checked the build on the test environment and flagged differences from the design. I supported QA in defining what needed checking, and collected fixes after launch.",
       infraTitle: "One feature lost to infrastructure",
-      infraText:
-        "Reports sent by email were meant to include interactive rank maps. The feature was built and didn't ship. We caught it before release: email clients handle links poorly — filters flagged them and test messages landed in spam.\n\nThis was the most frustrating moment of the project. The feature worked and was good — it lost to infrastructure. The good news is that we found out, not the users.",
+      infraText1: "Reports sent by email were meant to include interactive rank maps. Clicking the map would open a link where the client could adjust settings and view the data themselves. The feature was built and didn't ship. We caught it before release: email clients handle links poorly — filters flagged them and test messages landed in spam. We didn't have enough time to work around it, so we cut interactive maps from emailed reports.",
+      infraText2: "This was the most frustrating moment of the project. The feature worked and was good — it lost to infrastructure. The good news is that we found out, not the users.",
     },
     rozwiazanie: {
       eyebrow: "07 · SOLUTION",
-      title: "Reports that build themselves",
-      steps: [
-        {
-          stack: true,
-          cards: [
-            { title: "Reports list", desc: "Everything at a glance: status, delivery method and the date of the next report are visible right away on every entry, without opening each one.", img: "/raporty-lista.webp", imgAlt: "Reports list", height: 700 },
-          ],
-        },
-        {
-          stack: true,
-          cards: [
-            { title: "Auto-reporting", desc: "On by default: an editable schedule, ready to adjust anytime, no setup required.", img: "/raporty-auto.webp", imgAlt: "Auto-reporting" },
-            { title: "On-demand report", desc: "Without touching the schedule: any period, one click, and the automatic send stays untouched.", img: "/raporty-instant.webp", imgAlt: "On-demand report" },
-          ],
-        },
-        {
-          stack: true,
-          cards: [
-            { title: "Reports manager", desc: <>One view of all client profiles. <NumBadge n={1} /> Filtering by status and frequency plus <NumBadge n={2} /> bulk actions, key when you're managing many profiles at once. Each one also shows <NumBadge n={3} /> the last two reports along with the next automatic date, and next to it <NumBadge n={4} /> the status and delivery method.</>, img: "/raporty-manager.webp", imgAlt: "Reports manager", height: 700 },
-          ],
-        },
-        {
-          title: "Report editor",
-          desc: "The specialist gets a complete report automatically: turns sections on and off, adjusts settings, never starts from scratch.",
-          visual: "sidebarSwap",
-          stack: true,
-          height: 700,
-        },
-        {
-          title: "Final report",
-          desc: "The email report has a deliberately simple layout: limited to elements that render the same across every email client. That same simplicity works for the content too: it shows 'before / after', and for harder sections the specialist can add a short educational note for the client.",
-          visual: "autoScrollReport",
-          stack: true,
-          height: 750,
-        },
-        {
-          stack: true,
-          cards: [
-            { title: "Email settings", desc: "A custom send-from address and reply-to are set once: every report, manual or automatic, looks like the specialist sent it themselves.", img: "/raporty-email.webp", imgAlt: "Email settings" },
-            { title: "Delivery methods", desc: "Three ways from one screen: auto-send (60% adoption, 44% exclusively), a login-free link, or a PDF.", img: "/raporty-share.webp", imgAlt: "Three delivery methods" },
-          ],
-        },
+      title: "How it turned out — a report in one click",
+      intro: "Below is the final version of the reporting module and reports manager — the one that shipped to production and that users rely on every day. From a single profile's report list, through the report itself, to managing an entire client portfolio.",
+      s1Title: "Reports list — one profile's history",
+      s1CardTitle: "The draft is already waiting",
+      s1CardText: "The user doesn't start from an empty builder. They open the profile, and the draft for the current period is already there — just review and send. Every report on the list shows its period, generation date and status. This is also where auto-reporting is set up.",
+      s2Title: "The report",
+      s2Text: "The report starts complete — stats, keywords with rank maps, reviews, content, citations and competitors. Everything for the period, nothing to pick manually. The agency logo at the top, and a short explanation next to each metric.",
+      s2Pair: [
+        { title: "I tailor it to this specific client", text: "Unchecks whatever they didn't work on this month. The report should answer 'is it getting better', not show everything the system can count." },
+        { title: "Auto-reporting", text: "Auto-reports are on by default. The data range — e.g. a month — and generation frequency can be edited anytime." },
       ],
-      rejectedTag: "Rejected directions",
-      rejected: [
-        { title: "Requiring login to the tool", reason: "Extra friction for someone who just wants a quick look." },
-        { title: "Charts and raw metrics as the default format", reason: "Overwhelming, requiring time to analyse that the client doesn't have." },
+      s3Title: "Manager — a list of profiles, not a list of reports",
+      s3CardTitle: "The bird's-eye view",
+      s3CardText: "Anyone managing a dozen-plus profiles needs a view of their whole client portfolio. This layout came after usability testing: client first, their report second.",
+      s3Pair: [
+        { title: "Statuses and schedule", text: "Sees what went to the client and when the next report will generate. Without opening every profile individually." },
+        { title: "Multiple reports at once", text: "If they need a report outside the fixed schedule, a bulk action handles it." },
       ],
+      s3Triple: [
+        { title: "Delivery", text: "Three ways from one screen: auto-send, a login-free link, or a PDF." },
+        { title: "Sending by email", text: "The report goes to the client — the client doesn't go to the report." },
+        { title: "Sending by email", text: "The report goes to the client — the client doesn't go to the report." },
+      ],
+      s4Title: "Components and states",
+      s4Text: "Every component had to handle every state — empty, generating, sent, error. Notifications, empty states, dropdowns and tags came from the design system I built together with engineering.",
     },
     wynik: {
       eyebrow: "08 · RESULTS & PROOF",
@@ -461,21 +521,27 @@ export const copy = {
       ],
       dataCaption: "Data from October 2025 – June 2026, from Localo's data analyst.",
       whatItMeansTitle: "What's behind these numbers",
-      paras: [
-        "Over nine months, the share of report creators has held in the 11–13% range. It grew after launch, peaked in December, then settled a little lower — but it held. This isn't the curve of a fresh feature, it's a new habit.",
-        "44% isn't adoption, it's a habit change. These people stopped manually doing something they'd always done manually. Auto is the dominant mode here, not an add-on — and to me that's the strongest number on this list.",
-        "Report users pay ~11× more often than the rest of the base and have ~20× higher blended LTV. We don't know if reports created those accounts. We know they keep them in the tool.",
-      ],
-      quote: "Some clients pay just for this. This feature solved a real user problem, which reduced friction and churn.",
+      para1: "Over nine months, the share of report creators has held in the 11–13% range. It grew after launch, peaked in December, then settled a little lower — but it held. ",
+      para1Bold: "This isn't the curve of a fresh feature, it's a new habit.",
+      para2: "44%, meanwhile, isn't adoption, ",
+      para2Bold: "it's a habit change",
+      para2Rest: ". These people stopped manually doing something they'd always done manually. Auto is the dominant mode here, not an add-on — and to me that's the strongest number on this list.",
+      para3: "Report users pay ~11× more often than the rest of the base and have ~20× higher blended LTV. So the feature reaches the segment that leaves the most in Localo: large, engaged agencies and specialists. The most valuable persona got a tool it actually uses. We don't know if reports created those accounts — we didn't isolate that effect. We know they keep them in the tool. It's an ",
+      para3Bold: "anchor feature",
+      para3Rest: " for the segment the company cares about most.",
+      quotePre: "\"Some clients ",
+      quoteAccent1: "pay just for this",
+      quoteMid: ". This feature solved a real user problem, which ",
+      quoteAccent2: "reduced friction and churn",
+      quoteEnd: ".\"",
       quoteAttribution: "Localo CEO",
     },
     podsumowanie: {
       eyebrow: "09 · SUMMARY",
       title: "The project didn't end at launch",
-      intro:
-        "Over the following weeks we watched how the new feature was adopted. I reviewed Clarity recordings to see how users handled reports. I checked support tickets for anything related to the feature.",
+      intro: "Over the following weeks we watched how the new feature was adopted. I reviewed Clarity recordings to see how users handled reports. I checked support tickets for anything related to the feature. We gathered ideas for the next iterations and shipped some of them, including showing whether a report was sent directly, a link was generated, or a PDF.",
       lessons: [
-        { title: "I know that I know nothing", text: "The most valuable part of this project wasn't the research itself — it was that before we built anything, we wrote down everything we didn't know. The CEO's hypothesis didn't fail because it was foolish — it was reasonable." },
+        { title: "I know that I know nothing", text: "The most valuable part of this project wasn't the research itself — it was that before we built anything, we wrote down everything we didn't know. The CEO's hypothesis didn't fail because it was foolish — it was reasonable. It failed because it rested on assumptions about people we'd never actually asked." },
         { title: "Technical doesn't mean later", text: "Bringing engineers in at the concept stage, not at handoff, changed the shape of the product. Email client constraints weren't an implementation detail — they were a factor that defined what the report looks like." },
       ],
       nextProjectLabel: "See the next project",
