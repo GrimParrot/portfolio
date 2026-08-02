@@ -24,7 +24,6 @@ const CHAPTER_IDS = ["skrot", "problem", "discovery", "reframing", "decyzje", "h
 function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] }) {
   const [active, setActive] = useState(chapters[0]?.id)
   const [hovered, setHovered] = useState<string | null>(null)
-  const [pastEnd, setPastEnd] = useState(false)
 
   useEffect(() => {
     const sections = chapters
@@ -43,36 +42,13 @@ function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] })
     return () => observer.disconnect()
   }, [chapters])
 
-  useEffect(() => {
-    const end = document.getElementById("podsumowanie-images")
-    if (!end) return
-    let ticking = false
-    const check = () => {
-      ticking = false
-      setPastEnd(end.getBoundingClientRect().top < window.innerHeight)
-    }
-    const onScroll = () => {
-      if (ticking) return
-      ticking = true
-      requestAnimationFrame(check)
-    }
-    check()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    window.addEventListener("resize", onScroll)
-    return () => {
-      window.removeEventListener("scroll", onScroll)
-      window.removeEventListener("resize", onScroll)
-    }
-  }, [])
-
   const go = (id: string) => {
     const el = document.getElementById(id)
     if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: "smooth" })
   }
 
   return (
-    <nav style={{ position: "fixed", top: pastEnd ? 32 : "50%", right: 32, transform: pastEnd ? "translateY(0)" : "translateY(-50%)", zIndex: 50, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2,
-      transition: "top 320ms var(--pf-ease), transform 320ms var(--pf-ease)" }}>
+    <nav style={{ position: "fixed", top: "50%", right: 32, transform: "translateY(-50%)", zIndex: 50, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2 }}>
       {chapters.map((c) => {
         const isActive = active === c.id
         const hot = hovered === c.id
@@ -561,7 +537,7 @@ export function RaportyCaseStudy() {
 
         <Divider />
 
-        <Section id="podsumowanie-images">
+        <Section>
           <img src="/raporty-ds-thanks.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 48, width: "100%", alignItems: "start" }}>
             <img src="/raporty-ds-for.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
