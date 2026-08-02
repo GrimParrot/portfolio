@@ -128,22 +128,6 @@ function Tag({ children, color }: { children: React.ReactNode; color?: string })
   )
 }
 
-/** Temporary stand-in for the 10 source images that exceeded the design-tool's
- * 256 KiB single-file read cap. Swap for a Figure once the real asset lands. */
-function PlaceholderImage({ label, height, width, radius = 0, style }: { label: string; height?: number | string; width?: number | string; radius?: number; style?: React.CSSProperties }) {
-  return (
-    <div
-      style={{
-        width: width ?? "100%", height, borderRadius: radius, background: "var(--pf-surface-subtle)",
-        display: "flex", alignItems: "center", justifyContent: "center", flexShrink: width ? 0 : undefined,
-        boxShadow: "inset 0 0 0 1px var(--pf-border)", boxSizing: "border-box", ...style,
-      }}
-    >
-      <span style={{ fontFamily: "var(--pf-font-body)", fontSize: 13, color: "var(--pf-text-faint)", textAlign: "center", padding: 16 }}>{label}</span>
-    </div>
-  )
-}
-
 function SidebarSettingsSwap({ base, overlay, overlayRect }: { base: string; overlay: string; overlayRect: { top: number; left: number; width: number; height: number } }) {
   const [showOverlay, setShowOverlay] = useState(false)
 
@@ -253,7 +237,7 @@ export function RaportyCaseStudy() {
               lead={t.heroLead}
             />
             <MetaBar items={t.metaBar} />
-            <Figure src="/raporty-ds-cover.webp" height={560} alt={t.heroTitle} />
+            <Figure src="/raporty-ds-cover.webp" alt={t.heroTitle} />
           </StaggerItem>
         </HeroStagger>
       </Section>
@@ -303,7 +287,7 @@ export function RaportyCaseStudy() {
                   <h3 className="pf-h3">{t.problem.researchTitle}</h3>
                   <p className="pf-body">{t.problem.researchDesc}</p>
                 </div>
-                <div style={{ height: 280, borderRadius: 0, background: "url(/raporty-ds-questions.webp) center / cover no-repeat" }} />
+                <img src="/raporty-ds-questions.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
               <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: 48 }}>
                 <ul style={{ margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 32 }}>
@@ -331,8 +315,8 @@ export function RaportyCaseStudy() {
             </div>
             <p className="pf-body" style={{ whiteSpace: "pre-line" }}>{t.discovery.intro2}</p>
             <div style={{ display: "flex", gap: 80, width: "100%" }}>
-              <Figure src="/raporty-ds-badania-3.webp" height={342} />
-              <Figure src="/raporty-ds-badania-2.webp" height={342} />
+              <Figure src="/raporty-ds-badania-3.webp" />
+              <Figure src="/raporty-ds-badania-2.webp" />
             </div>
           </Section>
         </Reveal>
@@ -355,7 +339,7 @@ export function RaportyCaseStudy() {
               <p className="pf-body-bold">{t.discovery.personaIntro}</p>
             </div>
             <div style={{ display: "flex", gap: 24, alignItems: "center", width: "100%" }}>
-              <PlaceholderImage label="persona.png" width={560} height={740} />
+              <img src="/raporty-ds-persona.webp" alt="" style={{ width: 560, height: "auto", flexShrink: 0, display: "block" }} />
               <div style={{ display: "flex", flexDirection: "column", gap: 32, flex: 1 }}>
                 {t.discovery.personaCards.map((p, i) => (
                   <PersonaCard key={i} title={p.title}>{p.text}</PersonaCard>
@@ -373,8 +357,8 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.reframing.eyebrow} title={t.reframing.title} />
             <p className="pf-body" style={{ whiteSpace: "pre-line" }}>{t.reframing.text}</p>
             <div style={{ display: "flex", gap: 80, width: "100%" }}>
-              <PlaceholderImage label="scope.png" height={523} />
-              <Figure src="/raporty-ds-jobs-to-be-done.webp" height={523} />
+              <Figure src="/raporty-ds-scope.webp" />
+              <Figure src="/raporty-ds-jobs-to-be-done.webp" />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <h3 className="pf-h3">{t.reframing.shiftTitle}</h3>
@@ -393,11 +377,10 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.decyzje.eyebrow} title={t.decyzje.title} />
             <DecisionCard
               title={t.decyzje.mainDecision.title}
+              image="/raporty-ds-figma.webp"
               arrowIcon="/icons/raporty-ds-arrow-right.svg"
               steps={t.decyzje.mainDecision.steps}
-            >
-              <PlaceholderImage label="figma.png" height={293} />
-            </DecisionCard>
+            />
             <div style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
               {t.decyzje.pair.map((d, i) => (
                 <DecisionCard key={i} padding={32} style={{ flex: 1 }} title={d.title}>
@@ -414,15 +397,15 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.handoff.eyebrow} title={t.handoff.title} />
             <div style={{ display: "flex", gap: 80, width: "100%", alignItems: "flex-start" }}>
               <p className="pf-body-bold" style={{ flexGrow: 1, whiteSpace: "pre-line" }}>{t.handoff.intro}</p>
-              <div style={{ width: 360, height: 280, flexShrink: 0, borderRadius: 0, background: "url(/raporty-ds-handoff.webp) center / cover no-repeat" }} />
+              <img src="/raporty-ds-handoff.webp" alt="" style={{ width: 360, height: "auto", flexShrink: 0, display: "block" }} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <h3 className="pf-h3">{t.handoff.infraTitle}</h3>
               <p className="pf-body" style={{ whiteSpace: "pre-line" }}>{t.handoff.infraText}</p>
             </div>
             <div style={{ display: "flex", gap: 80, width: "100%" }}>
-              <PlaceholderImage label="maps.png" height={574} />
-              <PlaceholderImage label="figma.png" height={574} />
+              <Figure src="/raporty-ds-maps.webp" />
+              <Figure src="/raporty-ds-figma.webp" />
             </div>
           </Section>
         </Reveal>
@@ -512,20 +495,20 @@ export function RaportyCaseStudy() {
             <p className="pf-body">{t.podsumowanie.intro}</p>
             <StaggerGroup style={{ display: "flex", gap: 24, width: "100%" }}>
               <StaggerItem style={{ display: "flex", flex: 1 }}>
-                <LessonCard title={t.podsumowanie.lessons[0].title}>
+                <LessonCard image="/raporty-ds-nie-wiem.webp" title={t.podsumowanie.lessons[0].title}>
                   {t.podsumowanie.lessons[0].text}
                 </LessonCard>
               </StaggerItem>
               <StaggerItem style={{ display: "flex", flex: 1 }}>
-                <LessonCard title={t.podsumowanie.lessons[1].title}>
+                <LessonCard image="/raporty-ds-teamwork.webp" title={t.podsumowanie.lessons[1].title}>
                   {t.podsumowanie.lessons[1].text}
                 </LessonCard>
               </StaggerItem>
             </StaggerGroup>
-            <PlaceholderImage label="thanks.png" height={700} />
+            <Figure src="/raporty-ds-thanks.webp" />
             <div style={{ display: "flex", gap: 48, width: "100%" }}>
-              <PlaceholderImage label="for.png" height={403} />
-              <PlaceholderImage label="watching.png" height={403} />
+              <Figure src="/raporty-ds-for.webp" />
+              <Figure src="/raporty-ds-watching.webp" />
             </div>
           </Section>
         </Reveal>

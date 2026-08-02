@@ -8,10 +8,8 @@ export interface DecisionStep {
 export interface DecisionCardProps {
   /** Manrope 22/34 bold — states the decision, not the feature. */
   title: React.ReactNode
-  /** Flow diagram or screen shown above the reasoning. */
+  /** Flow diagram or screen shown above the reasoning, at its natural aspect ratio. */
   image?: string
-  /** @default 293 */
-  imageHeight?: number
   /** Usually three: "Rejected option:", "Reason:", "Effect:". */
   steps?: DecisionStep[]
   /** URL of the 24px connector arrow; falls back to a -> glyph. */
@@ -23,12 +21,12 @@ export interface DecisionCardProps {
 }
 
 /** A design decision laid out as rejected option -> reason -> effect. */
-export function DecisionCard({ title, image, imageHeight = 293, steps = [], arrowIcon, padding = 48, children, style }: DecisionCardProps) {
+export function DecisionCard({ title, image, steps = [], arrowIcon, padding = 48, children, style }: DecisionCardProps) {
   return (
     <div style={{ borderRadius: 24, boxShadow: "var(--pf-ring)", padding, display: "flex", flexDirection: "column",
       gap: 64, boxSizing: "border-box", width: "100%", ...style }}>
       <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{title}</span>
-      {image && <div style={{ height: imageHeight, background: `url(${image}) center / cover no-repeat` }} />}
+      {image && <img src={image} alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 12 }} />}
       {children}
       {steps.length > 0 && (
         <div style={{ display: "flex", flexDirection: "row", gap: 32, alignItems: "center" }}>
