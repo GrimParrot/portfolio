@@ -318,7 +318,7 @@ export function RaportyCaseStudy() {
               <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
                 {t.skrot.stats.map((s, i) => (
                   <StaggerItem key={i} style={i === 0 ? { flex: "0 0 calc(50% - 12px)" } : { flex: "1 1 0" }}>
-                    <StatCard tone="white" value={<AnimatedStat value={s.value} />} label={s.label} style={{ width: "100%" }} />
+                    <StatCard tone="white" value={<AnimatedStat value={s.value} />} label={s.label} style={{ width: "100%", height: "100%" }} />
                   </StaggerItem>
                 ))}
               </StaggerGroup>
