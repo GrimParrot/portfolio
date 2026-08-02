@@ -6,6 +6,11 @@
    Source tokens/base.css (global body/a selectors) and tokens/fig-tokens.css (unrelated
    Localo product token dump) are intentionally NOT imported. */
 
+/* ---- helmet <style> from the .dc.html composition ---- */
+/* Scoped to #top (unique to this page) so it can't leak to other pages
+   bundled in the same app-wide stylesheet. */
+#top b, #top strong { color: var(--pf-text-primary); }
+
 /* ---- fonts.css ---- */
 @font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
