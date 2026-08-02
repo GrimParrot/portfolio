@@ -120,7 +120,7 @@ export function RaportyCaseStudy() {
 
         {/* HERO */}
         <Section gap={80}>
-          <header style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%", padding: 80, boxSizing: "border-box" }}>
+          <header style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%", padding: 0, boxSizing: "border-box" }}>
             <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
             <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: 126, lineHeight: "136px", letterSpacing: "0.02em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
               {t.heroTitle} <span style={{ color: "var(--pf-accent-500)" }}>{t.heroTitleAccent}</span>
