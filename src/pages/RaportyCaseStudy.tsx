@@ -92,6 +92,36 @@ function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] })
   )
 }
 
+/** Animated screenshot overlay swap — used for the "kreator" (report builder)
+ * preview: a settings-panel overlay fades in/out on top of the base screenshot. */
+function SidebarSettingsSwap({ base, overlay, overlayRect }: { base: string; overlay: string; overlayRect: { top: number; left: number; width: number; height: number } }) {
+  const [showOverlay, setShowOverlay] = useState(false)
+
+  useEffect(() => {
+    const id = setInterval(() => setShowOverlay((v) => !v), 2200)
+    return () => clearInterval(id)
+  }, [])
+
+  return (
+    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
+      <img src={base} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "top" }} />
+      <img
+        src={overlay}
+        alt=""
+        className="absolute object-cover"
+        style={{
+          top: `${overlayRect.top}%`,
+          left: `${overlayRect.left}%`,
+          width: `${overlayRect.width}%`,
+          height: `${overlayRect.height}%`,
+          opacity: showOverlay ? 1 : 0,
+          transition: "opacity 0.5s ease",
+        }}
+      />
+    </div>
+  )
+}
+
 /** Bordered image-over-text card used throughout chapter 07 (Rozwiazanie). */
 function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: string; text: string }) {
   return (
@@ -137,7 +167,7 @@ export function RaportyCaseStudy() {
           <p className="pf-body-bold"><span style={{ fontWeight: "normal" }}><b style={{ color: "#0A0A0A" }}>{t.skrot.introBold}</b>{t.skrot.introRest}</span></p>
           <div style={{ position: "relative", overflow: "hidden", borderRadius: 24, width: "100%", boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-2.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 16, padding: 48 }}>
             <h4 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-text-on-dark)" }}>{t.skrot.contextPanel.title}</h4>
-            <p style={{ margin: 0, whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-on-dark-body)" }}>{t.skrot.contextPanel.text}<b>{t.skrot.contextPanel.textBold}</b></p>
+            <p style={{ margin: 0, whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-on-dark-body)" }}>{t.skrot.contextPanel.text}<b style={{ color: "var(--pf-text-on-dark)" }}>{t.skrot.contextPanel.textBold}</b></p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -326,9 +356,11 @@ export function RaportyCaseStudy() {
             <h3 className="pf-h3">{t.decyzje.builtTitle}</h3>
             <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.builtText}</p>
             <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-surface-accent)", padding: 48, boxSizing: "border-box" }}>
-              <div style={{ width: "100%", height: 540, borderRadius: 12, background: "var(--pf-accent-50)", boxShadow: "inset 0 0 0 1px var(--pf-accent-100)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontSize: 14, color: "var(--pf-text-accent-deep)" }}>{t.decyzje.kreatorPlaceholder}</span>
-              </div>
+              <SidebarSettingsSwap
+                base="/raporty-section.webp"
+                overlay="/raporty-settings.webp"
+                overlayRect={{ top: 6.91, left: 0, width: 17.78, height: 109.6 }}
+              />
             </div>
           </div>
 

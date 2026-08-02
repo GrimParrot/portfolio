@@ -178,7 +178,6 @@ export const copy = {
       ],
       builtTitle: "Co zbudowałam",
       builtText: "Raportowanie i autoraportowanie. Użytkownik ustawia — globalnie albo osobno dla konkretnej wizytówki — jak często ma się generować raport. Wybiera na przykład raz w miesiącu i co miesiąc dostaje gotowy dokument z najważniejszymi informacjami o wizytówce: pozycjami słów kluczowych i ich zmianami, aktywnością na profilu, opiniami. Może włączać i wyłączać poszczególne sekcje, żeby nie zaśmiecać raportu tym, co dla jego klienta nie ma znaczenia. Dodaje adres i wysyła.",
-      kreatorPlaceholder: "Zrzut kreatora raportów",
       testsTitle: "Testy użyteczności",
       testsText: "Zmapowałam pełny flow tworzenia raportu, zbudowałam klikalny prototyp w Claude Code aby przetestować go z użytkownikami, zanim zaangażowałam development i QA. Przygotowałam scenariusze aby odpowiedzieć na 3 pytania:",
       testsQuestions: [
@@ -452,7 +451,6 @@ export const copy = {
       ],
       builtTitle: "What I built",
       builtText: "Reporting and auto-reporting. The user sets — globally or separately per profile — how often a report should generate. They pick, say, once a month, and every month get a ready document with the profile's key information: keyword rankings and their changes, profile activity, reviews. They can turn individual sections on and off, so the report isn't cluttered with things that don't matter to their client. Add an address, and send.",
-      kreatorPlaceholder: "Report builder screenshot",
       testsTitle: "Usability testing",
       testsText: "I mapped the full report-creation flow, built a clickable prototype in Claude Code to test it with users before involving development and QA. I prepared scenarios to answer 3 questions:",
       testsQuestions: [
