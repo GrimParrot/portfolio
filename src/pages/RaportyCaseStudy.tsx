@@ -520,14 +520,17 @@ export function RaportyCaseStudy() {
             <LessonCard image="/raporty-ds-nie-wiem.webp" title={t.podsumowanie.lessons[0].title}>{t.podsumowanie.lessons[0].text}</LessonCard>
             <LessonCard image="/raporty-ds-teamwork.webp" title={t.podsumowanie.lessons[1].title}>{t.podsumowanie.lessons[1].text}</LessonCard>
           </div>
+        </Section>
+
+        <Divider />
+
+        <Section>
           <img src="/raporty-ds-thanks.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 48, width: "100%", alignItems: "start" }}>
             <img src="/raporty-ds-for.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
             <img src="/raporty-ds-watching.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
           </div>
         </Section>
-
-        <Divider />
 
         <Section gap={16} contentStyle={{ alignItems: "center" }}>
           <a href="#top" className="pf-h2" style={{ textAlign: "center", color: "var(--pf-text-primary)", textDecoration: "none" }}>{t.podsumowanie.nextProjectLabel}</a>
