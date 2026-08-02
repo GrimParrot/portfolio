@@ -335,7 +335,7 @@ export function RaportyCaseStudy() {
                   <ul className="pf-body" style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", flex: "1 1 280px", minWidth: 0, display: "flex", flexDirection: "column", gap: 0 }}>
                     {t.skrot.roleList.map((item, i) => <li key={i}>{item}</li>)}
                   </ul>
-                  <div style={{ flex: "1 1 280px", marginBottom: "clamp(-40px, -12vw, -200px)", overflow: "hidden", borderRadius: 24, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-1.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 32, padding: "clamp(24px, 6vw, 48px)" }}>
+                  <div style={{ flex: "1 1 280px", marginBottom: "clamp(-200px, -12vw, -40px)", overflow: "hidden", borderRadius: 24, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-1.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 32, padding: "clamp(24px, 6vw, 48px)" }}>
                     <h4 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-text-on-dark)" }}>{t.skrot.scopePanel.title}</h4>
                     {t.skrot.scopePanel.blocks.map((b, i) => (
                       <div key={i} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -506,7 +506,7 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.decyzje.eyebrow} title={t.decyzje.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", marginBottom: "clamp(-24px, -3vw, -56px)", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
+            <div style={{ width: "100%", marginBottom: "clamp(-56px, -3vw, -24px)", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
               <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.decyzje.mainDecision.title}</span>
               <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
               <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "stretch", justifyContent: "center" }}>
