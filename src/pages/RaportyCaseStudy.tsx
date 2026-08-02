@@ -538,7 +538,9 @@ export function RaportyCaseStudy() {
 
       </div>
 
-      <NextProject currentHref="/case-study/raporty" />
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", boxSizing: "border-box" }}>
+        <NextProject currentHref="/case-study/raporty" />
+      </div>
       <Contact />
       <Footer />
     </>
