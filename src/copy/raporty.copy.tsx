@@ -125,7 +125,7 @@ export const copy = {
     reframing: {
       eyebrow: "04 · RE-FRAMING",
       title: "Problemem nie był dostęp, tylko wysiłek",
-      text: "Hipoteza, z którą zaczynaliśmy, nie obroniła się w badaniach. Problemem nie był dostęp do danych — tylko wysiłek i zaangażowanie, których wejście do narzędzia wymagałoby od klienta. To odwróciło kierunek: zamiast wpuszczać klienta do Localo, trzeba było wypchnąć raport do niego.\n\nPrzedstawiłam CEO wyniki badań, sformułowany problem i nową hipotezę. Przyjął je bez oporu — dane były jednoznaczne.",
+      text: "Hipoteza, z którą zaczynaliśmy, nie obroniła się w badaniach. Problemem nie był dostęp do danych — tylko wysiłek i zaangażowanie, których wejście do narzędzia wymagałoby od klienta. To odwróciło kierunek: zamiast wpuszczać klienta do Localo, trzeba było wypchnąć raport do niego.\n\nPrzedstawiłam CEO wyniki badań, sformułowany problem i nową hipotezę. Przyjął je bez oporu — dane były jednoznaczne. Cel projektu ustaliliśmy wspólnie.",
       shiftTitle: "Zmiana kierunku",
       hypothesisRejected: {
         title: "Hipoteza na starcie",
@@ -399,7 +399,7 @@ export const copy = {
     reframing: {
       eyebrow: "04 · RE-FRAMING",
       title: "The problem wasn't access — it was effort",
-      text: "The hypothesis we started with didn't hold up in research. The problem wasn't access to the data — it was the effort and commitment that entering the tool would demand from the client. That flipped the direction: instead of letting the client into Localo, we had to push the report out to them.\n\nI presented the CEO with the research findings, the framed problem and the new hypothesis. He accepted them without resistance — the data was unambiguous.",
+      text: "The hypothesis we started with didn't hold up in research. The problem wasn't access to the data — it was the effort and commitment that entering the tool would demand from the client. That flipped the direction: instead of letting the client into Localo, we had to push the report out to them.\n\nI presented the CEO with the research findings, the framed problem and the new hypothesis. He accepted them without resistance — the data was unambiguous. We agreed on the project's goal together.",
       shiftTitle: "Change of direction",
       hypothesisRejected: {
         title: "Starting hypothesis",
