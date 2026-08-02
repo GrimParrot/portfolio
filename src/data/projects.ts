@@ -31,7 +31,7 @@ export const projects: Project[] = [
     featured: true,
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-indigo-50",
-    image: "/raporty-cover.webp",
+    image: "/raporty-ds-cover.webp",
     imagePosition: "left center",
     href: "/case-study/raporty",
   },
