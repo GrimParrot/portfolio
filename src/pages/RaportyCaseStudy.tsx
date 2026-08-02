@@ -232,7 +232,7 @@ export function RaportyCaseStudy() {
       <ProgressRail chapters={chapters} />
 
       {/* HERO */}
-      <Section gap={80} style={{ paddingTop: 96, paddingLeft: 24, paddingRight: 24, scrollMarginTop: 80 }}>
+      <Section gap={80} style={{ paddingTop: 160, paddingLeft: 24, paddingRight: 24, scrollMarginTop: 80 }}>
         <HeroStagger>
           <StaggerItem>
             <div className="flex items-center gap-4">
@@ -258,7 +258,7 @@ export function RaportyCaseStudy() {
         </HeroStagger>
       </Section>
 
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", flexDirection: "column", gap: 120 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", display: "flex", flexDirection: "column", gap: 80 }}>
 
         {/* 01 · SKROT */}
         <Reveal>
@@ -529,7 +529,7 @@ export function RaportyCaseStudy() {
             </div>
           </Section>
         </Reveal>
-        <Section gap={16} contentStyle={{ alignItems: "center" }}>
+        <Section gap={16} contentStyle={{ alignItems: "center" }} style={{ paddingBottom: 160 }}>
           <a href="#top" className="pf-h2" style={{ textAlign: "center", color: "var(--pf-text-primary)", textDecoration: "none" }}>{t.podsumowanie.nextProjectLabel}</a>
         </Section>
 
