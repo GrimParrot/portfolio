@@ -18,6 +18,21 @@
   .pf-chapter-nav { display: none !important; }
 }
 
+/* MetaBar (hero fact strip) and the skrot "three numbers" row: same technique
+   production uses for its card grids (grid-cols-1/2 md:grid-cols-3/4) — a real
+   column-count breakpoint instead of flex-wrap, so mobile is always a clean,
+   full-width single/2-column grid rather than an approximation that can leave
+   items short of full width or split unevenly. */
+.pf-meta-bar { display: grid; grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 768px) {
+  .pf-meta-bar { grid-template-columns: repeat(2, 1fr); }
+}
+
+.pf-skrot-stats { display: grid; grid-template-columns: 2fr 1fr 1fr; }
+@media (max-width: 768px) {
+  .pf-skrot-stats { grid-template-columns: 1fr; }
+}
+
 /* Chapter 07's asymmetric 2-col/2-row image grid (one tall image spanning both
    rows) needs an explicit column/row reset on mobile — CSS Grid spanning can't
    be expressed with an auto-fit trick the way a plain 2-col grid can. */

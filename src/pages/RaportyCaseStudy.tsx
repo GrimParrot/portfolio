@@ -41,10 +41,10 @@ function Reveal({ children, style }: { children: React.ReactNode; style?: React.
 }
 
 /** Wraps a row of cards so its StaggerItem children fade up one after another. */
-function StaggerGroup({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
+function StaggerGroup({ children, style, className }: { children: React.ReactNode; style?: React.CSSProperties; className?: string }) {
   const reduce = useReducedMotion()
   return (
-    <motion.div style={style} initial={reduce ? false : "hidden"} whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={staggerParent}>
+    <motion.div className={className} style={style} initial={reduce ? false : "hidden"} whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={staggerParent}>
       {children}
     </motion.div>
   )
@@ -260,7 +260,7 @@ export function RaportyCaseStudy() {
   return (
     <>
       <Navbar />
-      <div id="top" style={{ display: "flex", flexDirection: "column", gap: "clamp(56px, 10vw, 120px)", padding: "clamp(64px, 14vw, 160px) 0", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
+      <div id="top" style={{ display: "flex", flexDirection: "column", gap: "clamp(56px, 10vw, 120px)", padding: "clamp(96px, 14vw, 160px) 0", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
 
         <ChapterNav chapters={chapters} />
 
@@ -315,9 +315,9 @@ export function RaportyCaseStudy() {
                 <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.skrot.statsIntroTitle}</h4>
                 <p className="pf-body">{t.skrot.statsIntroDesc}</p>
               </div>
-              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+              <StaggerGroup className="pf-skrot-stats" style={{ gap: 24, width: "100%" }}>
                 {t.skrot.stats.map((s, i) => (
-                  <StaggerItem key={i} style={i === 0 ? { flex: "0 0 calc(50% - 12px)" } : { flex: "1 1 200px" }}>
+                  <StaggerItem key={i}>
                     <StatCard tone="white" value={<AnimatedStat value={s.value} />} label={s.label} style={{ width: "100%", height: "100%" }} />
                   </StaggerItem>
                 ))}
