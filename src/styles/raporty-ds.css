@@ -44,13 +44,9 @@
 }
 
 /* ---- fonts.css ---- */
-@font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-Medium.ttf") format("truetype");font-weight:500;font-style:normal;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-SemiBold.ttf") format("truetype");font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-Bold.ttf") format("truetype");font-weight:700;font-style:normal;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-ExtraBold.ttf") format("truetype");font-weight:800;font-style:normal;font-display:swap}
-/* Manrope already loaded site-wide via index.html's Google Fonts link. */
+/* Bricolage Grotesque @font-face is declared globally in src/index.css (it's
+   now the site-wide heading font, not just this page's). Manrope is already
+   loaded site-wide via index.html's Google Fonts link. */
 
 /* ---- colors.css ---- */
 :root{
