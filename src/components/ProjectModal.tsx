@@ -49,7 +49,7 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-8"
+          className="fixed inset-0 z-[100] flex items-end justify-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -61,7 +61,7 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
           />
           <motion.div
             layoutId={layoutId}
-            className="relative bg-white w-full rounded-3xl shadow-2xl overflow-hidden"
+            className="relative bg-white w-full rounded-t-3xl shadow-2xl overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -74,7 +74,7 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
             >
               <X className="w-4 h-4" />
             </button>
-            <div ref={scrollRef} className="pretty-scrollbar overflow-y-auto rounded-3xl" data-lenis-prevent style={{ maxHeight: "90vh" }}>
+            <div ref={scrollRef} className="pretty-scrollbar overflow-y-auto rounded-t-3xl" data-lenis-prevent style={{ maxHeight: "calc(100vh - 64px)" }}>
               <div ref={contentRef} className="max-w-[1200px] mx-auto">
                 {children}
               </div>
