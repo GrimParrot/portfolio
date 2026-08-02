@@ -288,20 +288,20 @@ export function RaportyCaseStudy() {
           <div style={{ width: "100%", marginBottom: -56, borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 48, display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
             <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.decyzje.mainDecision.title}</span>
             <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
-            <div style={{ display: "flex", gap: 32, alignItems: "flex-start" }}>
-              <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 16 }}>
+            <div style={{ display: "flex", gap: 32, alignItems: "stretch", justifyContent: "center" }}>
+              <div style={{ flex: 1, minWidth: 0, borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 24, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: 16 }}>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[0].label}</span>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[0].text}</span>
               </div>
-              <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, marginTop: 6 }} />
-              <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 16 }}>
+              <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
+              <div style={{ flex: 1, minWidth: 0, borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 24, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: 16 }}>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[1].label}</span>
                 <ul style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>
                   {t.decyzje.mainDecision.steps[1].bullets?.map((b, i) => <li key={i}>{b.text}{b.bold && <b>{b.bold}</b>}</li>)}
                 </ul>
               </div>
-              <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, marginTop: 6 }} />
-              <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 16 }}>
+              <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
+              <div style={{ flex: 1, minWidth: 0, borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 24, boxSizing: "border-box", display: "flex", flexDirection: "column", gap: 16 }}>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[2].label}</span>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[2].text}</span>
               </div>
