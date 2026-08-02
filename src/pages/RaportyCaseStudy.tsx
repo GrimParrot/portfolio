@@ -161,7 +161,7 @@ function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] })
   }
 
   return (
-    <nav style={{ position: "fixed", top: "50%", right: 32, transform: "translateY(-50%)", zIndex: 50, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2 }}>
+    <nav className="pf-chapter-nav" style={{ position: "fixed", top: "50%", right: 32, transform: "translateY(-50%)", zIndex: 50, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2 }}>
       {chapters.map((c) => {
         const isActive = active === c.id
         const hot = hovered === c.id
@@ -260,7 +260,7 @@ export function RaportyCaseStudy() {
   return (
     <>
       <Navbar />
-      <div id="top" style={{ display: "flex", flexDirection: "column", gap: 120, padding: "160px 0", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
+      <div id="top" style={{ display: "flex", flexDirection: "column", gap: "clamp(56px, 10vw, 120px)", padding: "clamp(64px, 14vw, 160px) 0", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
 
         <ChapterNav chapters={chapters} />
 
@@ -280,7 +280,7 @@ export function RaportyCaseStudy() {
                   </Link>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
                 </div>
-                <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: 126, lineHeight: "136px", letterSpacing: "0.02em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
+                <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 10vw, 126px)", lineHeight: "clamp(44px, 10.5vw, 136px)", letterSpacing: "0.02em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
                   {t.heroTitle} <span style={{ color: "var(--pf-accent-500)" }}>{t.heroTitleAccent}</span>
                 </h1>
                 <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-body)" }}>{t.heroLead}</p>
@@ -315,9 +315,9 @@ export function RaportyCaseStudy() {
                 <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.skrot.statsIntroTitle}</h4>
                 <p className="pf-body">{t.skrot.statsIntroDesc}</p>
               </div>
-              <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
+              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
                 {t.skrot.stats.map((s, i) => (
-                  <StaggerItem key={i} style={i === 0 ? { flex: "0 0 calc(50% - 12px)" } : { flex: "1 1 0" }}>
+                  <StaggerItem key={i} style={i === 0 ? { flex: "0 0 calc(50% - 12px)" } : { flex: "1 1 200px" }}>
                     <StatCard tone="white" value={<AnimatedStat value={s.value} />} label={s.label} style={{ width: "100%", height: "100%" }} />
                   </StaggerItem>
                 ))}
@@ -325,17 +325,17 @@ export function RaportyCaseStudy() {
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", position: "relative", paddingBottom: 200, boxSizing: "border-box" }}>
-              <div style={{ width: "100%", borderRadius: 24, background: "#fff", boxShadow: "var(--pf-ring)", padding: 64, display: "flex", flexDirection: "column", gap: 48, boxSizing: "border-box" }}>
+            <div style={{ width: "100%", position: "relative", paddingBottom: "clamp(40px, 12vw, 200px)", boxSizing: "border-box" }}>
+              <div style={{ width: "100%", borderRadius: 24, background: "#fff", boxShadow: "var(--pf-ring)", padding: "clamp(24px, 6vw, 64px)", display: "flex", flexDirection: "column", gap: 48, boxSizing: "border-box" }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 940 }}>
                   <span className="pf-overline" style={{ color: "var(--pf-text-accent)" }}>{t.skrot.roleOverline}</span>
                   <p className="pf-quote">{t.skrot.roleQuote}</p>
                 </div>
-                <div style={{ display: "flex", gap: 48, alignItems: "flex-start", width: "100%" }}>
-                  <ul className="pf-body" style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 0 }}>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 48, alignItems: "flex-start", width: "100%" }}>
+                  <ul className="pf-body" style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", flex: "1 1 280px", minWidth: 0, display: "flex", flexDirection: "column", gap: 0 }}>
                     {t.skrot.roleList.map((item, i) => <li key={i}>{item}</li>)}
                   </ul>
-                  <div style={{ width: "50%", flexShrink: 0, marginBottom: -200, overflow: "hidden", borderRadius: 24, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-1.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 32, padding: 48 }}>
+                  <div style={{ flex: "1 1 280px", marginBottom: "clamp(-40px, -12vw, -200px)", overflow: "hidden", borderRadius: 24, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-1.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 32, padding: "clamp(24px, 6vw, 48px)" }}>
                     <h4 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-text-on-dark)" }}>{t.skrot.scopePanel.title}</h4>
                     {t.skrot.scopePanel.blocks.map((b, i) => (
                       <div key={i} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -366,15 +366,15 @@ export function RaportyCaseStudy() {
             </p>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", borderRadius: 32, background: "#fff", boxShadow: "var(--pf-ring)", display: "flex", gap: 80, padding: 64, boxSizing: "border-box" }}>
-              <div style={{ width: 360, flexShrink: 0, display: "flex", flexDirection: "column", gap: 32 }}>
+            <div style={{ width: "100%", borderRadius: 32, background: "#fff", boxShadow: "var(--pf-ring)", display: "flex", flexWrap: "wrap", gap: 80, padding: "clamp(24px, 6vw, 64px)", boxSizing: "border-box" }}>
+              <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 32 }}>
                 <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
                   <h3 className="pf-h3">{t.problem.researchTitle}</h3>
                   <p className="pf-body">{t.problem.researchDesc}</p>
                 </div>
                 <div style={{ height: 280, background: "url(/raporty-ds-questions.webp) center / cover no-repeat" }} />
               </div>
-              <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: 48 }}>
+              <div style={{ flex: "2 1 320px", display: "flex", flexDirection: "column", gap: 48 }}>
                 <ul style={{ margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 32 }}>
                   {t.problem.questions.map((q, i) => <TimelineItem key={i} number={i + 1}>{q}</TimelineItem>)}
                 </ul>
@@ -402,12 +402,12 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.discovery.eyebrow} title={t.discovery.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", gap: 80, width: "100%", alignItems: "flex-start" }}>
-              <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: 30 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%", alignItems: "flex-start" }}>
+              <div style={{ flex: "2 1 320px", display: "flex", flexDirection: "column", gap: 30 }}>
                 <p className="pf-body" style={{ margin: 0 }}>{t.discovery.intro1Pre}<b>{t.discovery.intro1Bold}</b>{t.discovery.intro1Rest}</p>
                 <p className="pf-body" style={{ margin: 0 }}>{t.discovery.intro2Pre}<b>{t.discovery.intro2Bold}</b>{t.discovery.intro2Rest}</p>
               </div>
-              <StaggerGroup style={{ width: 336, flexShrink: 0, display: "flex", gap: 24, alignItems: "flex-start" }}>
+              <StaggerGroup style={{ flex: "1 1 280px", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start" }}>
                 {t.discovery.stats.map((s, i) => (
                   <StaggerItem key={i} style={{ flex: 1, minWidth: 0 }}>
                     <StatCard value={s.value} label={s.label} style={{ width: "100%", padding: 16, gap: 32 }} labelStyle={i === 1 ? { marginTop: 48 } : undefined} />
@@ -423,9 +423,9 @@ export function RaportyCaseStudy() {
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", gap: 80, width: "100%" }}>
-              <Figure src="/raporty-ds-badania-3.webp" />
-              <Figure src="/raporty-ds-badania-2.webp" />
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
+              <Figure src="/raporty-ds-badania-3.webp" style={{ flex: "1 1 280px" }} />
+              <Figure src="/raporty-ds-badania-2.webp" style={{ flex: "1 1 280px" }} />
             </div>
           </Reveal>
         </Section>
@@ -434,9 +434,9 @@ export function RaportyCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <h3 className="pf-h3" style={{ color: "var(--pf-text-on-dark)" }}>{t.discovery.findingsTitle}</h3>
           </Reveal>
-          <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             {t.discovery.findings.map((f) => (
-              <StaggerItem key={f.number} style={{ flex: 1, minWidth: 0 }}>
+              <StaggerItem key={f.number} style={{ flex: "1 1 240px" }}>
                 <FindingCard number={f.number} title={f.title} style={{ width: "100%", height: "100%", boxSizing: "border-box" }}>{f.text}</FindingCard>
               </StaggerItem>
             ))}
@@ -451,9 +451,9 @@ export function RaportyCaseStudy() {
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", width: "100%" }}>
-              <div style={{ width: 560, height: 740, flexShrink: 0, marginRight: -80, background: "url(/raporty-ds-persona.webp) center / contain no-repeat" }} />
-              <StaggerGroup style={{ display: "flex", flexDirection: "column", gap: 32, flex: 1, maxWidth: 510 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", width: "100%" }}>
+              <div style={{ flex: "1 1 280px", maxWidth: 560, aspectRatio: "560 / 740", marginRight: "clamp(-80px, -6.67vw, 0px)", background: "url(/raporty-ds-persona.webp) center / contain no-repeat" }} />
+              <StaggerGroup style={{ display: "flex", flexDirection: "column", gap: 32, flex: "1 1 280px", maxWidth: 510 }}>
                 {t.discovery.personaCards.map((p, i) => (
                   <StaggerItem key={i}>
                     <PersonaCard title={p.title}>{p.text}</PersonaCard>
@@ -475,18 +475,18 @@ export function RaportyCaseStudy() {
             <p className="pf-body" style={{ whiteSpace: "pre-line" }}>{t.reframing.text}</p>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", gap: 80, width: "100%" }}>
-              <Figure src="/raporty-ds-scope.webp" />
-              <Figure src="/raporty-ds-jobs-to-be-done.webp" />
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
+              <Figure src="/raporty-ds-scope.webp" style={{ flex: "1 1 280px" }} />
+              <Figure src="/raporty-ds-jobs-to-be-done.webp" style={{ flex: "1 1 280px" }} />
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <h3 className="pf-h3">{t.reframing.shiftTitle}</h3>
-              <div style={{ display: "flex", alignItems: "stretch" }}>
-                <HypothesisCard state="rejected" title={t.reframing.hypothesisRejected.title} status={t.reframing.hypothesisRejected.status} style={{ flex: 1 }}>{t.reframing.hypothesisRejected.text}</HypothesisCard>
-                <img src="/icons/raporty-ds-arrow-blue.svg" alt="" style={{ width: 96, height: 96, flexShrink: 0, margin: "auto -20px", position: "relative", zIndex: 1 }} />
-                <HypothesisCard title={t.reframing.hypothesisLive.title} status={t.reframing.hypothesisLive.status} note={t.reframing.hypothesisLive.note} style={{ flex: 1 }}>{t.reframing.hypothesisLive.text}</HypothesisCard>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "stretch", justifyContent: "center" }}>
+                <HypothesisCard state="rejected" title={t.reframing.hypothesisRejected.title} status={t.reframing.hypothesisRejected.status} style={{ flex: "1 1 280px" }}>{t.reframing.hypothesisRejected.text}</HypothesisCard>
+                <img src="/icons/raporty-ds-arrow-blue.svg" alt="" style={{ width: 96, height: 96, flexShrink: 0, margin: "auto clamp(-20px, -2vw, 0px)", position: "relative", zIndex: 1 }} />
+                <HypothesisCard title={t.reframing.hypothesisLive.title} status={t.reframing.hypothesisLive.status} note={t.reframing.hypothesisLive.note} style={{ flex: "1 1 280px" }}>{t.reframing.hypothesisLive.text}</HypothesisCard>
               </div>
             </div>
           </Reveal>
@@ -506,35 +506,35 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.decyzje.eyebrow} title={t.decyzje.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", marginBottom: -56, borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 48, display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
+            <div style={{ width: "100%", marginBottom: "clamp(-24px, -3vw, -56px)", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
               <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.decyzje.mainDecision.title}</span>
               <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
-              <div style={{ display: "flex", gap: 32, alignItems: "stretch", justifyContent: "center" }}>
-                <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 16 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "stretch", justifyContent: "center" }}>
+                <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[0].label}</span>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[0].text}</span>
                 </div>
                 <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
-                <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[1].label}</span>
                   <ul style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>
                     {t.decyzje.mainDecision.steps[1].bullets?.map((b, i) => <li key={i}>{b.text}{b.bold && <b>{b.bold}</b>}</li>)}
                   </ul>
                 </div>
                 <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
-                <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 16 }}>
+                <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[2].label}</span>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[2].text}</span>
                 </div>
               </div>
             </div>
           </Reveal>
-          <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             {t.decyzje.pair.map((d, i) => (
-              <StaggerItem key={i} style={{ flex: 1, minWidth: 0 }}>
+              <StaggerItem key={i} style={{ flex: "1 1 280px" }}>
                 <div style={{ width: "100%", height: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
-                  <div style={{ display: "flex", gap: 24, alignItems: "flex-end" }}>
-                    <span style={{ flex: 1, minWidth: 0, whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{d.title}</span>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-end" }}>
+                    <span style={{ flex: "1 1 140px", whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{d.title}</span>
                     <img src={d.image} alt="" style={{ width: 160, flexShrink: 0, height: "auto", display: "block", borderRadius: 16 }} />
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
@@ -570,9 +570,9 @@ export function RaportyCaseStudy() {
               <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-surface-card-subtle)", overflow: "hidden", boxSizing: "border-box" }}>
                 <img src="/raporty-ds-reports-manager.webp" alt="Manager raportów" style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
-              <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "flex-start" }}>
+              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "flex-start" }}>
                 {t.decyzje.testsFindings.map((f, i) => (
-                  <StaggerItem key={i} style={{ flex: 1, minWidth: 0 }}>
+                  <StaggerItem key={i} style={{ flex: "1 1 240px" }}>
                     <div style={{ width: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 24, boxSizing: "border-box" }}>
                       <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{f.title}</span>
                       <p className="pf-body" style={{ margin: 0 }}>{f.text1}</p>
@@ -594,12 +594,12 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.handoff.eyebrow} title={t.handoff.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", gap: 80, width: "100%", alignItems: "flex-start" }}>
-              <div style={{ flexGrow: 1, display: "flex", flexDirection: "column", gap: 30 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%", alignItems: "flex-start" }}>
+              <div style={{ flex: "2 1 280px", display: "flex", flexDirection: "column", gap: 30 }}>
                 <p className="pf-body" style={{ margin: 0 }}>{t.handoff.introPre}<b>{t.handoff.introBold}</b>{t.handoff.introMid}<b>{t.handoff.introBold2}</b>{t.handoff.introRest}</p>
                 <p className="pf-body" style={{ margin: 0 }}>{t.handoff.intro2Pre}<b>{t.handoff.intro2Bold}</b>{t.handoff.intro2Rest}</p>
               </div>
-              <div style={{ width: 360, height: 280, flexShrink: 0, background: "url(/raporty-ds-handoff.webp) center / cover no-repeat" }} />
+              <div style={{ flex: "1 1 240px", maxWidth: 360, aspectRatio: "360 / 280", height: "auto", background: "url(/raporty-ds-handoff.webp) center / cover no-repeat" }} />
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
@@ -612,9 +612,9 @@ export function RaportyCaseStudy() {
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", gap: 80, width: "100%" }}>
-              <Figure src="/raporty-ds-maps.webp" />
-              <Figure src="/raporty-ds-figma.webp" />
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
+              <Figure src="/raporty-ds-maps.webp" style={{ flex: "1 1 280px" }} />
+              <Figure src="/raporty-ds-figma.webp" style={{ flex: "1 1 280px" }} />
             </div>
           </Reveal>
         </Section>
@@ -650,11 +650,11 @@ export function RaportyCaseStudy() {
               <h3 className="pf-h3">{t.rozwiazanie.s2Title}</h3>
               <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s2Text}</p>
               <img src="/raporty-ds-raport-full.webp" alt="Raport — widok desktop i mobile" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
-              <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+                <StaggerItem style={{ flex: "1 1 260px" }}>
                   <ShotCard img="/raporty-ds-ustawienia.webp" alt="Wybór sekcji i ustawienia raportu" title={t.rozwiazanie.s2Pair[0].title} text={t.rozwiazanie.s2Pair[0].text} />
                 </StaggerItem>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+                <StaggerItem style={{ flex: "1 1 260px" }}>
                   <ShotCard img="/raporty-ds-auto-report.webp" alt="Ustawianie reguł auto-raportu" title={t.rozwiazanie.s2Pair[1].title} text={t.rozwiazanie.s2Pair[1].text} />
                 </StaggerItem>
               </StaggerGroup>
@@ -671,22 +671,22 @@ export function RaportyCaseStudy() {
                   <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s3CardText}</p>
                 </div>
               </div>
-              <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+                <StaggerItem style={{ flex: "1 1 260px" }}>
                   <ShotCard img="/raporty-ds-statusy.webp" alt="Statusy raportów" title={t.rozwiazanie.s3Pair[0].title} text={t.rozwiazanie.s3Pair[0].text} />
                 </StaggerItem>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+                <StaggerItem style={{ flex: "1 1 260px" }}>
                   <ShotCard img="/raporty-ds-bulk-action.webp" alt="Akcja zbiorcza" title={t.rozwiazanie.s3Pair[1].title} text={t.rozwiazanie.s3Pair[1].text} />
                 </StaggerItem>
               </StaggerGroup>
-              <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+                <StaggerItem style={{ flex: "1 1 220px" }}>
                   <ShotCard img="/raporty-ds-share.webp" alt="Menu udostępniania raportu" title={t.rozwiazanie.s3Triple[0].title} text={t.rozwiazanie.s3Triple[0].text} />
                 </StaggerItem>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+                <StaggerItem style={{ flex: "1 1 220px" }}>
                   <ShotCard img="/raporty-ds-email-settings.webp" alt="Ustawienia e-mail" title={t.rozwiazanie.s3Triple[1].title} text={t.rozwiazanie.s3Triple[1].text} />
                 </StaggerItem>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+                <StaggerItem style={{ flex: "1 1 220px" }}>
                   <ShotCard img="/raporty-ds-email-send.webp" alt="Wysyłka raportu mailem" title={t.rozwiazanie.s3Triple[2].title} text={t.rozwiazanie.s3Triple[2].text} />
                 </StaggerItem>
               </StaggerGroup>
@@ -698,10 +698,10 @@ export function RaportyCaseStudy() {
               <h3 className="pf-h3">{t.rozwiazanie.s4Title}</h3>
               <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s4Text}</p>
               <img src="/raporty-ds-komponenty.webp" alt="Komponenty i stany" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "auto auto", gap: 24, width: "100%" }}>
-                <img src="/raporty-ds-alert-spec.webp" alt="Alert — dokumentacja komponentu" style={{ gridColumn: 1, gridRow: 1, width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
-                <img src="/raporty-ds-stany.webp" alt="Stany: ładowanie, sukces, błąd, empty state" style={{ gridColumn: 1, gridRow: 2, width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
-                <img src="/raporty-ds-wariant-maila.webp" alt="Warianty ustawień e-mail" style={{ gridColumn: 2, gridRow: "1 / span 2", width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
+              <div className="pf-solution-grid" style={{ display: "grid", gap: 24, width: "100%" }}>
+                <img src="/raporty-ds-alert-spec.webp" alt="Alert — dokumentacja komponentu" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
+                <img src="/raporty-ds-stany.webp" alt="Stany: ładowanie, sukces, błąd, empty state" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
+                <img className="pf-solution-grid-tall" src="/raporty-ds-wariant-maila.webp" alt="Warianty ustawień e-mail" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
               </div>
             </div>
           </Reveal>
@@ -716,22 +716,22 @@ export function RaportyCaseStudy() {
           </Reveal>
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
-              <StaggerGroup style={{ display: "flex", gap: 24, alignItems: "stretch" }}>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden", borderRadius: 24, padding: 48, display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start", gap: 32, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-3.webp) center / cover no-repeat" }}>
-                    <span style={{ fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: 80, lineHeight: "108px", letterSpacing: "0.02em", color: "var(--pf-text-on-dark)" }}><AnimatedStat value={t.wynik.heroStat.value} /></span>
+              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "stretch" }}>
+                <StaggerItem style={{ flex: "1 1 320px" }}>
+                  <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden", borderRadius: 24, padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start", gap: 32, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-3.webp) center / cover no-repeat" }}>
+                    <span style={{ fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 8vw, 80px)", lineHeight: "clamp(48px, 9vw, 108px)", letterSpacing: "0.02em", color: "var(--pf-text-on-dark)" }}><AnimatedStat value={t.wynik.heroStat.value} /></span>
                     <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "var(--pf-primary-50)" }}>{t.wynik.heroStat.label}</span>
                   </div>
                 </StaggerItem>
-                <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+                <StaggerItem style={{ flex: "1 1 320px" }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                    <div style={{ display: "flex", gap: 24 }}>
-                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[0].value} />} label={t.wynik.smallStats[0].label} />
-                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[1].value} />} label={t.wynik.smallStats[1].label} />
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
+                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[0].value} />} label={t.wynik.smallStats[0].label} style={{ flex: "1 1 140px" }} />
+                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[1].value} />} label={t.wynik.smallStats[1].label} style={{ flex: "1 1 140px" }} />
                     </div>
-                    <div style={{ display: "flex", gap: 24 }}>
-                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[2].value} />} label={t.wynik.smallStats[2].label} />
-                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[3].value} />} label={t.wynik.smallStats[3].label} />
+                    <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
+                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[2].value} />} label={t.wynik.smallStats[2].label} style={{ flex: "1 1 140px" }} />
+                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[3].value} />} label={t.wynik.smallStats[3].label} style={{ flex: "1 1 140px" }} />
                     </div>
                   </div>
                 </StaggerItem>
@@ -762,11 +762,11 @@ export function RaportyCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <p className="pf-body">{t.podsumowanie.intro}</p>
           </Reveal>
-          <StaggerGroup style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
-            <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            <StaggerItem style={{ flex: "1 1 260px" }}>
               <LessonCard image="/raporty-ds-nie-wiem.webp" title={t.podsumowanie.lessons[0].title}>{t.podsumowanie.lessons[0].text}</LessonCard>
             </StaggerItem>
-            <StaggerItem style={{ flex: 1, minWidth: 0 }}>
+            <StaggerItem style={{ flex: "1 1 260px" }}>
               <LessonCard image="/raporty-ds-teamwork.webp" title={t.podsumowanie.lessons[1].title}>{t.podsumowanie.lessons[1].text}</LessonCard>
             </StaggerItem>
           </StaggerGroup>
@@ -779,7 +779,7 @@ export function RaportyCaseStudy() {
             <img src="/raporty-ds-thanks.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: 48, width: "100%", alignItems: "start" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 48, width: "100%", alignItems: "start" }}>
               <img src="/raporty-ds-for.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
               <img src="/raporty-ds-watching.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
             </div>

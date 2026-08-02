@@ -15,7 +15,7 @@ export interface StatCardProps {
 export function StatCard({ value, label, tone = "subtle", style, labelStyle }: StatCardProps) {
   const dark = tone === "dark"
   const base: React.CSSProperties = {
-    position: "relative", overflow: "hidden", borderRadius: 24, padding: dark ? 48 : 32,
+    position: "relative", overflow: "hidden", borderRadius: 24, padding: dark ? "clamp(24px, 5vw, 48px)" : "clamp(20px, 3vw, 32px)",
     display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start",
     gap: 32, boxSizing: "border-box", flex: 1, minWidth: 0,
   }
@@ -26,7 +26,7 @@ export function StatCard({ value, label, tone = "subtle", style, labelStyle }: S
     <div style={{ ...base, ...surface, ...style }}>
       {dark && <Background tone="dark" style={{ transform: "matrix(-1,0,0,-1,1521,1057)" }} />}
       <span style={{ position: "relative", fontFamily: "var(--pf-font-display)",
-        fontWeight: dark ? 700 : 600, fontSize: dark ? 80 : 48, lineHeight: dark ? "108px" : "72px",
+        fontWeight: dark ? 700 : 600, fontSize: dark ? "clamp(40px, 8vw, 80px)" : "clamp(28px, 5vw, 48px)", lineHeight: dark ? "clamp(48px, 9vw, 108px)" : "clamp(36px, 6vw, 72px)",
         letterSpacing: "0.02em", color: dark ? "var(--pf-text-on-dark)" : "var(--pf-text-primary)" }}>{value}</span>
       <span style={{ position: "relative", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px",
         color: dark ? "var(--pf-primary-50)" : "var(--pf-text-body)", ...labelStyle }}>{label}</span>

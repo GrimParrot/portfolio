@@ -11,6 +11,23 @@
    bundled in the same app-wide stylesheet. */
 #top b, #top strong { color: var(--pf-text-primary); }
 
+/* ---- responsive overrides ---- */
+/* The fixed side chapter-nav has no room on narrow viewports; hide it there. */
+@media (max-width: 1024px) {
+  /* !important needed: the nav sets display:flex inline, which otherwise always wins over a stylesheet rule. */
+  .pf-chapter-nav { display: none !important; }
+}
+
+/* Chapter 07's asymmetric 2-col/2-row image grid (one tall image spanning both
+   rows) needs an explicit column/row reset on mobile — CSS Grid spanning can't
+   be expressed with an auto-fit trick the way a plain 2-col grid can. */
+.pf-solution-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+.pf-solution-grid-tall { grid-column: 2; grid-row: 1 / span 2; }
+@media (max-width: 640px) {
+  .pf-solution-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .pf-solution-grid-tall { grid-column: 1; grid-row: auto; }
+}
+
 /* ---- fonts.css ---- */
 @font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-Light.ttf") format("truetype");font-weight:300;font-style:normal;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url("/fonts/BricolageGrotesque-Regular.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
@@ -83,11 +100,11 @@
   --pf-font-display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   --pf-font-body:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 
-  --pf-h1-size:126px;   --pf-h1-lh:136px;  --pf-h1-ls:0.02em;   --pf-h1-weight:700;
-  --pf-h2-size:80px;    --pf-h2-lh:108px;  --pf-h2-ls:0.02em;   --pf-h2-weight:700;
-  --pf-h3-size:48px;    --pf-h3-lh:72px;   --pf-h3-ls:-0.01em;  --pf-h3-weight:600;
+  --pf-h1-size:clamp(40px, 10vw, 126px);   --pf-h1-lh:clamp(44px, 10.5vw, 136px);  --pf-h1-ls:0.02em;   --pf-h1-weight:700;
+  --pf-h2-size:clamp(32px, 7vw, 80px);    --pf-h2-lh:clamp(38px, 8vw, 108px);  --pf-h2-ls:0.02em;   --pf-h2-weight:700;
+  --pf-h3-size:clamp(28px, 5vw, 48px);    --pf-h3-lh:clamp(36px, 6vw, 72px);   --pf-h3-ls:-0.01em;  --pf-h3-weight:600;
   --pf-h4-size:24px;    --pf-h4-lh:37px;   --pf-h4-ls:0em;      --pf-h4-weight:600;
-  --pf-quote-size:36px; --pf-quote-lh:48px;--pf-quote-ls:-0.01em;
+  --pf-quote-size:clamp(22px, 4.5vw, 36px); --pf-quote-lh:clamp(30px, 6vw, 48px);--pf-quote-ls:-0.01em;
 
   --pf-body-lg-size:22px;   --pf-body-lg-lh:34px;
   --pf-body-size:18px;      --pf-body-lh:30px;
