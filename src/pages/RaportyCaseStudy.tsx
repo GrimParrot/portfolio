@@ -238,6 +238,8 @@ export function RaportyCaseStudy() {
           </ProblemStatement>
         </Section>
 
+        <Divider />
+
         {/* 03 · DISCOVERY */}
         <Section id="discovery">
           <SectionHeader eyebrow={t.discovery.eyebrow} title={t.discovery.title} />
@@ -386,6 +388,8 @@ export function RaportyCaseStudy() {
           </div>
         </Section>
 
+        <Divider />
+
         {/* 06 · HANDOFF */}
         <Section id="handoff">
           <SectionHeader eyebrow={t.handoff.eyebrow} title={t.handoff.title} />
@@ -522,6 +526,8 @@ export function RaportyCaseStudy() {
             <img src="/raporty-ds-watching.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
           </div>
         </Section>
+
+        <Divider />
 
         <Section gap={16} contentStyle={{ alignItems: "center" }}>
           <a href="#top" className="pf-h2" style={{ textAlign: "center", color: "var(--pf-text-primary)", textDecoration: "none" }}>{t.podsumowanie.nextProjectLabel}</a>
