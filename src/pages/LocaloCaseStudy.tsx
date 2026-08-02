@@ -140,7 +140,18 @@ function AutoFitHeading({ variants, activeKey, className, style, maxLines = 3, m
     // Manrope loads via Google Fonts with display=swap; the fallback font's
     // metrics differ, so re-fit once the real font swaps in and reflows.
     document.fonts?.ready?.then(fit)
-    return () => window.removeEventListener("resize", fit)
+    // A window "resize" event never fires if this heading is ever mounted
+    // inside the project modal: the modal grows from the clicked card's small
+    // size to full size via a Framer Motion layoutId transition (not a
+    // viewport change), so fit() would otherwise measure and lock in the
+    // card's tiny starting width. ResizeObserver catches that too.
+    const container = refs.current[activeKey]?.parentElement
+    const observer = container ? new ResizeObserver(() => fit()) : null
+    observer?.observe(container!)
+    return () => {
+      window.removeEventListener("resize", fit)
+      observer?.disconnect()
+    }
   }, [variants, activeKey, maxLines, minFontPx, naturalFontSize])
 
   return (
