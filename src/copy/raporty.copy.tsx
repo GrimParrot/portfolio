@@ -4,7 +4,7 @@ export const copy = {
     heroTitle: "Automatyczne raporty, wbudowane w",
     heroTitleAccent: "produkt.",
     heroLead:
-      "Nie zaprosiliśmy klientów do narzędzia. Wysłaliśmy raport do nich. Teraz 60% użytkowników funkcji korzysta z auto-generowania w Localo.",
+      "W tym projekcie zaprojektowałam cały moduł raportowania: generowanie raportu, jego widok dla klienta końcowego, auto-raportowanie i managera do prowadzenia wielu wizytówek naraz. Dziś 60% użytkowników raportów wykorzystuje auto-generowanie zamiast składać raporty ręcznie.",
     metaBar: [
       { label: "PRODUKT", value: "Localo" },
       { label: "SKALA", value: "8 600+ użytkowników" },
@@ -277,7 +277,7 @@ export const copy = {
     heroTitle: "Automatic reports, built into the",
     heroTitleAccent: "product.",
     heroLead:
-      "We didn't invite clients into the tool. We sent the report to them instead. Now 60% of feature users rely on auto-generation in Localo.",
+      "In this project I designed the entire reporting module: report generation, its view for the end client, auto-reporting, and a manager for running multiple profiles at once. Today 60% of report users rely on auto-generation instead of putting reports together by hand.",
     metaBar: [
       { label: "PRODUCT", value: "Localo" },
       { label: "SCALE", value: "8,600+ users" },
@@ -285,7 +285,7 @@ export const copy = {
       { label: "USERS", value: "SEO specialists & agencies" },
     ],
     chapters: {
-      skrot: "01 At a glance",
+      skrot: "01 Long story short",
       problem: "02 Problem",
       discovery: "03 Discovery",
       reframing: "04 Re-framing",
@@ -297,7 +297,7 @@ export const copy = {
     },
     skrot: {
       eyebrow: "01 · CONTEXT, IMPACT & ROLE",
-      title: "At a glance",
+      title: "Long story short",
       introBold: "Localo is a tool for people managing Google Business Profiles",
       introRest:
         " — one or dozens at a time. It automates the work and tells you what to do next: a weekly task list with priorities for every profile, audits in seconds, reports ready to send to a client in minutes.",
