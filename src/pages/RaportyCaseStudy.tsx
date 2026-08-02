@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
+import { ArrowLeft } from "lucide-react"
 import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
+import { smoothScrollTo } from "@/lib/lenis"
 import { copy } from "@/copy/raporty.copy"
 import "@/styles/raporty-ds.css"
 import {
@@ -151,7 +154,17 @@ export function RaportyCaseStudy() {
         {/* HERO */}
         <Section gap={80}>
           <header style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%", padding: 0, boxSizing: "border-box" }}>
-            <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
+            <div className="flex items-center gap-4">
+              <Link
+                to="/"
+                onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
+                aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
+                className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" />
+              </Link>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
+            </div>
             <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: 126, lineHeight: "136px", letterSpacing: "0.02em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
               {t.heroTitle} <span style={{ color: "var(--pf-accent-500)" }}>{t.heroTitleAccent}</span>
             </h1>
