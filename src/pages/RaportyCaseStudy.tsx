@@ -208,32 +208,43 @@ function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] })
   )
 }
 
-/** Animated screenshot overlay swap — used for the "kreator" (report builder)
- * preview: a settings-panel overlay fades in/out on top of the base screenshot. */
-function SidebarSettingsSwap({ base, overlay, overlayRect }: { base: string; overlay: string; overlayRect: { top: number; left: number; width: number; height: number } }) {
-  const [showOverlay, setShowOverlay] = useState(false)
+/** Looped slideshow — one screen slides out to the left while the next slides
+ * in from the right, then loops back to the first. The transition CSS is only
+ * enabled for the current and previous slide; otherwise the old "inactive"
+ * slide would animate all the way across the screen on every index change
+ * instead of just waiting off-screen. */
+function ImageCarousel({ images }: { images: string[] }) {
+  const [index, setIndex] = useState(0)
+  const n = images.length
 
   useEffect(() => {
-    const id = setInterval(() => setShowOverlay((v) => !v), 2200)
+    const id = setInterval(() => setIndex((i) => (i + 1) % n), 2800)
     return () => clearInterval(id)
-  }, [])
+  }, [n])
+
+  const prevIndex = (index - 1 + n) % n
 
   return (
-    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
-      <img src={base} alt="" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: "top" }} />
-      <img
-        src={overlay}
-        alt=""
-        className="absolute object-cover"
-        style={{
-          top: `${overlayRect.top}%`,
-          left: `${overlayRect.left}%`,
-          width: `${overlayRect.width}%`,
-          height: `${overlayRect.height}%`,
-          opacity: showOverlay ? 1 : 0,
-          transition: "opacity 0.5s ease",
-        }}
-      />
+    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "1000/557" }}>
+      {images.map((src, i) => {
+        const isCurrent = i === index
+        const isPrev = i === prevIndex
+        const translate = isCurrent ? "0%" : isPrev ? "-100%" : "100%"
+        return (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{
+              objectPosition: "center top",
+              transition: isCurrent || isPrev ? "transform 0.6s ease" : "none",
+              transform: `translateX(${translate})`,
+              zIndex: isCurrent ? 1 : 0,
+            }}
+          />
+        )
+      })}
     </div>
   )
 }
@@ -551,11 +562,7 @@ export function RaportyCaseStudy() {
               <h3 className="pf-h3">{t.decyzje.builtTitle}</h3>
               <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.builtText}</p>
               <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-surface-accent)", padding: 48, boxSizing: "border-box" }}>
-                <SidebarSettingsSwap
-                  base="/raporty-section.webp"
-                  overlay="/raporty-settings.webp"
-                  overlayRect={{ top: 6.91, left: 0, width: 17.78, height: 109.6 }}
-                />
+                <ImageCarousel images={["/raporty-flow-1.webp", "/raporty-flow-2.webp", "/raporty-flow-3.webp"]} />
               </div>
             </div>
           </Reveal>
