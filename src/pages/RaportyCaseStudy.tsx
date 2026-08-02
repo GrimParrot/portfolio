@@ -161,7 +161,7 @@ export function RaportyCaseStudy() {
                 aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
                 className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-4 h-4 animate-bounce-left" />
               </Link>
               <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
             </div>
