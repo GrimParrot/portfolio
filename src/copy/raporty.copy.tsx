@@ -3,7 +3,8 @@ import { NumBadge } from "./raporty-num-badge"
 export const copy = {
   pl: {
     heroEyebrow: "CASE STUDY · LOCALO — KREATOR RAPORTÓW",
-    heroTitle: "Automatyczne raporty, wbudowane w produkt.",
+    heroTitle: "Automatyczne raporty, wbudowane w",
+    heroTitleAccent: "produkt.",
     heroLead:
       "Nie zaprosiliśmy klientów do narzędzia. Wysłaliśmy raport do nich. Teraz 60% użytkowników funkcji korzysta z auto-generowania w Localo.",
     metaBar: [
@@ -242,7 +243,8 @@ export const copy = {
   },
   en: {
     heroEyebrow: "CASE STUDY · LOCALO — REPORT BUILDER",
-    heroTitle: "Automatic reports, built into the product.",
+    heroTitle: "Automatic reports, built into the",
+    heroTitleAccent: "product.",
     heroLead:
       "We didn't invite clients into the tool. We sent the report to them instead. Now 60% of feature users rely on auto-generation in Localo.",
     metaBar: [

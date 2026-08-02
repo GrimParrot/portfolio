@@ -13,7 +13,7 @@ export function CaseStudyHero({ eyebrow, title, lead, style }: CaseStudyHeroProp
     <header style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%", ...style }}>
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         {eyebrow && <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{eyebrow}</span>}
-        <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: 80, lineHeight: "108px", letterSpacing: "0.02em", color: "var(--pf-text-primary)" }}>{title}</h1>
+        <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "var(--pf-h1-size)", lineHeight: "var(--pf-h1-lh)", letterSpacing: "var(--pf-h1-ls)", color: "var(--pf-text-primary)" }}>{title}</h1>
         {lead && <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-body)" }}>{lead}</p>}
       </div>
     </header>

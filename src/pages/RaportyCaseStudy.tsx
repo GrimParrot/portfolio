@@ -248,7 +248,10 @@ export function RaportyCaseStudy() {
             </div>
           </StaggerItem>
           <StaggerItem style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 80 }}>
-            <CaseStudyHero title={t.heroTitle} lead={t.heroLead} />
+            <CaseStudyHero
+              title={<>{t.heroTitle} <span style={{ color: "var(--pf-accent-500)" }}>{t.heroTitleAccent}</span></>}
+              lead={t.heroLead}
+            />
             <MetaBar items={t.metaBar} />
             <Figure src="/raporty-cover.webp" height={560} alt={t.heroTitle} />
           </StaggerItem>
