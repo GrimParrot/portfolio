@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
 import { Footer } from "@/components/Footer"
@@ -17,6 +17,69 @@ import {
 } from "@/components/raporty-ds"
 
 const CHAPTER_IDS = ["skrot", "problem", "discovery", "reframing", "decyzje", "handoff", "rozwiazanie", "wynik", "podsumowanie"] as const
+
+/** Locates every number inside a stat string (e.g. "11–13%", "~20x") so each one
+ * can be counted up independently while the surrounding characters stay put. */
+function parseNumberTokens(str: string) {
+  const regex = /\d+(?:[.,]\d+)?/g
+  const tokens: { value: number; decimals: number; index: number; length: number }[] = []
+  let m: RegExpExecArray | null
+  while ((m = regex.exec(str))) {
+    const normalized = m[0].replace(",", ".")
+    const decimals = normalized.includes(".") ? normalized.split(".")[1].length : 0
+    tokens.push({ value: parseFloat(normalized), decimals, index: m.index, length: m[0].length })
+  }
+  return tokens
+}
+
+/** Stat value that counts up from 0 once scrolled into view. Animates every number
+ * found in the string (so ranges like "11-13%" count both ends), leaving prefixes/
+ * suffixes ("~", "%", "x") untouched. */
+function AnimatedStat({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [active, setActive] = useState(false)
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect() } },
+      { threshold: 0.4 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!active) return
+    const duration = 1400
+    const start = performance.now()
+    let raf: number
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1)
+      setProgress(1 - Math.pow(1 - t, 3))
+      if (t < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [active])
+
+  const tokens = parseNumberTokens(value)
+  if (tokens.length === 0) return <span ref={ref}>{value}</span>
+
+  let out = ""
+  let cursor = 0
+  for (const tok of tokens) {
+    out += value.slice(cursor, tok.index)
+    const current = tok.value * progress
+    out += tok.decimals > 0 ? current.toFixed(tok.decimals) : Math.round(current).toString()
+    cursor = tok.index + tok.length
+  }
+  out += value.slice(cursor)
+
+  return <span ref={ref}>{out}</span>
+}
 
 /** Exact port of the .dc.html chapter nav (DCLogic go/enter/leave/renderVals): a
  * fixed pill-shaped rail, top:50% right:32px, each button expanding on hover/active
@@ -189,7 +252,7 @@ export function RaportyCaseStudy() {
             </div>
             <div style={{ display: "flex", gap: 24, width: "100%", alignItems: "stretch" }}>
               {t.skrot.stats.map((s, i) => (
-                <StatCard key={i} tone="white" value={s.value} label={s.label} style={i === 0 ? { flex: "0 0 calc(50% - 12px)" } : { flex: "1 1 0" }} />
+                <StatCard key={i} tone="white" value={<AnimatedStat value={s.value} />} label={s.label} style={i === 0 ? { flex: "0 0 calc(50% - 12px)" } : { flex: "1 1 0" }} />
               ))}
             </div>
           </div>
@@ -496,17 +559,17 @@ export function RaportyCaseStudy() {
           <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
             <div style={{ display: "flex", gap: 24, alignItems: "stretch" }}>
               <div style={{ flex: 1, minWidth: 0, position: "relative", overflow: "hidden", borderRadius: 24, padding: 48, display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start", gap: 32, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-3.webp) center / cover no-repeat" }}>
-                <span style={{ fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: 80, lineHeight: "108px", letterSpacing: "0.02em", color: "var(--pf-text-on-dark)" }}>{t.wynik.heroStat.value}</span>
+                <span style={{ fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: 80, lineHeight: "108px", letterSpacing: "0.02em", color: "var(--pf-text-on-dark)" }}><AnimatedStat value={t.wynik.heroStat.value} /></span>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "var(--pf-primary-50)" }}>{t.wynik.heroStat.label}</span>
               </div>
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 24 }}>
                 <div style={{ display: "flex", gap: 24 }}>
-                  <StatCard value={t.wynik.smallStats[0].value} label={t.wynik.smallStats[0].label} />
-                  <StatCard value={t.wynik.smallStats[1].value} label={t.wynik.smallStats[1].label} />
+                  <StatCard value={<AnimatedStat value={t.wynik.smallStats[0].value} />} label={t.wynik.smallStats[0].label} />
+                  <StatCard value={<AnimatedStat value={t.wynik.smallStats[1].value} />} label={t.wynik.smallStats[1].label} />
                 </div>
                 <div style={{ display: "flex", gap: 24 }}>
-                  <StatCard value={t.wynik.smallStats[2].value} label={t.wynik.smallStats[2].label} />
-                  <StatCard value={t.wynik.smallStats[3].value} label={t.wynik.smallStats[3].label} />
+                  <StatCard value={<AnimatedStat value={t.wynik.smallStats[2].value} />} label={t.wynik.smallStats[2].label} />
+                  <StatCard value={<AnimatedStat value={t.wynik.smallStats[3].value} />} label={t.wynik.smallStats[3].label} />
                 </div>
               </div>
             </div>
