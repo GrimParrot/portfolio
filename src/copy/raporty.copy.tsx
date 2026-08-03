@@ -7,7 +7,7 @@ export const copy = {
       "W tym projekcie zaprojektowałam cały moduł raportowania: generowanie raportu, jego widok dla klienta końcowego, auto-raportowanie i managera do prowadzenia wielu wizytówek naraz. Dziś 60% użytkowników raportów wykorzystuje auto-generowanie zamiast składać raporty ręcznie.",
     metaBar: [
       { label: "PRODUKT", value: "Localo" },
-      { label: "SKALA", value: "8 600+ użytkowników" },
+      { label: "SKALA", value: "6 700+ użytkowników" },
       { label: "BRANŻA", value: "Local SEO / B2B SaaS" },
       { label: "UŻYTKOWNICY", value: "Specjaliści SEO i agencje" },
     ],
@@ -280,7 +280,7 @@ export const copy = {
       "In this project I designed the entire reporting module: report generation, its view for the end client, auto-reporting, and a manager for running multiple profiles at once. Today 60% of report users rely on auto-generation instead of putting reports together by hand.",
     metaBar: [
       { label: "PRODUCT", value: "Localo" },
-      { label: "SCALE", value: "8,600+ users" },
+      { label: "SCALE", value: "6,700+ users" },
       { label: "INDUSTRY", value: "Local SEO / B2B SaaS" },
       { label: "USERS", value: "SEO specialists & agencies" },
     ],
