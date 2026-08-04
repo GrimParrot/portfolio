@@ -758,10 +758,10 @@ export function ClientAcquisitionCaseStudy() {
             <img src="/client-acquisition-thanks-laptop.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "flex-start", justifyContent: "center" }}>
-              <img src="/client-acquisition-thanks-phone.webp" alt="" style={{ flex: "0 1 300px", width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
-              <img src="/client-acquisition-thanks-laptop-small.webp" alt="" style={{ flex: "1 1 420px", width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
-              <img src="/client-acquisition-thanks-crop.webp" alt="" style={{ flex: "0 1 140px", width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+            <div style={{ position: "relative", width: "100%", aspectRatio: "1200 / 548" }}>
+              <img src="/client-acquisition-thanks-phone.webp" alt="" style={{ position: "absolute", left: "0%", top: "0%", width: "31.42%", aspectRatio: "377 / 415", height: "auto", display: "block", borderRadius: 24 }} />
+              <img src="/client-acquisition-thanks-laptop-small.webp" alt="" style={{ position: "absolute", left: "36.17%", top: "31.19%", width: "44.92%", aspectRatio: "539 / 377", height: "auto", display: "block", borderRadius: 24 }} />
+              <img src="/client-acquisition-thanks-crop.webp" alt="" style={{ position: "absolute", left: "85.33%", top: "20.81%", width: "14.67%", aspectRatio: "1 / 1", height: "auto", display: "block", borderRadius: 24 }} />
             </div>
           </Reveal>
         </Section>
