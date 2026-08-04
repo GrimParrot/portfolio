@@ -1,15 +1,15 @@
 export const copy = {
   pl: {
-    heroEyebrow: "CASE STUDY · LOCALO — KREATOR RAPORTÓW",
-    heroTitle: "Automatyczne raporty, wbudowane w",
-    heroTitleAccent: "produkt.",
+    heroEyebrow: "CASE STUDY - LOCALO · CLIENT ACQUISITION",
+    heroTitle: "do pozyskiwania klientów.",
+    heroTitleAccent: "Jeden flow",
     heroLead:
-      "W tym projekcie zaprojektowałam cały moduł raportowania: generowanie raportu, jego widok dla klienta końcowego, auto-raportowanie i managera do prowadzenia wielu wizytówek naraz. Dziś 60% użytkowników raportów wykorzystuje auto-generowanie zamiast składać raporty ręcznie.",
+      "Generowanie leadów i research widoczności istniały w Localo osobno. Obydwa działały i praktycznie nikt nie uruchamiał ich sam – wartość docierała do ludzi dopiero na callu z Customer Success. Do tego jedno i drugie kończyło się w zewnętrznym CRM-ie albo w arkuszu. Zaprojektowałam Client Acquisition: jedno narzędzie z dwoma modułami, które tłumaczy się samo i domyka zadanie bez wychodzenia na zewnątrz. Po redesignie mediana sesji na funkcji wzrosła z 4,0 do 7,3 minuty, a liczba calli onboardingowych spadła.",
     metaBar: [
       { label: "PRODUKT", value: "Localo" },
       { label: "SKALA", value: "6 700+ użytkowników" },
       { label: "BRANŻA", value: "Local SEO / B2B SaaS" },
-      { label: "UŻYTKOWNICY", value: "Specjaliści SEO i agencje" },
+      { label: "UŻYTKOWNICY", value: "Freelancerzy, specjaliści SEO, agencje" },
     ],
     chapters: {
       skrot: "01 W skrócie",
@@ -273,16 +273,16 @@ export const copy = {
     },
   },
   en: {
-    heroEyebrow: "CASE STUDY · LOCALO — REPORT BUILDER",
-    heroTitle: "Automatic reports, built into the",
-    heroTitleAccent: "product.",
+    heroEyebrow: "CASE STUDY - LOCALO · CLIENT ACQUISITION",
+    heroTitle: "for client acquisition.",
+    heroTitleAccent: "One flow",
     heroLead:
-      "In this project I designed the entire reporting module: report generation, its view for the end client, auto-reporting, and a manager for running multiple profiles at once. Today 60% of report users rely on auto-generation instead of putting reports together by hand.",
+      "Lead generation and visibility research existed in Localo separately. Both worked, but almost nobody launched them on their own — the value only reached people on a Customer Success call. On top of that, both ended up in an external CRM or a spreadsheet. I designed Client Acquisition: one tool with two modules that explains itself and closes the loop without leaving the product. After the redesign, median session time on the feature grew from 4.0 to 7.3 minutes, and the number of onboarding calls dropped.",
     metaBar: [
       { label: "PRODUCT", value: "Localo" },
       { label: "SCALE", value: "6,700+ users" },
       { label: "INDUSTRY", value: "Local SEO / B2B SaaS" },
-      { label: "USERS", value: "SEO specialists & agencies" },
+      { label: "USERS", value: "Freelancers, SEO specialists, agencies" },
     ],
     chapters: {
       skrot: "01 Long story short",
