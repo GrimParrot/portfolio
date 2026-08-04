@@ -532,8 +532,6 @@ export function ClientAcquisitionCaseStudy() {
           </GoalBanner>
         </Reveal>
 
-        <Divider />
-
         {/* 03 · PROCES */}
         <Section id="discovery">
           <Reveal style={{ width: "100%" }}>
