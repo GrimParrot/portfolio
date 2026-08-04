@@ -727,33 +727,28 @@ export function ClientAcquisitionCaseStudy() {
 
         <Divider />
 
-        {/* 06 · HANDOFF */}
+        {/* 05 · HANDOFF */}
         <Section id="handoff">
           <Reveal style={{ width: "100%" }}>
             <SectionHeader eyebrow={t.handoff.eyebrow} title={t.handoff.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%", alignItems: "flex-start" }}>
-              <div style={{ flex: "2 1 280px", display: "flex", flexDirection: "column", gap: 30 }}>
-                <p className="pf-body" style={{ margin: 0 }}>{t.handoff.introPre}<b>{t.handoff.introBold}</b>{t.handoff.introMid}<b>{t.handoff.introBold2}</b>{t.handoff.introRest}</p>
-                <p className="pf-body" style={{ margin: 0 }}>{t.handoff.intro2Pre}<b>{t.handoff.intro2Bold}</b>{t.handoff.intro2Rest}</p>
-              </div>
-              <div style={{ flex: "1 1 240px", maxWidth: 360, aspectRatio: "360 / 280", height: "auto", background: "url(/raporty-ds-handoff.webp) center / cover no-repeat" }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
+              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.introPre}<b>{t.handoff.introBold}</b>{t.handoff.introRest}</p>
+              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.intro2Pre}<b>{t.handoff.intro2Bold}</b>{t.handoff.intro2Rest}</p>
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.handoff.infraTitle}</h3>
-              <div style={{ display: "flex", flexDirection: "column", gap: 30, width: "100%" }}>
-                <p className="pf-body" style={{ margin: 0 }}>{t.handoff.infraText1}</p>
-                <p className="pf-body" style={{ margin: 0 }}>{t.handoff.infraText2}</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 32, width: "100%", alignItems: "stretch" }}>
+              <div style={{ flex: "1 1 320px", aspectRatio: "428 / 574", background: "#F5F5F5", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <img src="/client-acquisition-handoff-illustration.webp" alt="" style={{ width: "80%", height: "auto", display: "block" }} />
               </div>
-            </div>
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
-              <Figure src="/raporty-ds-maps.webp" style={{ flex: "1 1 280px" }} />
-              <Figure src="/raporty-ds-figma.webp" style={{ flex: "1 1 280px" }} />
+              <div style={{ flex: "1 1 320px", position: "relative", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box" }}>
+                <img src="/client-acquisition-handoff-flow-blurred.webp" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, boxSizing: "border-box" }}>
+                  <span style={{ fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-primary-300, #C2C2C2)", textAlign: "center" }}>{t.handoff.blurCaption}</span>
+                </div>
+              </div>
             </div>
           </Reveal>
         </Section>
