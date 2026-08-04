@@ -12,7 +12,7 @@ import { copy } from "@/copy/client-acquisition.copy"
 import "@/styles/raporty-ds.css"
 import {
   MetaBar, Section, SectionHeader, Divider,
-  StatCard, FindingCard, QuoteBlock,
+  StatCard, FindingCard,
   GoalBanner,
   LessonCard,
 } from "@/components/raporty-ds"
@@ -705,15 +705,12 @@ export function ClientAcquisitionCaseStudy() {
                   </div>
                 </StaggerItem>
                 <StaggerItem style={{ flex: "1 1 320px" }}>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
-                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[0].value} />} label={t.wynik.smallStats[0].label} style={{ flex: "1 1 140px" }} />
-                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[1].value} />} label={t.wynik.smallStats[1].label} style={{ flex: "1 1 140px" }} />
-                    </div>
-                    <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
-                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[2].value} />} label={t.wynik.smallStats[2].label} style={{ flex: "1 1 140px" }} />
-                      <StatCard value={<AnimatedStat value={t.wynik.smallStats[3].value} />} label={t.wynik.smallStats[3].label} style={{ flex: "1 1 140px" }} />
-                    </div>
+                  <StatCard tone="white" value={t.wynik.sessionsStat.value} label={t.wynik.sessionsStat.label} style={{ width: "100%", height: "100%" }} />
+                </StaggerItem>
+                <StaggerItem style={{ flex: "0 1 296px" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 24, height: "100%" }}>
+                    <StatCard tone="white" value={<AnimatedStat value={t.wynik.smallStats[0].value} />} label={t.wynik.smallStats[0].label} style={{ width: "100%" }} />
+                    <StatCard tone="white" value={<AnimatedStat value={t.wynik.smallStats[1].value} />} label={t.wynik.smallStats[1].label} style={{ width: "100%" }} />
                   </div>
                 </StaggerItem>
               </StaggerGroup>
@@ -723,12 +720,10 @@ export function ClientAcquisitionCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <h3 className="pf-h3">{t.wynik.whatItMeansTitle}</h3>
-              <p className="pf-body">{t.wynik.para1}<b>{t.wynik.para1Bold}</b></p>
-              <p className="pf-body">{t.wynik.para2}<b>{t.wynik.para2Bold}</b>{t.wynik.para2Rest}</p>
-              <p className="pf-body">{t.wynik.para3}<b>{t.wynik.para3Bold}</b>{t.wynik.para3Rest}</p>
-              <QuoteBlock attribution={t.wynik.quoteAttribution}>
-                {t.wynik.quotePre}<span style={{ color: "var(--pf-text-accent)" }}>{t.wynik.quoteAccent1}</span>{t.wynik.quoteMid}<span style={{ color: "var(--pf-text-accent)" }}>{t.wynik.quoteAccent2}</span>{t.wynik.quoteEnd}
-              </QuoteBlock>
+              <p className="pf-body">{t.wynik.para1Pre}<b>{t.wynik.para1Bold}</b>{t.wynik.para1Rest}</p>
+              <p className="pf-body"><b>{t.wynik.para2Bold}</b>{t.wynik.para2Rest}</p>
+              <p className="pf-body">{t.wynik.para3Pre}<b>{t.wynik.para3Bold}</b>{t.wynik.para3Rest}</p>
+              <p className="pf-body">{t.wynik.para4}</p>
             </div>
           </Reveal>
         </Section>
