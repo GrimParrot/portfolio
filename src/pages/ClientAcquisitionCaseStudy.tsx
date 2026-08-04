@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { Fragment, useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { motion, useReducedMotion } from "motion/react"
 import { ArrowLeft } from "lucide-react"
@@ -13,11 +13,24 @@ import "@/styles/raporty-ds.css"
 import {
   MetaBar, Section, SectionHeader, Divider, Figure,
   StatCard, FindingCard, PersonaCard, QuoteBlock, TimelineItem,
-  ProblemStatement, GoalBanner, InlineAlert, HypothesisCard,
+  GoalBanner, HypothesisCard,
   LessonCard,
 } from "@/components/raporty-ds"
 
 const CHAPTER_IDS = ["skrot", "problem", "discovery", "reframing", "decyzje", "handoff", "rozwiazanie", "wynik", "podsumowanie"] as const
+
+const AUDIT_ICONS = [
+  "/icons/client-acquisition-icon-experience.svg",
+  "/icons/client-acquisition-icon-heuristics.svg",
+  "/icons/client-acquisition-icon-guidelines.svg",
+  "/icons/client-acquisition-icon-accessibility.svg",
+]
+
+const SCOPE_OUT_ICONS = [
+  "/icons/client-acquisition-icon-scope-keywords.svg",
+  "/icons/client-acquisition-icon-scope-history.svg",
+  "/icons/client-acquisition-icon-scope-credits.svg",
+]
 
 /** Scroll-reveal motion, same values as the fade-up used on the Localo case study page. */
 const fadeUp = {
@@ -365,49 +378,121 @@ export function ClientAcquisitionCaseStudy() {
           </Reveal>
         </Section>
 
-        {/* 02 · PROBLEM */}
+        {/* 02 · KNOWLEDGE GATHERING */}
         <Section id="problem">
           <Reveal style={{ width: "100%" }}>
             <SectionHeader eyebrow={t.problem.eyebrow} title={t.problem.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <p className="pf-body-bold" style={{ whiteSpace: "pre-line", color: "#0A0A0A" }}>
+            <p className="pf-body-bold" style={{ color: "#0A0A0A" }}>
+              <span style={{ fontWeight: "normal", color: "var(--pf-text-body)" }}>{t.problem.introPre}</span>
               <b style={{ color: "#0A0A0A" }}>{t.problem.introBold}</b>
-              <span style={{ fontWeight: "normal", color: "var(--pf-text-body)" }}>
-                {t.problem.introRest}
-                <b style={{ color: "#0A0A0A" }}>{t.problem.introBold2}</b>
-                {t.problem.introRest2}
-              </span>
+              <span style={{ fontWeight: "normal", color: "var(--pf-text-body)" }}>{t.problem.introRest}</span>
             </p>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", borderRadius: 32, background: "#fff", boxShadow: "var(--pf-ring)", display: "flex", flexWrap: "wrap", gap: 80, padding: "clamp(24px, 6vw, 64px)", boxSizing: "border-box" }}>
-              <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 32 }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                  <h3 className="pf-h3">{t.problem.researchTitle}</h3>
-                  <p className="pf-body">{t.problem.researchDesc}</p>
-                </div>
-                <div style={{ height: 280, background: "url(/raporty-ds-questions.webp) center / cover no-repeat" }} />
+            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 32, display: "flex", flexWrap: "wrap", gap: 80, padding: "clamp(24px, 6vw, 64px)", boxSizing: "border-box" }}>
+              <div style={{ flex: "1 1 320px", display: "flex", flexDirection: "column", gap: 32 }}>
+                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "#0A0A0A" }}>{t.problem.persona.overline}</span>
+                <p className="pf-quote">{t.problem.persona.quote}</p>
+                <p className="pf-body-lg" style={{ margin: 0 }}><b>{t.problem.persona.commonBold}</b>{t.problem.persona.commonText}</p>
               </div>
-              <div style={{ flex: "2 1 320px", display: "flex", flexDirection: "column", gap: 48 }}>
-                <ul style={{ margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 32 }}>
-                  {t.problem.questions.map((q, i) => <TimelineItem key={i} number={i + 1}>{q}</TimelineItem>)}
-                </ul>
-                <InlineAlert icon="/icons/raporty-ds-warning.svg">{t.problem.alert}</InlineAlert>
+              <div style={{ width: 360, flexShrink: 0, alignSelf: "stretch", overflow: "hidden", borderRadius: 24, background: "#F5F5F5", position: "relative" }}>
+                <img src="/client-acquisition-persona-illustration.svg" alt="" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "155%", height: "auto" }} />
               </div>
             </div>
           </Reveal>
+
           <Reveal style={{ width: "100%" }}>
-            <p className="pf-body">{t.problem.closingLead}<b>{t.problem.closingBold}</b></p>
+            <h3 className="pf-h3">{t.problem.sourcesTitle}</h3>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <ProblemStatement>
-              <span style={{ fontWeight: 400, color: "var(--pf-text-accent-deep)" }}>
-                {t.problem.problemStatement}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.problem.problemStatementBold1}</b>{t.problem.problemStatementMid1}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.problem.problemStatementBold2}</b>{t.problem.problemStatementMid2}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.problem.problemStatementBold3}</b>{t.problem.problemStatementRest}
-              </span>
-            </ProblemStatement>
+            <p className="pf-body">{t.problem.sourcesIntro}<b>{t.problem.sourcesIntroBold}</b></p>
+          </Reveal>
+          <Reveal style={{ width: "100%" }}>
+            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 24, padding: "clamp(24px, 6vw, 64px)", display: "flex", flexDirection: "column", gap: 64, alignItems: "center", boxSizing: "border-box" }}>
+              <p className="pf-h3" style={{ textAlign: "center", margin: 0 }}>{t.problem.auditTitle}</p>
+              <div style={{ display: "flex", gap: 48, alignItems: "center", width: "100%" }}>
+                {t.problem.auditItems.map((label, i) => (
+                  <Fragment key={i}>
+                    {i > 0 && <img src="/icons/client-acquisition-icon-connector.svg" alt="" width={30} height={30} style={{ flexShrink: 0 }} />}
+                    <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 24, alignItems: "center" }}>
+                      <img src={AUDIT_ICONS[i]} alt="" width={120} height={120} />
+                      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000", textAlign: "center" }}>{label}</span>
+                    </div>
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal style={{ width: "100%" }}>
+            <p className="pf-body">{t.problem.moreSourcesLead}</p>
+          </Reveal>
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            {t.problem.sourceCards.map((c, i) => (
+              <StaggerItem key={i} style={{ flex: "1 1 460px" }}>
+                <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{c.title}</span>
+                  <p className="pf-body" style={{ margin: 0 }}>{c.text}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+
+          <Reveal style={{ width: "100%" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
+              <h4 className="pf-h4">{t.problem.aiSynthesisTitle}</h4>
+              <p className="pf-body">{t.problem.aiSynthesisText}</p>
+            </div>
+          </Reveal>
+          <Reveal style={{ width: "100%" }}>
+            <img src="/client-acquisition-ai-synthesis.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
           </Reveal>
         </Section>
+
+        <Section variant="dark" gap={48}>
+          <Reveal style={{ width: "100%" }}>
+            <span className="pf-overline" style={{ color: "var(--pf-text-on-dark)", width: "100%", textAlign: "center" }}>{t.problem.findingsOverline}</span>
+          </Reveal>
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            {t.problem.findings.map((f) => (
+              <StaggerItem key={f.number} style={{ flex: "1 1 340px" }}>
+                <FindingCard number={f.number} title={f.title} style={{ width: "100%", height: "100%", boxSizing: "border-box" }}>{f.text}</FindingCard>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+        </Section>
+
+        <Section>
+          <Reveal style={{ width: "100%" }}>
+            <h3 className="pf-h3">{t.problem.scopeTitle}</h3>
+          </Reveal>
+          <Reveal style={{ width: "100%" }}>
+            <p className="pf-body">{t.problem.scopeIntro}<b>{t.problem.scopeIntroBold}</b>{t.problem.scopeIntroEnd}</p>
+          </Reveal>
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            {t.problem.scopeOut.map((item, i) => (
+              <StaggerItem key={i} style={{ flex: "1 1 280px" }}>
+                <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                  <img src={SCOPE_OUT_ICONS[i]} alt="" width={30} height={30} />
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{item.title}</span>
+                  <p className="pf-body" style={{ margin: 0 }}>{item.text}<b>{item.textBold}</b></p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerGroup>
+          <Reveal style={{ width: "100%" }}>
+            <p className="pf-body">{t.problem.scopeClosing1Pre}<b>{t.problem.scopeClosing1Bold}</b>{t.problem.scopeClosing1Rest}</p>
+          </Reveal>
+          <Reveal style={{ width: "100%" }}>
+            <p className="pf-body">{t.problem.scopeClosing2}</p>
+          </Reveal>
+        </Section>
+
+        <Reveal style={{ width: "100%" }}>
+          <GoalBanner label={t.problem.goalOverline}>{t.problem.goalText}</GoalBanner>
+        </Reveal>
 
         <Divider />
 
