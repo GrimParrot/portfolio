@@ -113,7 +113,7 @@ export const copy = {
     },
     discovery: {
       eyebrow: "03 · Proces",
-      title: "Najpierw droga, potem ekrany",
+      title: "Najpierw ścieżka, potem ekrany",
       flow: {
         title: "Nowe flow, zanim powstał pierwszy ekran",
         text1: "Zmapowałam całą drogę użytkownika od nowa: od wyszukania firmy, przez ocenę leada i skan widoczności, po materiał do wysłania, status kontaktu i aktywację profilu. To nie było przerysowanie tego, co istniało – żaden z dwóch trybów nie prowadził przez całą tę drogę, więc trzeba było ją złożyć.",
