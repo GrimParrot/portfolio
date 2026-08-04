@@ -282,34 +282,6 @@ function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: 
   )
 }
 
-/** Ported from the raporty-design-system redesign branch (prod). A screenshot pans
- * top-to-bottom on a loop inside a fixed 16:9 frame — scrollPct is how far the
- * image (scaled to full width) overflows the frame's height. */
-function AutoScrollImage({ src, imageAspect }: { src: string; imageAspect: number }) {
-  const containerAspect = 16 / 9
-  const scrollPct = (1 - imageAspect / containerAspect) * 100
-
-  return (
-    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
-      <img
-        src={src}
-        alt=""
-        className="w-full"
-        style={{ animation: "clientAcquisitionAutoscroll 14s ease-in-out infinite", ["--scroll-pct" as string]: `-${scrollPct}%` }}
-      />
-      <style>{`
-        @keyframes clientAcquisitionAutoscroll {
-          0% { transform: translateY(0%); }
-          55% { transform: translateY(var(--scroll-pct)); }
-          62% { transform: translateY(var(--scroll-pct)); }
-          92% { transform: translateY(0%); }
-          100% { transform: translateY(0%); }
-        }
-      `}</style>
-    </div>
-  )
-}
-
 export function ClientAcquisitionCaseStudy() {
   const { lang } = useLang()
   const t = copy[lang]
@@ -553,7 +525,14 @@ export function ClientAcquisitionCaseStudy() {
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.lowfiTitle}</span>
               <p className="pf-body" style={{ margin: 0 }}>{t.discovery.lowfiIntro}</p>
-              <AutoScrollImage src="/client-acquisition-lowfi.webp" imageAspect={1120 / 678} />
+              <ImageCarousel images={[
+                "/client-acquisition-lowfi-1.webp",
+                "/client-acquisition-lowfi-2.webp",
+                "/client-acquisition-lowfi-3.webp",
+                "/client-acquisition-lowfi-4.webp",
+                "/client-acquisition-lowfi-5.webp",
+                "/client-acquisition-lowfi-6.webp",
+              ]} />
             </div>
           </Reveal>
 
