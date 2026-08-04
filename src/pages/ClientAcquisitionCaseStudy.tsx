@@ -39,6 +39,19 @@ const SOURCE_CARD_ICONS = [
   "/icons/client-acquisition-icon-source-devs.svg",
 ]
 
+/** Same early lo-fi Prospect finder screenshots already used on the live
+ * Localo case study page (LocaloCaseStudy.tsx / localo.copy.tsx lofiImages). */
+const LOFI_IMAGES = [
+  { img: "/localo-lofi-1.webp", alt: "Prospect finder: lista" },
+  { img: "/localo-lofi-2.webp", alt: "Prospect finder: tabela z filtrami" },
+  { img: "/localo-lofi-3.webp", alt: "Prospect finder: widok pełny" },
+  { img: "/localo-lofi-4.webp", alt: "Business list" },
+  { img: "/localo-lofi-5.webp", alt: "Grid research" },
+  { img: "/localo-lofi-6.webp", alt: "Ongoing / Archived" },
+  { img: "/localo-lofi-7.webp", alt: "Discover new clients: modal" },
+  { img: "/localo-lofi-8.webp", alt: "Grid research: pusty stan" },
+]
+
 /** Scroll-reveal motion, same values as the fade-up used on the Localo case study page. */
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -265,6 +278,31 @@ function ImageCarousel({ images }: { images: string[] }) {
           />
         )
       })}
+    </div>
+  )
+}
+
+/** Ported from LocaloCaseStudy.tsx (prod) — an infinite horizontal marquee of
+ * screenshots at natural aspect ratio (never cropped), doubled for a seamless
+ * loop, pausing on hover. Pair two of these with opposite `reverse` for the
+ * "two lanes drifting past each other" look used for early lo-fi explorations. */
+function ImageMarquee({ images, height = 420, duration = 32, reverse = false }: { images: { img: string; alt: string }[]; height?: number; duration?: number; reverse?: boolean }) {
+  const doubled = [...images, ...images]
+  return (
+    <div className="ca-marquee-group relative w-full overflow-hidden" style={{ height }}>
+      <div className="ca-marquee-track flex gap-5 h-full" style={{ width: "max-content", animationDuration: `${duration}s`, animationDirection: reverse ? "reverse" : "normal" }}>
+        {doubled.map((im, i) => (
+          <img key={i} src={im.img} alt={im.alt} className="h-full w-auto rounded-2xl border border-slate-200 object-contain flex-shrink-0" />
+        ))}
+      </div>
+      <style>{`
+        @keyframes clientAcquisitionMarqueeScroll {
+          from { transform: translateX(0); }
+          to { transform: translateX(-50%); }
+        }
+        .ca-marquee-track { animation: clientAcquisitionMarqueeScroll linear infinite; }
+        .ca-marquee-group:hover .ca-marquee-track { animation-play-state: paused; }
+      `}</style>
     </div>
   )
 }
@@ -525,14 +563,10 @@ export function ClientAcquisitionCaseStudy() {
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.lowfiTitle}</span>
               <p className="pf-body" style={{ margin: 0 }}>{t.discovery.lowfiIntro}</p>
-              <ImageCarousel images={[
-                "/client-acquisition-lowfi-1.webp",
-                "/client-acquisition-lowfi-2.webp",
-                "/client-acquisition-lowfi-3.webp",
-                "/client-acquisition-lowfi-4.webp",
-                "/client-acquisition-lowfi-5.webp",
-                "/client-acquisition-lowfi-6.webp",
-              ]} />
+              <div style={{ display: "flex", flexDirection: "column", gap: 20, width: "100%" }}>
+                <ImageMarquee images={LOFI_IMAGES.slice(0, 4)} height={280} />
+                <ImageMarquee images={LOFI_IMAGES.slice(4, 8)} height={280} reverse />
+              </div>
             </div>
           </Reveal>
 
