@@ -45,7 +45,7 @@ export const projects: Project[] = [
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-violet-50",
     image: "/client-acquisition-cover.webp",
-    href: "/case-study/localo",
+    href: "/case-study/client-acquisition",
   },
   {
     title: "Naturalnie.pl",
