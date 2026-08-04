@@ -699,18 +699,18 @@ export function ClientAcquisitionCaseStudy() {
             <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
               <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "stretch" }}>
                 <StaggerItem style={{ flex: "1 1 320px" }}>
-                  <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden", borderRadius: 24, padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start", gap: 32, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-3.webp) center / cover no-repeat" }}>
+                  <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden", borderRadius: 24, padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start", gap: 32, boxSizing: "border-box", background: "var(--pf-primary-700) url(/client-acquisition-wynik-hero-bg.webp) center / cover no-repeat" }}>
                     <span style={{ fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 8vw, 80px)", lineHeight: "clamp(48px, 9vw, 108px)", letterSpacing: "0.02em", color: "var(--pf-text-on-dark)" }}><AnimatedStat value={t.wynik.heroStat.value} /></span>
                     <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "var(--pf-primary-50)" }}>{t.wynik.heroStat.label}</span>
                   </div>
                 </StaggerItem>
                 <StaggerItem style={{ flex: "1 1 320px" }}>
-                  <StatCard tone="white" value={t.wynik.sessionsStat.value} label={t.wynik.sessionsStat.label} style={{ width: "100%", height: "100%" }} />
+                  <StatCard tone="subtle" value={t.wynik.sessionsStat.value} label={t.wynik.sessionsStat.label} style={{ width: "100%", height: "100%" }} />
                 </StaggerItem>
                 <StaggerItem style={{ flex: "0 1 296px" }}>
                   <div style={{ display: "flex", flexDirection: "column", gap: 24, height: "100%" }}>
-                    <StatCard tone="white" value={<AnimatedStat value={t.wynik.smallStats[0].value} />} label={t.wynik.smallStats[0].label} style={{ width: "100%" }} />
-                    <StatCard tone="white" value={<AnimatedStat value={t.wynik.smallStats[1].value} />} label={t.wynik.smallStats[1].label} style={{ width: "100%" }} />
+                    <StatCard tone="subtle" value={<AnimatedStat value={t.wynik.smallStats[0].value} />} label={t.wynik.smallStats[0].label} style={{ width: "100%" }} />
+                    <StatCard tone="subtle" value={<AnimatedStat value={t.wynik.smallStats[1].value} />} label={t.wynik.smallStats[1].label} style={{ width: "100%" }} />
                   </div>
                 </StaggerItem>
               </StaggerGroup>
