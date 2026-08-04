@@ -20,6 +20,7 @@ import { NaturalniePage } from './pages/NaturalniePage.tsx'
 import { KafejetoPage } from './pages/KafejetoPage.tsx'
 import { BannerozaPage } from './pages/BannerozaPage.tsx'
 import { RaportyCaseStudy } from './pages/RaportyCaseStudy.tsx'
+import { ClientAcquisitionCaseStudy } from './pages/ClientAcquisitionCaseStudy.tsx'
 import { StatsPage } from './pages/StatsPage.tsx'
 import { DashboardPage } from './pages/DashboardPage.tsx'
 import { HeroLab } from './pages/HeroLab.tsx'
@@ -39,6 +40,7 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/ui/kafejeto" element={<KafejetoPage />} />
             <Route path="/case-study/banneroza" element={<BannerozaPage />} />
             <Route path="/case-study/raporty" element={<RaportyCaseStudy />} />
+            <Route path="/case-study/client-acquisition" element={<ClientAcquisitionCaseStudy />} />
             <Route path="/ui/stats" element={<StatsPage />} />
             <Route path="/ui/dashboard" element={<DashboardPage />} />
             <Route path="/hero-lab" element={<HeroLab />} />

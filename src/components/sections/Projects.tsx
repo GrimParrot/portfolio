@@ -25,7 +25,7 @@ const copy = {
   pl: {
     label: "Portfolio",
     caseStudyHeading: "Case study",
-    otherHeading: "Pozostałe projekty",
+    otherHeading: "Galeria projektów",
     filters: [
       { id: "all" as Filter, label: "Wszystkie" },
       { id: "UI" as Filter, label: "UI" },
@@ -35,7 +35,7 @@ const copy = {
   en: {
     label: "Portfolio",
     caseStudyHeading: "Case study",
-    otherHeading: "Other projects",
+    otherHeading: "Project gallery",
     filters: [
       { id: "all" as Filter, label: "All" },
       { id: "UI" as Filter, label: "UI" },

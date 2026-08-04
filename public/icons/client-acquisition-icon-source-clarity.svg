@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<path id="Vector" d="M2.5 6.25C2.5 5.55964 3.05964 5 3.75 5H26.25C26.9404 5 27.5 5.55964 27.5 6.25V23.75C27.5 24.4404 26.9404 25 26.25 25H3.75C3.05964 25 2.5 24.4404 2.5 23.75V6.25Z" stroke="#474747" stroke-width="2.5" stroke-linejoin="round"/>
+<path id="Vector_2" d="M22.5 5V25" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M7.5 5V25" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_4" d="M23.75 11.25H27.5" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_5" d="M23.75 18.75H27.5" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_6" d="M2.5 11.25H6.25" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_7" d="M2.5 10V12.5" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_8" d="M5.625 5H9.375" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_9" d="M5.625 25H9.375" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_10" d="M20.625 5H24.375" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_11" d="M20.625 25H24.375" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_12" d="M2.5 18.75H6.25" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_13" d="M2.5 17.5V20" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_14" d="M27.5 17.5V20" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_15" d="M27.5 10V12.5" stroke="#474747" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_16" d="M13.125 11.875L18.125 15L13.125 18.125V11.875Z" stroke="#474747" stroke-width="2.5" stroke-linejoin="round"/>
+</g>
+</svg>

@@ -23,7 +23,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: "Reporting",
+    title: "Case Study - Automated Reporting",
     title_pl: "Case study - Automatyczne raporty",
     description: "Automatyzacja, która robi raport za specjalistę.",
     description_en: "Automation that does the report for the specialist.",
@@ -36,7 +36,7 @@ export const projects: Project[] = [
     href: "/case-study/raporty",
   },
   {
-    title: "Client Acquisition",
+    title: "Case Study - Client Acquisition",
     title_pl: "Case study - Moduł pozyskiwania klientów",
     description: "Od dwóch osobnych narzędzi do jednego flow end-to-end.",
     description_en: "Two separate tools replaced by one flow — from lead to client onboarding.",
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     color: "from-[#466AFA] to-indigo-500",
     bg: "bg-violet-50",
     image: "/client-acquisition-cover.webp",
-    href: "/case-study/localo",
+    href: "/case-study/client-acquisition",
   },
   {
     title: "Naturalnie.pl",
@@ -69,6 +69,7 @@ export const projects: Project[] = [
   },
   {
     title: "Stats Redesign",
+    title_pl: "Redesign statystyk",
     description: "Przeprojektowałam kluczowy ekran statystyk — nowy układ, wykresy zamiast surowych liczb.",
     description_en: "Redesigned the core stats screen — new layout, charts instead of raw numbers.",
     tag: "Web",
@@ -79,6 +80,7 @@ export const projects: Project[] = [
   },
   {
     title: "Profile Dashboard",
+    title_pl: "Pulpit profilu",
     description: "Główny pulpit Localo — widoczność, zadania, recenzje i konkurencja w jednym widoku.",
     description_en: "Localo's main dashboard — visibility, tasks, reviews and competitors in one view.",
     tag: "Web",
