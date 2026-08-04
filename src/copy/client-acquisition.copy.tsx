@@ -156,32 +156,38 @@ export const copy = {
       blurCaption: "Zamazane ze względu na bezpieczeństwo danych",
     },
     rozwiazanie: {
-      eyebrow: "04 · ROZWIĄZANIE",
-      title: "Jak to wyszło — raport od ręki",
-      intro: "Poniżej finalna wersja modułu raportów i managera raportów – ta, która weszła na produkcję i z której użytkownicy korzystają na co dzień. Od listy raportów pojedynczej wizytówki, przez sam raport, po zarządzanie całym portfolio klientów.",
-      s1Title: "Lista raportów – historia jednej wizytówki",
-      s1CardTitle: "Draft już czeka",
-      s1CardText: "Użytkownik nie zaczyna od pustego kreatora. Otwiera wizytówkę, a draft za bieżący okres już tam jest – zostaje przejrzeć i wysłać. Każdy raport na liście ma okres, datę wygenerowania i status. Stąd też ustawia się auto-raportowanie.",
-      s2Title: "Raport",
-      s2Text: "Raport startuje kompletny – statystyki, frazy z mapami pozycji, opinie, treści, cytowania i konkurencja. Wszystko z okresu, nic nie trzeba dobierać. Logo agencji na górze, a przy metrykach krótkie wyjaśnienie, co znaczą.",
-      s2Pair: [
-        { title: "Dopasowuję do konkretnego klienta", text: "Odznacza to, nad czym w tym miesiącu nie pracował. Raport ma odpowiadać na „czy jest lepiej”, a nie pokazywać wszystko, co system umie policzyć." },
-        { title: "Auto-raportowanie", text: "Auto-raporty włączone są domyślnie. Można edytować zakres danych – np. miesiąc – i częstotliwość generowania w dowolnym momencie." },
+      eyebrow: "04 · Finalne rozwiązanie",
+      title: "Od leada do klienta",
+      intro: "Poniżej finalne rozwiązanie. Użytkownik wpisuje branżę i miasto, dostaje listę firm i wybiera tę, u której najłatwiej będzie pokazać efekt. Sprawdza jej widoczność, wysyła mapę pozycji pod własną marką, zapisuje, co ustalili przez telefon. Kiedy klient mówi tak — aktywuje mu wizytówkę. Wszystko w jednym narzędziu, od pierwszego wyszukiwania po pierwszy dzień współpracy.",
+      leadsFinderTitle: "Leads Finder — wyszukiwanie potencjalnych klientów",
+      b1: {
+        title: "Osobna lista na każde wyszukiwanie",
+        text: "Każdy projekt to lista leadów zebrana na jedno słowo kluczowe i jedną lokalizację — dentyści w Toruniu i fryzjerzy w Warszawie mogą lecieć równolegle. Status na karcie mówi, co jest w toku, co zamknięte, a co pochodzi jeszcze z poprzedniej wersji funkcji.",
+      },
+      b2: [
+        { title: "Tag Legacy przy przeniesionych listach", text: "Starych danych nie dało się zaciągnąć do nowej struktury. Przeniesione listy dostają tag Legacy, żeby było wiadomo, że wynik może się nieco różnić od nowych." },
+        { title: "Koszt widoczny przed kliknięciem", text: "Stan kredytów i cena akcji stoją w tym samym oknie, w którym użytkownik wpisuje słowo kluczowe i lokalizację. Limit przestał być niespodzianką, o którą trzeba pytać support." },
       ],
-      s3Title: "Manager — lista wizytówek, nie lista raportów",
-      s3CardTitle: "Widok z lotu ptaka",
-      s3CardText: "Kto ma pod sobą kilkanaście wizytówek, potrzebuje widoku na całe portfolio klientów. To układ po testach użyteczności: najpierw klient, potem jego raport.",
-      s3Pair: [
-        { title: "Statusy i harmonogram", text: "Widzi, co poszło do klienta i kiedy wygeneruje się następny raport. Bez wchodzenia w każdą wizytówkę osobno." },
-        { title: "Wiele raportów na raz", text: "Jeśli potrzebuje raportu poza stałym harmonogramem, zrobi to akcją zbiorczą." },
+      b3: {
+        title: "Użytkownik układa listę pod siebie",
+        text: "Filtry i sortowanie zawężają listę do interesujących firm i ustawiają je w kolejności, w jakiej mają zostać obdzwonione.",
+      },
+      b4: [
+        { title: "Growth Potential wskazuje najlepsze leady", text: "Jedna wartość mówi, jak łatwo będzie u danej firmy pokazać efekt. Im wyższa, tym szybciej widać rezultat — użytkownik sortuje listę i ma najlepsze leady na górze." },
+        { title: "Dowód do rozmowy w jednym kliknięciu", text: "Zielone punkty to widoczność, czerwone jej brak, pomarańczowe słabą pozycję. Mapa pozycji generuje się z listy leadów i wysyła jako link bez logo Localo, pod marką agencji." },
       ],
-      s3Triple: [
-        { title: "Wysyłka", text: "Trzema sposobami z jednego ekranu: auto-wysyłka, link bez logowania lub PDF." },
-        { title: "Wysyłka mailem", text: "Raport idzie do klienta – klient nie idzie do raportu." },
-        { title: "Wysyłam mailem", text: "Raport idzie do klienta – klient nie idzie do raportu." },
+      b5: [
+        { title: "Miejsce na własne notatki", text: "Przy każdym leadzie użytkownik dopisuje to co przyda się przy następnej rozmowie. Nie potrzebuje do tego osobnych notatek per klient." },
+        { title: "Status kontaktu przy każdym leadzie", text: "Użytkownik oznacza, na jakim etapie jest rozmowa z daną firmą, w tym samym widoku, w którym tę firmę znalazł. Arkusz prowadzony obok Localo przestał być potrzebny." },
       ],
-      s4Title: "Komponenty i stany",
-      s4Text: "Każdy komponent musiał obsłużyć wszystkie stany – pusty, w trakcie generowania, wysłany, błąd. Notyfikacje, empty state'y, dropdowny i tagi wzięłam z design systemu, który rozwijałam razem z devami.",
+      b6: {
+        title: "Materiał sprzedażowy bez zajmowania slotu",
+        text: "Kiedy rozmowa się toczy, użytkownik generuje kolejne mapy pozycji na kolejne słowa kluczowe. Płaci kredytami z planu, ale nie dodaje cudzej wizytówki do Localo i nie zajmuje slotu — profil zostaje w Client Acquisition, dopóki nie ma umowy.",
+      },
+      b7: {
+        title: "Aktywacja nowej wizytówki",
+        text: "Kiedy klient się zgadza, użytkownik aktywuje jego wizytówkę w Localo i zaczyna monitoring oraz optymalizację. Dopiero ten krok zajmuje slot w planie.",
+      },
     },
     wynik: {
       eyebrow: "06 · Wyniki",
@@ -372,32 +378,38 @@ export const copy = {
       blurCaption: "Blurred for data security reasons",
     },
     rozwiazanie: {
-      eyebrow: "04 · SOLUTION",
-      title: "How it turned out — a report in one click",
-      intro: "Below is the final version of the reporting module and reports manager — the one that shipped to production and that users rely on every day. From a single profile's report list, through the report itself, to managing an entire client portfolio.",
-      s1Title: "Reports list — one profile's history",
-      s1CardTitle: "The draft is already waiting",
-      s1CardText: "The user doesn't start from an empty builder. They open the profile, and the draft for the current period is already there — just review and send. Every report on the list shows its period, generation date and status. This is also where auto-reporting is set up.",
-      s2Title: "The report",
-      s2Text: "The report starts complete — stats, keywords with rank maps, reviews, content, citations and competitors. Everything for the period, nothing to pick manually. The agency logo at the top, and a short explanation next to each metric.",
-      s2Pair: [
-        { title: "I tailor it to this specific client", text: "Unchecks whatever they didn't work on this month. The report should answer 'is it getting better', not show everything the system can count." },
-        { title: "Auto-reporting", text: "Auto-reports are on by default. The data range — e.g. a month — and generation frequency can be edited anytime." },
+      eyebrow: "04 · Final solution",
+      title: "From lead to client",
+      intro: "Below is the final solution. The user enters an industry and city, gets a list of businesses, and picks the one where showing results will be easiest. They check its visibility, send a position map under their own brand, and note what they agreed on the phone. When the client says yes, they activate their profile. All in one tool, from the first search to the first day of the partnership.",
+      leadsFinderTitle: "Leads Finder — finding potential clients",
+      b1: {
+        title: "A separate list for every search",
+        text: "Every project is a leads list built around one keyword and one location — dentists in Torun and hairdressers in Warsaw can run side by side. The status on the card shows what's in progress, what's closed, and what's still left over from the previous version of the feature.",
+      },
+      b2: [
+        { title: "A Legacy tag on migrated lists", text: "Old data couldn't be pulled into the new structure. Migrated lists get a Legacy tag, so it's clear the result might differ slightly from newer ones." },
+        { title: "Cost visible before you click", text: "Credit balance and the price of the action sit in the same window where the user types the keyword and location. The limit stopped being a surprise you had to ask support about." },
       ],
-      s3Title: "Manager — a list of profiles, not a list of reports",
-      s3CardTitle: "The bird's-eye view",
-      s3CardText: "Anyone managing a dozen-plus profiles needs a view of their whole client portfolio. This layout came after usability testing: client first, their report second.",
-      s3Pair: [
-        { title: "Statuses and schedule", text: "Sees what went to the client and when the next report will generate. Without opening every profile individually." },
-        { title: "Multiple reports at once", text: "If they need a report outside the fixed schedule, a bulk action handles it." },
+      b3: {
+        title: "Users shape the list their own way",
+        text: "Filters and sorting narrow the list down to the businesses that matter and put them in the order they should be called.",
+      },
+      b4: [
+        { title: "Growth Potential points to the best leads", text: "One value shows how easy it'll be to demonstrate results for a given business. The higher it is, the faster the payoff — the user sorts the list and gets the best leads at the top." },
+        { title: "Proof for the call in one click", text: "Green dots mean visibility, red means none, orange means a weak position. The position map is generated from the leads list and sent as a link with no Localo logo, under the agency's own brand." },
       ],
-      s3Triple: [
-        { title: "Delivery", text: "Three ways from one screen: auto-send, a login-free link, or a PDF." },
-        { title: "Sending by email", text: "The report goes to the client — the client doesn't go to the report." },
-        { title: "Sending by email", text: "The report goes to the client — the client doesn't go to the report." },
+      b5: [
+        { title: "A place for your own notes", text: "For every lead, the user jots down what will help in the next conversation. No need for separate per-client notes." },
+        { title: "Contact status on every lead", text: "The user marks what stage the conversation with a given business is at, in the same view where they found that business. A spreadsheet kept alongside Localo stopped being necessary." },
       ],
-      s4Title: "Components and states",
-      s4Text: "Every component had to handle every state — empty, generating, sent, error. Notifications, empty states, dropdowns and tags came from the design system I built together with engineering.",
+      b6: {
+        title: "Sales material without using up a slot",
+        text: "While the conversation is ongoing, the user generates more position maps for more keywords. They pay with credits from their plan, but don't add someone else's profile to Localo and don't use up a slot — the profile stays in Client Acquisition until there's a deal.",
+      },
+      b7: {
+        title: "Activating a new profile",
+        text: "Once the client agrees, the user activates their profile in Localo and starts monitoring and optimization. Only this step uses up a slot in the plan.",
+      },
     },
     wynik: {
       eyebrow: "06 · Results",

@@ -591,78 +591,72 @@ export function ClientAcquisitionCaseStudy() {
           </Reveal>
 
           <Reveal style={{ width: "100%" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", justifyContent: "center" }}>
+              <img src="/client-acquisition-s04-hero-1.webp" alt="" style={{ flex: "1 1 280px", maxWidth: 340, width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+              <img src="/client-acquisition-s04-hero-2.webp" alt="" style={{ flex: "1 1 280px", maxWidth: 340, width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+              <img src="/client-acquisition-s04-hero-3.webp" alt="" style={{ flex: "1 1 280px", maxWidth: 340, width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+            </div>
+          </Reveal>
+
+          <Reveal style={{ width: "100%" }}>
+            <h3 className="pf-h3">{t.rozwiazanie.leadsFinderTitle}</h3>
+          </Reveal>
+
+          <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.rozwiazanie.s1Title}</h3>
-              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-                <div style={{ overflow: "hidden", width: "100%", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }}>
-                  <img src="/raporty-ds-lista-raportow.webp" alt="Lista raportów wizytówki" style={{ width: "calc(100% + 24px)", height: "auto", display: "block", margin: "-12px -12px 0" }} />
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box" }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.rozwiazanie.s1CardTitle}</span>
-                  <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s1CardText}</p>
-                </div>
-              </div>
+              <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.rozwiazanie.b1.title}</h4>
+              <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.b1.text}</p>
+              <img src="/client-acquisition-s04-lista.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+            </div>
+          </Reveal>
+
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <ShotCard img="/client-acquisition-s04-legacy.webp" alt="" title={t.rozwiazanie.b2[0].title} text={t.rozwiazanie.b2[0].text} />
+            </StaggerItem>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <ShotCard img="/client-acquisition-s04-generate-modal.webp" alt="" title={t.rozwiazanie.b2[1].title} text={t.rozwiazanie.b2[1].text} />
+            </StaggerItem>
+          </StaggerGroup>
+
+          <Reveal style={{ width: "100%" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
+              <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.rozwiazanie.b3.title}</h4>
+              <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.b3.text}</p>
+              <img src="/client-acquisition-s04-leads-list.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+            </div>
+          </Reveal>
+
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <ShotCard img="/client-acquisition-s04-growth-potential.webp" alt="" title={t.rozwiazanie.b4[0].title} text={t.rozwiazanie.b4[0].text} />
+            </StaggerItem>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <ShotCard img="/client-acquisition-s04-map.webp" alt="" title={t.rozwiazanie.b4[1].title} text={t.rozwiazanie.b4[1].text} />
+            </StaggerItem>
+          </StaggerGroup>
+
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <ShotCard img="/client-acquisition-s04-notes.webp" alt="" title={t.rozwiazanie.b5[0].title} text={t.rozwiazanie.b5[0].text} />
+            </StaggerItem>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <ShotCard img="/client-acquisition-s04-statuses.webp" alt="" title={t.rozwiazanie.b5[1].title} text={t.rozwiazanie.b5[1].text} />
+            </StaggerItem>
+          </StaggerGroup>
+
+          <Reveal style={{ width: "100%" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
+              <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.rozwiazanie.b6.title}</h4>
+              <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.b6.text}</p>
+              <img src="/client-acquisition-s04-visibility-scans.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
             </div>
           </Reveal>
 
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.rozwiazanie.s2Title}</h3>
-              <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s2Text}</p>
-              <img src="/raporty-ds-raport-full.webp" alt="Raport — widok desktop i mobile" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
-              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
-                <StaggerItem style={{ flex: "1 1 260px" }}>
-                  <ShotCard img="/raporty-ds-ustawienia.webp" alt="Wybór sekcji i ustawienia raportu" title={t.rozwiazanie.s2Pair[0].title} text={t.rozwiazanie.s2Pair[0].text} />
-                </StaggerItem>
-                <StaggerItem style={{ flex: "1 1 260px" }}>
-                  <ShotCard img="/raporty-ds-auto-report.webp" alt="Ustawianie reguł auto-raportu" title={t.rozwiazanie.s2Pair[1].title} text={t.rozwiazanie.s2Pair[1].text} />
-                </StaggerItem>
-              </StaggerGroup>
-            </div>
-          </Reveal>
-
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.rozwiazanie.s3Title}</h3>
-              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-                <img src="/raporty-ds-reports-manager-full.webp" alt="Reports manager — portfolio wizytówek" style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
-                <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box" }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.rozwiazanie.s3CardTitle}</span>
-                  <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s3CardText}</p>
-                </div>
-              </div>
-              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
-                <StaggerItem style={{ flex: "1 1 260px" }}>
-                  <ShotCard img="/raporty-ds-statusy.webp" alt="Statusy raportów" title={t.rozwiazanie.s3Pair[0].title} text={t.rozwiazanie.s3Pair[0].text} />
-                </StaggerItem>
-                <StaggerItem style={{ flex: "1 1 260px" }}>
-                  <ShotCard img="/raporty-ds-bulk-action.webp" alt="Akcja zbiorcza" title={t.rozwiazanie.s3Pair[1].title} text={t.rozwiazanie.s3Pair[1].text} />
-                </StaggerItem>
-              </StaggerGroup>
-              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
-                <StaggerItem style={{ flex: "1 1 220px" }}>
-                  <ShotCard img="/raporty-ds-share.webp" alt="Menu udostępniania raportu" title={t.rozwiazanie.s3Triple[0].title} text={t.rozwiazanie.s3Triple[0].text} />
-                </StaggerItem>
-                <StaggerItem style={{ flex: "1 1 220px" }}>
-                  <ShotCard img="/raporty-ds-email-settings.webp" alt="Ustawienia e-mail" title={t.rozwiazanie.s3Triple[1].title} text={t.rozwiazanie.s3Triple[1].text} />
-                </StaggerItem>
-                <StaggerItem style={{ flex: "1 1 220px" }}>
-                  <ShotCard img="/raporty-ds-email-send.webp" alt="Wysyłka raportu mailem" title={t.rozwiazanie.s3Triple[2].title} text={t.rozwiazanie.s3Triple[2].text} />
-                </StaggerItem>
-              </StaggerGroup>
-            </div>
-          </Reveal>
-
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.rozwiazanie.s4Title}</h3>
-              <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s4Text}</p>
-              <img src="/raporty-ds-komponenty.webp" alt="Komponenty i stany" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
-              <div className="pf-solution-grid" style={{ display: "grid", gap: 24, width: "100%" }}>
-                <img src="/raporty-ds-alert-spec.webp" alt="Alert — dokumentacja komponentu" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
-                <img src="/raporty-ds-stany.webp" alt="Stany: ładowanie, sukces, błąd, empty state" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
-                <img className="pf-solution-grid-tall" src="/raporty-ds-wariant-maila.webp" alt="Warianty ustawień e-mail" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
-              </div>
+              <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.rozwiazanie.b7.title}</h4>
+              <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.b7.text}</p>
             </div>
           </Reveal>
         </Section>
