@@ -12,7 +12,7 @@ import { copy } from "@/copy/client-acquisition.copy"
 import "@/styles/raporty-ds.css"
 import {
   MetaBar, Section, SectionHeader, Divider, Figure,
-  StatCard, FindingCard, PersonaCard, QuoteBlock, TimelineItem,
+  StatCard, FindingCard, QuoteBlock, TimelineItem,
   GoalBanner, HypothesisCard,
   LessonCard,
 } from "@/components/raporty-ds"
@@ -282,6 +282,34 @@ function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: 
   )
 }
 
+/** Ported from the raporty-design-system redesign branch (prod). A screenshot pans
+ * top-to-bottom on a loop inside a fixed 16:9 frame — scrollPct is how far the
+ * image (scaled to full width) overflows the frame's height. */
+function AutoScrollImage({ src, imageAspect }: { src: string; imageAspect: number }) {
+  const containerAspect = 16 / 9
+  const scrollPct = (1 - imageAspect / containerAspect) * 100
+
+  return (
+    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "16/9" }}>
+      <img
+        src={src}
+        alt=""
+        className="w-full"
+        style={{ animation: "clientAcquisitionAutoscroll 14s ease-in-out infinite", ["--scroll-pct" as string]: `-${scrollPct}%` }}
+      />
+      <style>{`
+        @keyframes clientAcquisitionAutoscroll {
+          0% { transform: translateY(0%); }
+          55% { transform: translateY(var(--scroll-pct)); }
+          62% { transform: translateY(var(--scroll-pct)); }
+          92% { transform: translateY(0%); }
+          100% { transform: translateY(0%); }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 export function ClientAcquisitionCaseStudy() {
   const { lang } = useLang()
   const t = copy[lang]
@@ -506,72 +534,79 @@ export function ClientAcquisitionCaseStudy() {
 
         <Divider />
 
-        {/* 03 · DISCOVERY */}
+        {/* 03 · PROCES */}
         <Section id="discovery">
           <Reveal style={{ width: "100%" }}>
             <SectionHeader eyebrow={t.discovery.eyebrow} title={t.discovery.title} />
           </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%", alignItems: "flex-start" }}>
-              <div style={{ flex: "2 1 320px", display: "flex", flexDirection: "column", gap: 30 }}>
-                <p className="pf-body" style={{ margin: 0 }}>{t.discovery.intro1Pre}<b>{t.discovery.intro1Bold}</b>{t.discovery.intro1Rest}</p>
-                <p className="pf-body" style={{ margin: 0 }}>{t.discovery.intro2Pre}<b>{t.discovery.intro2Bold}</b>{t.discovery.intro2Rest}</p>
-              </div>
-              <StaggerGroup style={{ flex: "1 1 280px", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start" }}>
-                {t.discovery.stats.map((s, i) => (
-                  <StaggerItem key={i} style={{ flex: 1, minWidth: 0 }}>
-                    <StatCard value={s.value} label={s.label} style={{ width: "100%", padding: 16, gap: 32 }} labelStyle={i === 1 ? { marginTop: 48 } : undefined} />
-                  </StaggerItem>
-                ))}
-              </StaggerGroup>
-            </div>
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 30, width: "100%" }}>
-              <p className="pf-body" style={{ margin: 0 }}><b>{t.discovery.intro3Bold}</b>{t.discovery.intro3Rest}</p>
-              <p className="pf-body" style={{ margin: 0 }}>{t.discovery.intro4}</p>
-            </div>
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
-              <Figure src="/raporty-ds-badania-3.webp" style={{ flex: "1 1 280px" }} />
-              <Figure src="/raporty-ds-badania-2.webp" style={{ flex: "1 1 280px" }} />
-            </div>
-          </Reveal>
-        </Section>
 
-        <Section variant="dark" gap={48}>
-          <Reveal style={{ width: "100%" }}>
-            <h3 className="pf-h3" style={{ color: "var(--pf-text-on-dark)" }}>{t.discovery.findingsTitle}</h3>
-          </Reveal>
-          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
-            {t.discovery.findings.map((f) => (
-              <StaggerItem key={f.number} style={{ flex: "1 1 240px" }}>
-                <FindingCard number={f.number} title={f.title} style={{ width: "100%", height: "100%", boxSizing: "border-box" }}>{f.text}</FindingCard>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-        </Section>
-
-        <Section gap={64} contentStyle={{ alignItems: "center" }}>
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.discovery.personaTitle}</h3>
-              <p className="pf-body"><b>{t.discovery.personaIntroBold}</b>{t.discovery.personaIntroRest}</p>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.flow.title}</span>
+              <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
+                <p className="pf-body" style={{ margin: 0 }}>{t.discovery.flow.text1}</p>
+                <p className="pf-body" style={{ margin: 0 }}>{t.discovery.flow.text2}</p>
+              </div>
+              <img src="/client-acquisition-flowmap.webp" alt="" style={{ width: "100%", height: 415, objectFit: "cover", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)", boxSizing: "border-box" }} />
             </div>
           </Reveal>
+
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", width: "100%" }}>
-              <div style={{ flex: "1 1 280px", maxWidth: 560, aspectRatio: "560 / 740", marginRight: "clamp(-80px, -6.67vw, 0px)", background: "url(/raporty-ds-persona.webp) center / contain no-repeat" }} />
-              <StaggerGroup style={{ display: "flex", flexDirection: "column", gap: 32, flex: "1 1 280px", maxWidth: 510 }}>
-                {t.discovery.personaCards.map((p, i) => (
-                  <StaggerItem key={i}>
-                    <PersonaCard title={p.title}>{p.text}</PersonaCard>
-                  </StaggerItem>
-                ))}
-              </StaggerGroup>
+            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.lowfiTitle}</span>
+              <p className="pf-body" style={{ margin: 0 }}>{t.discovery.lowfiIntro}</p>
+              <AutoScrollImage src="/client-acquisition-lowfi.webp" imageAspect={1120 / 678} />
             </div>
           </Reveal>
+
+          <Reveal style={{ width: "100%" }}>
+            <h3 className="pf-h3">{t.discovery.decisionsTitle}</h3>
+          </Reveal>
+
+          <Reveal style={{ width: "100%" }}>
+            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.decision1.title}</span>
+              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
+                <img src="/client-acquisition-decision-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
+              </div>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "center", width: "100%" }}>
+                <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 16 }}>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.discovery.decision1.rejectedLabel}</span>
+                  <p className="pf-body" style={{ margin: 0 }}>{t.discovery.decision1.rejectedPre}<b>{t.discovery.decision1.rejectedBold}</b>{t.discovery.decision1.rejectedRest}</p>
+                </div>
+                <img src="/icons/client-acquisition-icon-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
+                <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 16 }}>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.discovery.decision1.reasonLabel}</span>
+                  <p className="pf-body" style={{ margin: 0 }}>{t.discovery.decision1.reasonText}</p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
+                  <img src="/client-acquisition-naming.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
+                </div>
+                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.namingCard.title}</span>
+                <p className="pf-body" style={{ margin: 0 }}>{t.discovery.namingCard.text}</p>
+              </div>
+            </StaggerItem>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                <div style={{ width: "100%", background: "var(--pf-accent-50, #F6F8FF)", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, boxSizing: "border-box" }}>
+                  <img src="/client-acquisition-growth-pills.webp" alt="" style={{ maxWidth: "100%", height: "auto", display: "block" }} />
+                </div>
+                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.resultCard.title}</span>
+                <p className="pf-body" style={{ margin: 0 }}>
+                  {t.discovery.resultCard.para1}
+                  <br /><br />
+                  <b>{t.discovery.resultCard.reasonLabel}</b>{t.discovery.resultCard.para2}<b>{t.discovery.resultCard.reasonBold}</b>{t.discovery.resultCard.para3}
+                </p>
+              </div>
+            </StaggerItem>
+          </StaggerGroup>
         </Section>
 
         <Divider />
