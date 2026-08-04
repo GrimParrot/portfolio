@@ -281,6 +281,16 @@ function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: 
   )
 }
 
+/** Bordered, text-less image box — pairs with ShotCard in the b7 layout so a
+ * plain photo and a captioned screenshot sit side by side at equal height. */
+function ImageBox({ img, alt }: { img: string; alt: string }) {
+  return (
+    <div style={{ flex: 1, minWidth: 0, height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box" }}>
+      <img src={img} alt={alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+    </div>
+  )
+}
+
 /** Bigger full-width sibling of ShotCard — same bordered box, image on top,
  * padded text below — used for the single-image blocks in chapter 07. */
 function BigShotCard({ img, alt, title, text }: { img: string; alt: string; title: string; text: string }) {
@@ -602,9 +612,6 @@ export function ClientAcquisitionCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <SectionHeader eyebrow={t.rozwiazanie.eyebrow} title={t.rozwiazanie.title} />
           </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.intro}</p>
-          </Reveal>
 
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", justifyContent: "center" }}>
@@ -612,6 +619,10 @@ export function ClientAcquisitionCaseStudy() {
               <img src="/client-acquisition-s04-hero-2.webp" alt="" style={{ flex: "1 1 280px", maxWidth: 340, width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
               <img src="/client-acquisition-s04-hero-3.webp" alt="" style={{ flex: "1 1 280px", maxWidth: 340, width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
             </div>
+          </Reveal>
+
+          <Reveal style={{ width: "100%" }}>
+            <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.intro}</p>
           </Reveal>
 
           <Reveal style={{ width: "100%" }}>
@@ -657,12 +668,14 @@ export function ClientAcquisitionCaseStudy() {
             <BigShotCard img="/client-acquisition-s04-visibility-scans.webp" alt="" title={t.rozwiazanie.b6.title} text={t.rozwiazanie.b6.text} />
           </Reveal>
 
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.rozwiazanie.b7.title}</h4>
-              <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.b7.text}</p>
-            </div>
-          </Reveal>
+          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <ImageBox img="/client-acquisition-s04-b7-hero.webp" alt="" />
+            </StaggerItem>
+            <StaggerItem style={{ flex: "1 1 460px" }}>
+              <ShotCard img="/client-acquisition-s04-activate.webp" alt="" title={t.rozwiazanie.b7.title} text={t.rozwiazanie.b7.text} />
+            </StaggerItem>
+          </StaggerGroup>
         </Section>
 
         <Divider />
