@@ -593,7 +593,7 @@ export function ClientAcquisitionCaseStudy() {
             </StaggerItem>
             <StaggerItem style={{ flex: "1 1 460px" }}>
               <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
-                <div style={{ width: "100%", background: "var(--pf-accent-50, #F6F8FF)", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, boxSizing: "border-box" }}>
+                <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <img src="/client-acquisition-growth-pills.webp" alt="" style={{ maxWidth: "100%", height: "auto", display: "block" }} />
                 </div>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.resultCard.title}</span>
