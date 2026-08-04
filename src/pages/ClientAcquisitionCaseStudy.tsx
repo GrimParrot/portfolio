@@ -32,6 +32,13 @@ const SCOPE_OUT_ICONS = [
   "/icons/client-acquisition-icon-scope-credits.svg",
 ]
 
+const SOURCE_CARD_ICONS = [
+  "/icons/client-acquisition-icon-source-clarity.svg",
+  "/icons/client-acquisition-icon-source-cs.svg",
+  "/icons/client-acquisition-icon-source-tickets.svg",
+  "/icons/client-acquisition-icon-source-devs.svg",
+]
+
 /** Scroll-reveal motion, same values as the fade-up used on the Localo case study page. */
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -433,6 +440,7 @@ export function ClientAcquisitionCaseStudy() {
             {t.problem.sourceCards.map((c, i) => (
               <StaggerItem key={i} style={{ flex: "1 1 460px" }}>
                 <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                  <img src={SOURCE_CARD_ICONS[i]} alt="" width={30} height={30} />
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{c.title}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{c.text}</p>
                 </div>
@@ -492,7 +500,7 @@ export function ClientAcquisitionCaseStudy() {
 
         <Reveal style={{ width: "100%" }}>
           <GoalBanner label={t.problem.goalOverline}>
-            <span className="pf-quote" style={{ color: "inherit" }}>{t.problem.goalPre}<b>{t.problem.goalBold}</b>{t.problem.goalRest}</span>
+            <span className="pf-quote" style={{ color: "inherit" }}>{t.problem.goalPre}<b style={{ color: "inherit" }}>{t.problem.goalBold}</b>{t.problem.goalRest}</span>
           </GoalBanner>
         </Reveal>
 
