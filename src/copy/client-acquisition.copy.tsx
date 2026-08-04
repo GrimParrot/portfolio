@@ -29,17 +29,19 @@ export const copy = {
       introRest:
         " — jedną albo kilkudziesięcioma naraz. Automatyzuje pracę i mówi, co zrobić dalej: lista zadań na tydzień z priorytetami dla każdej wizytówki, audyty w kilka sekund, raporty gotowe do wysłania klientowi w kilka minut.",
       contextPanel: {
-        title: "Kontekst projektu",
-        text: "CEO przyszedł z gotowym rozwiązaniem: dajmy użytkownikom możliwość zapraszania klientów do Localo. Klient agencji loguje się i sprawdza dane, specjaliści przestają tracić czas na raportowanie. Logiczne. Problem pod spodem był prawdziwy.\nJednak zbudowaliśmy coś dokładnie odwrotnego. Zamiast wpuszczać klienta agencji do Localo, zbudowaliśmy raport, ",
-        textBold: "który sam się generuje i wysyła jednym kliknięciem.",
+        title: "Brief — Client Acquisition",
+        text1: "Funkcja powstała w ramach MVP, zbudował ją dev i została taka, jaka była. Nikt w zespole nie udawał, że jest dobrze.",
+        text2: "„Wiemy, że UX i generalnie projekt tej funkcji jest słaby – użytkownicy dopiero po onboardingu przez Customer Success, na callach, są w stanie zrozumieć wartość narzędzia i jakkolwiek z niego korzystać. Chcemy, żeby użytkownicy weszli, zobaczyli efekt wow i sami z tego korzystali.”",
       },
-      statsIntroTitle: "Efekty — trzy liczby",
-      statsIntroDesc: "Pokazują duże zaufanie do procesu i realne odciążenie od powtarzalnej, czasochłonnej czynności.",
+      closingLead: "To nie był projekt, w którym trzeba było odkryć problem. Problem był znany - ",
+      closingBold: "Cała robota była w tym, jak to zrobić.",
+      statsIntroTitle: "Jak zmieniły się metryki:",
       stats: [
-        { value: "44%", label: "Użytkowników raportów nigdy nie tworzy raportu ręcznie. Automat jest u nich trybem domyślnym, nie dodatkiem." },
-        { value: "11–13%", label: "Tyle aktywnych użytkowników robi raport w danym miesiącu — stabilnie przez dziewięć miesięcy." },
-        { value: "~20x", label: "Wyższe blended LTV niż reszta bazy. Korelacja, nie eksperyment." },
+        { value: "+81%", label: "dłuższa mediana sesji na funkcji: 4,0 → 7,3 min" },
+        { value: "5,5x", label: "częściej płacą użytkownicy funkcji niż reszta bazy: 28,0% vs 5,1%" },
+        { value: "~9x", label: "wyższe blended LTV użytkownika funkcji: $149,97 vs $16,31" },
       ],
+      statsCaption: "Dwie ostatnie to porównanie użytkowników funkcji z resztą bazy, nie pomiar przed i po. Rozbieram to w rozdziale 07.",
       roleOverline: "MOJA ROLA — DESIGN LEAD OD A DO Z",
       roleQuote: "W Localo odpowiadałam za cały produkt – od discovery po delivery.",
       roleList: [
@@ -52,10 +54,10 @@ export const copy = {
         "mentorowałam młodszą projektantkę",
       ],
       scopePanel: {
-        title: "Raporty to jeden z modułów.",
+        title: "Redesign: Research & Sales mode",
         blocks: [
-          { label: "MÓJ ZAKRES", text: "research (desk research, benchmarking, wywiady pogłębione, badania ilościowe), scope, architektura informacji, wireframy i flow, UI/UX i prototyp" },
-          { label: "WSPÓŁPRACA", text: "Z CEO na poziomie strategicznym, z developerami przy wdrożeniu, z analitykiem danych przy metrykach. Wspierałam writera w treściach i QA w testach." },
+          { label: "MÓJ ZAKRES", text: "audyt ekspercki istniejącej funkcji, nowa architektura informacji, user journey i flow użytkownika, nazewnictwo, UI, stany i komunikaty, handoff, design QA." },
+          { label: "WSPÓŁPRACA", text: "zakres i priorytety. Zespół developerski – ograniczenia techniczne, od początku. Customer Success – wiedza o tym, czego ludzie nie rozumieli na callach. Do tego wsparcie QA i writera." },
         ],
       },
     },
@@ -302,17 +304,19 @@ export const copy = {
       introRest:
         " — one or dozens at a time. It automates the work and tells you what to do next: a weekly task list with priorities for every profile, audits in seconds, reports ready to send to a client in minutes.",
       contextPanel: {
-        title: "Project context",
-        text: "The CEO came in with a ready-made solution: let users invite their clients into Localo. The agency's client logs in and checks the data, specialists stop wasting time on reporting. Logical. The problem underneath was real.\nWe ended up building the exact opposite. Instead of letting the agency's client into Localo, we built a report ",
-        textBold: "that generates and sends itself with one click.",
+        title: "Brief — Client Acquisition",
+        text1: "The feature was built as an MVP by a single developer and stayed exactly as it was. Nobody on the team pretended it was good.",
+        text2: "“We know the UX and the overall design of this feature is weak — users only understand the tool's value, and how to use it at all, after onboarding with Customer Success on a call. We want users to come in, see the wow effect, and use it on their own.”",
       },
-      statsIntroTitle: "The impact — three numbers",
-      statsIntroDesc: "They show strong trust in the process and real relief from a repetitive, time-consuming task.",
+      closingLead: "This wasn't a project where the problem had to be discovered. The problem was known - ",
+      closingBold: "the entire job was figuring out how to solve it.",
+      statsIntroTitle: "How the metrics changed:",
       stats: [
-        { value: "44%", label: "Of report users never create a report manually. Automation is their default mode, not an add-on." },
-        { value: "11–13%", label: "Share of active users who create a report in a given month — stable for nine months straight." },
-        { value: "~20x", label: "Higher blended LTV than the rest of the base. Correlation, not an experiment." },
+        { value: "+81%", label: "longer median session on the feature: 4.0 → 7.3 min" },
+        { value: "5.5x", label: "more likely to pay than the rest of the base: 28.0% vs 5.1%" },
+        { value: "~9x", label: "higher blended LTV for feature users: $149.97 vs $16.31" },
       ],
+      statsCaption: "The last two compare feature users against the rest of the base, not a before/after measurement. I break this down in chapter 07.",
       roleOverline: "MY ROLE — DESIGN LEAD, END TO END",
       roleQuote: "At Localo I owned the entire product — from discovery to delivery.",
       roleList: [
@@ -325,10 +329,10 @@ export const copy = {
         "mentored a junior product designer",
       ],
       scopePanel: {
-        title: "Reports is one of the modules.",
+        title: "Redesign: Research & Sales mode",
         blocks: [
-          { label: "MY SCOPE", text: "research (desk research, benchmarking, in-depth interviews, quantitative surveys), scope, information architecture, wireframes and flow, UI/UX and prototype" },
-          { label: "COLLABORATION", text: "With the CEO at the strategic level, with engineers on implementation, with a data analyst on metrics. I supported the writer on content and QA on testing." },
+          { label: "MY SCOPE", text: "expert audit of the existing feature, new information architecture, user journey and flow, naming, UI, states and messaging, handoff, design QA." },
+          { label: "COLLABORATION", text: "scope and priorities. Engineering team — technical constraints, from day one. Customer Success — insight into what people didn't understand on calls. Plus support from QA and the writer." },
         ],
       },
     },

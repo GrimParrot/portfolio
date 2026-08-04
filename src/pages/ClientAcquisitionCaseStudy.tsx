@@ -317,15 +317,16 @@ export function ClientAcquisitionCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <div style={{ position: "relative", overflow: "hidden", borderRadius: 24, width: "100%", boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-2.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 16, padding: 48 }}>
               <h4 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-text-on-dark)" }}>{t.skrot.contextPanel.title}</h4>
-              <p style={{ margin: 0, whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-on-dark-body)" }}>{t.skrot.contextPanel.text}<b style={{ color: "var(--pf-text-on-dark)" }}>{t.skrot.contextPanel.textBold}</b></p>
+              <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-on-dark-body)" }}>{t.skrot.contextPanel.text1}</p>
+              <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-on-dark-body)" }}>{t.skrot.contextPanel.text2}</p>
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
+            <p className="pf-body">{t.skrot.closingLead}<b>{t.skrot.closingBold}</b></p>
+          </Reveal>
+          <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.skrot.statsIntroTitle}</h4>
-                <p className="pf-body">{t.skrot.statsIntroDesc}</p>
-              </div>
+              <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.skrot.statsIntroTitle}</h4>
               <StaggerGroup className="pf-skrot-stats" style={{ gap: 24, width: "100%" }}>
                 {t.skrot.stats.map((s, i) => (
                   <StaggerItem key={i}>
@@ -333,6 +334,7 @@ export function ClientAcquisitionCaseStudy() {
                   </StaggerItem>
                 ))}
               </StaggerGroup>
+              <span className="pf-caption" style={{ color: "var(--pf-text-muted)" }}>{t.skrot.statsCaption}</span>
             </div>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
