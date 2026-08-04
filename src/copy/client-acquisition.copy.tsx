@@ -16,9 +16,9 @@ export const copy = {
       problem: "02 Wiedza",
       discovery: "03 Proces",
       handoff: "05 Handoff",
-      rozwiazanie: "07 Rozwiązanie",
-      wynik: "08 Wynik",
-      podsumowanie: "09 Podsumowanie",
+      rozwiazanie: "04 Rozwiązanie",
+      wynik: "06 Wynik",
+      podsumowanie: "07 Podsumowanie",
     },
     skrot: {
       eyebrow: "01 · KONTEKST, EFEKT I ROLA",
@@ -156,7 +156,7 @@ export const copy = {
       blurCaption: "Zamazane ze względu na bezpieczeństwo danych",
     },
     rozwiazanie: {
-      eyebrow: "07 · ROZWIĄZANIE",
+      eyebrow: "04 · ROZWIĄZANIE",
       title: "Jak to wyszło — raport od ręki",
       intro: "Poniżej finalna wersja modułu raportów i managera raportów – ta, która weszła na produkcję i z której użytkownicy korzystają na co dzień. Od listy raportów pojedynczej wizytówki, przez sam raport, po zarządzanie całym portfolio klientów.",
       s1Title: "Lista raportów – historia jednej wizytówki",
@@ -184,7 +184,7 @@ export const copy = {
       s4Text: "Każdy komponent musiał obsłużyć wszystkie stany – pusty, w trakcie generowania, wysłany, błąd. Notyfikacje, empty state'y, dropdowny i tagi wzięłam z design systemu, który rozwijałam razem z devami.",
     },
     wynik: {
-      eyebrow: "08 · WYNIK I DOWODY",
+      eyebrow: "06 · WYNIK I DOWODY",
       title: "Co pokazały liczby",
       heroStat: { value: "11–13%", label: "aktywnych użytkowników tworzy raport w danym miesiącu — mniej więcej jeden na dziewięciu zmienił nawyk" },
       smallStats: [
@@ -211,7 +211,7 @@ export const copy = {
       quoteAttribution: "Localo CEO",
     },
     podsumowanie: {
-      eyebrow: "09 · PODSUMOWANIE",
+      eyebrow: "07 · PODSUMOWANIE",
       title: "Projekt nie skończył się na wdrożeniu",
       intro: "Przez kolejne tygodnie obserwowaliśmy adaptację do nowej funkcji. Analizowałam nagrania w Clarity, żeby zobaczyć, jak użytkownicy radzą sobie z raportami. Sprawdzałam, czy w ticketach supportu nie pojawiają się zgłoszenia dotyczące tej funkcji. Zbieraliśmy pomysły na kolejne iteracje, część z nich dodaliśmy, m.in. pokazanie statusu czy raport został wysłany bezpośrednio, został wygenerowany link, czy PDF.",
       lessons: [
@@ -238,9 +238,9 @@ export const copy = {
       problem: "02 Knowledge",
       discovery: "03 Process",
       handoff: "05 Handoff",
-      rozwiazanie: "07 Solution",
-      wynik: "08 Results",
-      podsumowanie: "09 Summary",
+      rozwiazanie: "04 Solution",
+      wynik: "06 Results",
+      podsumowanie: "07 Summary",
     },
     skrot: {
       eyebrow: "01 · CONTEXT, IMPACT & ROLE",
@@ -378,7 +378,7 @@ export const copy = {
       blurCaption: "Blurred for data security reasons",
     },
     rozwiazanie: {
-      eyebrow: "07 · SOLUTION",
+      eyebrow: "04 · SOLUTION",
       title: "How it turned out — a report in one click",
       intro: "Below is the final version of the reporting module and reports manager — the one that shipped to production and that users rely on every day. From a single profile's report list, through the report itself, to managing an entire client portfolio.",
       s1Title: "Reports list — one profile's history",
@@ -406,7 +406,7 @@ export const copy = {
       s4Text: "Every component had to handle every state — empty, generating, sent, error. Notifications, empty states, dropdowns and tags came from the design system I built together with engineering.",
     },
     wynik: {
-      eyebrow: "08 · RESULTS & PROOF",
+      eyebrow: "06 · RESULTS & PROOF",
       title: "What the numbers showed",
       heroStat: { value: "11–13%", label: "of active users create a report in a given month — roughly one in nine changed a habit" },
       smallStats: [
@@ -433,7 +433,7 @@ export const copy = {
       quoteAttribution: "Localo CEO",
     },
     podsumowanie: {
-      eyebrow: "09 · SUMMARY",
+      eyebrow: "07 · SUMMARY",
       title: "The project didn't end at launch",
       intro: "Over the following weeks we watched how the new feature was adopted. I reviewed Clarity recordings to see how users handled reports. I checked support tickets for anything related to the feature. We gathered ideas for the next iterations and shipped some of them, including showing whether a report was sent directly, a link was generated, or a PDF.",
       lessons: [

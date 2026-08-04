@@ -17,7 +17,7 @@ import {
   LessonCard,
 } from "@/components/raporty-ds"
 
-const CHAPTER_IDS = ["skrot", "problem", "discovery", "handoff", "rozwiazanie", "wynik", "podsumowanie"] as const
+const CHAPTER_IDS = ["skrot", "problem", "discovery", "rozwiazanie", "handoff", "wynik", "podsumowanie"] as const
 
 const AUDIT_ICONS = [
   "/icons/client-acquisition-icon-experience.svg",
@@ -581,28 +581,7 @@ export function ClientAcquisitionCaseStudy() {
 
         <Divider />
 
-        {/* 05 · HANDOFF */}
-        <Section id="handoff">
-          <Reveal style={{ width: "100%" }}>
-            <SectionHeader eyebrow={t.handoff.eyebrow} title={t.handoff.title} />
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
-              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.introPre}<b>{t.handoff.introBold}</b>{t.handoff.introRest}</p>
-              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.intro2Pre}<b>{t.handoff.intro2Bold}</b>{t.handoff.intro2Rest}</p>
-            </div>
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 32, width: "100%", alignItems: "flex-start" }}>
-              <img src="/client-acquisition-handoff-illustration.webp" alt="" style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24 }} />
-              <img src="/client-acquisition-handoff-flow-blurred.webp" alt={t.handoff.blurCaption} style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
-            </div>
-          </Reveal>
-        </Section>
-
-        <Divider />
-
-        {/* 07 · ROZWIAZANIE */}
+        {/* 04 · ROZWIAZANIE */}
         <Section id="rozwiazanie">
           <Reveal style={{ width: "100%" }}>
             <SectionHeader eyebrow={t.rozwiazanie.eyebrow} title={t.rozwiazanie.title} />
@@ -690,7 +669,28 @@ export function ClientAcquisitionCaseStudy() {
 
         <Divider />
 
-        {/* 08 · WYNIK */}
+        {/* 05 · HANDOFF */}
+        <Section id="handoff">
+          <Reveal style={{ width: "100%" }}>
+            <SectionHeader eyebrow={t.handoff.eyebrow} title={t.handoff.title} />
+          </Reveal>
+          <Reveal style={{ width: "100%" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
+              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.introPre}<b>{t.handoff.introBold}</b>{t.handoff.introRest}</p>
+              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.intro2Pre}<b>{t.handoff.intro2Bold}</b>{t.handoff.intro2Rest}</p>
+            </div>
+          </Reveal>
+          <Reveal style={{ width: "100%" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 32, width: "100%", alignItems: "flex-start" }}>
+              <img src="/client-acquisition-handoff-illustration.webp" alt="" style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24 }} />
+              <img src="/client-acquisition-handoff-flow-blurred.webp" alt={t.handoff.blurCaption} style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+            </div>
+          </Reveal>
+        </Section>
+
+        <Divider />
+
+        {/* 06 · WYNIK */}
         <Section id="wynik">
           <Reveal style={{ width: "100%" }}>
             <SectionHeader eyebrow={t.wynik.eyebrow} title={t.wynik.title} />
@@ -735,7 +735,7 @@ export function ClientAcquisitionCaseStudy() {
 
         <Divider />
 
-        {/* 09 · PODSUMOWANIE */}
+        {/* 07 · PODSUMOWANIE */}
         <Section id="podsumowanie">
           <Reveal style={{ width: "100%" }}>
             <SectionHeader eyebrow={t.podsumowanie.eyebrow} title={t.podsumowanie.title} />
