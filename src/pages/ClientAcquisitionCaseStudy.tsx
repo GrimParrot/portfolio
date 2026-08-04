@@ -11,13 +11,13 @@ import { smoothScrollTo } from "@/lib/lenis"
 import { copy } from "@/copy/client-acquisition.copy"
 import "@/styles/raporty-ds.css"
 import {
-  MetaBar, Section, SectionHeader, Divider, Figure,
-  StatCard, FindingCard, QuoteBlock, TimelineItem,
-  GoalBanner, HypothesisCard,
+  MetaBar, Section, SectionHeader, Divider,
+  StatCard, FindingCard, QuoteBlock,
+  GoalBanner,
   LessonCard,
 } from "@/components/raporty-ds"
 
-const CHAPTER_IDS = ["skrot", "problem", "discovery", "reframing", "decyzje", "handoff", "rozwiazanie", "wynik", "podsumowanie"] as const
+const CHAPTER_IDS = ["skrot", "problem", "discovery", "handoff", "rozwiazanie", "wynik", "podsumowanie"] as const
 
 const AUDIT_ICONS = [
   "/icons/client-acquisition-icon-experience.svg",
@@ -238,47 +238,6 @@ function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] })
         )
       })}
     </nav>
-  )
-}
-
-/** Looped slideshow — one screen slides out to the left while the next slides
- * in from the right, then loops back to the first. The transition CSS is only
- * enabled for the current and previous slide; otherwise the old "inactive"
- * slide would animate all the way across the screen on every index change
- * instead of just waiting off-screen. */
-function ImageCarousel({ images }: { images: string[] }) {
-  const [index, setIndex] = useState(0)
-  const n = images.length
-
-  useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % n), 2800)
-    return () => clearInterval(id)
-  }, [n])
-
-  const prevIndex = (index - 1 + n) % n
-
-  return (
-    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "1000/557" }}>
-      {images.map((src, i) => {
-        const isCurrent = i === index
-        const isPrev = i === prevIndex
-        const translate = isCurrent ? "0%" : isPrev ? "-100%" : "100%"
-        return (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              objectPosition: "center top",
-              transition: isCurrent || isPrev ? "transform 0.6s ease" : "none",
-              transform: `translateX(${translate})`,
-              zIndex: isCurrent ? 1 : 0,
-            }}
-          />
-        )
-      })}
-    </div>
   )
 }
 
@@ -618,124 +577,6 @@ export function ClientAcquisitionCaseStudy() {
               </div>
             </StaggerItem>
           </StaggerGroup>
-        </Section>
-
-        <Divider />
-
-        {/* 04 · REFRAMING */}
-        <Section id="reframing">
-          <Reveal style={{ width: "100%" }}>
-            <SectionHeader eyebrow={t.reframing.eyebrow} title={t.reframing.title} />
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <p className="pf-body" style={{ whiteSpace: "pre-line" }}>{t.reframing.text}</p>
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
-              <Figure src="/raporty-ds-scope.webp" style={{ flex: "1 1 280px" }} />
-              <Figure src="/raporty-ds-jobs-to-be-done.webp" style={{ flex: "1 1 280px" }} />
-            </div>
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.reframing.shiftTitle}</h3>
-              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "stretch", justifyContent: "center" }}>
-                <HypothesisCard state="rejected" title={t.reframing.hypothesisRejected.title} status={t.reframing.hypothesisRejected.status} style={{ flex: "1 1 280px" }}>{t.reframing.hypothesisRejected.text}</HypothesisCard>
-                <img src="/icons/raporty-ds-arrow-blue.svg" alt="" style={{ width: 96, height: 96, flexShrink: 0, margin: "auto clamp(-20px, -2vw, 0px)", position: "relative", zIndex: 1 }} />
-                <HypothesisCard title={t.reframing.hypothesisLive.title} status={t.reframing.hypothesisLive.status} note={t.reframing.hypothesisLive.note} style={{ flex: "1 1 280px" }}>{t.reframing.hypothesisLive.text}</HypothesisCard>
-              </div>
-            </div>
-          </Reveal>
-        </Section>
-
-        <Reveal style={{ width: "100%" }}>
-          <GoalBanner>
-            <span style={{ fontWeight: 400, color: "var(--pf-text-accent-deep)" }}>
-              {t.reframing.goalLabel}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.reframing.goalBold1}</b>{t.reframing.goalMid}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.reframing.goalBold2}</b>{t.reframing.goalEnd}
-            </span>
-          </GoalBanner>
-        </Reveal>
-
-        {/* 05 · DECYZJE */}
-        <Section id="decyzje">
-          <Reveal style={{ width: "100%" }}>
-            <SectionHeader eyebrow={t.decyzje.eyebrow} title={t.decyzje.title} />
-          </Reveal>
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", marginBottom: "clamp(-56px, -3vw, -24px)", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
-              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.decyzje.mainDecision.title}</span>
-              <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 16 }} />
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "stretch", justifyContent: "center" }}>
-                <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[0].label}</span>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[0].text}</span>
-                </div>
-                <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
-                <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[1].label}</span>
-                  <ul style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>
-                    {t.decyzje.mainDecision.steps[1].bullets?.map((b, i) => <li key={i}>{b.text}{b.bold && <b>{b.bold}</b>}</li>)}
-                  </ul>
-                </div>
-                <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
-                <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[2].label}</span>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[2].text}</span>
-                </div>
-              </div>
-            </div>
-          </Reveal>
-          <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
-            {t.decyzje.pair.map((d, i) => (
-              <StaggerItem key={i} style={{ flex: "1 1 280px" }}>
-                <div style={{ width: "100%", height: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-end" }}>
-                    <span style={{ flex: "1 1 140px", whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{d.title}</span>
-                    <img src={d.image} alt="" style={{ width: 160, flexShrink: 0, height: "auto", display: "block", borderRadius: 16 }} />
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
-                    <p className="pf-body" style={{ margin: 0 }}>{d.text1}{d.text1Bold && <b>{d.text1Bold}</b>}</p>
-                    <p className="pf-body" style={{ margin: 0 }}><b>{d.text2Bold}</b><br />{d.text2}</p>
-                  </div>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
-
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.decyzje.builtTitle}</h3>
-              <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.builtText}</p>
-              <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-accent-50)", padding: 48, boxSizing: "border-box" }}>
-                <ImageCarousel images={["/raporty-flow-1.webp", "/raporty-flow-2.webp", "/raporty-flow-3.webp"]} />
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h3 className="pf-h3">{t.decyzje.testsTitle}</h3>
-              <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.testsText}</p>
-              <ul style={{ margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 32 }}>
-                {t.decyzje.testsQuestions.map((q, i) => <TimelineItem key={i} number={i + 1}>{q}</TimelineItem>)}
-              </ul>
-              <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-surface-card-subtle)", overflow: "hidden", boxSizing: "border-box" }}>
-                <img src="/raporty-ds-reports-manager.webp" alt="Manager raportów" style={{ width: "100%", height: "auto", display: "block" }} />
-              </div>
-              <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "flex-start" }}>
-                {t.decyzje.testsFindings.map((f, i) => (
-                  <StaggerItem key={i} style={{ flex: "1 1 240px" }}>
-                    <div style={{ width: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 24, boxSizing: "border-box" }}>
-                      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{f.title}</span>
-                      <p className="pf-body" style={{ margin: 0 }}>{f.text1}</p>
-                      {f.text2 && <p className="pf-body" style={{ margin: 0 }}>{f.text2}</p>}
-                    </div>
-                  </StaggerItem>
-                ))}
-              </StaggerGroup>
-              <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.testsClosing}</p>
-            </div>
-          </Reveal>
         </Section>
 
         <Divider />
