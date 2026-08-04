@@ -752,12 +752,16 @@ export function ClientAcquisitionCaseStudy() {
 
         <Section>
           <Reveal style={{ width: "100%" }}>
-            <img src="/raporty-ds-thanks.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
+            <img src="/client-acquisition-thanks-tablet.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 48, width: "100%", alignItems: "start" }}>
-              <img src="/raporty-ds-for.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
-              <img src="/raporty-ds-watching.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
+            <img src="/client-acquisition-thanks-laptop.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+          </Reveal>
+          <Reveal style={{ width: "100%" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "flex-start", justifyContent: "center" }}>
+              <img src="/client-acquisition-thanks-phone.webp" alt="" style={{ flex: "0 1 300px", width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+              <img src="/client-acquisition-thanks-laptop-small.webp" alt="" style={{ flex: "1 1 420px", width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+              <img src="/client-acquisition-thanks-crop.webp" alt="" style={{ flex: "0 1 140px", width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
             </div>
           </Reveal>
         </Section>
