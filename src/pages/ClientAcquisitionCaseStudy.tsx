@@ -567,12 +567,12 @@ export function ClientAcquisitionCaseStudy() {
               <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
                 <img src="/client-acquisition-decision-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "center", width: "100%" }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "flex-start", width: "100%" }}>
                 <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 16 }}>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.discovery.decision1.rejectedLabel}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{t.discovery.decision1.rejectedPre}<b>{t.discovery.decision1.rejectedBold}</b>{t.discovery.decision1.rejectedRest}</p>
                 </div>
-                <img src="/icons/client-acquisition-icon-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
+                <img src="/icons/client-acquisition-icon-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, marginTop: 3 }} />
                 <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 16 }}>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.discovery.decision1.reasonLabel}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{t.discovery.decision1.reasonText}</p>
