@@ -753,8 +753,8 @@ export function ClientAcquisitionCaseStudy() {
           </Reveal>
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 32, width: "100%", alignItems: "flex-start" }}>
-              <img src="/client-acquisition-handoff-illustration.webp" alt="" style={{ height: 400, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24 }} />
-              <img src="/client-acquisition-handoff-flow-blurred.webp" alt={t.handoff.blurCaption} style={{ height: 400, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+              <img src="/client-acquisition-handoff-illustration.webp" alt="" style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24 }} />
+              <img src="/client-acquisition-handoff-flow-blurred.webp" alt={t.handoff.blurCaption} style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
             </div>
           </Reveal>
         </Section>
