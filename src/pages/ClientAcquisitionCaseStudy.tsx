@@ -756,11 +756,8 @@ export function ClientAcquisitionCaseStudy() {
               <div style={{ flex: "1 1 320px", aspectRatio: "428 / 574", background: "#F5F5F5", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", alignItems: "center", justifyContent: "center" }}>
                 <img src="/client-acquisition-handoff-illustration.webp" alt="" style={{ width: "80%", height: "auto", display: "block" }} />
               </div>
-              <div style={{ flex: "1 1 320px", position: "relative", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box" }}>
-                <img src="/client-acquisition-handoff-flow-blurred.webp" alt="" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-                <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", padding: 24, boxSizing: "border-box" }}>
-                  <span style={{ fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-primary-300, #C2C2C2)", textAlign: "center" }}>{t.handoff.blurCaption}</span>
-                </div>
+              <div style={{ flex: "1 1 320px", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box" }}>
+                <img src="/client-acquisition-handoff-flow-blurred.webp" alt={t.handoff.blurCaption} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
             </div>
           </Reveal>
