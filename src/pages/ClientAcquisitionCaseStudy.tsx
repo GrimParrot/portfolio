@@ -267,15 +267,12 @@ function ImageMarquee({ images, height = 420, duration = 32, reverse = false }: 
 }
 
 /** Bordered image-over-text card used throughout chapter 07 (Rozwiazanie).
- * imgAspect is shared by both cards in a pair so their image frames — and
- * therefore the whole cards — come out the same height regardless of each
- * screenshot's native proportions (object-fit: contain avoids cropping). */
-function ShotCard({ img, alt, title, text, imgAspect }: { img: string; alt: string; title: string; text: string; imgAspect: string }) {
+ * Both cards in a pair use same-size source images, so a plain width:100%
+ * image keeps them at equal height with no crop or letterboxing needed. */
+function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: string; text: string }) {
   return (
     <div style={{ flex: 1, minWidth: 0, height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-      <div style={{ aspectRatio: imgAspect, background: "#F5F5F5", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }}>
-        <img src={img} alt={alt} style={{ maxWidth: "100%", maxHeight: "100%", width: "auto", height: "auto", objectFit: "contain", display: "block" }} />
-      </div>
+      <img src={img} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
       <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box", flex: 1 }}>
         <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{title}</span>
         <p className="pf-body" style={{ margin: 0 }}>{text}</p>
@@ -627,10 +624,10 @@ export function ClientAcquisitionCaseStudy() {
 
           <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             <StaggerItem style={{ flex: "1 1 460px" }}>
-              <ShotCard img="/client-acquisition-s04-legacy.webp" alt="" title={t.rozwiazanie.b2[0].title} text={t.rozwiazanie.b2[0].text} imgAspect="700 / 678" />
+              <ShotCard img="/client-acquisition-s04-legacy.webp" alt="" title={t.rozwiazanie.b2[0].title} text={t.rozwiazanie.b2[0].text} />
             </StaggerItem>
             <StaggerItem style={{ flex: "1 1 460px" }}>
-              <ShotCard img="/client-acquisition-s04-generate-modal.webp" alt="" title={t.rozwiazanie.b2[1].title} text={t.rozwiazanie.b2[1].text} imgAspect="700 / 678" />
+              <ShotCard img="/client-acquisition-s04-generate-modal.webp" alt="" title={t.rozwiazanie.b2[1].title} text={t.rozwiazanie.b2[1].text} />
             </StaggerItem>
           </StaggerGroup>
 
@@ -640,19 +637,19 @@ export function ClientAcquisitionCaseStudy() {
 
           <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             <StaggerItem style={{ flex: "1 1 460px" }}>
-              <ShotCard img="/client-acquisition-s04-growth-potential.webp" alt="" title={t.rozwiazanie.b4[0].title} text={t.rozwiazanie.b4[0].text} imgAspect="700 / 469" />
+              <ShotCard img="/client-acquisition-s04-growth-potential.webp" alt="" title={t.rozwiazanie.b4[0].title} text={t.rozwiazanie.b4[0].text} />
             </StaggerItem>
             <StaggerItem style={{ flex: "1 1 460px" }}>
-              <ShotCard img="/client-acquisition-s04-map.webp" alt="" title={t.rozwiazanie.b4[1].title} text={t.rozwiazanie.b4[1].text} imgAspect="700 / 469" />
+              <ShotCard img="/client-acquisition-s04-map.webp" alt="" title={t.rozwiazanie.b4[1].title} text={t.rozwiazanie.b4[1].text} />
             </StaggerItem>
           </StaggerGroup>
 
           <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             <StaggerItem style={{ flex: "1 1 460px" }}>
-              <ShotCard img="/client-acquisition-s04-notes.webp" alt="" title={t.rozwiazanie.b5[0].title} text={t.rozwiazanie.b5[0].text} imgAspect="700 / 469" />
+              <ShotCard img="/client-acquisition-s04-notes.webp" alt="" title={t.rozwiazanie.b5[0].title} text={t.rozwiazanie.b5[0].text} />
             </StaggerItem>
             <StaggerItem style={{ flex: "1 1 460px" }}>
-              <ShotCard img="/client-acquisition-s04-statuses.webp" alt="" title={t.rozwiazanie.b5[1].title} text={t.rozwiazanie.b5[1].text} imgAspect="700 / 469" />
+              <ShotCard img="/client-acquisition-s04-statuses.webp" alt="" title={t.rozwiazanie.b5[1].title} text={t.rozwiazanie.b5[1].text} />
             </StaggerItem>
           </StaggerGroup>
 
