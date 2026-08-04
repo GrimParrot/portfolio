@@ -740,10 +740,10 @@ export function ClientAcquisitionCaseStudy() {
           </Reveal>
           <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             <StaggerItem style={{ flex: "1 1 260px" }}>
-              <LessonCard image="/raporty-ds-nie-wiem.webp" title={t.podsumowanie.lessons[0].title}>{t.podsumowanie.lessons[0].text}</LessonCard>
+              <LessonCard image="/client-acquisition-lesson-devs.webp" title={t.podsumowanie.lessons[0].title}>{t.podsumowanie.lessons[0].text}</LessonCard>
             </StaggerItem>
             <StaggerItem style={{ flex: "1 1 260px" }}>
-              <LessonCard image="/raporty-ds-teamwork.webp" title={t.podsumowanie.lessons[1].title}>{t.podsumowanie.lessons[1].text}</LessonCard>
+              <LessonCard image="/client-acquisition-lesson-different.webp" title={t.podsumowanie.lessons[1].title}>{t.podsumowanie.lessons[1].text}</LessonCard>
             </StaggerItem>
           </StaggerGroup>
         </Section>
