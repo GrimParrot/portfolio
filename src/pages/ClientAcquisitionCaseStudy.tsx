@@ -453,7 +453,7 @@ export function ClientAcquisitionCaseStudy() {
 
         <Section variant="dark" gap={48}>
           <Reveal style={{ width: "100%" }}>
-            <span className="pf-overline" style={{ color: "var(--pf-text-on-dark)", width: "100%", textAlign: "center" }}>{t.problem.findingsOverline}</span>
+            <h3 className="pf-h3" style={{ color: "var(--pf-text-on-dark)", width: "100%", textAlign: "center" }}>{t.problem.findingsTitle}</h3>
           </Reveal>
           <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             {t.problem.findings.map((f) => (
@@ -491,7 +491,9 @@ export function ClientAcquisitionCaseStudy() {
         </Section>
 
         <Reveal style={{ width: "100%" }}>
-          <GoalBanner label={t.problem.goalOverline}>{t.problem.goalText}</GoalBanner>
+          <GoalBanner label={t.problem.goalOverline}>
+            <span className="pf-quote" style={{ color: "inherit" }}>{t.problem.goalPre}<b>{t.problem.goalBold}</b>{t.problem.goalRest}</span>
+          </GoalBanner>
         </Reveal>
 
         <Divider />

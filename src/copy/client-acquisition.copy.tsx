@@ -62,7 +62,7 @@ export const copy = {
       },
     },
     problem: {
-      eyebrow: "02 · Knowledge gathering",
+      eyebrow: "02 · Zbieranie wiedzy",
       title: "Wiedza była w zespole",
       introPre: "Client Acquisition trafiał do ludzi, ",
       introBold: "których zachowania zgłębiałam już wcześniej",
@@ -87,7 +87,7 @@ export const copy = {
       ],
       aiSynthesisTitle: "Synteza badań z AI",
       aiSynthesisText: "Połączyłam nagrania z Clarity, rozmowy z supportem i spostrzeżenia z audytu eksperckiego za pomocą Clauda. Chciałam zobaczyć gdzie spostrzeżenia się pokrywają, czy powstają wzorce oraz które odnotowane frustracje pojawiają się najczęściej.",
-      findingsOverline: "OKAZAŁO SIĘ ŻE",
+      findingsTitle: "Kluczowe odkrycia",
       findings: [
         { number: "01", title: "Wysoka bariera wejścia", text: "Każdy nowy użytkownik wymagał ręcznego onboardingu od CS. Użytkownik wchodząc do narzędzia, nie wiedział co dostanie." },
         { number: "02", title: "Wyniki nie były powtarzalne", text: "To samo zapytanie potrafiło zwrócić inną listę, a nie było jak wrócić do poprzedniej – bez snapshotów i bez historii wyszukiwań." },
@@ -109,7 +109,9 @@ export const copy = {
       scopeClosing1Rest: " – kiedy odpływaliśmy z pomysłami, wracaliśmy do „umowy”, dzięki czemu nie zakopaliśmy się w jednym projekcie na pół roku. Wyrównała też oczekiwania: manager wiedział, jaki będzie output, a ja i devowie wiedzieliśmy, za co odpowiadamy.",
       scopeClosing2: "Zawsze też, i tym razem również, sformułowałam cel, który został przedstawiony i zatwierdzony przez zespół. Dzięki temu na każdym etapie projektu pamiętamy, dla kogo i po co to robimy.",
       goalOverline: "CEL",
-      goalText: "Zdjąć z zespołu obowiązek tłumaczenia funkcji. Użytkownik ma wejść, zobaczyć wynik i korzystać dalej sam – bez calla, bez instrukcji, bez wychodzenia do zewnętrznych narzędzi.",
+      goalPre: "Zdjąć z zespołu obowiązek tłumaczenia funkcji. ",
+      goalBold: "Użytkownik ma wejść, zobaczyć wynik i korzystać dalej sam",
+      goalRest: " – bez calla, bez instrukcji, bez wychodzenia do zewnętrznych narzędzi.",
     },
     discovery: {
       eyebrow: "03 · DISCOVERY",
@@ -383,7 +385,7 @@ export const copy = {
       ],
       aiSynthesisTitle: "AI-assisted research synthesis",
       aiSynthesisText: "I combined the Clarity recordings, support conversations, and expert-audit findings using Claude. I wanted to see where the observations overlapped, whether patterns emerged, and which recorded frustrations came up most often.",
-      findingsOverline: "IT TURNED OUT THAT",
+      findingsTitle: "Key findings",
       findings: [
         { number: "01", title: "High barrier to entry", text: "Every new user needed manual onboarding from CS. Walking into the tool, they had no idea what they'd get." },
         { number: "02", title: "Results weren't repeatable", text: "The same query could return a different list, with no way back to the previous one — no snapshots, no search history." },
@@ -405,7 +407,9 @@ export const copy = {
       scopeClosing1Rest: " — whenever we drifted off with ideas, we came back to the \"agreement,\" which kept us from burying ourselves in one project for six months. It also aligned expectations: the manager knew what the output would be, and the engineers and I knew what we were responsible for.",
       scopeClosing2: "As always, and this time too, I put together a goal that was presented to and approved by the team. That way, at every stage of the project, we remember who it's for and why we're doing it.",
       goalOverline: "GOAL",
-      goalText: "Take the burden of explaining the feature off the team. Users should walk in, see the result, and keep using it on their own — no call, no instructions, no leaving for outside tools.",
+      goalPre: "Take the burden of explaining the feature off the team. ",
+      goalBold: "Users should walk in, see the result, and keep using it on their own",
+      goalRest: " — no call, no instructions, no leaving for outside tools.",
     },
     discovery: {
       eyebrow: "03 · DISCOVERY",
