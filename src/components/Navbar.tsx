@@ -32,7 +32,7 @@ function NavLink({
       onClick={onClick}
       target={target}
       rel={rel}
-      className="group relative inline-block overflow-hidden h-5 text-sm"
+      className="group relative inline-block overflow-hidden h-6 text-[18px] leading-6"
     >
       <span className="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-1/2">
         <span className="text-foreground/60">{children}</span>
@@ -110,13 +110,13 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             <NavLink href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">CV</NavLink>
             <NavLink href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">LinkedIn</NavLink>
 
-            <div className="flex items-center gap-1 text-sm font-medium">
+            <div className="flex items-center gap-1 text-[18px] font-medium">
               <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>PL</button>
               <span className="text-[#474747]">/</span>
               <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>EN</button>
             </div>
 
-            <Button size="sm" className="px-5 bg-[#0F172A] text-white [@media(hover:hover)]:hover:bg-[#1E293B]" onClick={handleContact}>
+            <Button size="sm" className="px-5 text-[18px] bg-[#0F172A] text-white [@media(hover:hover)]:hover:bg-[#1E293B]" onClick={handleContact}>
               <Mail className="w-4 h-4" /> {t.contact}
             </Button>
           </div>
