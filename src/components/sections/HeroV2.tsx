@@ -64,7 +64,7 @@ export function HeroV2() {
           <Magnetic strength={0.3} className="pointer-events-auto inline-block">
             <Button
               size="lg"
-              className="bg-[#0A0A0A] text-white hover:bg-[#1E293B]"
+              className="bg-[#0A0A0A] text-white [@media(hover:hover)]:hover:bg-[#1E293B]"
               onClick={() => smoothScrollTo("#projects")}
             >
               {t.workBtn} <ArrowDown className="w-4 h-4 animate-bounce" />

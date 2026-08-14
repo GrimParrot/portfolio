@@ -55,7 +55,7 @@ export function NextProject({ currentHref, dark = true }: NextProjectProps) {
         {next.href ? (
           <button
             onClick={goToNext}
-            className={`w-full md:w-auto font-semibold px-6 py-3 rounded-xl transition-colors ${dark ? "bg-white text-[#0F172A] hover:bg-slate-100" : "bg-[#0F172A] text-white hover:bg-[#1E293B]"}`}
+            className={`w-full md:w-auto font-semibold px-6 py-3 rounded-xl transition-colors ${dark ? "bg-white text-[#0F172A] [@media(hover:hover)]:hover:bg-slate-100" : "bg-[#0F172A] text-white [@media(hover:hover)]:hover:bg-[#1E293B]"}`}
           >
             {t.cta}
           </button>

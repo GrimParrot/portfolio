@@ -11,6 +11,37 @@ const copy = {
   en: { projects: "My work", contact: "Contact" },
 }
 
+// Text swaps to a bolder duplicate sliding up from below on hover, instead
+// of the flat color/background change the rest of the site uses for links.
+function NavLink({
+  href,
+  onClick,
+  target,
+  rel,
+  children,
+}: {
+  href: string
+  onClick?: (e: React.MouseEvent) => void
+  target?: string
+  rel?: string
+  children: React.ReactNode
+}) {
+  return (
+    <a
+      href={href}
+      onClick={onClick}
+      target={target}
+      rel={rel}
+      className="group relative inline-block overflow-hidden h-5 text-sm"
+    >
+      <span className="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-1/2">
+        <span className="text-foreground/60">{children}</span>
+        <span className="text-foreground font-semibold">{children}</span>
+      </span>
+    </a>
+  )
+}
+
 export function Navbar({ dark = false }: { dark?: boolean }) {
   const navigate = useNavigate()
   const location = useLocation()
@@ -59,9 +90,9 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
 
   return (
     <>
-      <nav className="fixed top-4 inset-x-4 md:top-5 md:inset-x-8 z-50">
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 md:top-5 z-50 w-[calc(100%-2rem)] md:w-auto">
         <div
-          className={`max-w-[1200px] mx-auto rounded-2xl px-6 h-16 flex items-center justify-between transition-all duration-300 border ${
+          className={`w-full rounded-2xl px-6 h-16 flex items-center justify-between gap-x-6 md:gap-x-8 transition-all duration-300 border ${
             open
               ? "bg-transparent shadow-none border-transparent"
               : scrolled || dark
@@ -74,10 +105,10 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
           </Link>
 
           {/* Desktop */}
-          <div className="hidden md:flex items-center gap-8 text-sm text-foreground">
-            <a href="#projects" onClick={handleProjects} className="px-3 py-1.5 rounded-md transition-colors cursor-pointer hover:text-slate-900 hover:bg-secondary">{t.projects}</a>
-            <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-md transition-colors hover:text-slate-900 hover:bg-secondary">CV</a>
-            <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-md transition-colors hover:text-slate-900 hover:bg-secondary">LinkedIn</a>
+          <div className="hidden md:flex items-center gap-6">
+            <NavLink href="#projects" onClick={handleProjects}>{t.projects}</NavLink>
+            <NavLink href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">CV</NavLink>
+            <NavLink href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">LinkedIn</NavLink>
 
             <div className="flex items-center gap-1 text-sm font-medium">
               <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>PL</button>
@@ -85,7 +116,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
               <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-[#474747] font-bold" : "text-slate-400 hover:text-slate-600"}`}>EN</button>
             </div>
 
-            <Button size="sm" className="px-5 bg-[#0F172A] text-white hover:bg-[#1E293B]" onClick={handleContact}>
+            <Button size="sm" className="px-5 bg-[#0F172A] text-white [@media(hover:hover)]:hover:bg-[#1E293B]" onClick={handleContact}>
               <Mail className="w-4 h-4" /> {t.contact}
             </Button>
           </div>
@@ -121,7 +152,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             <button onClick={() => { setLang("en"); setOpen(false) }} className={`transition-colors ${lang === "en" ? "text-slate-900 font-bold" : "text-slate-400"}`}>EN</button>
           </div>
 
-          <Button className="bg-[#0F172A] hover:bg-[#1E293B] w-full mt-2" onClick={handleContact}>{t.contact}</Button>
+          <Button className="bg-[#0F172A] [@media(hover:hover)]:hover:bg-[#1E293B] w-full mt-2" onClick={handleContact}>{t.contact}</Button>
         </motion.div>
       )}
       </AnimatePresence>
