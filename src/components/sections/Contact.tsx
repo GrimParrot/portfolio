@@ -6,13 +6,11 @@ import { Plasma } from "./hero-v2/Plasma"
 const copy = {
 
   pl: {
-    label: "Kontakt",
     heading: "Porozmawiajmy",
     body: "Chcesz porozmawiać o projekcie, dowiedzieć się więcej o procesach, decyzjach i kontekście? Wpadnij na LinkedIn albo po prostu napisz maila : )",
     resume: "Zobacz CV",
   },
   en: {
-    label: "Contact",
     heading: "Let's talk",
     body: "Want to talk about a project, learn more about the process, decisions, and context? Find me on LinkedIn or just send an email : )",
     resume: "View resume",
@@ -29,7 +27,6 @@ export function Contact() {
       value: "suprun.edyta@gmail.com",
       href: "mailto:suprun.edyta@gmail.com",
       icon: <Mail className="w-6 h-6 text-white/60" />,
-      accent: false,
     },
     {
       label: "LinkedIn",
@@ -41,19 +38,17 @@ export function Contact() {
           <circle cx="4" cy="4" r="2" />
         </svg>
       ),
-      accent: false,
     },
     {
       label: "PDF",
       value: t.resume,
       href: lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf",
-      icon: <span className="text-sm font-bold text-[#0A0A0A]/70">CV</span>,
-      accent: true,
+      icon: <span className="text-sm font-bold text-white/60">CV</span>,
     },
   ]
 
   return (
-    <section id="contact" className="relative pt-24 md:pt-32 pb-56 md:pb-72 min-h-[640px] flex items-start bg-[#0A0A0A] overflow-hidden">
+    <section id="contact" className="relative pt-[clamp(3.5rem,8vw,6rem)] pb-36 md:pb-[calc(clamp(2.5rem,13.15vw,24rem)*0.85+4rem)] min-h-[340px] md:min-h-[clamp(340px,42vw,480px)] flex items-start bg-[#0A0A0A] overflow-hidden">
       <div className="absolute inset-0">
         <Plasma color="#F5F5F5" scale={0.8} opacity={0.25} iterations={45} mouseInteractive={false} renderScale={0.55} />
       </div>
@@ -62,8 +57,12 @@ export function Contact() {
           behind the contact links, never competing with them for attention. */}
       <p
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 text-center font-black text-white/[0.06] leading-none select-none pointer-events-none whitespace-nowrap"
-        style={{ fontSize: "clamp(2.5rem, 11vw, 10rem)", transform: "translateY(15%)" }}
+        className="absolute inset-x-0 bottom-0 text-center font-black text-white/[0.05] leading-none select-none pointer-events-none whitespace-nowrap"
+        style={{
+          fontFamily: "'Bricolage Grotesque', 'Manrope', system-ui, sans-serif",
+          fontSize: "clamp(2.5rem, 13.15vw, 24rem)",
+          transform: "translate(-4px, calc(15% + 8px))",
+        }}
       >
         EDYTA SUPRUN
       </p>
@@ -81,46 +80,44 @@ export function Contact() {
         }}
       />
 
-      <div className="relative max-w-[1200px] mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <p className="text-xs tracking-widest uppercase text-white/40 mb-3">{t.label}</p>
-          <h2 className="text-3xl font-black text-white mb-8 leading-tight">
+      <div className="relative w-full max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="text-center lg:text-left">
+          <h1
+            className="text-4xl lg:text-6xl font-black text-white tracking-tight mb-8"
+            style={{ lineHeight: 1.15 }}
+          >
             {t.heading}
-          </h2>
-          <p className="text-white/60 leading-relaxed max-w-sm">
+          </h1>
+          <p className="text-white/60 leading-relaxed max-w-sm mx-auto lg:mx-0">
             {t.body}
           </p>
         </div>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col items-center lg:items-start gap-3 w-full">
           {links.map((link) => (
-            <Magnetic key={link.label} strength={0.25} className="block">
+            <Magnetic key={link.label} strength={0.25} className="block w-full max-w-full lg:max-w-[400px]">
               <a
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
                 rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                className={`flex items-center justify-between px-5 py-4 rounded-2xl border transition-all group ${
-                  link.accent
-                    ? "bg-white border-white text-[#0A0A0A] hover:bg-slate-200"
-                    : "bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-white/20"
-                }`}
+                className="flex items-center justify-between gap-4 w-full min-w-0 lg:min-w-[240px] max-w-full lg:max-w-[400px] pl-3 pr-5 py-3 rounded-2xl border transition-all group bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-white/20"
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 min-w-0">
                   {link.icon && (
-                    <div className={`w-12 h-12 flex items-center justify-center ${link.accent ? "bg-black/5" : "bg-white/10"}`} style={{ borderRadius: 8 }}>
+                    <div className="w-10 h-10 shrink-0 flex items-center justify-center bg-white/10" style={{ borderRadius: 8 }}>
                       {link.icon}
                     </div>
                   )}
-                  <div>
-                    <p className={`text-[13px] mb-0.5 ${link.accent ? "text-[#0A0A0A]/50" : "text-white/40"}`}>
+                  <div className="min-w-0">
+                    <p className="text-[13px] mb-0.5 text-white/40">
                       {link.label}
                     </p>
-                    <p className={`font-medium ${link.accent ? "text-[#0A0A0A]" : "text-white"}`}>
+                    <p className="font-medium text-white truncate">
                       {link.value}
                     </p>
                   </div>
                 </div>
-                <ArrowUpRight className={`w-4 h-4 animate-nudge-ur ${link.accent ? "text-[#0A0A0A]/40" : "text-white/40"}`} />
+                <ArrowUpRight className="w-4 h-4 shrink-0 animate-nudge-ur text-white/40" />
               </a>
             </Magnetic>
           ))}
