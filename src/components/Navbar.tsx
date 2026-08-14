@@ -18,23 +18,19 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
   const t = copy[lang]
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  // Only the unscrolled top-of-page state sits directly over page content —
-  // once scrolled, the pill's own light background already gives contrast
-  // regardless of what's underneath.
-  const lightOnDark = dark && !scrolled
 
   useEffect(() => {
-    // On a dark hero, the switch to the light pill should happen exactly
-    // when the dark section scrolls out from under the navbar — not after
-    // an arbitrary scroll distance, which flips too early on a tall hero.
-    const darkTarget = dark ? document.getElementById("hero-dark") : null
+    // On the hero, the switch to the solid pill should happen exactly when
+    // the hero section scrolls out from under the navbar — not after an
+    // arbitrary scroll distance, which flips too early on a tall hero.
+    const heroTarget = dark ? document.getElementById("hero-dark") : null
 
-    if (darkTarget) {
+    if (heroTarget) {
       const observer = new IntersectionObserver(
         ([entry]) => setScrolled(!entry.isIntersecting),
         { rootMargin: "-88px 0px 0px 0px", threshold: 0 }
       )
-      observer.observe(darkTarget)
+      observer.observe(heroTarget)
       return () => observer.disconnect()
     }
 
@@ -68,41 +64,35 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
           className={`max-w-[1200px] mx-auto rounded-2xl px-6 h-16 flex items-center justify-between transition-all duration-300 border ${
             open
               ? "bg-transparent shadow-none border-transparent"
-              : scrolled
-                ? "bg-slate-50/90 backdrop-blur-md shadow-lg shadow-slate-900/[0.08] border-white/40"
-                : dark
-                  ? "bg-[#0A0A0A]/60 backdrop-blur-md shadow-none border-white/10"
-                  : "bg-transparent shadow-none border-transparent"
+              : scrolled || dark
+                ? "bg-white/35 backdrop-blur-[20px] backdrop-saturate-[1.4] shadow-[0_4px_24px_rgba(0,0,0,0.06)] border-black/[0.08]"
+                : "bg-transparent shadow-none border-transparent"
           }`}
         >
           <Link to="/" onClick={() => setOpen(false)}>
-            <img src="/pixelnow.svg" alt="Pixel Now" className={`h-8 transition-[filter] duration-300 ${lightOnDark && !open ? "brightness-0 invert" : ""}`} />
+            <img src="/pixelnow.svg" alt="Pixel Now" className="h-8" />
           </Link>
 
           {/* Desktop */}
-          <div className={`hidden md:flex items-center gap-8 text-sm transition-colors duration-300 ${lightOnDark ? "text-white/80" : "text-slate-600"}`}>
-            <a href="#projects" onClick={handleProjects} className={`px-3 py-1.5 rounded-md transition-colors cursor-pointer ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-slate-900 hover:bg-secondary"}`}>{t.projects}</a>
-            <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className={`px-3 py-1.5 rounded-md transition-colors ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-slate-900 hover:bg-secondary"}`}>CV</a>
-            <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className={`px-3 py-1.5 rounded-md transition-colors ${lightOnDark ? "hover:text-white hover:bg-white/10" : "hover:text-slate-900 hover:bg-secondary"}`}>LinkedIn</a>
+          <div className="hidden md:flex items-center gap-8 text-sm text-foreground">
+            <a href="#projects" onClick={handleProjects} className="px-3 py-1.5 rounded-md transition-colors cursor-pointer hover:text-slate-900 hover:bg-secondary">{t.projects}</a>
+            <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-md transition-colors hover:text-slate-900 hover:bg-secondary">CV</a>
+            <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className="px-3 py-1.5 rounded-md transition-colors hover:text-slate-900 hover:bg-secondary">LinkedIn</a>
 
             <div className="flex items-center gap-1 text-sm font-medium">
-              <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? (lightOnDark ? "text-white font-bold" : "text-slate-900 font-bold") : (lightOnDark ? "text-white/40 hover:text-white/70" : "text-slate-400 hover:text-slate-600")}`}>PL</button>
-              <span className={lightOnDark ? "text-white/20" : "text-slate-200"}>/</span>
-              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? (lightOnDark ? "text-white font-bold" : "text-slate-900 font-bold") : (lightOnDark ? "text-white/40 hover:text-white/70" : "text-slate-400 hover:text-slate-600")}`}>EN</button>
+              <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>PL</button>
+              <span className="text-[#474747]">/</span>
+              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-[#474747] font-bold" : "text-slate-400 hover:text-slate-600"}`}>EN</button>
             </div>
 
-            <Button
-              size="sm"
-              className={`px-5 transition-colors duration-300 ${lightOnDark ? "bg-white text-[#0F172A] hover:bg-slate-200" : "bg-[#0F172A] text-white hover:bg-[#1E293B]"}`}
-              onClick={handleContact}
-            >
+            <Button size="sm" className="px-5 bg-[#0F172A] text-white hover:bg-[#1E293B]" onClick={handleContact}>
               <Mail className="w-4 h-4" /> {t.contact}
             </Button>
           </div>
 
           {/* Hamburger */}
           <button
-            className={`md:hidden p-2 transition-colors ${lightOnDark && !open ? "text-white/80 hover:text-white" : "text-slate-700 hover:text-slate-900"}`}
+            className="md:hidden p-2 transition-colors text-slate-700 hover:text-slate-900"
             onClick={() => setOpen((o) => !o)}
             aria-label="Menu"
           >

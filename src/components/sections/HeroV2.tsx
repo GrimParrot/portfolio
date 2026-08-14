@@ -4,19 +4,19 @@ import { Button } from "@/components/ui/button"
 import { Magnetic } from "@/components/Magnetic"
 import { useLang } from "@/i18n/LanguageContext"
 import { smoothScrollTo } from "@/lib/lenis"
-import { FlowBackground } from "./hero-v2/FlowBackground"
+import { Plasma } from "./hero-v2/Plasma"
 
 const tags = ["B2B", "B2C", "SaaS", "8+ years exp", "AI-powered"]
 
 const copy = {
   pl: {
-    name: "Edyta Suprun",
+    name: "Cześć, jestem Edyta",
     headingLine1: "Product",
     headingLine2: "Designer",
     workBtn: "Zobacz moje projekty",
   },
   en: {
-    name: "Edyta Suprun",
+    name: "Hi, I'm Edyta",
     headingLine1: "Product",
     headingLine2: "Designer",
     workBtn: "See my work",
@@ -28,14 +28,45 @@ export function HeroV2() {
   const t = copy[lang]
 
   return (
-    <section className="relative overflow-hidden min-h-screen flex items-center bg-[#0A0A0A]">
-      <FlowBackground />
+    <section className="relative overflow-hidden min-h-screen flex items-center bg-white">
+      <div className="absolute inset-0">
+        <Plasma
+          color="#0A0A0A"
+          scale={0.5}
+          opacity={0.3}
+          iterations={45}
+          mouseInteractive={false}
+          renderScale={0.55}
+        />
+      </div>
 
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-left pointer-events-none">
-        <p className="text-white/70 text-base md:text-lg font-medium mb-5">{t.name}</p>
+      {/* Softens the hard edge only across the marquee strip's own footprint
+          (not the hero above it) — a blur ramp, then a translucent-white
+          gradient, so the plasma stays visible up to and faintly through
+          the marquee instead of fading out well before it. */}
+      <div
+        className="absolute inset-x-0 bottom-0 z-[6] pointer-events-none"
+        style={{
+          height: "130px",
+          backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 85%)",
+          maskImage: "linear-gradient(to bottom, transparent, black 85%)",
+        }}
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 z-[7] pointer-events-none"
+        style={{
+          height: "130px",
+          background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.7) 90%)",
+        }}
+      />
+
+      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center flex flex-col items-center pointer-events-none">
+        <p className="text-foreground text-base md:text-lg font-medium mb-5">{t.name}</p>
 
         <h1
-          className="font-black text-white leading-[0.9] mb-12"
+          className="font-black text-[#0A0A0A] leading-[0.9] mb-12"
           style={{ fontSize: "clamp(2.75rem, 13vw, 13rem)" }}
         >
           {t.headingLine1}
@@ -43,19 +74,19 @@ export function HeroV2() {
           {t.headingLine2}
         </h1>
 
-        <div className="flex flex-wrap justify-start gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
           {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-white/10 text-white hover:bg-white/15">
+            <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-black/5 text-[#0A0A0A] hover:bg-black/10">
               {tag}
             </Badge>
           ))}
         </div>
 
-        <div className="flex flex-wrap justify-start gap-3">
+        <div className="flex flex-wrap justify-center gap-3">
           <Magnetic strength={0.3} className="pointer-events-auto inline-block">
             <Button
               size="lg"
-              className="bg-white text-[#0F172A] hover:bg-slate-200"
+              className="bg-[#0A0A0A] text-white hover:bg-[#1E293B]"
               onClick={() => smoothScrollTo("#projects")}
             >
               {t.workBtn} <ArrowDown className="w-4 h-4 animate-bounce" />
