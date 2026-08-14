@@ -113,7 +113,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             <div className="flex items-center gap-1 text-sm font-medium">
               <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>PL</button>
               <span className="text-[#474747]">/</span>
-              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-[#474747] font-bold" : "text-slate-400 hover:text-slate-600"}`}>EN</button>
+              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>EN</button>
             </div>
 
             <Button size="sm" className="px-5 bg-[#0F172A] text-white [@media(hover:hover)]:hover:bg-[#1E293B]" onClick={handleContact}>

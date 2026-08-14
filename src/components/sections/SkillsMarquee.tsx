@@ -9,7 +9,7 @@ const copy = {
 export function SkillsMarquee() {
   const { lang } = useLang()
   const phrases = copy[lang]
-  const text = phrases.join(" ✦ ") + " ✦ "
+  const text = phrases.join("   ✦   ") + "   ✦   "
 
   return (
     <section className="absolute inset-x-0 bottom-0 z-20 py-4">
@@ -26,7 +26,7 @@ export function SkillsMarquee() {
       />
 
       <div className="relative z-10" aria-hidden="true">
-        <CurvedMarquee text={text} pathType="wave" amplitude={20} wavelength={300} speed={85} fontSize={28} height={88} color="#0A0A0A" separator=" ✦ " separatorColor="#858585" />
+        <CurvedMarquee text={text} pathType="wave" amplitude={20} wavelength={300} speed={85} fontSize={28} height={88} color="#0A0A0A" separator="   ✦   " separatorColor="#858585" />
       </div>
       <span className="sr-only">{phrases.join(", ")}</span>
     </section>

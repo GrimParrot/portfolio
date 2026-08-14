@@ -23,8 +23,7 @@ const modalContent: Record<string, () => React.ReactNode> = {
 
 const copy = {
   pl: {
-    label: "Portfolio",
-    caseStudyHeading: "Case study",
+    caseStudyHeading: "Wybrane case study",
     otherHeading: "Galeria projektów",
     filters: [
       { id: "all" as Filter, label: "Wszystkie" },
@@ -33,8 +32,7 @@ const copy = {
     ],
   },
   en: {
-    label: "Portfolio",
-    caseStudyHeading: "Case study",
+    caseStudyHeading: "Selected case study",
     otherHeading: "Project gallery",
     filters: [
       { id: "all" as Filter, label: "All" },
@@ -128,10 +126,8 @@ export function Projects() {
   const openInModal = (project: Project) => setOpenProject(project)
 
   return (
-    <section id="projects" className="pt-10 pb-24 bg-white">
+    <section id="projects" className="pt-24 pb-40 bg-white">
       <div className="max-w-[1200px] mx-auto px-6">
-        <p className="text-xs tracking-widest uppercase text-slate-400 mb-3">{t.label}</p>
-
         {/* Case study — featured, unfiltered */}
         <h2 className="text-3xl font-black text-slate-900 mb-6">{t.caseStudyHeading}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-20">
