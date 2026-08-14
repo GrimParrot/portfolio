@@ -40,28 +40,6 @@ export function HeroV2() {
         />
       </div>
 
-      {/* Softens the hard edge only across the marquee strip's own footprint
-          (not the hero above it) — a blur ramp, then a translucent-white
-          gradient, so the plasma stays visible up to and faintly through
-          the marquee instead of fading out well before it. */}
-      <div
-        className="absolute inset-x-0 bottom-0 z-[6] pointer-events-none"
-        style={{
-          height: "130px",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          WebkitMaskImage: "linear-gradient(to bottom, transparent, black 85%)",
-          maskImage: "linear-gradient(to bottom, transparent, black 85%)",
-        }}
-      />
-      <div
-        className="absolute inset-x-0 bottom-0 z-[7] pointer-events-none"
-        style={{
-          height: "130px",
-          background: "linear-gradient(to bottom, transparent, rgba(255,255,255,0.7) 90%)",
-        }}
-      />
-
       <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center flex flex-col items-center pointer-events-none">
         <p className="text-foreground text-base md:text-lg font-medium mb-5">{t.name}</p>
 
