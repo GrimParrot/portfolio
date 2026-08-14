@@ -3,7 +3,6 @@ import { HeroV2 } from "@/components/sections/HeroV2"
 import { SkillsMarquee } from "@/components/sections/SkillsMarquee"
 import { Projects } from "@/components/sections/Projects"
 import { Contact } from "@/components/sections/Contact"
-import { Footer } from "@/components/Footer"
 
 export default function App() {
   return (
@@ -17,7 +16,6 @@ export default function App() {
         <Projects />
         <Contact />
       </main>
-      <Footer />
     </div>
   )
 }

@@ -5,7 +5,6 @@ import { FlaskConical, Users, ClipboardCheck, ArrowLeft, ExternalLink, DoorClose
 
 const lessonIcons = [FlaskConical, Users, ClipboardCheck]
 const findingIcons = [ExternalLink, DoorClosed, Unlink]
-import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
@@ -753,7 +752,6 @@ export function LocaloCaseStudy() {
 
       </div>
       <Contact />
-      <Footer />
     </div>
   )
 }

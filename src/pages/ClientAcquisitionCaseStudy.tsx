@@ -2,7 +2,6 @@ import { Fragment, useEffect, useRef, useState } from "react"
 import { Link } from "react-router-dom"
 import { motion, useReducedMotion } from "motion/react"
 import { ArrowLeft } from "lucide-react"
-import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
@@ -789,7 +788,6 @@ export function ClientAcquisitionCaseStudy() {
         <NextProject currentHref="/case-study/client-acquisition" />
       </div>
       <Contact />
-      <Footer />
     </>
   )
 }

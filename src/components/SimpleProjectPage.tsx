@@ -2,7 +2,6 @@ import { Fragment, useLayoutEffect, useRef } from "react"
 import { Link } from "react-router-dom"
 import { motion, useReducedMotion } from "motion/react"
 import { ArrowLeft } from "lucide-react"
-import { Footer } from "@/components/Footer"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
@@ -209,7 +208,6 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
         {!embedded && <NextProject currentHref={backHref} />}
       </div>
       {!embedded && <Contact />}
-      {!embedded && <Footer />}
     </div>
   )
 }
