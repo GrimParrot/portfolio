@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useEffect, useLayoutEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "motion/react"
 import { X } from "lucide-react"
@@ -8,23 +8,40 @@ import { LENIS_OPTIONS } from "@/lib/lenis"
 export function ProjectModal({ open, onClose, layoutId, children }: { open: boolean; onClose: () => void; layoutId?: string; children: React.ReactNode }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
-  const [gutter, setGutter] = useState(0)
 
   useLayoutEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose() }
     document.addEventListener("keydown", onKey)
+
+    const html = document.documentElement
     const prevOverflow = document.body.style.overflow
+    const prevPaddingRight = document.body.style.paddingRight
+    const prevGutter = html.style.scrollbarGutter
     document.body.style.overflow = "hidden"
-    // html has `scrollbar-gutter: stable`, so with the page scroll locked the
-    // fixed containing block stops ~15px short of the viewport's right edge.
-    // Measure that strip so the overlay below can stretch over it — otherwise
-    // the backdrop ends early and leaves a bright band down the right side.
-    setGutter(Math.max(0, document.documentElement.clientWidth - document.body.getBoundingClientRect().width))
+
+    // html sets `scrollbar-gutter: stable`, which keeps reserving a strip on the
+    // right even now that the scroll lock removed the scrollbar. A fixed overlay
+    // can't reach into that strip, so the modal would either stop short of it
+    // (bright band beside the backdrop) or, once stretched over it, sit flush
+    // against the scrollbar on platforms that draw one.
+    //
+    // Instead, drop the reservation while the modal is open and hand the same
+    // width back as body padding: the page behind keeps its exact layout, and
+    // the viewport has no gutter left for the frame to collide with. Where
+    // scrollbars are overlays (macOS, touch) the gutter measures 0 and this is
+    // all a no-op.
+    const gutter = Math.max(0, html.clientWidth - document.body.getBoundingClientRect().width)
+    if (gutter > 0) {
+      html.style.scrollbarGutter = "auto"
+      document.body.style.paddingRight = `${gutter}px`
+    }
+
     return () => {
       document.removeEventListener("keydown", onKey)
       document.body.style.overflow = prevOverflow
-      setGutter(0)
+      document.body.style.paddingRight = prevPaddingRight
+      html.style.scrollbarGutter = prevGutter
     }
   }, [open, onClose])
 
@@ -56,12 +73,7 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-y-0 left-0 w-full z-[100] flex items-center justify-center p-4"
-          // The overlay stretches over the scrollbar gutter so the backdrop
-          // reaches the window edge, but the extra width is given back as right
-          // padding — otherwise the panel would sit flush against the scrollbar
-          // instead of keeping its 16px frame.
-          style={{ width: `calc(100% + ${gutter}px)`, paddingRight: 16 + gutter }}
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
