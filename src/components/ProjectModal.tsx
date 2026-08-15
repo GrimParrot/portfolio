@@ -18,8 +18,8 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
     document.body.style.overflow = "hidden"
     // html has `scrollbar-gutter: stable`, so with the page scroll locked the
     // fixed containing block stops ~15px short of the viewport's right edge.
-    // Measure that strip and stretch the overlay over it — otherwise the
-    // backdrop ends early and leaves a bright band down the right side.
+    // Measure that strip so the overlay below can stretch over it — otherwise
+    // the backdrop ends early and leaves a bright band down the right side.
     setGutter(Math.max(0, document.documentElement.clientWidth - document.body.getBoundingClientRect().width))
     return () => {
       document.removeEventListener("keydown", onKey)
@@ -57,7 +57,11 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
       {open && (
         <motion.div
           className="fixed inset-y-0 left-0 w-full z-[100] flex items-center justify-center p-4"
-          style={{ width: `calc(100% + ${gutter}px)` }}
+          // The overlay stretches over the scrollbar gutter so the backdrop
+          // reaches the window edge, but the extra width is given back as right
+          // padding — otherwise the panel would sit flush against the scrollbar
+          // instead of keeping its 16px frame.
+          style={{ width: `calc(100% + ${gutter}px)`, paddingRight: 16 + gutter }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
