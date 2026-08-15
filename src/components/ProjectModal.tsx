@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "motion/react"
 import { X } from "lucide-react"
@@ -8,16 +8,23 @@ import { LENIS_OPTIONS } from "@/lib/lenis"
 export function ProjectModal({ open, onClose, layoutId, children }: { open: boolean; onClose: () => void; layoutId?: string; children: React.ReactNode }) {
   const scrollRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+  const [gutter, setGutter] = useState(0)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) return
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose() }
     document.addEventListener("keydown", onKey)
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = "hidden"
+    // html has `scrollbar-gutter: stable`, so with the page scroll locked the
+    // fixed containing block stops ~15px short of the viewport's right edge.
+    // Measure that strip and stretch the overlay over it — otherwise the
+    // backdrop ends early and leaves a bright band down the right side.
+    setGutter(Math.max(0, document.documentElement.clientWidth - document.body.getBoundingClientRect().width))
     return () => {
       document.removeEventListener("keydown", onKey)
       document.body.style.overflow = prevOverflow
+      setGutter(0)
     }
   }, [open, onClose])
 
@@ -49,19 +56,20 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-end justify-center"
+          className="fixed inset-y-0 left-0 w-full z-[100] flex items-center justify-center p-4"
+          style={{ width: `calc(100% + ${gutter}px)` }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
           <motion.div
-            className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+            className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
             onClick={onClose}
           />
           <motion.div
             layoutId={layoutId}
-            className="relative bg-white w-full rounded-t-3xl shadow-2xl overflow-hidden"
+            className="relative bg-white w-full h-full rounded-3xl shadow-2xl overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -74,7 +82,7 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
             >
               <X className="w-4 h-4" />
             </button>
-            <div ref={scrollRef} className="pretty-scrollbar overflow-y-auto rounded-t-3xl" data-lenis-prevent style={{ maxHeight: "calc(100vh - 64px)" }}>
+            <div ref={scrollRef} className="pretty-scrollbar h-full overflow-y-auto rounded-3xl" data-lenis-prevent>
               <div ref={contentRef} className="max-w-[1200px] mx-auto">
                 {children}
               </div>
