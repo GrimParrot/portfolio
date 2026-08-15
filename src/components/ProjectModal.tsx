@@ -80,7 +80,7 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
           transition={{ duration: 0.2 }}
         >
           <motion.div
-            className="absolute inset-0 bg-slate-900/80 backdrop-blur-sm"
+            className="absolute inset-0 bg-slate-950/90 backdrop-blur-md"
             onClick={onClose}
           />
           <motion.div
