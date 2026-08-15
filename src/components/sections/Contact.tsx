@@ -1,3 +1,4 @@
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { Mail, ArrowUpRight } from "lucide-react"
 import { Magnetic } from "@/components/Magnetic"
 import { useLang } from "@/i18n/LanguageContext"
@@ -20,6 +21,70 @@ const copy = {
 export function Contact() {
   const { lang } = useLang()
   const t = copy[lang]
+
+  // Reveal effect: the footer is pinned to the bottom of the window as if it
+  // had been sitting there the whole time, and the page above slides up to
+  // uncover it.
+  //
+  // The uncovering is done by clipping the footer to the part of the spacer
+  // that has already scrolled into view — not by stacking the page on top of
+  // it. Stacking would mean giving every section above an opaque background
+  // and a z-index across the six pages that render <Contact />, and any
+  // container whose background spans the spacer would cover the footer right
+  // where it is supposed to appear. Clipping keeps all of that local to here.
+  const spacerRef = useRef<HTMLDivElement>(null)
+  const footerRef = useRef<HTMLElement>(null)
+  const [pinned, setPinned] = useState(false)
+  const [height, setHeight] = useState(0)
+
+  useLayoutEffect(() => {
+    const footer = footerRef.current
+    if (!footer) return
+    const measure = () => {
+      const h = footer.offsetHeight
+      setHeight(h)
+      // A footer taller than the window would have its top cut off with
+      // nothing able to scroll it back, so short viewports keep it in flow.
+      setPinned(h > 0 && h <= window.innerHeight)
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(footer)
+    window.addEventListener("resize", measure)
+    return () => {
+      ro.disconnect()
+      window.removeEventListener("resize", measure)
+    }
+  }, [])
+
+  useEffect(() => {
+    const footer = footerRef.current
+    if (!footer) return
+    if (!pinned) {
+      footer.style.clipPath = ""
+      return
+    }
+    // Written straight to the node rather than through state — this runs on
+    // every scroll frame and re-rendering the plasma canvas and the magnetic
+    // links that often would be wasteful.
+    const update = () => {
+      const spacer = spacerRef.current
+      if (!spacer) return
+      const h = footer.offsetHeight
+      const hidden = spacer.getBoundingClientRect().top - (window.innerHeight - h)
+      const clip = Math.min(Math.max(hidden, 0), h)
+      // Fractional document heights leave a sub-pixel sliver of the page
+      // showing across the footer's top edge at full scroll — snap it shut.
+      footer.style.clipPath = `inset(${clip < 1 ? 0 : clip}px 0 0 0)`
+    }
+    update()
+    window.addEventListener("scroll", update, { passive: true })
+    window.addEventListener("resize", update)
+    return () => {
+      window.removeEventListener("scroll", update)
+      window.removeEventListener("resize", update)
+    }
+  }, [pinned, height])
 
   const links = [
     {
@@ -48,7 +113,14 @@ export function Contact() {
   ]
 
   return (
-    <section id="contact" className="relative pt-[clamp(3.5rem,8vw,6rem)] pb-36 md:pb-[calc(clamp(2.5rem,13.15vw,24rem)*0.85+4rem)] min-h-[340px] md:min-h-[clamp(340px,42vw,480px)] flex items-start bg-[#0A0A0A] overflow-hidden">
+    // The spacer holds the footer's place in the document so the page can still
+    // be scrolled past it, and carries #contact so the navbar's Kontakt button
+    // still has something in the flow to scroll to.
+    <div id="contact" ref={spacerRef} style={pinned ? { height } : undefined}>
+    <section
+      ref={footerRef}
+      className={`${pinned ? "fixed bottom-0 left-0 w-full z-0" : "relative"} pt-[clamp(3.5rem,8vw,6rem)] pb-36 md:pb-[calc(clamp(2.5rem,13.15vw,24rem)*0.85+4rem)] min-h-[340px] md:min-h-[clamp(340px,42vw,480px)] flex items-start bg-[#0A0A0A] overflow-hidden`}
+    >
       <div className="absolute inset-0">
         <Plasma color="#F5F5F5" scale={0.8} opacity={0.25} iterations={45} mouseInteractive={false} renderScale={0.55} />
       </div>
@@ -124,5 +196,6 @@ export function Contact() {
         </div>
       </div>
     </section>
+    </div>
   )
 }
