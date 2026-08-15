@@ -80,7 +80,9 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
           transition={{ duration: 0.2 }}
         >
           <motion.div
-            className="absolute inset-0 bg-slate-950/90 backdrop-blur-md"
+            // #0A0A0A is the Contact footer's background — the frame around the
+            // modal reads as the same dark as the bottom of the page.
+            className="absolute inset-0 bg-[#0A0A0A] backdrop-blur-md"
             onClick={onClose}
           />
           <motion.div
