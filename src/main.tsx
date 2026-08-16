@@ -47,10 +47,13 @@ createRoot(document.getElementById('root')!).render(
                 Client Acquisition redesign replaced that page. */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-          {/* Inside the router on purpose: it reads the address on every
-              navigation, which is what makes each project modal count as its
-              own page view rather than everything landing on "/". Only sends
-              anything from a Vercel deployment; locally it just logs. */}
+          {/* No route/path props on purpose: passing them would set
+              disableAutoTrack and hand us the job of firing a pageview per
+              navigation. Left alone, Vercel's own script tracks SPA
+              navigations, which is what makes each project modal count as its
+              own view instead of everything landing on "/".
+              The React entry, not /next — this is Vite, and /next imports
+              next/navigation. Only reports from a Vercel deployment. */}
           <Analytics />
         </SmoothScroll>
       </BrowserRouter>
