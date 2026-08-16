@@ -1,13 +1,13 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react"
-import { Link } from "react-router-dom"
 import { motion, useReducedMotion } from "motion/react"
-import { Lightbulb, ArrowLeft } from "lucide-react"
+import { Lightbulb } from "lucide-react"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
 import { smoothScrollTo } from "@/lib/lenis"
 import { copy } from "@/copy/banneroza.copy"
+import { BackToPortfolio } from "@/components/BackToPortfolio"
 
 const PRIMARY = "#DD8100"
 
@@ -256,14 +256,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
             <StaggerItem>
               <div className="flex items-center gap-4">
                 {!embedded && (
-                  <Link
-                    to="/"
-                    onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
-                    aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-pf-line text-pf-ink flex-shrink-0 hover:border-pf-200 transition-colors"
-                  >
-                    <ArrowLeft className="w-4 h-4 animate-bounce-left" />
-                  </Link>
+                  <BackToPortfolio />
                 )}
                 <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-pf-ink">
                   Case Study<span className="mx-2 opacity-40">—</span>

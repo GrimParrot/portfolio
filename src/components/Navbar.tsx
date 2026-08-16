@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
+import { LangToggle } from "@/components/LangToggle"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useLang } from "@/i18n/LanguageContext"
 import { Menu, X, Mail } from "lucide-react"
@@ -45,7 +46,7 @@ function NavLink({
 export function Navbar({ dark = false }: { dark?: boolean }) {
   const navigate = useNavigate()
   const location = useLocation()
-  const { lang, setLang } = useLang()
+  const { lang } = useLang()
   const t = copy[lang]
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -110,25 +111,27 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             <NavLink href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">CV</NavLink>
             <NavLink href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">LinkedIn</NavLink>
 
-            <div className="flex items-center gap-1 text-[18px] font-medium">
-              <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? "text-pf-700 font-bold" : "text-pf-500 hover:text-pf-700"}`}>PL</button>
-              <span className="text-pf-700">/</span>
-              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-pf-700 font-bold" : "text-pf-500 hover:text-pf-700"}`}>EN</button>
-            </div>
+            <LangToggle className="text-[18px]" />
 
             <Button onClick={handleContact}>
               <Mail className="w-4 h-4" /> {t.contact}
             </Button>
           </div>
 
-          {/* Hamburger */}
-          <button
-            className="md:hidden p-2 transition-colors text-pf-700 hover:text-pf-ink"
+          {/* Hamburger. The primitive forces icons to 16px via [&_svg]:size-4,
+              which is right for a label+icon button and too small for an icon
+              that carries the whole control, hence the one override. */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden [&_svg]:size-6"
             onClick={() => setOpen((o) => !o)}
             aria-label="Menu"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
           >
-            {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+            {open ? <X /> : <Menu />}
+          </Button>
         </div>
       </nav>
 
@@ -140,17 +143,14 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
+          id="mobile-menu"
           className="fixed inset-0 z-40 bg-white pt-16 flex flex-col px-6 py-8 gap-6 text-lg font-medium text-pf-700 md:hidden"
         >
           <a href="#projects" onClick={handleProjects} className="py-3 border-b border-pf-50">{t.projects}</a>
           <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className="py-3 border-b border-pf-50" onClick={() => setOpen(false)}>CV</a>
           <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className="py-3 border-b border-pf-50" onClick={() => setOpen(false)}>LinkedIn</a>
 
-          <div className="flex items-center gap-3 py-3 border-b border-pf-50">
-            <button onClick={() => { setLang("pl"); setOpen(false) }} className={`transition-colors ${lang === "pl" ? "text-pf-ink font-bold" : "text-pf-500"}`}>PL</button>
-            <span className="text-pf-100">/</span>
-            <button onClick={() => { setLang("en"); setOpen(false) }} className={`transition-colors ${lang === "en" ? "text-pf-ink font-bold" : "text-pf-500"}`}>EN</button>
-          </div>
+          <LangToggle className="gap-3 py-3 border-b border-pf-50" onSwitch={() => setOpen(false)} />
 
           <Button className="w-full mt-2" onClick={handleContact}>
             <Mail className="w-4 h-4" /> {t.contact}

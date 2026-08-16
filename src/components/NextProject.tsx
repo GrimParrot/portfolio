@@ -1,5 +1,5 @@
 import { ArrowRight } from "lucide-react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { Button } from "@/components/ui/button"
 import { projects, tagStyles } from "@/data/projects"
 import { useLang } from "@/i18n/LanguageContext"
@@ -32,11 +32,22 @@ export function NextProject({ currentHref, dark = true }: NextProjectProps) {
         <div className="mt-3">
           <span className={`inline-block text-sm font-semibold px-3 py-1.5 rounded-xl ${dark && next.tag === "UI" ? "bg-white text-pf-ink" : tagStyles[next.tag]}`}>{next.tag}</span>
         </div>
-        <h3
-          onClick={goToNext}
-          className={`text-xl md:text-3xl font-black mt-3 mb-4 leading-snug cursor-pointer transition-colors ${dark ? "text-white hover:text-white/70" : "text-pf-ink hover:text-pf-700"}`}
-        >
-          {title}
+        {/* A real link, not an onClick heading: it reaches the keyboard, and
+            middle-click / open-in-new-tab work. The two images below keep
+            their onClick as a mouse convenience — making them focusable too
+            would add tab stops to a destination the title and the button
+            already cover. */}
+        <h3 className="text-xl md:text-3xl font-black mt-3 mb-4 leading-snug">
+          {next.href ? (
+            <Link
+              to={next.href}
+              className={`rounded-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 ${dark ? "text-white hover:text-white/70" : "text-pf-ink hover:text-pf-700"}`}
+            >
+              {title}
+            </Link>
+          ) : (
+            <span className={dark ? "text-white" : "text-pf-ink"}>{title}</span>
+          )}
         </h3>
 
         {/* Image — mobile only, between title and description */}

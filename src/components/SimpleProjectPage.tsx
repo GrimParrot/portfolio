@@ -1,13 +1,10 @@
 import { Fragment, useLayoutEffect, useRef } from "react"
-import { Link } from "react-router-dom"
 import { motion, useReducedMotion } from "motion/react"
-import { ArrowLeft } from "lucide-react"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { Badge } from "@/components/ui/badge"
-import { useLang } from "@/i18n/LanguageContext"
-import { smoothScrollTo } from "@/lib/lenis"
+import { BackToPortfolio } from "@/components/BackToPortfolio"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -128,7 +125,6 @@ export interface SimpleProjectCopy {
 }
 
 export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedded?: boolean; copy: SimpleProjectCopy; backHref: string }) {
-  const { lang } = useLang()
 
   return (
     <div className={embedded ? "bg-white" : "min-h-screen bg-white"} style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
@@ -136,14 +132,7 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
 
       <div className={embedded ? "px-6 sm:px-10 pt-14 pb-10" : "max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32"}>
         {!embedded && (
-          <Link
-            to="/"
-            onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
-            aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-            className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-pf-line text-pf-ink flex-shrink-0 hover:border-pf-200 transition-colors mb-12"
-          >
-            <ArrowLeft className="w-4 h-4 animate-bounce-left" />
-          </Link>
+          <BackToPortfolio className="mb-12" />
         )}
 
         <div className="flex flex-col gap-[60px]">

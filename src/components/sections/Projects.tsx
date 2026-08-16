@@ -70,9 +70,21 @@ function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: 
   const { lang } = useLang()
 
   return (
+    // This is the only way into a case study from the homepage, so it has to
+    // work from the keyboard. It stays a div rather than becoming a <button>:
+    // the tile is laid out by an aspect-ratio box holding an absolutely
+    // positioned image, and a button's own layout defaults fight that.
     <div
+      role="button"
+      tabIndex={0}
       onClick={() => onOpen(project)}
-      className="group cursor-pointer rounded-2xl border border-pf-line hover:border-pf-200 hover:shadow-sm transition-colors duration-200 overflow-hidden relative"
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault()
+          onOpen(project)
+        }
+      }}
+      className="group cursor-pointer rounded-2xl border border-pf-line hover:border-pf-200 hover:shadow-sm transition-colors duration-200 overflow-hidden relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       style={{ aspectRatio: "4/3" }}
     >
       {/* Image — full height */}

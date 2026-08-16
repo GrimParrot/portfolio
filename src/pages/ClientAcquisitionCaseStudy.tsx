@@ -1,14 +1,12 @@
 import { Fragment, useEffect, useRef, useState } from "react"
-import { Link } from "react-router-dom"
 import { motion, useReducedMotion } from "motion/react"
-import { ArrowLeft } from "lucide-react"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
-import { smoothScrollTo } from "@/lib/lenis"
 import { copy } from "@/copy/client-acquisition.copy"
 import "@/styles/raporty-ds.css"
+import { BackToPortfolio } from "@/components/BackToPortfolio"
 import {
   MetaBar, Section, SectionHeader, Divider,
   StatCard, FindingCard,
@@ -323,14 +321,7 @@ export function ClientAcquisitionCaseStudy() {
             <StaggerItem style={{ width: "100%" }}>
               <header style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%", padding: 0, boxSizing: "border-box" }}>
                 <div className="flex items-center gap-4">
-                  <Link
-                    to="/"
-                    onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
-                    aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-pf-line text-pf-ink flex-shrink-0 hover:border-pf-200 transition-colors"
-                  >
-                    <ArrowLeft className="w-4 h-4 animate-bounce-left" />
-                  </Link>
+                  <BackToPortfolio />
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
                 </div>
                 <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 10vw, 126px)", lineHeight: "clamp(44px, 10.5vw, 136px)", letterSpacing: "0em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
