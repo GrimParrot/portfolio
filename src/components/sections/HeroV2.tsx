@@ -42,7 +42,12 @@ export function HeroV2() {
         />
       </div>
 
-      <div className="relative z-10 w-full max-w-[1200px] mx-auto px-6 text-center flex flex-col items-center pointer-events-none">
+      {/* z-30, not z-10: SkillsMarquee sits at the bottom of this section on
+          z-20 and carries an 800px white gradient that fades the plasma's hard
+          edge. At z-10 that gradient washed over the tags and the CTA — the
+          button reads #0A0A0A but painted out around #6B6B6B, because it lands
+          where the fade is already 40% white. The copy belongs above it. */}
+      <div className="relative z-30 w-full max-w-[1200px] mx-auto px-6 text-center flex flex-col items-center pointer-events-none">
         <p className="text-foreground text-base md:text-lg font-medium mb-5">{t.name}</p>
 
         <h1
