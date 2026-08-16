@@ -1,13 +1,13 @@
-import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react"
+import { useLayoutEffect, useRef, type ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { Lightbulb } from "lucide-react"
 import { Navbar } from "@/components/Navbar"
 import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
-import { smoothScrollTo } from "@/lib/lenis"
 import { copy } from "@/copy/banneroza.copy"
 import { BackToPortfolio } from "@/components/BackToPortfolio"
+import { ChapterRail } from "@/components/ChapterRail"
 
 const PRIMARY = "#DD8100"
 
@@ -171,52 +171,6 @@ function AutoFitHeading({ variants, activeKey, className, style, maxLines = 3, m
   )
 }
 
-function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] }) {
-  const [active, setActive] = useState(chapters[0]?.id)
-
-  useEffect(() => {
-    const sections = chapters
-      .map((c) => document.getElementById(c.id))
-      .filter((el): el is HTMLElement => !!el)
-    if (sections.length === 0) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id)
-        })
-      },
-      { rootMargin: "-45% 0px -45% 0px", threshold: 0 }
-    )
-    sections.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [chapters])
-
-  return (
-    <div className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 flex-col items-center gap-4 z-40">
-      {chapters.map((c) => (
-        <button
-          key={c.id}
-          onClick={() => smoothScrollTo(`#${c.id}`)}
-          className="group relative flex items-center justify-center w-4 h-4"
-          aria-label={c.label}
-        >
-          <span
-            className="rounded-full transition-all duration-300"
-            style={{
-              width: active === c.id ? 8 : 6,
-              height: active === c.id ? 8 : 6,
-              backgroundColor: active === c.id ? PRIMARY : "var(--pf-primary-200)",
-            }}
-          />
-          <span className="absolute right-6 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md bg-pf-900 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
-            {c.label}
-          </span>
-        </button>
-      ))}
-    </div>
-  )
-}
-
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
     <span className="text-[13px] font-bold tracking-widest uppercase text-pf-500" style={color ? { color } : undefined}>
@@ -246,7 +200,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
   return (
     <div className={embedded ? "bg-white" : "min-h-screen bg-white"} style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
       {!embedded && <Navbar />}
-      {!embedded && <ProgressRail chapters={chapters} />}
+      {!embedded && <ChapterRail chapters={chapters} accent={PRIMARY} />}
 
       <div className={embedded ? "px-6 sm:px-10 pt-14 pb-10" : "max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32"}>
 

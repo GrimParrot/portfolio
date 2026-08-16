@@ -7,6 +7,7 @@ import { useLang } from "@/i18n/LanguageContext"
 import { copy } from "@/copy/client-acquisition.copy"
 import "@/styles/raporty-ds.css"
 import { BackToPortfolio } from "@/components/BackToPortfolio"
+import { ChapterRail } from "@/components/ChapterRail"
 import {
   MetaBar, Section, SectionHeader, Divider,
   StatCard, FindingCard,
@@ -161,83 +162,6 @@ function AnimatedStat({ value }: { value: string }) {
   return <span ref={ref}>{out}</span>
 }
 
-/** Exact port of the .dc.html chapter nav (DCLogic go/enter/leave/renderVals): a
- * fixed pill-shaped rail, top:50% right:32px, each button expanding on hover/active
- * to reveal its label next to the dot with a blurred white background. */
-function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] }) {
-  const [active, setActive] = useState(chapters[0]?.id)
-  const [hovered, setHovered] = useState<string | null>(null)
-
-  useEffect(() => {
-    const sections = chapters
-      .map((c) => document.getElementById(c.id))
-      .filter((el): el is HTMLElement => !!el)
-    if (sections.length === 0) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(entry.target.id)
-        })
-      },
-      { rootMargin: "-40% 0px -55% 0px" }
-    )
-    sections.forEach((el) => observer.observe(el))
-    return () => observer.disconnect()
-  }, [chapters])
-
-  const go = (id: string) => {
-    const el = document.getElementById(id)
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 100, behavior: "smooth" })
-  }
-
-  return (
-    <nav className="pf-chapter-nav" style={{ position: "fixed", top: "50%", right: 32, transform: "translateY(-50%)", zIndex: 50, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2 }}>
-      {chapters.map((c) => {
-        const isActive = active === c.id
-        const hot = hovered === c.id
-        const on = hot || isActive
-        return (
-          <button
-            key={c.id}
-            type="button"
-            onClick={() => go(c.id)}
-            onMouseEnter={() => setHovered(c.id)}
-            onMouseLeave={() => setHovered(null)}
-            style={{
-              border: 0, cursor: "pointer", background: "transparent",
-              display: "flex", alignItems: "center", justifyContent: "flex-end", gap: on ? 10 : 0,
-              padding: on ? "7px 14px 7px 16px" : "7px 8px",
-              borderRadius: 999,
-              backgroundColor: on ? "rgba(255,255,255,.86)" : "transparent",
-              backdropFilter: on ? "blur(12px)" : "none",
-              boxShadow: on ? "var(--pf-ring)" : "none",
-              transition: "all 180ms cubic-bezier(.2,.6,.2,1)",
-            }}
-          >
-            <span
-              style={{
-                font: "600 13px/1 var(--pf-font-body)", letterSpacing: ".04em", whiteSpace: "nowrap",
-                color: isActive ? "var(--pf-primary-900)" : "var(--pf-text-muted)",
-                maxWidth: on ? 200 : 0, opacity: on ? 1 : 0, overflow: "hidden",
-                transition: "max-width 180ms cubic-bezier(.2,.6,.2,1), opacity 180ms cubic-bezier(.2,.6,.2,1)",
-              }}
-            >
-              {c.label}
-            </span>
-            <span
-              style={{
-                width: 8, height: 8, borderRadius: "50%", flexShrink: 0,
-                background: isActive ? "var(--pf-primary-900)" : hot ? "var(--pf-text-muted)" : "var(--pf-primary-200)",
-                transition: "var(--pf-transition)",
-              }}
-            />
-          </button>
-        )
-      })}
-    </nav>
-  )
-}
-
 /** An infinite horizontal marquee of
  * screenshots at natural aspect ratio (never cropped), doubled for a seamless
  * loop, pausing on hover. Pair two of these with opposite `reverse` for the
@@ -313,7 +237,7 @@ export function ClientAcquisitionCaseStudy() {
       <Navbar />
       <div id="top" style={{ display: "flex", flexDirection: "column", gap: "clamp(56px, 10vw, 120px)", padding: "clamp(96px, 14vw, 160px) 0", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
 
-        <ChapterNav chapters={chapters} />
+        <ChapterRail chapters={chapters} />
 
         {/* HERO */}
         <Section gap={80}>
