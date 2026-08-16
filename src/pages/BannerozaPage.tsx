@@ -212,9 +212,13 @@ export function BannerozaPage() {
           <HeroStagger>
             <StaggerItem>
               <div className="flex items-center gap-4">
-                <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-pf-ink">
-                  Case Study<span className="mx-2 opacity-40">—</span>
-                  <span style={{ color: PRIMARY }}>{t.heroEyebrow}</span>
+                {/* Same type and grey as every other project's eyebrow. The
+                    project accent lives on in the title and the chapter rail;
+                    on this line it was the last thing making one project's
+                    label read differently from the rest. */}
+                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>
+                  CASE STUDY<span className="mx-2 opacity-40">—</span>
+                  {t.heroEyebrow}
                 </span>
               </div>
             </StaggerItem>

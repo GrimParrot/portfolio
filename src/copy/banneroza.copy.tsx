@@ -2,7 +2,7 @@ export const copy = {
   pl: {
     h1: "Szyldowe Rewolucje.",
     h1Accent: "Strona konkursu dla projektantów.",
-    heroEyebrow: "Szyldowe Rewolucje · Konkurs dla projektantów",
+    heroEyebrow: "SZYLDOWE REWOLUCJE · KONKURS DLA PROJEKTANTÓW",
     body: <>Projekt koncepcyjny strony internetowej dla konkursu <strong className="text-pf-700">Szyldowe Rewolucje</strong>, inicjatywy walczącej z chaosem reklamowym w przestrzeni publicznej. Konkurs angażuje projektantów do tworzenia estetycznych, zgodnych z prawem szyldów dla lokalnych przedsiębiorców, a zwycięskie prace są realizowane w przestrzeni miejskiej. Projekt powstał w ramach studiów podyplomowych <strong className="text-pf-700">UX design | web analytics</strong> na Politechnice Białostockiej.</>,
     roleLabel: "Moja rola",
     roleLead: "Research → prototyp",
@@ -82,7 +82,7 @@ export const copy = {
   en: {
     h1: "Banner Revolution.",
     h1Accent: "Competition website for designers.",
-    heroEyebrow: "Szyldowe Rewolucje · Designer competition",
+    heroEyebrow: "SZYLDOWE REWOLUCJE · DESIGNER COMPETITION",
     body: <>A conceptual website project for the <strong className="text-pf-700">Szyldowe Rewolucje</strong> competition, an initiative fighting advertising chaos in public space. The competition engages designers to create aesthetic, legally compliant signage for local businesses, with winning designs realized in urban space. The project was created as part of postgraduate studies in <strong className="text-pf-700">UX design | web analytics</strong> at the Białystok University of Technology.</>,
     roleLabel: "My role",
     roleLead: "Research → prototype",

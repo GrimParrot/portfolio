@@ -1,6 +1,6 @@
 export const copy = {
   pl: {
-    heroEyebrow: "PRODUKT · LOCALO — GŁÓWNY Dashboard",
+    heroEyebrow: "PRODUKT · LOCALO — GŁÓWNY DASHBOARD",
     title: <>Profile Dashboard. Widoczność pod <span style={{ color: "var(--pf-accent-500)" }}>kontrolą</span>.</>,
     tags: ["Dashboard", "SaaS", "Local SEO", "Product Design"],
     cover: { img: "/dashboard-cover.webp", alt: "Profile Dashboard" },
