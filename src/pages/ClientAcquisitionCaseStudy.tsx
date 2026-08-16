@@ -38,8 +38,8 @@ const SOURCE_CARD_ICONS = [
   "/icons/client-acquisition-icon-source-devs.svg",
 ]
 
-/** Same early lo-fi Prospect finder screenshots already used on the live
- * Localo case study page (LocaloCaseStudy.tsx / localo.copy.tsx lofiImages). */
+/** Early lo-fi Prospect finder screenshots. The file names carry the localo-
+ * prefix because they came from the Localo case study this page replaced. */
 const LOFI_IMAGES = [
   { img: "/localo-lofi-1.webp", alt: "Prospect finder: lista" },
   { img: "/localo-lofi-2.webp", alt: "Prospect finder: tabela z filtrami" },
@@ -240,7 +240,7 @@ function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] })
   )
 }
 
-/** Ported from LocaloCaseStudy.tsx (prod) — an infinite horizontal marquee of
+/** An infinite horizontal marquee of
  * screenshots at natural aspect ratio (never cropped), doubled for a seamless
  * loop, pausing on hover. Pair two of these with opposite `reverse` for the
  * "two lanes drifting past each other" look used for early lo-fi explorations. */

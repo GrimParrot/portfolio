@@ -17,7 +17,7 @@ src/
     Navbar.tsx
     ProjectModal.tsx
     NextProject.tsx  # karta "następny projekt" na końcu case study
-  pages/             # case study pages (LocaloCaseStudy, RaportyCaseStudy, ...)
+  pages/             # case study pages (RaportyCaseStudy, ClientAcquisitionCaseStudy, ...)
   copy/              # dwujęzyczne teksty: [projekt].copy.tsx
   data/
     projects.ts      # lista projektów na homepage

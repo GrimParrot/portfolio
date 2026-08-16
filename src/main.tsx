@@ -1,6 +1,6 @@
 import { StrictMode, useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { getLenis } from './lib/lenis'
 
 function ScrollToTop() {
@@ -15,7 +15,6 @@ function ScrollToTop() {
 import './index.css'
 import App from './App.tsx'
 import { SmoothScroll } from './components/SmoothScroll.tsx'
-import { LocaloCaseStudy } from './pages/LocaloCaseStudy.tsx'
 import { NaturalniePage } from './pages/NaturalniePage.tsx'
 import { KafejetoPage } from './pages/KafejetoPage.tsx'
 import { BannerozaPage } from './pages/BannerozaPage.tsx'
@@ -35,7 +34,6 @@ createRoot(document.getElementById('root')!).render(
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<App />} />
-            <Route path="/case-study/localo" element={<LocaloCaseStudy />} />
             <Route path="/ui/naturalnie" element={<NaturalniePage />} />
             <Route path="/ui/kafejeto" element={<KafejetoPage />} />
             <Route path="/case-study/banneroza" element={<BannerozaPage />} />
@@ -45,6 +43,10 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/ui/dashboard" element={<DashboardPage />} />
             <Route path="/hero-lab" element={<HeroLab />} />
             <Route path="/marquee-lab" element={<MarqueeLab />} />
+            {/* Without this every unknown path renders a blank white page —
+                including /case-study/localo, which was a real URL until the
+                Client Acquisition redesign replaced that page. */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </SmoothScroll>
       </BrowserRouter>
