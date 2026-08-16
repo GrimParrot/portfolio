@@ -23,7 +23,8 @@
     --card-foreground: 0 0% 4%;     /* --pf-primary-900  #0A0A0A */
     /* This block is the Tailwind bridge, not a second source of truth. Values
        mirror styles/tokens.css; they stay in HSL-triplet form only because
-       Tailwind needs that shape for opacity modifiers like `bg-primary/90`.
+       Tailwind needs that shape for opacity modifiers, which badge.tsx and the
+       navbar links still use (bg-primary/80, text-foreground/60).
        Change a colour there first, then mirror it here.
          --primary  = --pf-primary-900  #0A0A0A
          --border   = --pf-border       #E7E7E7 */

@@ -12,12 +12,13 @@ const buttonVariants = cva(
       // przyklejony po tapnieciu — inaczej kazde wywolanie musi to obchodzic
       // u siebie, tak jak robil to wczesniej Navbar i HeroV2.
       variant: {
-        // primary is the one variant written against the shadcn bridge rather
-        // than the pf classes: it needs bg-primary/90 for its hover, and only
-        // the HSL-triplet tokens support an opacity modifier. Same colour
-        // either way — --primary mirrors --pf-primary-900.
+        // The hover is an opaque step down the scale, not bg-primary/90. An
+        // alpha hover composites with whatever sits behind the button, so the
+        // navbar one — inside a bg-white/35 backdrop-blur pill — rendered a
+        // different colour from the hero's, and shifted as the page scrolled
+        // underneath it.
         primary:
-          "bg-primary text-primary-foreground [@media(hover:hover)]:hover:bg-primary/90",
+          "bg-primary text-primary-foreground [@media(hover:hover)]:hover:bg-pf-800",
         secondary:
           "border border-pf-line bg-pf-surface text-pf-ink [@media(hover:hover)]:hover:border-pf-200 [@media(hover:hover)]:hover:bg-pf-50",
         // pf-subtle, not pf-muted: muted sits under the AA contrast floor for
