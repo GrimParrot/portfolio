@@ -116,7 +116,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
               <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>EN</button>
             </div>
 
-            <Button size="sm" className="px-5 text-[18px] bg-[#0F172A] text-white [@media(hover:hover)]:hover:bg-[#1E293B]" onClick={handleContact}>
+            <Button onClick={handleContact}>
               <Mail className="w-4 h-4" /> {t.contact}
             </Button>
           </div>
@@ -152,7 +152,9 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             <button onClick={() => { setLang("en"); setOpen(false) }} className={`transition-colors ${lang === "en" ? "text-slate-900 font-bold" : "text-slate-400"}`}>EN</button>
           </div>
 
-          <Button className="bg-[#0F172A] [@media(hover:hover)]:hover:bg-[#1E293B] w-full mt-2" onClick={handleContact}>{t.contact}</Button>
+          <Button className="w-full mt-2" onClick={handleContact}>
+            <Mail className="w-4 h-4" /> {t.contact}
+          </Button>
         </motion.div>
       )}
       </AnimatePresence>

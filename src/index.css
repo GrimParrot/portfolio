@@ -19,7 +19,8 @@
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
-    --primary: 222 47% 11%;
+    /* #0A0A0A — kolor przycisku "See my work" z heroa, obowiazuje wszedzie */
+    --primary: 0 0% 4%;
     --primary-foreground: 0 0% 100%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;

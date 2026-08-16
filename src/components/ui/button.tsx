@@ -5,21 +5,32 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-base font-bold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
+      // Hover jest za [@media(hover:hover)], zeby na dotyku stan nie zostawal
+      // przyklejony po tapnieciu — inaczej kazde wywolanie musi to obchodzic
+      // u siebie, tak jak robil to wczesniej Navbar i HeroV2.
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        primary:
+          "bg-primary text-primary-foreground [@media(hover:hover)]:hover:bg-primary/90",
+        secondary:
+          "border border-slate-200 bg-white text-primary [@media(hover:hover)]:hover:border-slate-300 [@media(hover:hover)]:hover:bg-slate-50",
+        ghost:
+          "text-slate-500 [@media(hover:hover)]:hover:bg-slate-100 [@media(hover:hover)]:hover:text-primary",
+        // Primary postawiony na ciemnej plaszczyznie (karta NextProject).
+        inverse:
+          "bg-white text-primary [@media(hover:hover)]:hover:bg-slate-100",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 px-3",
-        lg: "h-11 px-8",
+        md: "h-10 px-5",
+        lg: "h-12 px-7",
+        icon: "h-9 w-9 p-0",
       },
     },
     defaultVariants: {
-      variant: "default",
-      size: "default",
+      variant: "primary",
+      size: "md",
     },
   }
 )

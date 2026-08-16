@@ -3,6 +3,7 @@ import { createPortal } from "react-dom"
 import { AnimatePresence, motion } from "motion/react"
 import { X } from "lucide-react"
 import Lenis from "lenis"
+import { Button } from "@/components/ui/button"
 import { LENIS_OPTIONS } from "@/lib/lenis"
 
 export function ProjectModal({ open, onClose, layoutId, children }: { open: boolean; onClose: () => void; layoutId?: string; children: React.ReactNode }) {
@@ -93,13 +94,15 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
             exit={{ opacity: 0 }}
             transition={{ layout: { duration: 0.35, ease: [0.16, 1, 0.3, 1] }, opacity: { duration: 0.2 } }}
           >
-            <button
+            <Button
+              variant="secondary"
+              size="icon"
               onClick={onClose}
               aria-label="Close"
-              className="absolute top-4 right-4 z-10 inline-flex items-center justify-center w-9 h-9 rounded-xl bg-white/90 border border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-300 transition-colors shadow-sm"
+              className="absolute top-4 right-4 z-10"
             >
               <X className="w-4 h-4" />
-            </button>
+            </Button>
             <div ref={scrollRef} className="pretty-scrollbar h-full overflow-y-auto rounded-3xl" data-lenis-prevent>
               <div ref={contentRef} className="max-w-[1200px] mx-auto">
                 {children}

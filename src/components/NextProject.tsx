@@ -1,4 +1,6 @@
+import { ArrowRight } from "lucide-react"
 import { useNavigate } from "react-router-dom"
+import { Button } from "@/components/ui/button"
 import { projects, tagStyles } from "@/data/projects"
 import { useLang } from "@/i18n/LanguageContext"
 
@@ -8,8 +10,8 @@ interface NextProjectProps {
 }
 
 const copy = {
-  pl: { label: "Następny projekt", cta: "Zobacz projekt →" },
-  en: { label: "Next project", cta: "View project →" },
+  pl: { label: "Następny projekt", cta: "Zobacz projekt" },
+  en: { label: "Next project", cta: "View project" },
 }
 
 export function NextProject({ currentHref, dark = true }: NextProjectProps) {
@@ -52,18 +54,15 @@ export function NextProject({ currentHref, dark = true }: NextProjectProps) {
         {desc && (
           <p className={`leading-relaxed mb-8 ${dark ? "text-white/50" : "text-slate-500"}`}>{desc}</p>
         )}
-        {next.href ? (
-          <button
-            onClick={goToNext}
-            className={`w-full md:w-auto font-semibold px-6 py-3 rounded-xl transition-colors ${dark ? "bg-white text-[#0F172A] [@media(hover:hover)]:hover:bg-slate-100" : "bg-[#0F172A] text-white [@media(hover:hover)]:hover:bg-[#1E293B]"}`}
-          >
-            {t.cta}
-          </button>
-        ) : (
-          <button disabled className={`font-semibold px-6 py-3 rounded-xl opacity-40 cursor-not-allowed ${dark ? "bg-white text-[#0F172A]" : "bg-[#0F172A] text-white"}`}>
-            {t.cta}
-          </button>
-        )}
+        <Button
+          size="lg"
+          variant={dark ? "inverse" : "primary"}
+          className="w-full md:w-auto"
+          onClick={goToNext}
+          disabled={!next.href}
+        >
+          {t.cta} <ArrowRight className="w-4 h-4 animate-bounce-right" />
+        </Button>
       </div>
 
       {/* Image — desktop only */}
