@@ -91,15 +91,13 @@ function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: 
       <div className={`absolute inset-0 ${project.bg}`}>
         {project.video ? (
           <HoverVideo src={project.video} poster={project.image} />
-        ) : "image" in project && project.image ? (
+        ) : (
           <img
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             style={{ objectPosition: project.imagePosition ?? "center" }}
           />
-        ) : (
-          <div className={`w-full h-full bg-gradient-to-br ${project.color} transition-transform duration-500 group-hover:scale-105`} />
         )}
       </div>
 
