@@ -208,7 +208,7 @@ function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] 
               backgroundColor: active === c.id ? PRIMARY : "#CBD5E1",
             }}
           />
-          <span className="absolute right-6 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md bg-[#0F172A] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+          <span className="absolute right-6 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md bg-pf-900 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             {c.label}
           </span>
         </button>
@@ -260,12 +260,12 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
                     to="/"
                     onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
                     aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-pf-ink flex-shrink-0 hover:border-slate-300 transition-colors"
                   >
                     <ArrowLeft className="w-4 h-4 animate-bounce-left" />
                   </Link>
                 )}
-                <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-[#0F172A]">
+                <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-pf-ink">
                   Case Study<span className="mx-2 opacity-40">—</span>
                   <span style={{ color: PRIMARY }}>{t.heroEyebrow}</span>
                 </span>
@@ -274,7 +274,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
 
             <StaggerItem>
               <AutoFitHeading
-                className="mt-8 font-extrabold text-[#0F172A]"
+                className="mt-8 font-extrabold text-pf-ink"
                 style={{ fontSize: "clamp(3rem, 10vw, 8.25rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}
                 maxLines={3}
                 activeKey={lang}
@@ -299,7 +299,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
                 {t.meta.map((item) => (
                   <div key={item.label} className="bg-white px-6 py-6">
                     <Tag color={PRIMARY}>{item.label}</Tag>
-                    <p className="font-extrabold text-lg text-[#0F172A] mt-2">{item.value}</p>
+                    <p className="font-extrabold text-lg text-pf-ink mt-2">{item.value}</p>
                   </div>
                 ))}
               </div>
@@ -315,7 +315,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
               <div className="mt-14 rounded-3xl p-10" style={{ backgroundColor: "#94A3B814" }}>
                 <span className="block text-[13px] font-extrabold tracking-[0.24em] uppercase mb-3.5" style={{ color: PRIMARY }}>{t.roleLabel}</span>
                 <p className="font-medium text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 1.1875rem)", lineHeight: 1.6 }}>
-                  <strong className="font-bold text-[#0F172A]">{t.roleLead}</strong> {t.roleDesc}
+                  <strong className="font-bold text-pf-ink">{t.roleLead}</strong> {t.roleDesc}
                 </p>
               </div>
             </StaggerItem>
@@ -327,7 +327,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         {/* ── PROBLEM ── */}
         <div id="s01" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-8">{t.s01.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-8">{t.s01.h2}</h2>
             <p className="text-slate-500 leading-relaxed mb-6">{t.s01.p1}</p>
             <p className="text-slate-500 leading-relaxed mb-12">{t.s01.p2}</p>
           </Reveal>
@@ -341,7 +341,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         {/* ── SOLUTION ── */}
         <div id="s02" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s02.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-12">{t.s02.h2}</h2>
           </Reveal>
 
           <Reveal className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -359,7 +359,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         {/* ── DISCOVERY ── */}
         <div id="s03" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-8">{t.s03.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-8">{t.s03.h2}</h2>
             <p className="text-slate-500 leading-relaxed mb-6">{t.s03.p1}</p>
             <p className="text-slate-500 leading-relaxed mb-8">{t.s03.p2}</p>
           </Reveal>
@@ -381,7 +381,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
           </Reveal>
 
           <Reveal>
-            <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s03.insightsH3}</h3>
+            <h3 className="text-lg font-bold text-pf-ink mb-4">{t.s03.insightsH3}</h3>
           </Reveal>
           <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {t.s03.insights.map((item) => (
@@ -394,7 +394,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
           </StaggerGroup>
 
           <Reveal>
-            <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s03.personaH3}</h3>
+            <h3 className="text-lg font-bold text-pf-ink mb-4">{t.s03.personaH3}</h3>
             <p className="text-slate-500 leading-relaxed mb-8">{t.s03.personaDesc}</p>
             <img src="/banneroza/5.jpg" alt="Persona" className="w-full rounded-2xl border border-slate-200 object-cover" />
           </Reveal>
@@ -405,7 +405,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         {/* ── PROCES ── */}
         <div id="s04" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-8">{t.s04.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-8">{t.s04.h2}</h2>
             <p className="text-slate-500 leading-relaxed mb-12">{t.s04.p}</p>
           </Reveal>
           <Reveal>
@@ -418,17 +418,17 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         {/* ── DESIGN ── */}
         <div id="s05" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s05.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-12">{t.s05.h2}</h2>
           </Reveal>
 
           <Reveal>
-            <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s05.lofiH3}</h3>
+            <h3 className="text-lg font-bold text-pf-ink mb-4">{t.s05.lofiH3}</h3>
             <p className="text-slate-500 leading-relaxed mb-8">{t.s05.lofiP}</p>
             <img src="/banneroza/7.jpg" alt="Low fidelity wireframes" className="w-full rounded-2xl border border-slate-200 object-cover mb-12" />
           </Reveal>
 
           <Reveal>
-            <h3 className="text-lg font-bold text-[#0F172A] mb-4">{t.s05.hifiH3}</h3>
+            <h3 className="text-lg font-bold text-pf-ink mb-4">{t.s05.hifiH3}</h3>
             <p className="text-slate-500 leading-relaxed mb-8">{t.s05.hifiP}</p>
             <img src="/banneroza/8.jpg" alt="High fidelity mockup" className="w-full rounded-2xl border border-slate-200 object-cover" />
           </Reveal>
@@ -439,7 +439,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         {/* ── WNIOSKI ── */}
         <div id="s06" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-4">{t.s06.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-4">{t.s06.h2}</h2>
             <p className="text-slate-500 leading-relaxed mb-12">{t.s06.intro}</p>
           </Reveal>
 

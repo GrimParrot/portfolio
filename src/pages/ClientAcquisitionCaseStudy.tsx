@@ -327,7 +327,7 @@ export function ClientAcquisitionCaseStudy() {
                     to="/"
                     onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
                     aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-pf-ink flex-shrink-0 hover:border-slate-300 transition-colors"
                   >
                     <ArrowLeft className="w-4 h-4 animate-bounce-left" />
                   </Link>

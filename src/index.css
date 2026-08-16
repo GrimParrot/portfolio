@@ -16,9 +16,11 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    /* body reads this, so it is the default text colour of the whole site —
+       it was #09090B, a fourth near-black one step off --pf-primary-900. */
+    --foreground: 0 0% 4%;          /* --pf-primary-900  #0A0A0A */
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 0 0% 4%;     /* --pf-primary-900  #0A0A0A */
     /* This block is the Tailwind bridge, not a second source of truth. Values
        mirror styles/tokens.css; they stay in HSL-triplet form only because
        Tailwind needs that shape for opacity modifiers like `bg-primary/90`.

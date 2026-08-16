@@ -212,7 +212,7 @@ function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] 
               backgroundColor: active === c.id ? PRIMARY : "#CBD5E1",
             }}
           />
-          <span className="absolute right-6 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md bg-[#0F172A] text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+          <span className="absolute right-6 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md bg-pf-900 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
             {c.label}
           </span>
         </button>
@@ -286,7 +286,7 @@ function StepCard({ step, title, desc, img, imgAlt, contain, height = 420 }: { s
   return (
     <div className="group rounded-3xl overflow-hidden pt-10 px-10" style={{ height, backgroundColor: "#94A3B814" }}>
       <div className="flex items-start justify-between gap-4 mb-3">
-        <h3 className="text-2xl font-bold text-[#0F172A]">{title}</h3>
+        <h3 className="text-2xl font-bold text-pf-ink">{title}</h3>
         <span className="text-[13px] font-medium tracking-widest uppercase flex-shrink-0" style={{ color: PRIMARY }}>{step}</span>
       </div>
       <p className="text-slate-500 leading-relaxed">{desc}</p>
@@ -305,7 +305,7 @@ function StepCard({ step, title, desc, img, imgAlt, contain, height = 420 }: { s
 
 function ImageCard({ img, imgAlt, height = 420 }: { img: string; imgAlt: string; height?: number }) {
   return (
-    <div className="rounded-3xl overflow-hidden" style={{ height, backgroundColor: "#0F172A" }}>
+    <div className="rounded-3xl overflow-hidden" style={{ height, backgroundColor: "var(--pf-primary-900)" }}>
       <img src={img} alt={imgAlt} className="w-full h-full object-cover" style={{ objectPosition: "top" }} />
     </div>
   )
@@ -383,13 +383,13 @@ function StatCard({ num, caption, active, className = "", dark = false, large = 
     : Math.round(count).toString()
   const display = `${prefix}${formatted}${suffix}`
   const numberColor = dark ? "#FFFFFF" : "#16181D"
-  const captionColor = dark ? "rgba(255,255,255,.7)" : "#0F172A"
+  const captionColor = dark ? "rgba(255,255,255,.7)" : "var(--pf-primary-900)"
 
   return (
     <div
       className={`relative overflow-hidden rounded-[18px] flex flex-col justify-between h-full transition-transform duration-300 hover:-translate-y-1 ${className}`}
       style={{
-        backgroundColor: dark ? "#0F172A" : "#94A3B814",
+        backgroundColor: dark ? "var(--pf-primary-900)" : "#94A3B814",
         padding: large ? "40px 42px" : "26px 28px",
         ...(image ? { backgroundImage: `url(${image})`, backgroundSize: "cover", backgroundPosition: "center" } : {}),
       }}
@@ -458,11 +458,11 @@ export function LocaloCaseStudy() {
                   to="/"
                   onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
                   aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                  className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors"
+                  className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-pf-ink flex-shrink-0 hover:border-slate-300 transition-colors"
                 >
                   <ArrowLeft className="w-4 h-4 animate-bounce-left" />
                 </Link>
-                <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-[#0F172A]">
+                <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-pf-ink">
                   Case Study<span className="mx-2 opacity-40">—</span>
                   <span style={{ color: PRIMARY }}>{t.heroEyebrow}</span>
                 </span>
@@ -471,7 +471,7 @@ export function LocaloCaseStudy() {
 
             <StaggerItem>
               <AutoFitHeading
-                className="mt-8 font-extrabold text-[#0F172A]"
+                className="mt-8 font-extrabold text-pf-ink"
                 style={{ fontSize: "clamp(3rem, 10vw, 8.25rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}
                 maxLines={3}
                 activeKey={lang}
@@ -496,7 +496,7 @@ export function LocaloCaseStudy() {
                 {t.meta.map((item) => (
                   <div key={item.label} className="bg-white px-6 py-6">
                     <Tag color={PRIMARY}>{item.label}</Tag>
-                    <p className="font-extrabold text-lg text-[#0F172A] mt-2">{item.value}</p>
+                    <p className="font-extrabold text-lg text-pf-ink mt-2">{item.value}</p>
                   </div>
                 ))}
               </div>
@@ -513,11 +513,11 @@ export function LocaloCaseStudy() {
                 <div className="order-2 md:order-none">
                   <span className="block text-[13px] font-extrabold tracking-[0.24em] uppercase mb-3.5" style={{ color: PRIMARY }}>{t.roleLabel}</span>
                   <p className="font-medium text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 1.1875rem)", lineHeight: 1.6 }}>
-                    <strong className="font-bold text-[#0F172A]">{t.roleLead}</strong> {t.roleDesc}
+                    <strong className="font-bold text-pf-ink">{t.roleLead}</strong> {t.roleDesc}
                   </p>
                 </div>
                 <AutoFitHeading
-                  className="font-extrabold text-[#0F172A] order-1 md:order-none"
+                  className="font-extrabold text-pf-ink order-1 md:order-none"
                   style={{ fontSize: "clamp(2.375rem, 6vw, 4.25rem)", lineHeight: 1, letterSpacing: "-0.035em" }}
                   maxLines={2}
                   heading={false}
@@ -537,7 +537,7 @@ export function LocaloCaseStudy() {
         {/* ── 01 ── */}
         <div id="s01" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s01.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-12">{t.s01.h2}</h2>
           </Reveal>
 
           <Reveal>
@@ -617,14 +617,14 @@ export function LocaloCaseStudy() {
         {/* ── 04 ── */}
         <div id="s04" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s04.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-6">{t.s04.h2}</h2>
             <p className="text-slate-500 leading-relaxed mb-12">{t.s04.intro}</p>
           </Reveal>
 
           {t.s04.steps.map((feature, i) => (
             "laptopMockup" in feature && feature.laptopMockup ? (
               <Reveal key={i} className="mb-16">
-                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
+                <h3 className="text-2xl font-bold text-pf-ink mb-3">{feature.title}</h3>
                 <p className="text-slate-500 leading-relaxed mb-10">{feature.desc}</p>
                 <LaptopMockup images={feature.laptopImages ?? []} />
               </Reveal>
@@ -642,7 +642,7 @@ export function LocaloCaseStudy() {
               </Reveal>
             ) : "bleedImg" in feature && feature.bleedImg ? (
               <Reveal key={i} className="mb-16">
-                <h3 className="text-2xl font-bold text-[#0F172A] mb-3">{feature.title}</h3>
+                <h3 className="text-2xl font-bold text-pf-ink mb-3">{feature.title}</h3>
                 <p className="text-slate-500 leading-relaxed mb-10">{feature.desc}</p>
                 <img src={feature.img} alt={feature.imgAlt ?? ""} className="w-full" />
               </Reveal>
@@ -659,13 +659,13 @@ export function LocaloCaseStudy() {
         {/* ── 03 ── */}
         <div id="s03" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s03.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-12">{t.s03.h2}</h2>
           </Reveal>
 
           <Reveal className="mb-12">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mb-6">
               <div>
-                <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{t.s03.bodyH3}</h3>
+                <h3 className="text-lg font-semibold text-pf-ink mb-3">{t.s03.bodyH3}</h3>
                 <p className="text-slate-500 leading-relaxed">{t.s03.body}</p>
               </div>
               <div className="grid grid-cols-2 gap-6">
@@ -690,20 +690,20 @@ export function LocaloCaseStudy() {
 
           <Reveal className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center mb-12 md:[&>*:first-child]:order-2">
             <div>
-              <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{t.s03.flowH3}</h3>
+              <h3 className="text-lg font-semibold text-pf-ink mb-3">{t.s03.flowH3}</h3>
               <p className="text-slate-500 leading-relaxed">{t.s03.flowDesc}</p>
             </div>
             <img src="/flow.png" alt="User flow, Client Acquisition" className="w-full rounded-2xl border border-slate-200" />
           </Reveal>
 
           <Reveal className="mt-16 mb-6">
-            <h3 className="text-lg font-semibold text-[#0F172A] mb-3">{t.s03.synthesisH3}</h3>
+            <h3 className="text-lg font-semibold text-pf-ink mb-3">{t.s03.synthesisH3}</h3>
             <p className="text-slate-500 leading-relaxed mb-6">{t.s03.synthesisDesc}</p>
             <img src="/summary.png" alt="Research synthesis" className="w-full rounded-2xl border border-slate-200" />
           </Reveal>
 
           <Reveal className="mt-16 mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-6">{t.s03.lofiH3}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-6">{t.s03.lofiH3}</h2>
             <div className="flex flex-col gap-5">
               <ImageMarquee images={t.s03.lofiImages.slice(0, 4)} height={280} />
               <ImageMarquee images={t.s03.lofiImages.slice(4, 8)} height={280} reverse />
@@ -731,7 +731,7 @@ export function LocaloCaseStudy() {
         {/* ── 05 ── */}
         <div id="s05" className="py-20 md:py-28">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-[#0F172A] mb-12">{t.s05.h2}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-12">{t.s05.h2}</h2>
           </Reveal>
           <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {t.s05.items.map((item, i) => {

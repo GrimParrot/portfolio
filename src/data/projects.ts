@@ -1,7 +1,7 @@
 export type ProjectTag = "UI" | "Case Study" | "Web"
 
 export const tagStyles: Record<ProjectTag, string> = {
-  "UI": "bg-[#0F172A] text-white",
+  "UI": "bg-pf-900 text-white",
   "Case Study": "bg-[#0ABA53] text-white",
   "Web": "bg-[#466AFA] text-white",
 }

@@ -26,15 +26,15 @@ export function NextProject({ currentHref, dark = true }: NextProjectProps) {
   const title = lang === "pl" && next.title_pl ? next.title_pl : next.title
 
   return (
-    <div className={`mt-8 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-10 ${dark ? "bg-[#0F172A]" : "border border-slate-200"}`}>
+    <div className={`mt-8 rounded-2xl p-8 flex flex-col md:flex-row items-center gap-10 ${dark ? "bg-pf-900" : "border border-slate-200"}`}>
       <div className="flex-1 min-w-0">
         <span className={`text-[13px] font-medium tracking-widest uppercase ${dark ? "text-white/40" : "text-slate-400"}`}>{t.label}</span>
         <div className="mt-3">
-          <span className={`inline-block text-sm font-semibold px-3 py-1.5 rounded-xl ${dark && next.tag === "UI" ? "bg-white text-[#0F172A]" : tagStyles[next.tag]}`}>{next.tag}</span>
+          <span className={`inline-block text-sm font-semibold px-3 py-1.5 rounded-xl ${dark && next.tag === "UI" ? "bg-white text-pf-ink" : tagStyles[next.tag]}`}>{next.tag}</span>
         </div>
         <h3
           onClick={goToNext}
-          className={`text-xl md:text-3xl font-black mt-3 mb-4 leading-snug cursor-pointer transition-colors ${dark ? "text-white hover:text-white/70" : "text-[#0F172A] hover:text-slate-600"}`}
+          className={`text-xl md:text-3xl font-black mt-3 mb-4 leading-snug cursor-pointer transition-colors ${dark ? "text-white hover:text-white/70" : "text-pf-ink hover:text-slate-600"}`}
         >
           {title}
         </h3>

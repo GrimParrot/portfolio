@@ -36,7 +36,7 @@ export const copy = {
         { num: "+145%", caption: "Więcej sesji na funkcji", color: "#0ABA53", icon: "sessions" },
         { num: "5,5×", caption: "Użytkownicy funkcji płacą częściej", color: "#0ABA53", icon: "pay" },
       ],
-      lastPara: <>Funkcja zwiększyła postrzeganą wartość wyższych tierów i obniżyła <strong className="text-slate-700">churn</strong> wśród agencji z wieloma klientami. Zanotowaliśmy wzrost <strong style={{ color: "#0F172A", fontWeight: 800 }}>adopcji funkcji</strong> oraz pośredni wpływ na <strong className="text-slate-700">liczbę zarządzanych profili</strong>, kluczową metrykę przychodu platformy.</>,
+      lastPara: <>Funkcja zwiększyła postrzeganą wartość wyższych tierów i obniżyła <strong className="text-slate-700">churn</strong> wśród agencji z wieloma klientami. Zanotowaliśmy wzrost <strong style={{ color: "var(--pf-primary-900)", fontWeight: 800 }}>adopcji funkcji</strong> oraz pośredni wpływ na <strong className="text-slate-700">liczbę zarządzanych profili</strong>, kluczową metrykę przychodu platformy.</>,
     },
     s02: {
       h2: "Kluczowe odkrycia",
@@ -148,7 +148,7 @@ export const copy = {
         { num: "+145%", caption: "More sessions on the feature", color: "#0ABA53", icon: "sessions" },
         { num: "5.5×", caption: "Feature users pay more often", color: "#0ABA53", icon: "pay" },
       ],
-      lastPara: <>The feature increased the perceived value of higher tiers and lowered <strong className="text-slate-700">churn</strong> among agencies with multiple clients. We saw growth in <strong style={{ color: "#0F172A", fontWeight: 800 }}>feature adoption</strong> and an indirect impact on <strong className="text-slate-700">growth in managed profiles</strong>, a key revenue metric for the platform.</>,
+      lastPara: <>The feature increased the perceived value of higher tiers and lowered <strong className="text-slate-700">churn</strong> among agencies with multiple clients. We saw growth in <strong style={{ color: "var(--pf-primary-900)", fontWeight: 800 }}>feature adoption</strong> and an indirect impact on <strong className="text-slate-700">growth in managed profiles</strong>, a key revenue metric for the platform.</>,
     },
     s02: {
       h2: "Key findings",

@@ -140,7 +140,7 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
             to="/"
             onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
             aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-            className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-[#0F172A] flex-shrink-0 hover:border-slate-300 transition-colors mb-12"
+            className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-pf-ink flex-shrink-0 hover:border-slate-300 transition-colors mb-12"
           >
             <ArrowLeft className="w-4 h-4 animate-bounce-left" />
           </Link>
@@ -150,7 +150,7 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
           <Reveal className="flex flex-col gap-6">
             <FitHeading
               maxLines={2}
-              className="font-extrabold text-[#0F172A]"
+              className="font-extrabold text-pf-ink"
               style={{ fontSize: "clamp(3rem, 10vw, 8.25rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}
             >
               {copy.title}
@@ -181,7 +181,7 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
             <Fragment key={i}>
               {section.title && (
                 <Reveal>
-                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#0F172A]">{section.title}</h2>
+                  <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-pf-ink">{section.title}</h2>
                 </Reveal>
               )}
               {section.images.map((row, j) =>
