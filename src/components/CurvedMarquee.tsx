@@ -48,7 +48,7 @@ export function CurvedMarquee({
   wavelength = 300,
   speed = 40,
   fontSize = 32,
-  color = "var(--color-accent-green, #0ABA53)",
+  color = "var(--pf-brand-green)",
   separator = " • ",
   separatorColor,
   reversed = false,

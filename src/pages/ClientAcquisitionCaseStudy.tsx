@@ -229,7 +229,7 @@ function ChapterNav({ chapters }: { chapters: { id: string; label: string }[] })
             <span
               style={{
                 width: 8, height: 8, borderRadius: "50%", flexShrink: 0,
-                background: isActive ? "var(--pf-primary-900)" : hot ? "var(--pf-text-muted)" : "var(--pf-primary-200, #C9C9C9)",
+                background: isActive ? "var(--pf-primary-900)" : hot ? "var(--pf-text-muted)" : "var(--pf-primary-200)",
                 transition: "var(--pf-transition)",
               }}
             />

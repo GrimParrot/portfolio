@@ -1,4 +1,4 @@
-@import "./design-tokens.css";
+@import "./styles/tokens.css";
 
 @tailwind base;
 @tailwind components;
@@ -19,18 +19,23 @@
     --foreground: 240 10% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
-    /* #0A0A0A — kolor przycisku "See my work" z heroa, obowiazuje wszedzie */
+    /* This block is the Tailwind bridge, not a second source of truth. Values
+       mirror styles/tokens.css; they stay in HSL-triplet form only because
+       Tailwind needs that shape for opacity modifiers like `bg-primary/90`.
+       Change a colour there first, then mirror it here.
+         --primary  = --pf-primary-900  #0A0A0A
+         --border   = --pf-border       #E7E7E7 */
     --primary: 0 0% 4%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 262 80% 50%;
+    --secondary: 0 0% 96%;          /* --pf-primary-50   #F5F5F5 */
+    --secondary-foreground: 0 0% 4%;
+    --muted: 0 0% 96%;              /* --pf-primary-50   #F5F5F5 */
+    --muted-foreground: 0 0% 52%;   /* --pf-primary-500  #848484 */
+    --accent: 0 0% 96%;             /* --pf-primary-50   #F5F5F5 */
+    --accent-foreground: 0 0% 4%;
+    --border: 0 0% 90.6%;           /* --pf-border       #E7E7E7 */
+    --input: 0 0% 91%;              /* --pf-border       #E7E7E7 */
+    --ring: 225 94% 63%;            /* --pf-accent-500   #466AFA */
     --radius: 0.75rem;
   }
 

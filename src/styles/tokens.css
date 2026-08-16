@@ -1,0 +1,157 @@
+/* Global design tokens.
+ *
+ * These started life inside styles/raporty-ds.css, scoped to the Raporty and
+ * Client Acquisition case studies. They are now the site-wide system: imported
+ * once from index.css and mirrored into Tailwind class names in
+ * tailwind.config.js, so a colour can be reached as `text-pf-ink` instead of
+ * being retyped as `text-[#0A0A0A]`.
+ *
+ * raporty-ds.css keeps only what is genuinely page-specific: the .pf-* type
+ * classes and the responsive grid overrides.
+ *
+ * The shadcn layer in index.css (--primary, --border, ...) stays in its own
+ * HSL-triplet format because Tailwind needs that shape for opacity modifiers
+ * like `bg-primary/90`. Its values mirror this file — see the note there.
+ */
+
+/* ---- colours ---- */
+:root{
+  --pf-primary-900:#0A0A0A;
+  --pf-primary-850:#141414;
+  --pf-primary-800:#282828;
+  --pf-primary-700:#474747;
+  /* Was #858585 while --pf-text-muted sat at #848484 one shade away. Collapsed
+     onto the darker of the two: the lighter one already fell short of AA for
+     small text, so the pair resolves in the direction that does not make
+     contrast worse. Nothing read this token by name, so nothing shifts. */
+  --pf-primary-500:#848484;
+  --pf-primary-300:#C2C2C2;
+  --pf-primary-200:#D4D4D4;
+  --pf-primary-100:#E7E7E7;
+  --pf-primary-50:#F5F5F5;
+  --pf-white:#FFFFFF;
+
+  --pf-accent-900:#283A82;
+  --pf-accent-700:#3752BE;
+  --pf-accent-500:#466AFA;
+  --pf-accent-300:#90A6FC;
+  --pf-accent-100:#E3E9FE;
+  --pf-accent-50:#F6F8FF;
+  --pf-accent-gradient:linear-gradient(135deg,var(--pf-accent-700),var(--pf-accent-300));
+  --pf-accent-gradient-light:linear-gradient(135deg,var(--pf-accent-100),var(--pf-accent-50));
+
+  /* The portfolio's own green, outside the case studies: the "Case Study" tag
+     on the homepage and the curved marquee. Deliberately not folded into
+     --pf-success-*, which carries meaning (a good result) rather than brand. */
+  --pf-brand-green:#0ABA53;
+
+  --pf-success-700:#3D9A5C;
+  --pf-success-500:#4CAF72;
+  --pf-success-300:#A8D8B0;
+  --pf-success-100:#F4FBF6;
+
+  --pf-error-700:#DC2626;
+  --pf-error-500:#EF4444;
+  --pf-error-300:#FCA5A5;
+  --pf-error-100:#FFF3F0;
+
+  --pf-text-primary:var(--pf-primary-900);
+  /* Was #121212, a fourth near-black used only by .pf-quote. Folded into the
+     scale: quotes get marginally darker and one dark leaves the system. */
+  --pf-text-ink:var(--pf-primary-900);
+  --pf-text-body:var(--pf-primary-700);
+  --pf-text-muted:var(--pf-primary-500);
+  /* Kept separate from --pf-text-muted on purpose: at #737373 it clears AA for
+     small text and muted does not, so collapsing them would cost contrast. */
+  --pf-text-subtle:#737373;
+  --pf-text-faint:var(--pf-primary-300);
+  --pf-text-on-dark:var(--pf-white);
+  --pf-text-on-dark-body:#E7E7E7;
+  --pf-text-on-dark-muted:#C2C2C2;
+  --pf-text-accent:var(--pf-accent-500);
+  --pf-text-accent-deep:var(--pf-accent-900);
+
+  --pf-surface-page:var(--pf-white);
+  --pf-surface-subtle:var(--pf-primary-50);
+  --pf-surface-card:var(--pf-white);
+  --pf-surface-card-subtle:var(--pf-primary-50);
+  --pf-surface-dark:var(--pf-primary-900);
+  --pf-surface-dark-card:var(--pf-primary-850);
+  --pf-surface-accent:var(--pf-accent-100);
+  --pf-surface-error:var(--pf-error-100);
+
+  --pf-border:var(--pf-primary-100);
+  --pf-border-error:var(--pf-error-300);
+
+  /* Per case study accent. Each page still declares its own `const PRIMARY`
+     for inline styles; these exist so the values live in one place and can be
+     reached from a class. Localo and Raporty share the blue on purpose. */
+  --pf-cs-localo:var(--pf-accent-500);
+  --pf-cs-raporty:var(--pf-accent-500);
+  --pf-cs-naturalnie:#32685B;
+  --pf-cs-kafejeto:#8EBD3F;
+  --pf-cs-banneroza:#DD8100;
+}
+
+/* ---- typography ---- */
+:root{
+  --pf-font-display:"Bricolage Grotesque",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --pf-font-body:Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+
+  --pf-h1-size:clamp(40px, 10vw, 126px);   --pf-h1-lh:clamp(44px, 10.5vw, 136px);  --pf-h1-ls:0.02em;   --pf-h1-weight:700;
+  --pf-h2-size:clamp(32px, 7vw, 80px);    --pf-h2-lh:clamp(38px, 8vw, 108px);  --pf-h2-ls:0.02em;   --pf-h2-weight:700;
+  --pf-h3-size:clamp(28px, 5vw, 48px);    --pf-h3-lh:clamp(36px, 6vw, 72px);   --pf-h3-ls:-0.01em;  --pf-h3-weight:600;
+  --pf-h4-size:24px;    --pf-h4-lh:37px;   --pf-h4-ls:0em;      --pf-h4-weight:600;
+  --pf-quote-size:clamp(22px, 4.5vw, 36px); --pf-quote-lh:clamp(30px, 6vw, 48px);--pf-quote-ls:-0.01em;
+
+  --pf-body-lg-size:22px;   --pf-body-lg-lh:34px;
+  --pf-body-size:18px;      --pf-body-lh:30px;
+  --pf-caption-size:16px;   --pf-caption-lh:24px;
+  --pf-overline-size:16px;  --pf-overline-lh:22px;  --pf-overline-ls:0.1em;
+  --pf-eyebrow-size:12px;   --pf-eyebrow-lh:100%;   --pf-eyebrow-ls:0.2em;
+  --pf-microlabel-size:11px;--pf-microlabel-lh:100%;
+}
+
+/* ---- spacing ---- */
+:root{
+  --pf-space-xs:8px;
+  --pf-space-s:16px;
+  --pf-space-m:24px;
+  --pf-space-l:32px;
+  --pf-space-xl:48px;
+  --pf-space-2xl:64px;
+  --pf-space-3xl:80px;
+  --pf-space-4xl:120px;
+  --pf-space-5xl:160px;
+
+  --pf-container-max:1200px;
+  --pf-container-pad:160px;
+  --pf-fullbleed-pad-y:80px;
+  --pf-section-gap:120px;
+  --pf-section-item-gap:80px;
+  --pf-block-gap:48px;
+  --pf-header-gap:16px;
+  --pf-card-row-gap:24px;
+  --pf-card-pad:32px;
+  --pf-paragraph-gap:24px;
+}
+
+/* ---- elevation ---- */
+:root{
+  --pf-radius-xs:8px;
+  --pf-radius-s:10px;
+  --pf-radius-m:12px;
+  --pf-radius-lg:16px;
+  --pf-radius-xl:24px;
+  --pf-radius-2xl:32px;
+  --pf-radius-pill:999px;
+
+  --pf-hairline:1px solid var(--pf-border);
+  --pf-ring:inset 0 0 0 1px var(--pf-border);
+  --pf-ring-error:inset 0 0 0 1px var(--pf-border-error);
+  --pf-ring-dark:inset 0 0 0 1px var(--pf-primary-850);
+
+  --pf-ease:cubic-bezier(.2,.6,.2,1);
+  --pf-duration:180ms;
+  --pf-transition:all var(--pf-duration) var(--pf-ease);
+}

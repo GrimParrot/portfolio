@@ -12,15 +12,21 @@ const buttonVariants = cva(
       // przyklejony po tapnieciu — inaczej kazde wywolanie musi to obchodzic
       // u siebie, tak jak robil to wczesniej Navbar i HeroV2.
       variant: {
+        // primary is the one variant written against the shadcn bridge rather
+        // than the pf classes: it needs bg-primary/90 for its hover, and only
+        // the HSL-triplet tokens support an opacity modifier. Same colour
+        // either way — --primary mirrors --pf-primary-900.
         primary:
           "bg-primary text-primary-foreground [@media(hover:hover)]:hover:bg-primary/90",
         secondary:
-          "border border-slate-200 bg-white text-primary [@media(hover:hover)]:hover:border-slate-300 [@media(hover:hover)]:hover:bg-slate-50",
+          "border border-pf-line bg-pf-surface text-pf-ink [@media(hover:hover)]:hover:border-pf-200 [@media(hover:hover)]:hover:bg-pf-50",
+        // pf-subtle, not pf-muted: muted sits under the AA contrast floor for
+        // text this size, and a button label has to stay readable.
         ghost:
-          "text-slate-500 [@media(hover:hover)]:hover:bg-slate-100 [@media(hover:hover)]:hover:text-primary",
+          "text-pf-subtle [@media(hover:hover)]:hover:bg-pf-50 [@media(hover:hover)]:hover:text-pf-ink",
         // Primary postawiony na ciemnej plaszczyznie (karta NextProject).
         inverse:
-          "bg-white text-primary [@media(hover:hover)]:hover:bg-slate-100",
+          "bg-pf-surface text-pf-ink [@media(hover:hover)]:hover:bg-pf-50",
       },
       size: {
         md: "h-10 px-5",
