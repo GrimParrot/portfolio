@@ -140,7 +140,7 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
             to="/"
             onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
             aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-            className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-pf-ink flex-shrink-0 hover:border-slate-300 transition-colors mb-12"
+            className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-pf-line text-pf-ink flex-shrink-0 hover:border-pf-200 transition-colors mb-12"
           >
             <ArrowLeft className="w-4 h-4 animate-bounce-left" />
           </Link>
@@ -156,7 +156,7 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
               {copy.title}
             </FitHeading>
 
-            <p className="text-slate-600 font-medium" style={{ fontSize: "clamp(1.125rem, 1.8vw, 1.375rem)", maxWidth: "64ch", lineHeight: 1.5 }}>
+            <p className="text-pf-700 font-medium" style={{ fontSize: "clamp(1.125rem, 1.8vw, 1.375rem)", maxWidth: "64ch", lineHeight: 1.5 }}>
               {copy.caption}
             </p>
 
@@ -188,16 +188,16 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
                 Array.isArray(row) ? (
                   <Reveal key={j} className="grid grid-cols-2 gap-6 items-start">
                     {row.map((image) => (
-                      <img key={image.img} src={image.img} alt={image.alt} className="w-full h-auto block rounded-2xl border border-slate-200" />
+                      <img key={image.img} src={image.img} alt={image.alt} className="w-full h-auto block rounded-2xl border border-pf-line" />
                     ))}
                   </Reveal>
                 ) : "video" in row ? (
-                  <Reveal key={row.video} className="rounded-2xl overflow-hidden border border-slate-200" style={{ aspectRatio: "4/3" }}>
+                  <Reveal key={row.video} className="rounded-2xl overflow-hidden border border-pf-line" style={{ aspectRatio: "4/3" }}>
                     <HoverVideoCover src={row.video} poster={row.poster} />
                   </Reveal>
                 ) : (
                   <Reveal key={row.img}>
-                    <img src={row.img} alt={row.alt} className="w-full block rounded-2xl border border-slate-200" />
+                    <img src={row.img} alt={row.alt} className="w-full block rounded-2xl border border-pf-line" />
                   </Reveal>
                 )
               )}

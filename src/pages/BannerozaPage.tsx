@@ -205,7 +205,7 @@ function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] 
             style={{
               width: active === c.id ? 8 : 6,
               height: active === c.id ? 8 : 6,
-              backgroundColor: active === c.id ? PRIMARY : "#CBD5E1",
+              backgroundColor: active === c.id ? PRIMARY : "var(--pf-primary-200)",
             }}
           />
           <span className="absolute right-6 whitespace-nowrap text-[11px] font-medium px-2 py-1 rounded-md bg-pf-900 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
@@ -219,14 +219,14 @@ function ProgressRail({ chapters }: { chapters: { id: string; label: string }[] 
 
 function Tag({ children, color }: { children: React.ReactNode; color?: string }) {
   return (
-    <span className="text-[13px] font-bold tracking-widest uppercase text-slate-400" style={color ? { color } : undefined}>
+    <span className="text-[13px] font-bold tracking-widest uppercase text-pf-500" style={color ? { color } : undefined}>
       {children}
     </span>
   )
 }
 
 function Divider() {
-  return <hr className="border-t border-slate-100 my-0" />
+  return <hr className="border-t border-pf-50 my-0" />
 }
 
 export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {}) {
@@ -260,7 +260,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
                     to="/"
                     onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
                     aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-pf-ink flex-shrink-0 hover:border-slate-300 transition-colors"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-pf-line text-pf-ink flex-shrink-0 hover:border-pf-200 transition-colors"
                   >
                     <ArrowLeft className="w-4 h-4 animate-bounce-left" />
                   </Link>
@@ -287,7 +287,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
 
             <StaggerItem>
               <p
-                className="mt-10 text-slate-600 font-medium"
+                className="mt-10 text-pf-700 font-medium"
                 style={{ fontSize: "clamp(1.25rem, 2.2vw, 1.75rem)", maxWidth: "56ch", lineHeight: 1.5 }}
               >
                 {t.body}
@@ -295,7 +295,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-px rounded-[20px] border border-[#eef1f5] bg-[#eef1f5] overflow-hidden">
+              <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-px rounded-[20px] border border-pf-50 bg-pf-50 overflow-hidden">
                 {t.meta.map((item) => (
                   <div key={item.label} className="bg-white px-6 py-6">
                     <Tag color={PRIMARY}>{item.label}</Tag>
@@ -312,9 +312,9 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
             </StaggerItem>
 
             <StaggerItem>
-              <div className="mt-14 rounded-3xl p-10" style={{ backgroundColor: "#94A3B814" }}>
+              <div className="mt-14 rounded-3xl p-10" style={{ backgroundColor: "var(--pf-surface-subtle)" }}>
                 <span className="block text-[13px] font-extrabold tracking-[0.24em] uppercase mb-3.5" style={{ color: PRIMARY }}>{t.roleLabel}</span>
-                <p className="font-medium text-slate-500" style={{ fontSize: "clamp(1rem, 1.5vw, 1.1875rem)", lineHeight: 1.6 }}>
+                <p className="font-medium text-pf-subtle" style={{ fontSize: "clamp(1rem, 1.5vw, 1.1875rem)", lineHeight: 1.6 }}>
                   <strong className="font-bold text-pf-ink">{t.roleLead}</strong> {t.roleDesc}
                 </p>
               </div>
@@ -328,11 +328,11 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         <div id="s01" className="py-20 md:py-28">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-8">{t.s01.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-6">{t.s01.p1}</p>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s01.p2}</p>
+            <p className="text-pf-subtle leading-relaxed mb-6">{t.s01.p1}</p>
+            <p className="text-pf-subtle leading-relaxed mb-12">{t.s01.p2}</p>
           </Reveal>
           <Reveal>
-            <img src="/banneroza/1.jpg" alt="Problem, banners in cities" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <img src="/banneroza/1.jpg" alt="Problem, banners in cities" className="w-full rounded-2xl border border-pf-line object-cover" />
           </Reveal>
         </div>
 
@@ -346,11 +346,11 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
 
           <Reveal className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div>
-              <p className="text-slate-500 leading-relaxed mb-6">{t.s02.p1}</p>
-              <p className="text-slate-500 leading-relaxed mb-6">{t.s02.p2}</p>
-              <p className="text-slate-500 leading-relaxed">{t.s02.p3}</p>
+              <p className="text-pf-subtle leading-relaxed mb-6">{t.s02.p1}</p>
+              <p className="text-pf-subtle leading-relaxed mb-6">{t.s02.p2}</p>
+              <p className="text-pf-subtle leading-relaxed">{t.s02.p3}</p>
             </div>
-            <img src="/banneroza/3.jpg" alt="Szyldowe Rewolucje, solution" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <img src="/banneroza/3.jpg" alt="Szyldowe Rewolucje, solution" className="w-full rounded-2xl border border-pf-line object-cover" />
           </Reveal>
         </div>
 
@@ -360,8 +360,8 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         <div id="s03" className="py-20 md:py-28">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-8">{t.s03.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-6">{t.s03.p1}</p>
-            <p className="text-slate-500 leading-relaxed mb-8">{t.s03.p2}</p>
+            <p className="text-pf-subtle leading-relaxed mb-6">{t.s03.p1}</p>
+            <p className="text-pf-subtle leading-relaxed mb-8">{t.s03.p2}</p>
           </Reveal>
 
           <Reveal className="rounded-xl px-6 py-5 mb-12" style={{ background: "#FFF3E0" }}>
@@ -377,7 +377,7 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
           </Reveal>
 
           <Reveal>
-            <img src="/banneroza/4.jpg" alt="Research, quantitative data" className="w-full rounded-2xl border border-slate-200 object-cover mb-12" />
+            <img src="/banneroza/4.jpg" alt="Research, quantitative data" className="w-full rounded-2xl border border-pf-line object-cover mb-12" />
           </Reveal>
 
           <Reveal>
@@ -385,18 +385,18 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
           </Reveal>
           <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {t.s03.insights.map((item) => (
-              <StaggerItem key={item.title} className="border border-slate-200 rounded-xl p-6 transition-transform duration-300 hover:-translate-y-1">
+              <StaggerItem key={item.title} className="border border-pf-line rounded-xl p-6 transition-transform duration-300 hover:-translate-y-1">
                 <Lightbulb style={{ width: 24, height: 24, color: PRIMARY }} className="mb-3" />
-                <p className="font-semibold text-slate-900 mb-2">{item.title}</p>
-                <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+                <p className="font-semibold text-pf-ink mb-2">{item.title}</p>
+                <p className="text-pf-subtle leading-relaxed text-[15px]">{item.desc}</p>
               </StaggerItem>
             ))}
           </StaggerGroup>
 
           <Reveal>
             <h3 className="text-lg font-bold text-pf-ink mb-4">{t.s03.personaH3}</h3>
-            <p className="text-slate-500 leading-relaxed mb-8">{t.s03.personaDesc}</p>
-            <img src="/banneroza/5.jpg" alt="Persona" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <p className="text-pf-subtle leading-relaxed mb-8">{t.s03.personaDesc}</p>
+            <img src="/banneroza/5.jpg" alt="Persona" className="w-full rounded-2xl border border-pf-line object-cover" />
           </Reveal>
         </div>
 
@@ -406,10 +406,10 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         <div id="s04" className="py-20 md:py-28">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-8">{t.s04.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s04.p}</p>
+            <p className="text-pf-subtle leading-relaxed mb-12">{t.s04.p}</p>
           </Reveal>
           <Reveal>
-            <img src="/banneroza/6.jpg" alt="Information architecture" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <img src="/banneroza/6.jpg" alt="Information architecture" className="w-full rounded-2xl border border-pf-line object-cover" />
           </Reveal>
         </div>
 
@@ -423,14 +423,14 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
 
           <Reveal>
             <h3 className="text-lg font-bold text-pf-ink mb-4">{t.s05.lofiH3}</h3>
-            <p className="text-slate-500 leading-relaxed mb-8">{t.s05.lofiP}</p>
-            <img src="/banneroza/7.jpg" alt="Low fidelity wireframes" className="w-full rounded-2xl border border-slate-200 object-cover mb-12" />
+            <p className="text-pf-subtle leading-relaxed mb-8">{t.s05.lofiP}</p>
+            <img src="/banneroza/7.jpg" alt="Low fidelity wireframes" className="w-full rounded-2xl border border-pf-line object-cover mb-12" />
           </Reveal>
 
           <Reveal>
             <h3 className="text-lg font-bold text-pf-ink mb-4">{t.s05.hifiH3}</h3>
-            <p className="text-slate-500 leading-relaxed mb-8">{t.s05.hifiP}</p>
-            <img src="/banneroza/8.jpg" alt="High fidelity mockup" className="w-full rounded-2xl border border-slate-200 object-cover" />
+            <p className="text-pf-subtle leading-relaxed mb-8">{t.s05.hifiP}</p>
+            <img src="/banneroza/8.jpg" alt="High fidelity mockup" className="w-full rounded-2xl border border-pf-line object-cover" />
           </Reveal>
         </div>
 
@@ -440,16 +440,16 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
         <div id="s06" className="py-20 md:py-28">
           <Reveal>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-pf-ink mb-4">{t.s06.h2}</h2>
-            <p className="text-slate-500 leading-relaxed mb-12">{t.s06.intro}</p>
+            <p className="text-pf-subtle leading-relaxed mb-12">{t.s06.intro}</p>
           </Reveal>
 
-          <Reveal className="border border-slate-200 rounded-xl divide-y divide-slate-100 mb-12">
+          <Reveal className="border border-pf-line rounded-xl divide-y divide-pf-50 mb-12">
             {t.s06.items.map((item, i) => (
               <div key={i} className="flex gap-5 px-7 py-6">
-                <span className="font-semibold text-slate-400 flex-shrink-0 mt-0.5">{i + 1}</span>
+                <span className="font-semibold text-pf-500 flex-shrink-0 mt-0.5">{i + 1}</span>
                 <div>
-                  <p className="font-semibold text-slate-900 mb-1">{item.title}</p>
-                  <p className="text-slate-500 leading-relaxed text-[15px]">{item.desc}</p>
+                  <p className="font-semibold text-pf-ink mb-1">{item.title}</p>
+                  <p className="text-pf-subtle leading-relaxed text-[15px]">{item.desc}</p>
                 </div>
               </div>
             ))}

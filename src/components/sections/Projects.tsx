@@ -72,7 +72,7 @@ function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: 
   return (
     <div
       onClick={() => onOpen(project)}
-      className="group cursor-pointer rounded-2xl border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-colors duration-200 overflow-hidden relative"
+      className="group cursor-pointer rounded-2xl border border-pf-line hover:border-pf-200 hover:shadow-sm transition-colors duration-200 overflow-hidden relative"
       style={{ aspectRatio: "4/3" }}
     >
       {/* Image — full height */}
@@ -129,7 +129,7 @@ export function Projects() {
     <section id="projects" className="pt-24 pb-40 bg-white">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Case study — featured, unfiltered */}
-        <h2 className="text-3xl font-black text-slate-900 mb-6">{t.caseStudyHeading}</h2>
+        <h2 className="text-3xl font-black text-pf-ink mb-6">{t.caseStudyHeading}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-20">
           {featured.map((project) => (
             <ProjectTile key={project.title} project={project} showTag={false} onOpen={openFeatured} />
@@ -137,7 +137,7 @@ export function Projects() {
         </div>
 
         {/* Other projects */}
-        <h2 className="text-3xl font-black text-slate-900 mb-12">{t.otherHeading}</h2>
+        <h2 className="text-3xl font-black text-pf-ink mb-12">{t.otherHeading}</h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">

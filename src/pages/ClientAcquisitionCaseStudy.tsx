@@ -250,7 +250,7 @@ function ImageMarquee({ images, height = 420, duration = 32, reverse = false }: 
     <div className="ca-marquee-group relative w-full overflow-hidden" style={{ height }}>
       <div className="ca-marquee-track flex gap-5 h-full" style={{ width: "max-content", animationDuration: `${duration}s`, animationDirection: reverse ? "reverse" : "normal" }}>
         {doubled.map((im, i) => (
-          <img key={i} src={im.img} alt={im.alt} className="h-full w-auto rounded-2xl border border-slate-200 object-contain flex-shrink-0" />
+          <img key={i} src={im.img} alt={im.alt} className="h-full w-auto rounded-2xl border border-pf-line object-contain flex-shrink-0" />
         ))}
       </div>
       <style>{`
@@ -327,7 +327,7 @@ export function ClientAcquisitionCaseStudy() {
                     to="/"
                     onClick={() => setTimeout(() => smoothScrollTo("#projects"), 100)}
                     aria-label={lang === "pl" ? "Wróć do portfolio" : "Back to portfolio"}
-                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-slate-200 text-pf-ink flex-shrink-0 hover:border-slate-300 transition-colors"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-xl border border-pf-line text-pf-ink flex-shrink-0 hover:border-pf-200 transition-colors"
                   >
                     <ArrowLeft className="w-4 h-4 animate-bounce-left" />
                   </Link>
