@@ -23,6 +23,7 @@ import { HeroLab } from './pages/HeroLab.tsx'
 import { MarqueeLab } from './pages/MarqueeLab.tsx'
 import { LanguageProvider } from './i18n/LanguageContext.tsx'
 import { galleryPaths } from './data/projects.ts'
+import { Analytics } from '@vercel/analytics/react'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -46,6 +47,11 @@ createRoot(document.getElementById('root')!).render(
                 Client Acquisition redesign replaced that page. */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
+          {/* Inside the router on purpose: it reads the address on every
+              navigation, which is what makes each project modal count as its
+              own page view rather than everything landing on "/". Only sends
+              anything from a Vercel deployment; locally it just logs. */}
+          <Analytics />
         </SmoothScroll>
       </BrowserRouter>
     </LanguageProvider>
