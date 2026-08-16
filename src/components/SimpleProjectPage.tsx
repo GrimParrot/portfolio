@@ -137,9 +137,10 @@ export function SimpleProjectPage({ copy }: { copy: SimpleProjectCopy }) {
         <div className="flex flex-col gap-[60px]">
           <Reveal className="flex flex-col gap-6">
             {/* The 24px above the title comes from this column's gap-6 — the
-                same distance the case studies set for their eyebrow. Styling
-                matches Banneroza, which shares this hero's heading exactly. */}
-            <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-pf-ink">
+                same distance the case studies set for their eyebrow. Type and
+                colour are Raporty's: no text-transform here, so the string in
+                the copy file is what renders. */}
+            <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>
               {copy.heroEyebrow}
             </span>
             <FitHeading
