@@ -21,6 +21,13 @@ export interface Project {
   href?: string
 }
 
+/** Paths that open a project modal over the homepage instead of a page of
+ *  their own. The router, the scroll guard and the modal all read this one
+ *  list, so a gallery entry cannot end up addressable in one of them and not
+ *  the others. Deriving it from `featured` keeps it in step with the grid. */
+export const galleryPaths = (): string[] =>
+  projects.filter((p) => !p.featured && p.href).map((p) => p.href as string)
+
 export const projects: Project[] = [
   {
     title: "Case Study - Automated Reporting",

@@ -218,7 +218,6 @@ export const copy = {
         { title: "Głos developerów w projekcie jest ważny", text: "Wciągnęłam devów przed pierwszą makietą i to była najlepsza decyzja procesowa w tym projekcie. A i tak dane legacy wyszły w trakcie i trzeba je było rozwiązać projektowo – tagiem Legacy na karcie. Wcześniejsza rozmowa nie gwarantuje, że nic nie wyskoczy. Gwarantuje, że wyskoczy przy Tobie, a nie na produkcji." },
         { title: "Co bym zrobiła inaczej", text: "Testy przenieśliśmy na produkcję i przy jednej rzeczy zrobiłabym to inaczej: Growth Potential. To jedyne miejsce, w którym użytkownik oddaje decyzję algorytmowi, a algorytm poszedł do ludzi bez sprawdzenia, czy jego wynik zgadza się z ich intuicją." },
       ],
-      nextProjectLabel: "Zobacz kolejny projekt",
     },
   },
   en: {
@@ -440,7 +439,6 @@ export const copy = {
         { title: "Developers' voice in the project matters", text: "I brought engineers in before the first mockup, and that was the best process decision in this project. Legacy data still surfaced along the way and had to be solved with design — a Legacy tag on the card. Talking earlier doesn't guarantee nothing will come up. It guarantees it comes up with you, not in production." },
         { title: "What I'd do differently", text: "We moved testing to production, and there's one thing I'd do differently: Growth Potential. It's the only place where the user hands the decision to an algorithm, and the algorithm went out to people without checking whether its result matched their intuition." },
       ],
-      nextProjectLabel: "See the next project",
     },
   },
 }

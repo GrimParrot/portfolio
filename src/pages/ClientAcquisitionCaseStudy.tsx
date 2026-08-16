@@ -690,12 +690,6 @@ export function ClientAcquisitionCaseStudy() {
           </Reveal>
         </Section>
 
-        <Section gap={16} contentStyle={{ alignItems: "center" }}>
-          <Reveal style={{ width: "100%" }}>
-            <a href="#top" className="pf-h2" style={{ textAlign: "center", color: "var(--pf-text-primary)", textDecoration: "none", display: "block" }}>{t.podsumowanie.nextProjectLabel}</a>
-          </Reveal>
-        </Section>
-
       </div>
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px 128px", boxSizing: "border-box" }}>

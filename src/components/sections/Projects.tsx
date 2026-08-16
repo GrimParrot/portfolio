@@ -1,6 +1,6 @@
-import { useRef, useState } from "react"
+import { useRef } from "react"
 import { motion, AnimatePresence } from "motion/react"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { ArrowUpRight } from "lucide-react"
 import { projects, type ProjectTag, type Project } from "@/data/projects"
 import { useLang } from "@/i18n/LanguageContext"
@@ -122,8 +122,8 @@ function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: 
 }
 
 export function Projects() {
-  const [openProject, setOpenProject] = useState<Project | null>(null)
   const navigate = useNavigate()
+  const location = useLocation()
   const { lang } = useLang()
   const t = copy[lang]
 
@@ -132,10 +132,16 @@ export function Projects() {
   // Filter UI (t.filters) hidden for now — not needed yet, easy to re-add.
   const filtered = rest
 
-  const openFeatured = (project: Project) => {
-    if ("href" in project && project.href) navigate(project.href)
+  // Which modal is open is read off the URL rather than held in state, so a
+  // gallery project has a real address: analytics counts it as a view, the
+  // link can be shared, and Back closes the modal without extra wiring.
+  const openProject = projects.find((p) => p.href === location.pathname) ?? null
+
+  // Featured projects navigate to their own page, gallery projects to their
+  // modal URL — same call either way, the router decides what that path means.
+  const open = (project: Project) => {
+    if (project.href) navigate(project.href)
   }
-  const openInModal = (project: Project) => setOpenProject(project)
 
   return (
     <section id="projects" className="pt-24 pb-40 bg-white">
@@ -144,7 +150,7 @@ export function Projects() {
         <h2 className="text-3xl font-black text-pf-ink mb-6">{t.caseStudyHeading}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-20">
           {featured.map((project) => (
-            <ProjectTile key={project.title} project={project} showTag={false} onOpen={openFeatured} />
+            <ProjectTile key={project.title} project={project} showTag={false} onOpen={open} />
           ))}
         </div>
 
@@ -163,7 +169,7 @@ export function Projects() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
             >
-              <ProjectTile project={project} showTag={false} onOpen={openInModal} />
+              <ProjectTile project={project} showTag={false} onOpen={open} />
             </motion.div>
           ))}
           </AnimatePresence>
@@ -172,7 +178,7 @@ export function Projects() {
 
       <ProjectModal
         open={openProject !== null}
-        onClose={() => setOpenProject(null)}
+        onClose={() => navigate("/")}
         layoutId={openProject ? `project-card-${openProject.title}` : undefined}
       >
         {openProject?.href && modalContent[openProject.href]?.()}

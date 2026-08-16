@@ -5,11 +5,15 @@ import { getLenis } from './lib/lenis'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
+  // A gallery path renders the homepage with a modal over it, so opening or
+  // closing one is not a page change and must not move the page underneath —
+  // otherwise you lose your place in the grid every time you shut a project.
+  const page = galleryPaths().includes(pathname) ? "/" : pathname
   useEffect(() => {
     const lenis = getLenis()
     if (lenis) lenis.scrollTo(0, { immediate: true })
     else window.scrollTo(0, 0)
-  }, [pathname])
+  }, [page])
   return null
 }
 import './index.css'
@@ -20,6 +24,7 @@ import { ClientAcquisitionCaseStudy } from './pages/ClientAcquisitionCaseStudy.t
 import { HeroLab } from './pages/HeroLab.tsx'
 import { MarqueeLab } from './pages/MarqueeLab.tsx'
 import { LanguageProvider } from './i18n/LanguageContext.tsx'
+import { galleryPaths } from './data/projects.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -31,6 +36,13 @@ createRoot(document.getElementById('root')!).render(
             <Route path="/" element={<App />} />
             <Route path="/case-study/raporty" element={<RaportyCaseStudy />} />
             <Route path="/case-study/client-acquisition" element={<ClientAcquisitionCaseStudy />} />
+            {/* Gallery projects are modals, not pages — but they get a real
+                URL each so opening one registers as a navigation in analytics
+                and can be linked to directly. They render the homepage; the
+                modal opens because Projects reads the path. */}
+            {galleryPaths().map((path) => (
+              <Route key={path} path={path} element={<App />} />
+            ))}
             <Route path="/hero-lab" element={<HeroLab />} />
             <Route path="/marquee-lab" element={<MarqueeLab />} />
             {/* Without this every unknown path renders a blank white page —

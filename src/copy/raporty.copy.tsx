@@ -269,7 +269,6 @@ export const copy = {
         { title: "Wiem, że nic nie wiem", text: "Najcenniejsze w tym projekcie nie było samo badanie, tylko to, że zanim cokolwiek zaczęliśmy budować, wypisaliśmy listę rzeczy, których nie wiemy. Hipoteza CEO nie upadła dlatego, że była głupia — była rozsądna. Upadła dlatego, że opierała się na założeniach o ludziach, których nigdy nie pytaliśmy." },
         { title: "Techniczne nie znaczy później", text: "Wciągnięcie developerów na etapie koncepcji, a nie handoffu, zmieniło kształt produktu. Ograniczenia klientów pocztowych nie były detalem implementacyjnym — były czynnikiem, który zdefiniował, jak wygląda raport." },
       ],
-      nextProjectLabel: "Zobacz kolejny projekt",
     },
   },
   en: {
@@ -542,7 +541,6 @@ export const copy = {
         { title: "I know that I know nothing", text: "The most valuable part of this project wasn't the research itself — it was that before we built anything, we wrote down everything we didn't know. The CEO's hypothesis didn't fail because it was foolish — it was reasonable. It failed because it rested on assumptions about people we'd never actually asked." },
         { title: "Technical doesn't mean later", text: "Bringing engineers in at the concept stage, not at handoff, changed the shape of the product. Email client constraints weren't an implementation detail — they were a factor that defined what the report looks like." },
       ],
-      nextProjectLabel: "See the next project",
     },
   },
 }
