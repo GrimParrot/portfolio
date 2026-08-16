@@ -34,7 +34,10 @@ export function LangToggle({
     <div role="group" aria-label={GROUP_LABEL[lang]} className={cn("flex items-center gap-1 font-medium", className)}>
       {LANGS.map((l, i) => (
         <Fragment key={l.code}>
-          {i > 0 && <span aria-hidden="true" className="text-pf-200">/</span>}
+          {/* Same colour as the inactive label. Exactly one of the two is
+              always inactive, so pf-subtle always has a match on screen —
+              anything else reads as a third colour in a two-state control. */}
+          {i > 0 && <span aria-hidden="true" className="text-pf-subtle">/</span>}
           <button
             type="button"
             onClick={() => {
