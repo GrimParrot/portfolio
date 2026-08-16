@@ -8,23 +8,49 @@ Ten plik zastępuje dawne sekcje 4 i 7 [CLAUDE.md](../CLAUDE.md) — reszta CLAU
 
 ## 1. Kolory
 
-### Globalne
-| Token | Wartość | Użycie |
-|-------|---------|--------|
-| Primary (ciemny) | `#0F172A` | nagłówki, tło primary buttona |
-| Hover ciemny | `#1E293B` | hover primary buttona |
-| Akcent zielony (global, portfolio) | `#0ABA53` | wspólny akcent poza case studies (nie mylić z akcentami per-projekt poniżej) |
-| Meta labels | `text-slate-400` | Tag bez `color` prop |
-| Opisy | `text-slate-500` | `leading-relaxed`, w kartach `text-[15px]` |
-| Nagłówki/wartości | `text-slate-900` / `#0F172A` | |
+### Zasada nadrzędna
 
-### Standardowy szary "flat box"
-`#94A3B814` (`#94A3B8` + hex-alpha `14` ≈ 8% opacity) — jedyny dozwolony gray box background w case studies (FeatureCard/StepCard, ImageCard, szare kafelki StatCard/MetricsGrid, tło pigułek "Metody badawcze"). **Przy zmianie tego odcienia zawsze `grep -rn "94A3B8" src/`** i zaktualizuj wszystkie trafienia naraz.
+**Nie wpisuj kolorów jako hex i nie używaj palety `slate` z Tailwinda.** Wszystkie kolory mieszkają w `src/styles/tokens.css` i są dostępne jako klasy `pf-*` (mapowanie w `tailwind.config.js`). W stylach inline użyj zmiennej: `style={{ color: "var(--pf-text-primary)" }}`.
 
-Wyjątek: kolorowy/akcentowy kafelek StatCard zostaje na `color + "0D"` (~5% opacity) — nie na `14`. `StatCard` ma prop `bgAlpha` (domyślnie `"0D"`) właśnie do tego rozróżnienia: szary wariant dostaje `bgAlpha="14"`, kolorowy zostaje domyślny.
+| Zamiast | Użyj | Wartość |
+|---|---|---|
+| `#0F172A`, `text-slate-900`, `#000` | `text-pf-ink` / `bg-pf-900` | `#0A0A0A` |
+| hover primary `#1E293B` | `hover:bg-pf-800` | `#282828` |
+| `text-slate-700`, `text-slate-600` | `text-pf-700` | `#474747` |
+| `text-slate-500` (opisy) | `text-pf-subtle` | `#737373` |
+| `text-slate-400` (meta labels) | `text-pf-500` | `#848484` |
+| `border-slate-200` | `border-pf-line` | `#E7E7E7` |
+| `border-slate-300` | `border-pf-200` | `#D4D4D4` |
+| `border-slate-100`, `bg-slate-50` | `border-pf-50` / `bg-pf-50` | `#F5F5F5` |
+| `#94A3B814` (flat box) | `bg-pf-surface-subtle` | `#F5F5F5` |
+| zieleń `#0ABA53` | `text-pf-green` | `#0ABA53` |
+| akcent niebieski `#466AFA` | `text-pf-accent-500` | `#466AFA` |
+
+**Ograniczenie:** klasy `pf-*` trzymają hex za zmienną CSS, więc **modyfikator przezroczystości nie działa** — `bg-pf-ink/50` nie zadziała, zejdź o stopień w skali. Dotyczy to zwłaszcza hoverów: `bg-primary/90` komponuje się z tłem pod przyciskiem, przez co ten sam przycisk wygląda inaczej w navbarze (półprzezroczysta pigułka) niż w hero.
+
+**Trzy miejsca, gdzie hex musi zostać** — każde ma komentarz w kodzie:
+1. `<Plasma color="#0A0A0A">` — komponent parsuje kolor przez `hexToRgb()` do uniformu WebGL; `var()` wywali wyjątek.
+2. `const PRIMARY` w `LocaloCaseStudy.tsx` — doklejamy do niego alfę (`PRIMARY + "1A"`), co działa tylko na stringu hex.
+3. Ciemna sekcja Localo (`#1c1c1f` karta / `#2e2e33` obramowanie / `#16181D`) — własny, wewnętrznie zestrojony sub-motyw.
+
+### Skala
+
+Neutralna: `pf-900` `#0A0A0A` · `pf-850` `#141414` · `pf-800` `#282828` · `pf-700` `#474747` · `pf-500` `#848484` · `pf-300` `#C2C2C2` · `pf-200` `#D4D4D4` · `pf-100` `#E7E7E7` · `pf-50` `#F5F5F5`
+
+Role tekstu: `pf-ink` (nagłówki) · `pf-body` · `pf-subtle` (opisy) · `pf-muted` · `pf-faint` · `pf-on-dark` / `pf-on-dark-body` / `pf-on-dark-muted`
+
+Powierzchnie: `pf-surface` · `pf-surface-subtle` · `pf-surface-dark` · `pf-surface-dark-card`. Obramowania: `pf-line`.
+
+Akcent niebieski: `pf-accent-900/700/500/300/100/50`. Zieleń marki: `pf-green`. Semantyczne: `pf-success-*`, `pf-error-*`.
+
+**Kontrast:** `pf-muted` (`#848484`, 4.0:1 na białym) **nie spełnia AA** dla małego tekstu — do opisów używaj `pf-subtle` (`#737373`, 4.9:1). `pf-muted` zostaw dla etykiet i elementów dekoracyjnych.
+
+### Most shadcn
+
+`src/index.css` trzyma drugi zestaw (`--primary`, `--border`, `--foreground`…) w formacie HSL. To **nie jest** drugie źródło prawdy — wartości lustrzane wobec `tokens.css`, a format HSL istnieje tylko dlatego, że Tailwind potrzebuje go do modyfikatorów przezroczystości, których nadal używają `badge.tsx` i linki w navbarze. Zmieniasz kolor → najpierw `tokens.css`, potem lustrzana poprawka tam.
 
 ### Callout box (rola/pivot/warning)
-Tło `#EEF2FF`, tekst w kolorze PRIMARY danego case study, `rounded-lg px-6 py-5`.
+Tło `var(--pf-surface-accent)` (`#E3E9FE`), tekst w kolorze PRIMARY danego case study, `rounded-lg px-6 py-5`.
 
 ### Akcent per case study (aktualny stan w kodzie — sprawdzone `grep`, nie ufaj starym notatkom)
 | Case study | Const | Wartość |
