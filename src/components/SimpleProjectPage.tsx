@@ -129,7 +129,7 @@ export interface SimpleProjectCopy {
 export function SimpleProjectPage({ copy }: { copy: SimpleProjectCopy }) {
   return (
     <div className="bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
-      <div className="px-6 sm:px-10 pt-14 pb-10">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-14 pb-10">
         <div className="flex flex-col gap-[60px]">
           <Reveal className="flex flex-col gap-6">
             <FitHeading

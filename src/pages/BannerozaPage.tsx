@@ -205,7 +205,7 @@ export function BannerozaPage() {
           no fixed navbar to clear, just breathing room above the heading. */}
       <ChapterRail chapters={chapters} accent={PRIMARY} topOffset={24} />
 
-      <div className="px-6 sm:px-10 pt-14 pb-10">
+      <div className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-14 pb-10">
 
         {/* ── HERO ── */}
         <div id="hero" className="py-8 md:py-16">
