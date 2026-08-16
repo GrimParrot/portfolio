@@ -7,8 +7,9 @@
    Localo product token dump) are intentionally NOT imported. */
 
 /* ---- helmet <style> from the .dc.html composition ---- */
-/* Scoped to #top (unique to this page) so it can't leak to other pages
-   bundled in the same app-wide stylesheet. */
+/* Scoped to #top, the case-study wrapper. Both case studies use that id, but
+   at most one is ever mounted — they are modal content now, and the homepage
+   underneath has no #top, so the rule has nowhere to leak. */
 #top b, #top strong { color: var(--pf-text-primary); }
 
 /* ---- responsive overrides ---- */

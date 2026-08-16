@@ -19,8 +19,6 @@ function ScrollToTop() {
 import './index.css'
 import App from './App.tsx'
 import { SmoothScroll } from './components/SmoothScroll.tsx'
-import { RaportyCaseStudy } from './pages/RaportyCaseStudy.tsx'
-import { ClientAcquisitionCaseStudy } from './pages/ClientAcquisitionCaseStudy.tsx'
 import { HeroLab } from './pages/HeroLab.tsx'
 import { MarqueeLab } from './pages/MarqueeLab.tsx'
 import { LanguageProvider } from './i18n/LanguageContext.tsx'
@@ -34,12 +32,10 @@ createRoot(document.getElementById('root')!).render(
           <ScrollToTop />
           <Routes>
             <Route path="/" element={<App />} />
-            <Route path="/case-study/raporty" element={<RaportyCaseStudy />} />
-            <Route path="/case-study/client-acquisition" element={<ClientAcquisitionCaseStudy />} />
-            {/* Gallery projects are modals, not pages — but they get a real
-                URL each so opening one registers as a navigation in analytics
-                and can be linked to directly. They render the homepage; the
-                modal opens because Projects reads the path. */}
+            {/* Every project is a modal, not a page — but each keeps a real
+                URL so opening one registers as a navigation in analytics and
+                can be linked to directly. They render the homepage; the modal
+                opens because Projects reads the path. */}
             {galleryPaths().map((path) => (
               <Route key={path} path={path} element={<App />} />
             ))}

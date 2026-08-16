@@ -15,11 +15,15 @@ export interface Project {
 }
 
 /** Paths that open a project modal over the homepage instead of a page of
- *  their own. The router, the scroll guard and the modal all read this one
- *  list, so a gallery entry cannot end up addressable in one of them and not
- *  the others. Deriving it from `featured` keeps it in step with the grid. */
+ *  their own — which is now every project with an address. The router, the
+ *  scroll guard and the modal all read this one list, so an entry cannot end
+ *  up addressable in one of them and not the others.
+ *
+ *  This used to be derived from `!featured`, back when the two featured case
+ *  studies had pages of their own. They don't: `featured` now means only
+ *  "large tile in the highlighted row" and says nothing about routing. */
 export const galleryPaths = (): string[] =>
-  projects.filter((p) => !p.featured && p.href).map((p) => p.href as string)
+  projects.filter((p) => p.href).map((p) => p.href as string)
 
 export const projects: Project[] = [
   {

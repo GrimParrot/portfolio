@@ -5,6 +5,8 @@ import { ArrowUpRight } from "lucide-react"
 import { projects, type ProjectTag, type Project } from "@/data/projects"
 import { useLang } from "@/i18n/LanguageContext"
 import { ProjectModal } from "@/components/ProjectModal"
+import { RaportyCaseStudy } from "@/pages/RaportyCaseStudy"
+import { ClientAcquisitionCaseStudy } from "@/pages/ClientAcquisitionCaseStudy"
 import { NaturalniePage } from "@/pages/NaturalniePage"
 import { KafejetoPage } from "@/pages/KafejetoPage"
 import { BannerozaPage } from "@/pages/BannerozaPage"
@@ -14,6 +16,8 @@ import { DashboardPage } from "@/pages/DashboardPage"
 type Filter = "all" | ProjectTag
 
 const modalContent: Record<string, () => React.ReactNode> = {
+  "/case-study/raporty": () => <RaportyCaseStudy />,
+  "/case-study/client-acquisition": () => <ClientAcquisitionCaseStudy />,
   "/ui/naturalnie": () => <NaturalniePage />,
   "/ui/kafejeto": () => <KafejetoPage />,
   "/case-study/banneroza": () => <BannerozaPage />,
@@ -135,8 +139,8 @@ export function Projects() {
   // link can be shared, and Back closes the modal without extra wiring.
   const openProject = projects.find((p) => p.href === location.pathname) ?? null
 
-  // Featured projects navigate to their own page, gallery projects to their
-  // modal URL — same call either way, the router decides what that path means.
+  // Every project navigates to its own URL, and that URL renders the homepage
+  // with a modal over it — being featured changes the tile, not the opening.
   const open = (project: Project) => {
     if (project.href) navigate(project.href)
   }
