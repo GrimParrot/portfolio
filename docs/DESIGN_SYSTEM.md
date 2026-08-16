@@ -45,6 +45,32 @@ Akcent niebieski: `pf-accent-900/700/500/300/100/50`. Zieleń marki: `pf-green`.
 
 **Kontrast:** `pf-muted` (`#848484`, 4.0:1 na białym) **nie spełnia AA** dla małego tekstu — do opisów używaj `pf-subtle` (`#737373`, 4.9:1). `pf-muted` zostaw dla etykiet i elementów dekoracyjnych.
 
+### Ciemny pas (dark band)
+
+Pełnowymiarowa ciemna sekcja wrzucona w jasną stronę, z kartami na wierzchu. Pierwszy raz zbudowana dla rozdziału „Problem" w Localo, ale **jest do reużycia** — ma własne tokeny.
+
+| Token | Klasa | Wartość | Rola |
+|---|---|---|---|
+| `--pf-dark-band` | `bg-pf-dark-band` | `#111112` | tło sekcji |
+| `--pf-dark-band-card` | `bg-pf-dark-band-card` | `#1C1C1F` | karta na tym tle |
+| `--pf-dark-band-line` | `border-pf-dark-band-line` | `#2E2E33` | ramka karty, kreska działowa |
+| `--pf-dark-band-accent` | `text-pf-dark-band-accent` | `#6F8BFB` | akcent podniesiony na ciemne tło |
+| `--pf-dark-band-accent-soft` | — | `rgba(111,139,251,.16)` | tło kafelka ikony |
+
+**To nie to samo co `--pf-surface-dark` / `--pf-surface-dark-card`** (`#0A0A0A` / `#141414`, używane przez `Section` i `FindingCard` w raporty-ds). Różnica jest celowa:
+
+```
+surface-dark   #0A0A0A → card #141414, ring w kolorze karty
+               → karty wtapiają się w tło
+
+dark-band      #111112 → card #1C1C1F → line #2E2E33  (po ~4 punkty)
+               → karty odcinają się od tła cichą krawędzią
+```
+
+Wybieraj po tym, który efekt chcesz. Akcent `#6F8BFB` siedzi między `pf-accent-500` (`#466AFA`, za ciemny na tym tle) a `pf-accent-300` (`#90A6FC`, zbyt wyprany).
+
+Tekst na tym tle: `text-white` dla nagłówków, `text-pf-on-dark-muted` dla opisów.
+
 ### Most shadcn
 
 `src/index.css` trzyma drugi zestaw (`--primary`, `--border`, `--foreground`…) w formacie HSL. To **nie jest** drugie źródło prawdy — wartości lustrzane wobec `tokens.css`, a format HSL istnieje tylko dlatego, że Tailwind potrzebuje go do modyfikatorów przezroczystości, których nadal używają `badge.tsx` i linki w navbarze. Zmieniasz kolor → najpierw `tokens.css`, potem lustrzana poprawka tam.

@@ -13,7 +13,7 @@ import { smoothScrollTo } from "@/lib/lenis"
 import { copy } from "@/copy/localo.copy"
 
 const PRIMARY = "#466AFA"
-const ACCENT_DARK = "#6F8BFB"
+const ACCENT_DARK = "var(--pf-dark-band-accent)"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -551,7 +551,7 @@ export function LocaloCaseStudy() {
       </div>
 
       {/* ── 02: THE FINDING (full-bleed dark) ── */}
-      <div id="s02" className="text-white" style={{ backgroundColor: "#111112" }}>
+      <div id="s02" className="text-white" style={{ backgroundColor: "var(--pf-dark-band)" }}>
         <div className="max-w-[1200px] mx-auto px-6 py-24 md:py-28">
           <Reveal>
             <Tag color={ACCENT_DARK}>{t.s02.h2}</Tag>
@@ -573,10 +573,10 @@ export function LocaloCaseStudy() {
               return (
                 <StaggerItem
                   key={item.n}
-                  className="rounded-[20px] p-8 bg-[#1c1c1f] border border-[#2e2e33]"
+                  className="rounded-[20px] p-8 bg-pf-dark-band-card border border-pf-dark-band-line"
                   whileHover={{ y: -4, transition: { duration: 0.2, ease: "easeOut" } }}
                 >
-                  <div className="inline-flex items-center justify-center rounded-2xl" style={{ width: 52, height: 52, backgroundColor: "rgba(111,139,251,.16)" }}>
+                  <div className="inline-flex items-center justify-center rounded-2xl" style={{ width: 52, height: 52, backgroundColor: "var(--pf-dark-band-accent-soft)" }}>
                     <Icon style={{ width: 26, height: 26, color: ACCENT_DARK }} />
                   </div>
                   <p className="font-extrabold text-white mt-5 mb-2.5" style={{ fontSize: 21, letterSpacing: "-0.01em" }}>{item.title}</p>
@@ -586,10 +586,10 @@ export function LocaloCaseStudy() {
             })}
           </StaggerGroup>
 
-          <Reveal className="mt-14 flex flex-wrap items-center gap-3 pt-8" style={{ borderTop: "1px solid #2e2e33" }}>
+          <Reveal className="mt-14 flex flex-wrap items-center gap-3 pt-8" style={{ borderTop: "1px solid var(--pf-dark-band-line)" }}>
             <span className="font-extrabold text-xs uppercase mr-2" style={{ letterSpacing: "0.2em", color: ACCENT_DARK }}>{t.s02.methodsLabel}</span>
             {t.s02.methods.map((m) => (
-              <span key={m.label} className="inline-flex items-center gap-2 rounded-2xl px-[18px] py-[9px] font-bold text-[15px] text-white [&>svg]:text-[#6F8BFB]" style={{ border: "1px solid #2e2e33" }}>
+              <span key={m.label} className="inline-flex items-center gap-2 rounded-2xl px-[18px] py-[9px] font-bold text-[15px] text-white [&>svg]:text-pf-dark-band-accent" style={{ border: "1px solid var(--pf-dark-band-line)" }}>
                 {m.icon}{m.label}
               </span>
             ))}

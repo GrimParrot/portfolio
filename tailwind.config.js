@@ -72,6 +72,13 @@ export default {
           "surface-dark": "var(--pf-surface-dark)",
           "surface-dark-card": "var(--pf-surface-dark-card)",
 
+          // dark band — see the note in tokens.css for how this differs
+          // from surface-dark: cards read as lifted, not flush
+          "dark-band": "var(--pf-dark-band)",
+          "dark-band-card": "var(--pf-dark-band-card)",
+          "dark-band-line": "var(--pf-dark-band-line)",
+          "dark-band-accent": "var(--pf-dark-band-accent)",
+
           // brand green — the portfolio's own accent outside case studies
           green: "var(--pf-brand-green)",
 

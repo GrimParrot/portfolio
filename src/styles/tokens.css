@@ -83,6 +83,25 @@
   --pf-border:var(--pf-primary-100);
   --pf-border-error:var(--pf-error-300);
 
+  /* Dark band — a full-width dark section dropped into an otherwise light
+     page, carrying cards. First built for the Localo "Problem" chapter and
+     kept as its own set on purpose.
+     It is NOT the same treatment as --pf-surface-dark / --pf-surface-dark-card
+     (#0A0A0A / #141414, used by raporty-ds Section and FindingCard). That pair
+     sits 4 points apart and then rings the card in its own colour, so cards
+     read as flush with the ground. This one steps ground -> card -> line by
+     about 4 points each, so the cards read as lifted off the ground with a
+     visible but quiet edge. Pick by which of the two effects you want. */
+  --pf-dark-band:#111112;
+  --pf-dark-band-card:#1C1C1F;
+  --pf-dark-band-line:#2E2E33;
+  /* Between --pf-accent-500 and --pf-accent-300: the page accent is too dark
+     to read on this ground, the 300 too washed. */
+  --pf-dark-band-accent:#6F8BFB;
+  /* Same accent at 16%, for icon tiles. Kept as its own token rather than a
+     var() with alpha, because you cannot append an alpha suffix to a var. */
+  --pf-dark-band-accent-soft:rgba(111,139,251,.16);
+
   /* Per case study accent. Each page still declares its own `const PRIMARY`
      for inline styles; these exist so the values live in one place and can be
      reached from a class. Localo and Raporty share the blue on purpose. */
