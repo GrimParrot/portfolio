@@ -14,11 +14,11 @@ import { DashboardPage } from "@/pages/DashboardPage"
 type Filter = "all" | ProjectTag
 
 const modalContent: Record<string, () => React.ReactNode> = {
-  "/ui/naturalnie": () => <NaturalniePage embedded />,
-  "/ui/kafejeto": () => <KafejetoPage embedded />,
-  "/case-study/banneroza": () => <BannerozaPage embedded />,
-  "/ui/stats": () => <StatsPage embedded />,
-  "/ui/dashboard": () => <DashboardPage embedded />,
+  "/ui/naturalnie": () => <NaturalniePage />,
+  "/ui/kafejeto": () => <KafejetoPage />,
+  "/case-study/banneroza": () => <BannerozaPage />,
+  "/ui/stats": () => <StatsPage />,
+  "/ui/dashboard": () => <DashboardPage />,
 }
 
 const copy = {

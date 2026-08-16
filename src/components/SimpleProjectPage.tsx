@@ -1,10 +1,6 @@
 import { Fragment, useLayoutEffect, useRef } from "react"
 import { motion, useReducedMotion } from "motion/react"
-import { Navbar } from "@/components/Navbar"
-import { NextProject } from "@/components/NextProject"
-import { Contact } from "@/components/sections/Contact"
 import { Badge } from "@/components/ui/badge"
-import { BackToPortfolio } from "@/components/BackToPortfolio"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -124,17 +120,16 @@ export interface SimpleProjectCopy {
   sections: ProjectSection[]
 }
 
-export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedded?: boolean; copy: SimpleProjectCopy; backHref: string }) {
-
+/** Gallery project shown inside the homepage modal.
+ *
+ * It used to double as a standalone route, with an `embedded` flag switching
+ * page chrome — navbar, back button, next-project card, footer — on and off.
+ * The gallery is modal-only now, so the flag and all of that chrome are gone;
+ * the modal supplies its own frame and close button. */
+export function SimpleProjectPage({ copy }: { copy: SimpleProjectCopy }) {
   return (
-    <div className={embedded ? "bg-white" : "min-h-screen bg-white"} style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
-      {!embedded && <Navbar />}
-
-      <div className={embedded ? "px-6 sm:px-10 pt-14 pb-10" : "max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32"}>
-        {!embedded && (
-          <BackToPortfolio className="mb-12" />
-        )}
-
+    <div className="bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
+      <div className="px-6 sm:px-10 pt-14 pb-10">
         <div className="flex flex-col gap-[60px]">
           <Reveal className="flex flex-col gap-6">
             <FitHeading
@@ -194,9 +189,7 @@ export function SimpleProjectPage({ embedded = false, copy, backHref }: { embedd
           ))}
         </div>
 
-        {!embedded && <NextProject currentHref={backHref} />}
       </div>
-      {!embedded && <Contact />}
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { Navbar } from "@/components/Navbar"
-import { NextProject } from "@/components/NextProject"
 import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy } from "@/copy/raporty.copy"
@@ -716,7 +715,6 @@ export function RaportyCaseStudy() {
       </div>
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px 128px", boxSizing: "border-box" }}>
-        <NextProject currentHref="/case-study/raporty" />
       </div>
       <Contact />
     </>

@@ -22,12 +22,32 @@ export interface Chapter {
  * Hidden below lg — a fixed rail has nowhere to sit next to a phone-width
  * column, and would overlap the content it is meant to index.
  */
+/** The rail runs in two places that scroll differently: a normal page, where
+ *  Lenis drives the window, and the project modal, which scrolls inside its own
+ *  container marked data-lenis-prevent. Walk up for a scrollable ancestor and
+ *  drive that one directly; fall through to Lenis when the page is the
+ *  scroller. Calling window.scrollTo in the modal case would move the page
+ *  behind the modal instead of the content in it. */
+function nearestScroller(el: HTMLElement): HTMLElement | null {
+  let p = el.parentElement
+  while (p) {
+    const oy = getComputedStyle(p).overflowY
+    if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight + 1) return p
+    p = p.parentElement
+  }
+  return null
+}
+
 export function ChapterRail({
   chapters,
   accent = "var(--pf-primary-900)",
+  topOffset = 100,
 }: {
   chapters: Chapter[]
   accent?: string
+  /** Clearance above the target — the fixed navbar on a page, much less in the
+   *  modal, which has no navbar of its own. */
+  topOffset?: number
 }) {
   const [active, setActive] = useState(chapters[0]?.id)
   const [hovered, setHovered] = useState<string | null>(null)
@@ -66,7 +86,21 @@ export function ChapterRail({
             // The label is inside the button, so it is the accessible name once
             // revealed; aria-current is what marks the section you are in.
             aria-current={isActive ? "true" : undefined}
-            onClick={() => smoothScrollTo(`#${c.id}`, { offset: -100 })}
+            onClick={() => {
+              const el = document.getElementById(c.id)
+              if (!el) return
+              const box = nearestScroller(el)
+              if (box) {
+                const top =
+                  box.scrollTop +
+                  el.getBoundingClientRect().top -
+                  box.getBoundingClientRect().top -
+                  topOffset
+                box.scrollTo({ top, behavior: "smooth" })
+              } else {
+                smoothScrollTo(`#${c.id}`, { offset: -topOffset })
+              }
+            }}
             onMouseEnter={() => setHovered(c.id)}
             onMouseLeave={() => setHovered(null)}
             className="flex items-center justify-end rounded-full border-0 bg-transparent cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"

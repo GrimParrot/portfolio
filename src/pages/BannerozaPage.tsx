@@ -1,12 +1,8 @@
 import { useLayoutEffect, useRef, type ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { Lightbulb } from "lucide-react"
-import { Navbar } from "@/components/Navbar"
-import { NextProject } from "@/components/NextProject"
-import { Contact } from "@/components/sections/Contact"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy } from "@/copy/banneroza.copy"
-import { BackToPortfolio } from "@/components/BackToPortfolio"
 import { ChapterRail } from "@/components/ChapterRail"
 
 const PRIMARY = "#DD8100"
@@ -183,7 +179,13 @@ function Divider() {
   return <hr className="border-t border-pf-50 my-0" />
 }
 
-export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {}) {
+/** Banneroza, shown inside the homepage modal.
+ *
+ * It used to double as a standalone route behind an `embedded` flag. The
+ * gallery is modal-only now, so the navbar, back button, next-project card and
+ * footer are gone — the modal frames it. The chapter rail stays: this is the
+ * one gallery entry long enough to need one. */
+export function BannerozaPage() {
   const { lang } = useLang()
   const t = copy[lang]
 
@@ -198,20 +200,18 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
   ]
 
   return (
-    <div className={embedded ? "bg-white" : "min-h-screen bg-white"} style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
-      {!embedded && <Navbar />}
-      {!embedded && <ChapterRail chapters={chapters} accent={PRIMARY} />}
+    <div className="bg-white" style={{ fontFamily: "'Manrope', system-ui, sans-serif" }}>
+      {/* topOffset 24, not the page default of 100: inside the modal there is
+          no fixed navbar to clear, just breathing room above the heading. */}
+      <ChapterRail chapters={chapters} accent={PRIMARY} topOffset={24} />
 
-      <div className={embedded ? "px-6 sm:px-10 pt-14 pb-10" : "max-w-[1200px] mx-auto px-6 pt-24 pb-16 md:pb-32"}>
+      <div className="px-6 sm:px-10 pt-14 pb-10">
 
         {/* ── HERO ── */}
         <div id="hero" className="py-8 md:py-16">
           <HeroStagger>
             <StaggerItem>
               <div className="flex items-center gap-4">
-                {!embedded && (
-                  <BackToPortfolio />
-                )}
                 <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-pf-ink">
                   Case Study<span className="mx-2 opacity-40">—</span>
                   <span style={{ color: PRIMARY }}>{t.heroEyebrow}</span>
@@ -403,10 +403,8 @@ export function BannerozaPage({ embedded = false }: { embedded?: boolean } = {})
           </Reveal>
         </div>
 
-        {!embedded && <NextProject currentHref="/case-study/banneroza" />}
 
       </div>
-      {!embedded && <Contact />}
     </div>
   )
 }
