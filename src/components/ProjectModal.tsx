@@ -104,10 +104,11 @@ export function ProjectModal({ open, onClose, layoutId, children }: { open: bool
               <X className="w-4 h-4" />
             </Button>
             <div ref={scrollRef} className="pretty-scrollbar h-full overflow-y-auto rounded-3xl" data-lenis-prevent>
-              {/* Pełna szerokość ramki: sekcje case study rozlewają tło do
-                  krawędzi modala, a o kolumnę treści dba już sama zawartość.
-                  Ten div zostaje mimo braku klas — Lenis modala dostaje go jako
-                  content i bez niego przestaje mierzyć wysokość treści. */}
+              {/* Full frame width: a case study bleeds its section backgrounds
+                  to the edge of the modal, and the column its text sits on is
+                  the content's own business. The div stays despite carrying no
+                  classes — it is the content element the modal's Lenis measures
+                  the scroll height from. */}
               <div ref={contentRef}>
                 {children}
               </div>
