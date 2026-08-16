@@ -221,7 +221,9 @@ export function BannerozaPage() {
 
             <StaggerItem>
               <AutoFitHeading
-                className="mt-8 font-extrabold text-pf-ink"
+                // mt-6 = 24px under the eyebrow, the same gap the other two
+                // case studies keep between that label and their title.
+                className="mt-6 font-extrabold text-pf-ink"
                 style={{ fontSize: "clamp(3rem, 10vw, 8.25rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}
                 maxLines={3}
                 activeKey={lang}
