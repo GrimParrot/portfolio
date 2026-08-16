@@ -12,12 +12,11 @@
 ```
 src/
   components/
-    sections/        # Hero, Projects, Contact, About
-    ui/              # shadcn: button, badge, itp.
+    sections/        # HeroV2, Projects, SkillsMarquee, Contact (Contact = stopka strony)
+    ui/              # shadcn: button, badge
     Navbar.tsx
-    Footer.tsx
-    ProjectNav.tsx   # nawigacja między case studies
-    NextProject.tsx
+    ProjectModal.tsx
+    NextProject.tsx  # karta "następny projekt" na końcu case study
   pages/             # case study pages (LocaloCaseStudy, RaportyCaseStudy, ...)
   copy/              # dwujęzyczne teksty: [projekt].copy.tsx
   data/
