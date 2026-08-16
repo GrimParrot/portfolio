@@ -26,7 +26,7 @@ export function SkillsMarquee() {
       />
 
       <div className="relative z-10" aria-hidden="true">
-        <CurvedMarquee text={text} pathType="wave" amplitude={20} wavelength={300} speed={85} fontSize={28} height={88} color="#0A0A0A" separator="   ✦   " separatorColor="#858585" />
+        <CurvedMarquee text={text} pathType="wave" amplitude={20} wavelength={300} speed={85} fontSize={28} height={88} color="var(--pf-primary-900)" separator="   ✦   " separatorColor="var(--pf-text-muted)" />
       </div>
       <span className="sr-only">{phrases.join(", ")}</span>
     </section>

@@ -122,6 +122,8 @@ export function Contact() {
       className={`${pinned ? "fixed bottom-0 left-0 w-full z-0" : "relative"} pt-[clamp(3.5rem,8vw,6rem)] pb-36 md:pb-[calc(clamp(2.5rem,13.15vw,24rem)*0.85+4rem)] min-h-[340px] md:min-h-[clamp(340px,42vw,480px)] flex items-start bg-[#0A0A0A] overflow-hidden`}
     >
       <div className="absolute inset-0">
+        {/* Literal hex on purpose: Plasma feeds this to hexToRgb() for the
+            WebGL shader, and a var() would not parse. Mirrors --pf-primary-50. */}
         <Plasma color="#F5F5F5" scale={0.8} opacity={0.25} iterations={45} mouseInteractive={false} renderScale={0.55} />
       </div>
 

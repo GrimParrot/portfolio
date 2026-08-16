@@ -155,13 +155,16 @@ export function CurvedMarquee({
             {text}
           </textPath>
         </text>
-        <text fill={color} fontSize={fontSize} fontWeight={600} style={{ whiteSpace: "pre" }}>
+        {/* Colours go through `style`, not the `fill` attribute: a presentation
+            attribute does not resolve var(), so a token passed in as
+            "var(--pf-...)" would silently fall back to black. */}
+        <text fontSize={fontSize} fontWeight={600} style={{ whiteSpace: "pre", fill: color }}>
           <textPath ref={textPathRef} href={`#${pathId}`} startOffset="0">
             {segments
               ? segments.map((word, i) => (
                   <tspan key={i}>
-                    <tspan fill={color}>{word}</tspan>
-                    <tspan fill={separatorColor}>{separator}</tspan>
+                    <tspan style={{ fill: color }}>{word}</tspan>
+                    <tspan style={{ fill: separatorColor }}>{separator}</tspan>
                   </tspan>
                 ))
               : repeatedText}

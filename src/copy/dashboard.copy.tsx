@@ -1,6 +1,6 @@
 export const copy = {
   pl: {
-    title: <>Profile Dashboard. Widoczność pod <span style={{ color: "#466AFA" }}>kontrolą</span>.</>,
+    title: <>Profile Dashboard. Widoczność pod <span style={{ color: "var(--pf-accent-500)" }}>kontrolą</span>.</>,
     tags: ["Dashboard", "SaaS", "Local SEO", "Product Design"],
     cover: { img: "/dashboard-cover.webp", alt: "Profile Dashboard" },
     caption: "Główny pulpit Localo — widoczność, pozycje słów kluczowych, zadania, recenzje i konkurencja w jednym, przejrzystym widoku.",
@@ -24,7 +24,7 @@ export const copy = {
     ],
   },
   en: {
-    title: <>Profile Dashboard. Visibility, under <span style={{ color: "#466AFA" }}>control</span>.</>,
+    title: <>Profile Dashboard. Visibility, under <span style={{ color: "var(--pf-accent-500)" }}>control</span>.</>,
     tags: ["Dashboard", "SaaS", "Local SEO", "Product Design"],
     cover: { img: "/dashboard-cover.webp", alt: "Profile Dashboard" },
     caption: "Localo's main dashboard — visibility, keyword rankings, tasks, reviews and competitors in one clear view.",

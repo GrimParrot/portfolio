@@ -1,7 +1,7 @@
 const TONES: Record<string, string[]> = {
-  dark: ["#0A0A0A", "#0A0A0A", "#0A0A0A", "#0A0A0A", "#0A0A0A"],
-  accent: ["#E3E9FE", "#90A6FC", "#90A6FC", "#90A6FC", "#90A6FC"],
-  brand: ["#90A6FC", "#466AFA", "#283A82", "#466AFA", "#283A82"],
+  dark: ["var(--pf-primary-900)", "var(--pf-primary-900)", "var(--pf-primary-900)", "var(--pf-primary-900)", "var(--pf-primary-900)"],
+  accent: ["var(--pf-accent-100)", "var(--pf-accent-300)", "var(--pf-accent-300)", "var(--pf-accent-300)", "var(--pf-accent-300)"],
+  brand: ["var(--pf-accent-300)", "var(--pf-accent-500)", "var(--pf-accent-900)", "var(--pf-accent-500)", "var(--pf-accent-900)"],
 }
 
 export interface BackgroundProps {

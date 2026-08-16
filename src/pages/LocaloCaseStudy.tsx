@@ -292,7 +292,7 @@ function StepCard({ step, title, desc, img, imgAlt, contain, height = 420 }: { s
       <p className="text-slate-500 leading-relaxed">{desc}</p>
       <div className="mt-10">
         {contain ? (
-          <div className="w-full rounded-2xl shadow-xl flex items-center justify-center" style={{ aspectRatio: "16/9", backgroundColor: "#F5F5F5" }}>
+          <div className="w-full rounded-2xl shadow-xl flex items-center justify-center" style={{ aspectRatio: "16/9", backgroundColor: "var(--pf-primary-50)" }}>
             <img src={img} alt={imgAlt} className="object-contain" style={{ maxWidth: "100%", maxHeight: "100%" }} />
           </div>
         ) : (

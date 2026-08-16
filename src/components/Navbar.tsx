@@ -111,9 +111,9 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             <NavLink href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">LinkedIn</NavLink>
 
             <div className="flex items-center gap-1 text-[18px] font-medium">
-              <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>PL</button>
-              <span className="text-[#474747]">/</span>
-              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-[#474747] font-bold" : "text-[#858585] hover:text-slate-600"}`}>EN</button>
+              <button onClick={() => setLang("pl")} className={`transition-colors ${lang === "pl" ? "text-pf-700 font-bold" : "text-pf-500 hover:text-slate-600"}`}>PL</button>
+              <span className="text-pf-700">/</span>
+              <button onClick={() => setLang("en")} className={`transition-colors ${lang === "en" ? "text-pf-700 font-bold" : "text-pf-500 hover:text-slate-600"}`}>EN</button>
             </div>
 
             <Button onClick={handleContact}>

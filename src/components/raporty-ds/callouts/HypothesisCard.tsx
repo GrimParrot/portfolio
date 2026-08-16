@@ -20,7 +20,7 @@ export function HypothesisCard({ title, status, state = "live", note, children, 
       padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box", flex: 1, minWidth: 0, ...style }}>
       <div style={{ display: "flex", flexDirection: "row", gap: rejected ? 8 : 12, alignItems: "center" }}>
         <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px",
-          color: rejected ? "var(--pf-text-muted)" : "#000" }}>{title}</span>
+          color: rejected ? "var(--pf-text-muted)" : "var(--pf-text-primary)" }}>{title}</span>
         {status && <StatusPill tone={rejected ? "neutral" : "accent"}>{status}</StatusPill>}
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>

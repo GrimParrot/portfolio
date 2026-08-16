@@ -25,7 +25,7 @@ export function DecisionCard({ title, image, steps = [], arrowIcon, padding = 48
   return (
     <div style={{ borderRadius: 24, boxShadow: "var(--pf-ring)", padding, display: "flex", flexDirection: "column",
       gap: 64, boxSizing: "border-box", width: "100%", ...style }}>
-      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{title}</span>
+      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{title}</span>
       {image && <img src={image} alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 12 }} />}
       {children}
       {steps.length > 0 && (
@@ -36,7 +36,7 @@ export function DecisionCard({ title, image, steps = [], arrowIcon, padding = 48
                 ? <img src={arrowIcon} alt="" width={24} height={24} style={{ flexShrink: 0 }} />
                 : <span aria-hidden="true" style={{ flexShrink: 0, color: "var(--pf-text-muted)", fontSize: 18 }}>{"→"}</span>)}
               <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 16 }}>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{s.label}</span>
+                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{s.label}</span>
                 <span style={{ whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{s.text}</span>
               </div>
             </Fragment>

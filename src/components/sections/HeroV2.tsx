@@ -30,6 +30,8 @@ export function HeroV2() {
   return (
     <section className="relative overflow-hidden min-h-screen flex items-center bg-white">
       <div className="absolute inset-0">
+        {/* Literal hex on purpose: Plasma feeds this to hexToRgb() for the
+            WebGL shader, and a var() would not parse. Mirrors --pf-primary-900. */}
         <Plasma
           color="#0A0A0A"
           scale={0.5}

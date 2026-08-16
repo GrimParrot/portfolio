@@ -270,10 +270,10 @@ function ImageMarquee({ images, height = 420, duration = 32, reverse = false }: 
  * image keeps them at equal height with no crop or letterboxing needed. */
 function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: string; text: string }) {
   return (
-    <div style={{ flex: 1, minWidth: 0, height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-      <img src={img} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+    <div style={{ flex: 1, minWidth: 0, height: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+      <img src={img} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100)" }} />
       <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box", flex: 1 }}>
-        <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{title}</span>
+        <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{title}</span>
         <p className="pf-body" style={{ margin: 0 }}>{text}</p>
       </div>
     </div>
@@ -284,7 +284,7 @@ function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: 
  * plain photo and a captioned screenshot sit side by side at equal height. */
 function ImageBox({ img, alt }: { img: string; alt: string }) {
   return (
-    <div style={{ flex: 1, minWidth: 0, height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box" }}>
+    <div style={{ flex: 1, minWidth: 0, height: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box" }}>
       <img src={img} alt={alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
     </div>
   )
@@ -294,10 +294,10 @@ function ImageBox({ img, alt }: { img: string; alt: string }) {
  * padded text below — used for the single-image blocks in chapter 07. */
 function BigShotCard({ img, alt, title, text }: { img: string; alt: string; title: string; text: string }) {
   return (
-    <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-      <img src={img} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+    <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+      <img src={img} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100)" }} />
       <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 48, boxSizing: "border-box" }}>
-        <h4 className="pf-h4" style={{ color: "#0A0A0A", margin: 0 }}>{title}</h4>
+        <h4 className="pf-h4" style={{ color: "var(--pf-primary-900)", margin: 0 }}>{title}</h4>
         <p className="pf-body" style={{ margin: 0 }}>{text}</p>
       </div>
     </div>
@@ -354,7 +354,7 @@ export function ClientAcquisitionCaseStudy() {
             <SectionHeader eyebrow={t.skrot.eyebrow} title={t.skrot.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <p className="pf-body-bold"><span style={{ fontWeight: "normal" }}><b style={{ color: "#0A0A0A" }}>{t.skrot.introBold}</b>{t.skrot.introRest}</span></p>
+            <p className="pf-body-bold"><span style={{ fontWeight: "normal" }}><b style={{ color: "var(--pf-primary-900)" }}>{t.skrot.introBold}</b>{t.skrot.introRest}</span></p>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
             <div style={{ position: "relative", overflow: "hidden", borderRadius: 24, width: "100%", boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-2.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 16, padding: 48 }}>
@@ -368,7 +368,7 @@ export function ClientAcquisitionCaseStudy() {
           </Reveal>
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.skrot.statsIntroTitle}</h4>
+              <h4 className="pf-h4" style={{ color: "var(--pf-primary-900)" }}>{t.skrot.statsIntroTitle}</h4>
               <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
                 <StaggerGroup className="pf-skrot-stats" style={{ gap: 24, width: "100%" }}>
                   {t.skrot.stats.map((s, i) => (
@@ -413,20 +413,20 @@ export function ClientAcquisitionCaseStudy() {
             <SectionHeader eyebrow={t.problem.eyebrow} title={t.problem.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <p className="pf-body-bold" style={{ color: "#0A0A0A" }}>
+            <p className="pf-body-bold" style={{ color: "var(--pf-primary-900)" }}>
               <span style={{ fontWeight: "normal", color: "var(--pf-text-body)" }}>{t.problem.introPre}</span>
-              <b style={{ color: "#0A0A0A" }}>{t.problem.introBold}</b>
+              <b style={{ color: "var(--pf-primary-900)" }}>{t.problem.introBold}</b>
               <span style={{ fontWeight: "normal", color: "var(--pf-text-body)" }}>{t.problem.introRest}</span>
             </p>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 32, display: "flex", flexWrap: "wrap", gap: 80, padding: "clamp(24px, 6vw, 64px)", boxSizing: "border-box" }}>
+            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 32, display: "flex", flexWrap: "wrap", gap: 80, padding: "clamp(24px, 6vw, 64px)", boxSizing: "border-box" }}>
               <div style={{ flex: "1 1 320px", display: "flex", flexDirection: "column", gap: 32 }}>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "#0A0A0A" }}>{t.problem.persona.overline}</span>
+                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "var(--pf-primary-900)" }}>{t.problem.persona.overline}</span>
                 <p className="pf-quote">{t.problem.persona.quote}</p>
                 <p className="pf-body-lg" style={{ margin: 0 }}><b>{t.problem.persona.commonBold}</b>{t.problem.persona.commonText}</p>
               </div>
-              <div style={{ width: 360, flexShrink: 0, alignSelf: "stretch", overflow: "hidden", borderRadius: 24, background: "#F5F5F5", position: "relative" }}>
+              <div style={{ width: 360, flexShrink: 0, alignSelf: "stretch", overflow: "hidden", borderRadius: 24, background: "var(--pf-primary-50)", position: "relative" }}>
                 <img src="/client-acquisition-persona-illustration.svg" alt="" style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", width: "155%", height: "auto" }} />
               </div>
             </div>
@@ -439,7 +439,7 @@ export function ClientAcquisitionCaseStudy() {
             <p className="pf-body">{t.problem.sourcesIntro}<b>{t.problem.sourcesIntroBold}</b></p>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 24, padding: "clamp(24px, 6vw, 64px)", display: "flex", flexDirection: "column", gap: 64, alignItems: "center", boxSizing: "border-box" }}>
+            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, padding: "clamp(24px, 6vw, 64px)", display: "flex", flexDirection: "column", gap: 64, alignItems: "center", boxSizing: "border-box" }}>
               <p className="pf-h3" style={{ textAlign: "center", margin: 0 }}>{t.problem.auditTitle}</p>
               <div style={{ display: "flex", gap: 48, alignItems: "center", width: "100%" }}>
                 {t.problem.auditItems.map((label, i) => (
@@ -447,7 +447,7 @@ export function ClientAcquisitionCaseStudy() {
                     {i > 0 && <img src="/icons/client-acquisition-icon-connector.svg" alt="" width={30} height={30} style={{ flexShrink: 0 }} />}
                     <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", gap: 24, alignItems: "center" }}>
                       <img src={AUDIT_ICONS[i]} alt="" width={120} height={120} />
-                      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000", textAlign: "center" }}>{label}</span>
+                      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)", textAlign: "center" }}>{label}</span>
                     </div>
                   </Fragment>
                 ))}
@@ -461,9 +461,9 @@ export function ClientAcquisitionCaseStudy() {
           <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             {t.problem.sourceCards.map((c, i) => (
               <StaggerItem key={i} style={{ flex: "1 1 460px" }}>
-                <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
                   <img src={SOURCE_CARD_ICONS[i]} alt="" width={30} height={30} />
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{c.title}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{c.title}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{c.text}</p>
                 </div>
               </StaggerItem>
@@ -504,9 +504,9 @@ export function ClientAcquisitionCaseStudy() {
           <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             {t.problem.scopeOut.map((item, i) => (
               <StaggerItem key={i} style={{ flex: "1 1 280px" }}>
-                <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E7E7E7)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
                   <img src={SCOPE_OUT_ICONS[i]} alt="" width={30} height={30} />
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{item.title}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{item.title}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{item.text}<b>{item.textBold}</b></p>
                 </div>
               </StaggerItem>
@@ -534,18 +534,18 @@ export function ClientAcquisitionCaseStudy() {
 
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.flow.title}</span>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.discovery.flow.title}</span>
               <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
                 <p className="pf-body" style={{ margin: 0 }}>{t.discovery.flow.text1}</p>
                 <p className="pf-body" style={{ margin: 0 }}>{t.discovery.flow.text2}</p>
               </div>
-              <img src="/client-acquisition-flowmap.webp" alt="" style={{ width: "100%", height: 415, objectFit: "cover", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)", boxSizing: "border-box" }} />
+              <img src="/client-acquisition-flowmap.webp" alt="" style={{ width: "100%", height: 415, objectFit: "cover", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100)", boxSizing: "border-box" }} />
             </div>
           </Reveal>
 
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.lowfiTitle}</span>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.discovery.lowfiTitle}</span>
               <p className="pf-body" style={{ margin: 0 }}>{t.discovery.lowfiIntro}</p>
               <div style={{ display: "flex", flexDirection: "column", gap: 20, width: "100%" }}>
                 <ImageMarquee images={LOFI_IMAGES.slice(0, 4)} height={280} />
@@ -559,19 +559,19 @@ export function ClientAcquisitionCaseStudy() {
           </Reveal>
 
           <Reveal style={{ width: "100%" }}>
-            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
-              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.decision1.title}</span>
-              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
+            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.discovery.decision1.title}</span>
+              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
                 <img src="/client-acquisition-decision-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "flex-start", width: "100%" }}>
                 <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.discovery.decision1.rejectedLabel}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{t.discovery.decision1.rejectedLabel}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{t.discovery.decision1.rejectedPre}<b>{t.discovery.decision1.rejectedBold}</b>{t.discovery.decision1.rejectedRest}</p>
                 </div>
                 <img src="/icons/client-acquisition-icon-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, marginTop: 3 }} />
                 <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.discovery.decision1.reasonLabel}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{t.discovery.decision1.reasonLabel}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{t.discovery.decision1.reasonText}</p>
                 </div>
               </div>
@@ -580,20 +580,20 @@ export function ClientAcquisitionCaseStudy() {
 
           <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
             <StaggerItem style={{ flex: "1 1 460px" }}>
-              <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
-                <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
+              <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 16, overflow: "hidden", boxSizing: "border-box" }}>
                   <img src="/client-acquisition-naming.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
                 </div>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.namingCard.title}</span>
+                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.discovery.namingCard.title}</span>
                 <p className="pf-body" style={{ margin: 0 }}>{t.discovery.namingCard.text}</p>
               </div>
             </StaggerItem>
             <StaggerItem style={{ flex: "1 1 460px" }}>
-              <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+              <div style={{ width: "100%", height: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
                 <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   <img src="/client-acquisition-growth-pills.webp" alt="" style={{ maxWidth: "100%", height: "auto", display: "block" }} />
                 </div>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.discovery.resultCard.title}</span>
+                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.discovery.resultCard.title}</span>
                 <p className="pf-body" style={{ margin: 0 }}>
                   {t.discovery.resultCard.para1}
                   <br /><br />
@@ -693,7 +693,7 @@ export function ClientAcquisitionCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 32, width: "100%", alignItems: "flex-start" }}>
               <img src="/client-acquisition-handoff-illustration.webp" alt="" style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24 }} />
-              <img src="/client-acquisition-handoff-flow-blurred.webp" alt={t.handoff.blurCaption} style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+              <img src="/client-acquisition-handoff-flow-blurred.webp" alt={t.handoff.blurCaption} style={{ height: 550, width: "auto", maxWidth: "100%", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100)" }} />
             </div>
           </Reveal>
         </Section>

@@ -11,7 +11,7 @@ export function PersonaCard({ title, children, style }: PersonaCardProps) {
     <div style={{ borderRadius: 24, background: "var(--pf-surface-card-subtle)", boxShadow: "var(--pf-ring)",
       padding: 32, display: "flex", flexDirection: "column", gap: 16, boxSizing: "border-box", ...style }}>
       <h4 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-text-primary)" }}>{title}</h4>
-      <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "#000" }}>{children}</p>
+      <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{children}</p>
     </div>
   )
 }

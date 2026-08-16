@@ -251,10 +251,10 @@ function ImageCarousel({ images }: { images: string[] }) {
 /** Bordered image-over-text card used throughout chapter 07 (Rozwiazanie). */
 function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: string; text: string }) {
   return (
-    <div style={{ flex: 1, minWidth: 0, border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-      <img src={img} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+    <div style={{ flex: 1, minWidth: 0, border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+      <img src={img} alt={alt} style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100)" }} />
       <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box", flex: 1 }}>
-        <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{title}</span>
+        <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{title}</span>
         <p className="pf-body" style={{ margin: 0 }}>{text}</p>
       </div>
     </div>
@@ -311,7 +311,7 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.skrot.eyebrow} title={t.skrot.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <p className="pf-body-bold"><span style={{ fontWeight: "normal" }}><b style={{ color: "#0A0A0A" }}>{t.skrot.introBold}</b>{t.skrot.introRest}</span></p>
+            <p className="pf-body-bold"><span style={{ fontWeight: "normal" }}><b style={{ color: "var(--pf-primary-900)" }}>{t.skrot.introBold}</b>{t.skrot.introRest}</span></p>
           </Reveal>
           <Reveal style={{ width: "100%" }}>
             <div style={{ position: "relative", overflow: "hidden", borderRadius: 24, width: "100%", boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-2.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 16, padding: 48 }}>
@@ -322,7 +322,7 @@ export function RaportyCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <h4 className="pf-h4" style={{ color: "#0A0A0A" }}>{t.skrot.statsIntroTitle}</h4>
+                <h4 className="pf-h4" style={{ color: "var(--pf-primary-900)" }}>{t.skrot.statsIntroTitle}</h4>
                 <p className="pf-body">{t.skrot.statsIntroDesc}</p>
               </div>
               <StaggerGroup className="pf-skrot-stats" style={{ gap: 24, width: "100%" }}>
@@ -366,11 +366,11 @@ export function RaportyCaseStudy() {
             <SectionHeader eyebrow={t.problem.eyebrow} title={t.problem.title} />
           </Reveal>
           <Reveal style={{ width: "100%" }}>
-            <p className="pf-body-bold" style={{ whiteSpace: "pre-line", color: "#0A0A0A" }}>
-              <b style={{ color: "#0A0A0A" }}>{t.problem.introBold}</b>
+            <p className="pf-body-bold" style={{ whiteSpace: "pre-line", color: "var(--pf-primary-900)" }}>
+              <b style={{ color: "var(--pf-primary-900)" }}>{t.problem.introBold}</b>
               <span style={{ fontWeight: "normal", color: "var(--pf-text-body)" }}>
                 {t.problem.introRest}
-                <b style={{ color: "#0A0A0A" }}>{t.problem.introBold2}</b>
+                <b style={{ color: "var(--pf-primary-900)" }}>{t.problem.introBold2}</b>
                 {t.problem.introRest2}
               </span>
             </p>
@@ -517,23 +517,23 @@ export function RaportyCaseStudy() {
           </Reveal>
           <Reveal style={{ width: "100%" }}>
             <div style={{ width: "100%", marginBottom: "clamp(-56px, -3vw, -24px)", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
-              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.decyzje.mainDecision.title}</span>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.title}</span>
               <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 16 }} />
               <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "stretch", justifyContent: "center" }}>
                 <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[0].label}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.steps[0].label}</span>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[0].text}</span>
                 </div>
                 <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
                 <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[1].label}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.steps[1].label}</span>
                   <ul style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>
                     {t.decyzje.mainDecision.steps[1].bullets?.map((b, i) => <li key={i}>{b.text}{b.bold && <b>{b.bold}</b>}</li>)}
                   </ul>
                 </div>
                 <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
                 <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "#000" }}>{t.decyzje.mainDecision.steps[2].label}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.steps[2].label}</span>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[2].text}</span>
                 </div>
               </div>
@@ -544,7 +544,7 @@ export function RaportyCaseStudy() {
               <StaggerItem key={i} style={{ flex: "1 1 280px" }}>
                 <div style={{ width: "100%", height: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
                   <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-end" }}>
-                    <span style={{ flex: "1 1 140px", whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{d.title}</span>
+                    <span style={{ flex: "1 1 140px", whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{d.title}</span>
                     <img src={d.image} alt="" style={{ width: 160, flexShrink: 0, height: "auto", display: "block", borderRadius: 16 }} />
                   </div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
@@ -580,7 +580,7 @@ export function RaportyCaseStudy() {
                 {t.decyzje.testsFindings.map((f, i) => (
                   <StaggerItem key={i} style={{ flex: "1 1 240px" }}>
                     <div style={{ width: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 24, boxSizing: "border-box" }}>
-                      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{f.title}</span>
+                      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{f.title}</span>
                       <p className="pf-body" style={{ margin: 0 }}>{f.text1}</p>
                       {f.text2 && <p className="pf-body" style={{ margin: 0 }}>{f.text2}</p>}
                     </div>
@@ -639,12 +639,12 @@ export function RaportyCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <h3 className="pf-h3">{t.rozwiazanie.s1Title}</h3>
-              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-                <div style={{ overflow: "hidden", width: "100%", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }}>
+              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+                <div style={{ overflow: "hidden", width: "100%", borderBottom: "1px solid var(--pf-accent-100)" }}>
                   <img src="/raporty-ds-lista-raportow.webp" alt="Lista raportów wizytówki" style={{ width: "calc(100% + 24px)", height: "auto", display: "block", margin: "-12px -12px 0" }} />
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box" }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.rozwiazanie.s1CardTitle}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.rozwiazanie.s1CardTitle}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s1CardText}</p>
                 </div>
               </div>
@@ -670,10 +670,10 @@ export function RaportyCaseStudy() {
           <Reveal style={{ width: "100%" }}>
             <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
               <h3 className="pf-h3">{t.rozwiazanie.s3Title}</h3>
-              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100, #E3E9FE)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-                <img src="/raporty-ds-reports-manager-full.webp" alt="Reports manager — portfolio wizytówek" style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100, #E3E9FE)" }} />
+              <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+                <img src="/raporty-ds-reports-manager-full.webp" alt="Reports manager — portfolio wizytówek" style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100)" }} />
                 <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box" }}>
-                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "#000" }}>{t.rozwiazanie.s3CardTitle}</span>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.rozwiazanie.s3CardTitle}</span>
                   <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s3CardText}</p>
                 </div>
               </div>
