@@ -1,5 +1,6 @@
 export const copy = {
   pl: {
+    heroEyebrow: "UI · SKLEP INTERNETOWY PALARNI KAWY SPECIALTY",
     title: <>Kafejeto.pl. Kawa z <span style={{ color: "#8EBD3F" }}>charakterem</span>.</>,
     tags: ["E-commerce", "Web Design", "UI Design", "Marka kawowa"],
     cover: { img: "/kafejeto/okladka.jpg", alt: "Kafejeto.pl" },
@@ -30,6 +31,7 @@ export const copy = {
     ],
   },
   en: {
+    heroEyebrow: "UI · ONLINE STORE FOR A SPECIALTY COFFEE ROASTERY",
     title: <>Kafejeto.pl. Coffee with <span style={{ color: "#8EBD3F" }}>character</span>.</>,
     tags: ["E-commerce", "Web Design", "UI Design", "Coffee Brand"],
     cover: { img: "/kafejeto/okladka.jpg", alt: "Kafejeto.pl" },

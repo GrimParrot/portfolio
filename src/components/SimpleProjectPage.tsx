@@ -112,6 +112,10 @@ export interface ProjectSection {
 }
 
 export interface SimpleProjectCopy {
+  /** Label above the title, e.g. "UI · SKLEP MOBILNY Z KOSMETYKAMI NATURALNYMI".
+   *  Required, not optional: every project carries one, and a missing language
+   *  variant has to fail the build rather than silently drop the line. */
+  heroEyebrow: string
   title: React.ReactNode
   tags: string[]
   cover: ProjectImage
@@ -132,6 +136,12 @@ export function SimpleProjectPage({ copy }: { copy: SimpleProjectCopy }) {
       <div className="max-w-[1200px] mx-auto px-6 sm:px-10 pt-14 pb-10">
         <div className="flex flex-col gap-[60px]">
           <Reveal className="flex flex-col gap-6">
+            {/* The 24px above the title comes from this column's gap-6 — the
+                same distance the case studies set for their eyebrow. Styling
+                matches Banneroza, which shares this hero's heading exactly. */}
+            <span className="text-[13px] font-extrabold tracking-[0.28em] uppercase text-pf-ink">
+              {copy.heroEyebrow}
+            </span>
             <FitHeading
               maxLines={2}
               className="font-extrabold text-pf-ink"

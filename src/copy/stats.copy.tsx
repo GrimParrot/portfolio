@@ -1,5 +1,6 @@
 export const copy = {
   pl: {
+    heroEyebrow: "PRODUKT · LOCALO — REDESIGN EKRANU STATYSTYK",
     title: <>Stats Redesign. Dane po <span style={{ color: "var(--pf-accent-500)" }}>ludzku</span>.</>,
     tags: ["Dashboard", "Wizualizacja danych", "Product Design", "SaaS"],
     cover: { img: "/stats-cover.webp", alt: "Stats Redesign" },
@@ -22,6 +23,7 @@ export const copy = {
     ],
   },
   en: {
+    heroEyebrow: "PRODUCT · LOCALO — STATS SCREEN REDESIGN",
     title: <>Stats Redesign. Data, made <span style={{ color: "var(--pf-accent-500)" }}>human</span>.</>,
     tags: ["Dashboard", "Data Visualization", "Product Design", "SaaS"],
     cover: { img: "/stats-cover.webp", alt: "Stats Redesign" },

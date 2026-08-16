@@ -1,5 +1,6 @@
 export const copy = {
   pl: {
+    heroEyebrow: "PRODUKT · LOCALO — GŁÓWNY Dashboard",
     title: <>Profile Dashboard. Widoczność pod <span style={{ color: "var(--pf-accent-500)" }}>kontrolą</span>.</>,
     tags: ["Dashboard", "SaaS", "Local SEO", "Product Design"],
     cover: { img: "/dashboard-cover.webp", alt: "Profile Dashboard" },
@@ -24,6 +25,7 @@ export const copy = {
     ],
   },
   en: {
+    heroEyebrow: "PRODUCT · LOCALO — MAIN DASHBOARD",
     title: <>Profile Dashboard. Visibility, under <span style={{ color: "var(--pf-accent-500)" }}>control</span>.</>,
     tags: ["Dashboard", "SaaS", "Local SEO", "Product Design"],
     cover: { img: "/dashboard-cover.webp", alt: "Profile Dashboard" },

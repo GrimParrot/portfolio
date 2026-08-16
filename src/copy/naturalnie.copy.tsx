@@ -1,5 +1,6 @@
 export const copy = {
   pl: {
+    heroEyebrow: "UI · SKLEP MOBILNY Z KOSMETYKAMI NATURALNYMI",
     title: <>Naturalnie.pl. Zakupy z <span style={{ color: "#32685B" }}>klasą</span>.</>,
     tags: ["Aplikacja mobilna", "E-commerce", "UI Design", "Beauty & Care"],
     cover: { img: "/naturalnie-cover.webp", alt: "Naturalnie.pl" },
@@ -24,6 +25,7 @@ export const copy = {
     ],
   },
   en: {
+    heroEyebrow: "UI · MOBILE STORE FOR NATURAL COSMETICS",
     title: <>Naturalnie.pl. Shopping with <span style={{ color: "#32685B" }}>class</span>.</>,
     tags: ["Mobile App", "E-commerce", "UI Design", "Beauty & Care"],
     cover: { img: "/naturalnie-cover.webp", alt: "Naturalnie.pl" },
