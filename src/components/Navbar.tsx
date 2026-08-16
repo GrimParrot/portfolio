@@ -33,11 +33,21 @@ function NavLink({
       onClick={onClick}
       target={target}
       rel={rel}
-      className="group relative inline-block overflow-hidden h-6 text-[18px] leading-6"
+      // text-base, not the inherited 18px body size: the links sit in one row
+      // with the Kontakt button and now match it. leading-6 stays — the
+      // slide-up needs both copies to be exactly the h-6 container tall.
+      className="group relative inline-block overflow-hidden h-6 text-base leading-6"
     >
+      {/* Solid pf-subtle, not foreground/60. The two shades were a hair apart
+          (#6C6C6C composited vs #737373), but the real problem was the alpha:
+          the navbar pill is bg-white/35 with a blur, so a translucent label
+          mixes with whatever scrolls behind it and drifts, while the language
+          toggle beside it stays put. Resting now matches the inactive
+          language, hover matches the active one — two colours in the whole
+          bar. */}
       <span className="flex flex-col transition-transform duration-300 ease-out group-hover:-translate-y-1/2">
-        <span className="text-foreground/60">{children}</span>
-        <span className="text-foreground font-semibold">{children}</span>
+        <span className="text-pf-subtle">{children}</span>
+        <span className="text-pf-ink font-semibold">{children}</span>
       </span>
     </a>
   )
@@ -111,7 +121,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
             <NavLink href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">CV</NavLink>
             <NavLink href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">LinkedIn</NavLink>
 
-            <LangToggle className="text-[18px]" />
+            <LangToggle className="text-base" />
 
             <Button onClick={handleContact}>
               <Mail className="w-4 h-4" /> {t.contact}
