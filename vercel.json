@@ -2,5 +2,6 @@
   "redirects": [
     { "source": "/cv-pl.pdf", "destination": "/Edyta-Suprun-Resume-PL.pdf", "permanent": true },
     { "source": "/cv-en.pdf", "destination": "/Edyta-Suprun-Resume-ENG.pdf", "permanent": true }
-  ]
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

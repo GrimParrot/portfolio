@@ -80,6 +80,8 @@ Język przełącza `LanguageContext` — nie hardkoduj polskich stringów bezpo�
 
 **Jeśli user pyta "gdzie jest ten tekst" i nie widzisz go na stronie:** sprawdź `grep -rn "<pole>" src/pages/` zanim odpowiesz — pole w `copy.tsx` mogło zostać dodane, ale nigdy nie podłączone do renderu (martwe copy). Tak było z `devWarningLabel`/`devWarningText` w Raporty — istniały w danych, ale żaden JSX ich nie czytał. W takiej sytuacji usuń pole z obu języków zamiast zostawiać je "na wszelki wypadek".
 
+**Route działa lokalnie ≠ działa na produkcji.** Preset Vite na Vercelu nie dodaje SPA fallbacku, więc każde wejście z zewnątrz na trasę kliencką (`/case-study/...`, `/ui/...`) dostawało od Vercela `404 NOT_FOUND` — mimo poprawnego route'a w `main.tsx`. Załatwia to `rewrites` w `vercel.json`; nie usuwaj go. Filesystem jest na Vercelu sprawdzany **przed** `rewrites`, więc PDF-y i assety z `public/` nadal serwują się jako pliki i rewrite ich nie przechwytuje. `vite dev` w ogóle nie czyta `vercel.json`, więc routingu produkcyjnego nie potwierdzisz lokalnie — po deployu sprawdź `curl -o /dev/null -w "%{http_code}"` na trasie projektu.
+
 ## 7. Techniczne pułapki komponentów sekcji case study
 
 Wygląd/spacing tych komponentów (kolory, padding, zasada 40px) jest w [docs/DESIGN_SYSTEM.md §5](docs/DESIGN_SYSTEM.md#5-wzorce-sekcji-case-study). Tu tylko implementacyjne gotchas specyficzne dla tego kodu:
