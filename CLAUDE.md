@@ -106,15 +106,28 @@ Obrazki do case studies użytkowniczka wrzuca do Second Brain (`C:\Users\supru\D
 
 ## 8b. CV — wersje językowe
 
-Plik CV jest rozdzielony na dwa: `public/cv-pl.pdf` i `public/cv-en.pdf` (nie ma już jednego uniwersalnego `cv.pdf`). Każde miejsce linkujące do CV (`Navbar.tsx` desktop + mobile, `Hero.tsx`, `Contact.tsx`) musi wybierać plik dynamicznie na podstawie `useLang()`:
+Plik CV jest rozdzielony na dwa: `public/Edyta-Suprun-Resume-PL.pdf` i `public/Edyta-Suprun-Resume-ENG.pdf` (wcześniej `cv-pl.pdf` / `cv-en.pdf` — stare adresy są przekierowane w `vercel.json`, nie usuwaj tych redirectów, bo krążą w wysłanych aplikacjach). Nazwa pliku jest celowo „ludzka", bo staje się nazwą pobranego pliku. Każde miejsce linkujące do CV (`Navbar.tsx` desktop + mobile, `Contact.tsx`) wybiera plik dynamicznie na podstawie `useLang()`:
 
 ```tsx
 const { lang } = useLang()
 // ...
-<a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">
+<a href={lang === "pl" ? "/Edyta-Suprun-Resume-PL.pdf" : "/Edyta-Suprun-Resume-ENG.pdf"} target="_blank" rel="noreferrer">
 ```
 
-Gdy user mówi "zaktualizowałam CV, podmień" — sprawdź `materials/` w Second Brain (patrz punkt 8) pod kątem PLIKÓW z "CV" w nazwie z najnowszym `timestamp`; jeśli są dwa (PL/ENG), skopiuj oba do `public/cv-pl.pdf` / `public/cv-en.pdf` i usuń stary `cv.pdf`, jeśli istnieje.
+Gdy user mówi "zaktualizowałam CV, podmień" — sprawdź `materials/` w Second Brain (patrz punkt 8) pod kątem PLIKÓW z "CV" w nazwie z najnowszym `timestamp`; jeśli są dwa (PL/ENG), przepuść oba przez kompresję (niżej) i zapisz pod nazwami z `public/`.
+
+### Kompresja CV (eksport z Figmy waży ~2 MB)
+
+Figma eksportuje CV jako **jeden content stream** (~1,8 MB z 2 MB pliku), w którym każda współrzędna ma 6 miejsc po przecinku. Nie ma tam obrazków ani osadzonych fontów — `ffmpeg` i Ghostscript nic nie dają. Działa tylko: zaokrąglenie liczb w content streamie do **2 miejsc** (dryf 0,005 pt = 0,0018 mm) + `deflate` level 9 + `useObjectStreams`. Efekt: **-45%** (2 MB → 1,08 MB). Skrypt: `pdf-lib` + `zlib`.
+
+Dwie pułapki, które trzeba obejść, inaczej uszkodzisz CV:
+
+1. **Nie zaokrąglaj glifów Type3.** Tekst jest zapisany fontami Type3 (każdy glif = osobny mikro-stream, ~830 sztuk) z `FontMatrix=[1 0 0 1 0 0]`, czyli współrzędne w zakresie 0–1 — zaokrąglenie do 2 miejsc zdeformowałoby litery. Razem ważą 42 KB, więc nie warto ich ruszać.
+2. **Nie zaokrąglaj liczb w blokach `BT…ET`.** Operandy `Tm`/`TJ` karmią heurystykę odstępów w pdf.js — zaokrąglenie przesuwa progi wstawiania spacji i zmienia tekst, który wyciągnie ATS (zaobserwowane: w EN nagłówek „Languages" dostał dodatkową spację). Bloki tekstowe to znikomy % streamu, więc pełna precyzja tam nic nie kosztuje.
+
+Weryfikacja po kompresji (obowiązkowa): wszystkie 4 fonty mają `ToUnicode`, więc tekst musi pozostać wyszukiwalny — porównaj ekstrakcję `pdfjs-dist` przed/po (musi być **identyczna**, dryf pozycji 0,0000 pt) i zrób pixel-diff renderów (`@napi-rs/canvas`): dopuszczalne są wyłącznie różnice antyaliasingu na krawędziach glifów, średnio ~1% kanału.
+
+`Title` w metadanych ustaw na „Edyta Suprun Resume PL/ENG" z `showInWindowTitleBar: true` — to ta nazwa pokazuje się na karcie przeglądarki. Usuń przy tym pakiet XMP z Figmy, bo Chrome i Acrobat czytają `dc:title` z XMP **przed** Info dict i nadpisałby ustawiony tytuł.
 
 ## 9. Animacje
 

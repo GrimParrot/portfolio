@@ -107,7 +107,7 @@ export function Contact() {
     {
       label: "PDF",
       value: t.resume,
-      href: lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf",
+      href: lang === "pl" ? "/Edyta-Suprun-Resume-PL.pdf" : "/Edyta-Suprun-Resume-ENG.pdf",
       icon: <span className="text-sm font-bold text-white/60">CV</span>,
     },
   ]

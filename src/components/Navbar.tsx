@@ -118,7 +118,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-6">
             <NavLink href="#projects" onClick={handleProjects}>{t.projects}</NavLink>
-            <NavLink href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer">CV</NavLink>
+            <NavLink href={lang === "pl" ? "/Edyta-Suprun-Resume-PL.pdf" : "/Edyta-Suprun-Resume-ENG.pdf"} target="_blank" rel="noreferrer">CV</NavLink>
             <NavLink href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer">LinkedIn</NavLink>
 
             <LangToggle className="text-base" />
@@ -157,7 +157,7 @@ export function Navbar({ dark = false }: { dark?: boolean }) {
           className="fixed inset-0 z-40 bg-white pt-16 flex flex-col px-6 py-8 gap-6 text-lg font-medium text-pf-700 md:hidden"
         >
           <a href="#projects" onClick={handleProjects} className="py-3 border-b border-pf-50">{t.projects}</a>
-          <a href={lang === "pl" ? "/cv-pl.pdf" : "/cv-en.pdf"} target="_blank" rel="noreferrer" className="py-3 border-b border-pf-50" onClick={() => setOpen(false)}>CV</a>
+          <a href={lang === "pl" ? "/Edyta-Suprun-Resume-PL.pdf" : "/Edyta-Suprun-Resume-ENG.pdf"} target="_blank" rel="noreferrer" className="py-3 border-b border-pf-50" onClick={() => setOpen(false)}>CV</a>
           <a href="https://linkedin.com/in/esuprun" target="_blank" rel="noreferrer" className="py-3 border-b border-pf-50" onClick={() => setOpen(false)}>LinkedIn</a>
 
           <LangToggle className="gap-3 py-3 border-b border-pf-50" onSwitch={() => setOpen(false)} />
