@@ -324,7 +324,11 @@ export function RaportyCaseStudy() {
         <Reveal style={{ width: "100%" }}>
           <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
             <div style={{ overflow: "hidden", width: "100%", borderBottom: "1px solid var(--pf-accent-100)" }}>
-              <img src="/raporty-ds-lista-raportow.webp" alt={t.rozwiazanie.s1CardTitle} style={{ width: "calc(100% + 24px)", height: "auto", display: "block", margin: "-12px -12px 0" }} />
+              {/* Trims the screenshot own 12px edge so it meets the card border
+                  cleanly. maxWidth has to be cleared: the preflight img rule caps
+                  width at 100%, which cancelled the extra 24px and left the
+                  negative margin pulling the image off-centre. */}
+              <img src="/raporty-ds-lista-raportow.webp" alt={t.rozwiazanie.s1CardTitle} style={{ width: "calc(100% + 24px)", maxWidth: "none", height: "auto", display: "block", margin: "-12px -12px 0" }} />
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box" }}>
               <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.rozwiazanie.s1CardTitle}</span>
