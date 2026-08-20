@@ -21,6 +21,7 @@ import App from './App.tsx'
 import { SmoothScroll } from './components/SmoothScroll.tsx'
 import { HeroLab } from './pages/HeroLab.tsx'
 import { MarqueeLab } from './pages/MarqueeLab.tsx'
+import { RaportyV1Page } from './pages/RaportyV1Page.tsx'
 import { LanguageProvider } from './i18n/LanguageContext.tsx'
 import { galleryPaths } from './data/projects.ts'
 import { Analytics } from '@vercel/analytics/react'
@@ -40,6 +41,10 @@ createRoot(document.getElementById('root')!).render(
             {galleryPaths().map((path) => (
               <Route key={path} path={path} element={<App />} />
             ))}
+            {/* Pre-redesign Raporty case study, parked at its own address.
+                It is not in data/projects.ts, so it needs a route of its own —
+                the generated ones only cover projects the gallery links to. */}
+            <Route path="/case-study/raporty-v1" element={<RaportyV1Page />} />
             <Route path="/hero-lab" element={<HeroLab />} />
             <Route path="/marquee-lab" element={<MarqueeLab />} />
             {/* Without this every unknown path renders a blank white page —

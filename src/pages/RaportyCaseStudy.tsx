@@ -3,15 +3,16 @@ import { motion, useReducedMotion } from "motion/react"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy } from "@/copy/raporty.copy"
 import "@/styles/raporty-ds.css"
+import { Badge } from "@/components/ui/badge"
 import { ChapterRail } from "@/components/ChapterRail"
 import {
   MetaBar, Section, SectionHeader, Divider, Figure,
-  StatCard, FindingCard, PersonaCard, QuoteBlock, TimelineItem,
-  ProblemStatement, GoalBanner, InlineAlert, HypothesisCard,
+  StatCard, FindingCard, PersonaCard,
+  ProblemStatement, GoalBanner, HypothesisCard,
   LessonCard,
 } from "@/components/raporty-ds"
 
-const CHAPTER_IDS = ["skrot", "problem", "discovery", "reframing", "decyzje", "handoff", "rozwiazanie", "wynik", "podsumowanie"] as const
+const CHAPTER_IDS = ["kontekst", "discovery", "reframing", "rozwiazanie", "decyzje", "wynik", "podsumowanie"] as const
 
 /** Scroll-reveal motion, same values as the fade-up used on the Localo case study page. */
 const fadeUp = {
@@ -125,48 +126,7 @@ function AnimatedStat({ value }: { value: string }) {
   return <span ref={ref}>{out}</span>
 }
 
-/** Looped slideshow — one screen slides out to the left while the next slides
- * in from the right, then loops back to the first. The transition CSS is only
- * enabled for the current and previous slide; otherwise the old "inactive"
- * slide would animate all the way across the screen on every index change
- * instead of just waiting off-screen. */
-function ImageCarousel({ images }: { images: string[] }) {
-  const [index, setIndex] = useState(0)
-  const n = images.length
-
-  useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % n), 2800)
-    return () => clearInterval(id)
-  }, [n])
-
-  const prevIndex = (index - 1 + n) % n
-
-  return (
-    <div className="relative w-full rounded-2xl shadow-xl overflow-hidden" style={{ aspectRatio: "1000/557" }}>
-      {images.map((src, i) => {
-        const isCurrent = i === index
-        const isPrev = i === prevIndex
-        const translate = isCurrent ? "0%" : isPrev ? "-100%" : "100%"
-        return (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover"
-            style={{
-              objectPosition: "center top",
-              transition: isCurrent || isPrev ? "transform 0.6s ease" : "none",
-              transform: `translateX(${translate})`,
-              zIndex: isCurrent ? 1 : 0,
-            }}
-          />
-        )
-      })}
-    </div>
-  )
-}
-
-/** Bordered image-over-text card used throughout chapter 07 (Rozwiazanie). */
+/** Bordered image-over-text card used throughout chapter 04 (Rozwiazanie). */
 function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: string; text: string }) {
   return (
     <div style={{ flex: 1, minWidth: 0, border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
@@ -175,6 +135,17 @@ function ShotCard({ img, alt, title, text }: { img: string; alt: string; title: 
         <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{title}</span>
         <p className="pf-body" style={{ margin: 0 }}>{text}</p>
       </div>
+    </div>
+  )
+}
+
+/** Text-only card — the shape the decisions chapter uses for findings that carry
+ * no screenshot of their own. */
+function TextCard({ title, text }: { title: string; text: string }) {
+  return (
+    <div style={{ width: "100%", height: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 24, boxSizing: "border-box" }}>
+      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{title}</span>
+      <p className="pf-body" style={{ margin: 0 }}>{text}</p>
     </div>
   )
 }
@@ -196,15 +167,22 @@ export function RaportyCaseStudy() {
       <Section gap={80}>
         <HeroStagger style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%" }}>
           <StaggerItem style={{ width: "100%" }}>
-            <header style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%", padding: 0, boxSizing: "border-box" }}>
-              {/* Eyebrow and title are one unit, 24px apart. The header's own
-                  80px gap then separates that unit from the lead — before this
-                  the eyebrow floated a full 80px above the title it labels. */}
+            {/* Eyebrow and title are one unit, 24px apart. Tags and lead then sit
+                40px below it and below each other — the hero has its own rhythm,
+                tighter than the 80px between hero blocks. */}
+            <header style={{ display: "flex", flexDirection: "column", gap: 40, width: "100%", padding: 0, boxSizing: "border-box" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
                 <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 10vw, 126px)", lineHeight: "clamp(44px, 10.5vw, 136px)", letterSpacing: "0em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
-                  {t.heroTitle} <span style={{ color: "var(--pf-accent-500)" }}>{t.heroTitleAccent}</span>
+                  {t.heroTitle}
                 </h1>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {t.heroTags.map((tag) => (
+                  <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium">
+                    {tag}
+                  </Badge>
+                ))}
               </div>
               <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-body)" }}>{t.heroLead}</p>
             </header>
@@ -218,137 +196,52 @@ export function RaportyCaseStudy() {
         </HeroStagger>
       </Section>
 
-      {/* 01 · SKROT */}
-      <Section variant="subtle" id="skrot">
+      {/* 01 · KONTEKST */}
+      <Section variant="subtle" id="kontekst">
         <Reveal style={{ width: "100%" }}>
-          <SectionHeader eyebrow={t.skrot.eyebrow} title={t.skrot.title} />
+          <SectionHeader eyebrow={t.kontekst.eyebrow} title={t.kontekst.title} />
         </Reveal>
         <Reveal style={{ width: "100%" }}>
-          <p className="pf-body-bold"><span style={{ fontWeight: "normal" }}><b style={{ color: "var(--pf-primary-900)" }}>{t.skrot.introBold}</b>{t.skrot.introRest}</span></p>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ position: "relative", overflow: "hidden", borderRadius: 24, width: "100%", boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-2.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 16, padding: 48 }}>
-            <h4 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-text-on-dark)" }}>{t.skrot.contextPanel.title}</h4>
-            <p style={{ margin: 0, whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-on-dark-body)" }}>{t.skrot.contextPanel.text}<b style={{ color: "var(--pf-text-on-dark)" }}>{t.skrot.contextPanel.textBold}</b></p>
-          </div>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-              <h4 className="pf-h4" style={{ color: "var(--pf-primary-900)" }}>{t.skrot.statsIntroTitle}</h4>
-              <p className="pf-body">{t.skrot.statsIntroDesc}</p>
-            </div>
-            <StaggerGroup className="pf-skrot-stats" style={{ gap: 24, width: "100%" }}>
-              {t.skrot.stats.map((s, i) => (
-                <StaggerItem key={i}>
-                  <StatCard tone="white" value={<AnimatedStat value={s.value} />} label={s.label} style={{ width: "100%", height: "100%" }} />
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
-          </div>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ width: "100%", position: "relative", paddingBottom: "clamp(40px, 12vw, 200px)", boxSizing: "border-box" }}>
-            <div style={{ width: "100%", borderRadius: 24, background: "#fff", boxShadow: "var(--pf-ring)", padding: "clamp(24px, 6vw, 64px)", display: "flex", flexDirection: "column", gap: 48, boxSizing: "border-box" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 940 }}>
-                <span className="pf-overline" style={{ color: "var(--pf-text-accent)" }}>{t.skrot.roleOverline}</span>
-                <p className="pf-quote">{t.skrot.roleQuote}</p>
-              </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 48, alignItems: "flex-start", width: "100%" }}>
-                <ul className="pf-body" style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", flex: "1 1 280px", minWidth: 0, display: "flex", flexDirection: "column", gap: 0 }}>
-                  {t.skrot.roleList.map((item, i) => <li key={i}>{item}</li>)}
-                </ul>
-                <div style={{ flex: "1 1 280px", marginBottom: "clamp(-200px, -12vw, -40px)", overflow: "hidden", borderRadius: 24, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-1.webp) center / cover no-repeat", display: "flex", flexDirection: "column", gap: 32, padding: "clamp(24px, 6vw, 48px)" }}>
-                  <h4 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 600, fontSize: 24, lineHeight: "37px", color: "var(--pf-text-on-dark)" }}>{t.skrot.scopePanel.title}</h4>
-                  {t.skrot.scopePanel.blocks.map((b, i) => (
-                    <div key={i} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-on-dark)" }}>{b.label}</span>
-                      <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-on-dark-muted)" }}>{b.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </Section>
-
-      {/* 02 · PROBLEM */}
-      <Section id="problem">
-        <Reveal style={{ width: "100%" }}>
-          <SectionHeader eyebrow={t.problem.eyebrow} title={t.problem.title} />
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <p className="pf-body-bold" style={{ whiteSpace: "pre-line", color: "var(--pf-primary-900)" }}>
-            <b style={{ color: "var(--pf-primary-900)" }}>{t.problem.introBold}</b>
-            <span style={{ fontWeight: "normal", color: "var(--pf-text-body)" }}>
-              {t.problem.introRest}
-              <b style={{ color: "var(--pf-primary-900)" }}>{t.problem.introBold2}</b>
-              {t.problem.introRest2}
-            </span>
+          <p className="pf-body">
+            {t.kontekst.introPre}
+            <b style={{ color: "var(--pf-primary-900)" }}>{t.kontekst.introBold}</b>
+            {t.kontekst.introRest}
           </p>
         </Reveal>
         <Reveal style={{ width: "100%" }}>
-          <div style={{ width: "100%", borderRadius: 32, background: "#fff", boxShadow: "var(--pf-ring)", display: "flex", flexWrap: "wrap", gap: 80, padding: "clamp(24px, 6vw, 64px)", boxSizing: "border-box" }}>
-            <div style={{ flex: "1 1 280px", display: "flex", flexDirection: "column", gap: 32 }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                <h3 className="pf-h3">{t.problem.researchTitle}</h3>
-                <p className="pf-body">{t.problem.researchDesc}</p>
-              </div>
-              <div style={{ height: 280, background: "url(/raporty-ds-questions.webp) center / cover no-repeat" }} />
-            </div>
-            <div style={{ flex: "2 1 320px", display: "flex", flexDirection: "column", gap: 48 }}>
-              <ul style={{ margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 32 }}>
-                {t.problem.questions.map((q, i) => <TimelineItem key={i} number={i + 1}>{q}</TimelineItem>)}
-              </ul>
-              <InlineAlert icon="/icons/raporty-ds-warning.svg">{t.problem.alert}</InlineAlert>
-            </div>
-          </div>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <p className="pf-body">{t.problem.closingLead}<b>{t.problem.closingBold}</b></p>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <ProblemStatement>
+          <ProblemStatement label={t.kontekst.problemLabel}>
             <span style={{ fontWeight: 400, color: "var(--pf-text-accent-deep)" }}>
-              {t.problem.problemStatement}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.problem.problemStatementBold1}</b>{t.problem.problemStatementMid1}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.problem.problemStatementBold2}</b>{t.problem.problemStatementMid2}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.problem.problemStatementBold3}</b>{t.problem.problemStatementRest}
+              {t.kontekst.problemStatement}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.kontekst.problemStatementBold1}</b>{t.kontekst.problemStatementMid1}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.kontekst.problemStatementBold2}</b>{t.kontekst.problemStatementMid2}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.kontekst.problemStatementBold3}</b>{t.kontekst.problemStatementRest}
             </span>
           </ProblemStatement>
         </Reveal>
       </Section>
 
-      <Divider />
-
-      {/* 03 · DISCOVERY */}
+      {/* 02 · DISCOVERY */}
       <Section id="discovery">
         <Reveal style={{ width: "100%" }}>
           <SectionHeader eyebrow={t.discovery.eyebrow} title={t.discovery.title} />
         </Reveal>
         <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%", alignItems: "flex-start" }}>
-            <div style={{ flex: "2 1 320px", display: "flex", flexDirection: "column", gap: 30 }}>
-              <p className="pf-body" style={{ margin: 0 }}>{t.discovery.intro1Pre}<b>{t.discovery.intro1Bold}</b>{t.discovery.intro1Rest}</p>
-              <p className="pf-body" style={{ margin: 0 }}>{t.discovery.intro2Pre}<b>{t.discovery.intro2Bold}</b>{t.discovery.intro2Rest}</p>
-            </div>
-            <StaggerGroup style={{ flex: "1 1 280px", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-start" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 48, width: "100%", alignItems: "flex-start" }}>
+            <p className="pf-body" style={{ margin: 0, flex: "1 1 260px" }}>{t.discovery.introLead}<b>{t.discovery.introBold}</b></p>
+            <StaggerGroup style={{ flex: "2 1 420px", display: "flex", flexWrap: "wrap", gap: 24, alignItems: "stretch" }}>
               {t.discovery.stats.map((s, i) => (
-                <StaggerItem key={i} style={{ flex: 1, minWidth: 0 }}>
-                  <StatCard value={s.value} label={s.label} style={{ width: "100%", padding: 16, gap: 32 }} labelStyle={i === 1 ? { marginTop: 48 } : undefined} />
+                <StaggerItem key={i} style={{ flex: "1 1 140px" }}>
+                  <StatCard value={s.value} label={s.label} style={{ width: "100%", height: "100%", padding: 24, gap: 48 }} />
                 </StaggerItem>
               ))}
             </StaggerGroup>
           </div>
         </Reveal>
         <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 30, width: "100%" }}>
-            <p className="pf-body" style={{ margin: 0 }}><b>{t.discovery.intro3Bold}</b>{t.discovery.intro3Rest}</p>
-            <p className="pf-body" style={{ margin: 0 }}>{t.discovery.intro4}</p>
-          </div>
+          <p className="pf-body" style={{ margin: 0 }}>{t.discovery.aiPre}<b>{t.discovery.aiBold1}</b>{t.discovery.aiMid}<b>{t.discovery.aiBold2}</b>{t.discovery.aiRest}</p>
         </Reveal>
         <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
-            <Figure src="/raporty-ds-badania-3.webp" style={{ flex: "1 1 280px" }} />
-            <Figure src="/raporty-ds-badania-2.webp" style={{ flex: "1 1 280px" }} />
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%" }}>
+            <Figure src="/raporty-ds-badania-3.webp" radius={16} style={{ flex: "1 1 240px" }} />
+            <Figure src="/raporty-ds-badania-2.webp" radius={16} style={{ flex: "1 1 240px" }} />
+            <Figure src="/raporty-user-stories.webp" radius={16} style={{ flex: "1 1 240px" }} />
           </div>
         </Reveal>
       </Section>
@@ -389,7 +282,7 @@ export function RaportyCaseStudy() {
 
       <Divider />
 
-      {/* 04 · REFRAMING */}
+      {/* 03 · RE-FRAMING */}
       <Section id="reframing">
         <Reveal style={{ width: "100%" }}>
           <SectionHeader eyebrow={t.reframing.eyebrow} title={t.reframing.title} />
@@ -398,19 +291,12 @@ export function RaportyCaseStudy() {
           <p className="pf-body" style={{ whiteSpace: "pre-line" }}>{t.reframing.text}</p>
         </Reveal>
         <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
-            <Figure src="/raporty-ds-scope.webp" style={{ flex: "1 1 280px" }} />
-            <Figure src="/raporty-ds-jobs-to-be-done.webp" style={{ flex: "1 1 280px" }} />
-          </div>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-            <h3 className="pf-h3">{t.reframing.shiftTitle}</h3>
-            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "stretch", justifyContent: "center" }}>
-              <HypothesisCard state="rejected" title={t.reframing.hypothesisRejected.title} status={t.reframing.hypothesisRejected.status} style={{ flex: "1 1 280px" }}>{t.reframing.hypothesisRejected.text}</HypothesisCard>
-              <img src="/icons/raporty-ds-arrow-blue.svg" alt="" style={{ width: 96, height: 96, flexShrink: 0, margin: "auto clamp(-20px, -2vw, 0px)", position: "relative", zIndex: 1 }} />
-              <HypothesisCard title={t.reframing.hypothesisLive.title} status={t.reframing.hypothesisLive.status} note={t.reframing.hypothesisLive.note} style={{ flex: "1 1 280px" }}>{t.reframing.hypothesisLive.text}</HypothesisCard>
-            </div>
+          <div style={{ display: "flex", flexWrap: "wrap", alignItems: "stretch", justifyContent: "center" }}>
+            <HypothesisCard state="rejected" title={t.reframing.hypothesisRejected.title} status={t.reframing.hypothesisRejected.status} style={{ flex: "1 1 280px" }}>
+              <span style={{ whiteSpace: "pre-line" }}>{t.reframing.hypothesisRejected.text}</span>
+            </HypothesisCard>
+            <img src="/icons/raporty-ds-arrow-blue.svg" alt="" style={{ width: 96, height: 96, flexShrink: 0, margin: "auto clamp(-20px, -2vw, 0px)", position: "relative", zIndex: 1 }} />
+            <HypothesisCard title={t.reframing.hypothesisLive.title} status={t.reframing.hypothesisLive.status} note={t.reframing.hypothesisLive.note} style={{ flex: "1 1 280px" }}>{t.reframing.hypothesisLive.text}</HypothesisCard>
           </div>
         </Reveal>
       </Section>
@@ -423,124 +309,7 @@ export function RaportyCaseStudy() {
         </GoalBanner>
       </Reveal>
 
-      {/* 05 · DECYZJE */}
-      <Section id="decyzje">
-        <Reveal style={{ width: "100%" }}>
-          <SectionHeader eyebrow={t.decyzje.eyebrow} title={t.decyzje.title} />
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ width: "100%", marginBottom: "clamp(-56px, -3vw, -24px)", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
-            <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.title}</span>
-            <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 16 }} />
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 32, alignItems: "stretch", justifyContent: "center" }}>
-              <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.steps[0].label}</span>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[0].text}</span>
-              </div>
-              <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
-              <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.steps[1].label}</span>
-                <ul style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>
-                  {t.decyzje.mainDecision.steps[1].bullets?.map((b, i) => <li key={i}>{b.text}{b.bold && <b>{b.bold}</b>}</li>)}
-                </ul>
-              </div>
-              <img src="/icons/raporty-ds-arrow-step.svg" alt="" width={24} height={24} style={{ flexShrink: 0, alignSelf: "center" }} />
-              <div style={{ flex: "1 1 200px", display: "flex", flexDirection: "column", gap: 16 }}>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.steps[2].label}</span>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>{t.decyzje.mainDecision.steps[2].text}</span>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-        <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
-          {t.decyzje.pair.map((d, i) => (
-            <StaggerItem key={i} style={{ flex: "1 1 280px" }}>
-              <div style={{ width: "100%", height: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 64, boxSizing: "border-box" }}>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "flex-end" }}>
-                  <span style={{ flex: "1 1 140px", whiteSpace: "pre-line", fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{d.title}</span>
-                  <img src={d.image} alt="" style={{ width: 160, flexShrink: 0, height: "auto", display: "block", borderRadius: 16 }} />
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
-                  <p className="pf-body" style={{ margin: 0 }}>{d.text1}{d.text1Bold && <b>{d.text1Bold}</b>}</p>
-                  <p className="pf-body" style={{ margin: 0 }}><b>{d.text2Bold}</b><br />{d.text2}</p>
-                </div>
-              </div>
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-            <h3 className="pf-h3">{t.decyzje.builtTitle}</h3>
-            <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.builtText}</p>
-            <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-accent-50)", padding: 48, boxSizing: "border-box" }}>
-              <ImageCarousel images={["/raporty-flow-1.webp", "/raporty-flow-2.webp", "/raporty-flow-3.webp"]} />
-            </div>
-          </div>
-        </Reveal>
-
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-            <h3 className="pf-h3">{t.decyzje.testsTitle}</h3>
-            <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.testsText}</p>
-            <ul style={{ margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 32 }}>
-              {t.decyzje.testsQuestions.map((q, i) => <TimelineItem key={i} number={i + 1}>{q}</TimelineItem>)}
-            </ul>
-            <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-surface-card-subtle)", overflow: "hidden", boxSizing: "border-box" }}>
-              <img src="/raporty-ds-reports-manager.webp" alt="Manager raportów" style={{ width: "100%", height: "auto", display: "block" }} />
-            </div>
-            <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "flex-start" }}>
-              {t.decyzje.testsFindings.map((f, i) => (
-                <StaggerItem key={i} style={{ flex: "1 1 240px" }}>
-                  <div style={{ width: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 24, boxSizing: "border-box" }}>
-                    <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{f.title}</span>
-                    <p className="pf-body" style={{ margin: 0 }}>{f.text1}</p>
-                    {f.text2 && <p className="pf-body" style={{ margin: 0 }}>{f.text2}</p>}
-                  </div>
-                </StaggerItem>
-              ))}
-            </StaggerGroup>
-            <p className="pf-body" style={{ margin: 0 }}>{t.decyzje.testsClosing}</p>
-          </div>
-        </Reveal>
-      </Section>
-
-      <Divider />
-
-      {/* 06 · HANDOFF */}
-      <Section id="handoff">
-        <Reveal style={{ width: "100%" }}>
-          <SectionHeader eyebrow={t.handoff.eyebrow} title={t.handoff.title} />
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%", alignItems: "flex-start" }}>
-            <div style={{ flex: "2 1 280px", display: "flex", flexDirection: "column", gap: 30 }}>
-              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.introPre}<b>{t.handoff.introBold}</b>{t.handoff.introMid}<b>{t.handoff.introBold2}</b>{t.handoff.introRest}</p>
-              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.intro2Pre}<b>{t.handoff.intro2Bold}</b>{t.handoff.intro2Rest}</p>
-            </div>
-            <div style={{ flex: "1 1 240px", maxWidth: 360, aspectRatio: "360 / 280", height: "auto", background: "url(/raporty-ds-handoff.webp) center / cover no-repeat" }} />
-          </div>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-            <h3 className="pf-h3">{t.handoff.infraTitle}</h3>
-            <div style={{ display: "flex", flexDirection: "column", gap: 30, width: "100%" }}>
-              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.infraText1}</p>
-              <p className="pf-body" style={{ margin: 0 }}>{t.handoff.infraText2}</p>
-            </div>
-          </div>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 80, width: "100%" }}>
-            <Figure src="/raporty-ds-maps.webp" style={{ flex: "1 1 280px" }} />
-            <Figure src="/raporty-ds-figma.webp" style={{ flex: "1 1 280px" }} />
-          </div>
-        </Reveal>
-      </Section>
-
-      <Divider />
-
-      {/* 07 · ROZWIAZANIE */}
+      {/* 04 · ROZWIAZANIE */}
       <Section id="rozwiazanie">
         <Reveal style={{ width: "100%" }}>
           <SectionHeader eyebrow={t.rozwiazanie.eyebrow} title={t.rozwiazanie.title} />
@@ -550,16 +319,13 @@ export function RaportyCaseStudy() {
         </Reveal>
 
         <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-            <h3 className="pf-h3">{t.rozwiazanie.s1Title}</h3>
-            <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-              <div style={{ overflow: "hidden", width: "100%", borderBottom: "1px solid var(--pf-accent-100)" }}>
-                <img src="/raporty-ds-lista-raportow.webp" alt="Lista raportów wizytówki" style={{ width: "calc(100% + 24px)", height: "auto", display: "block", margin: "-12px -12px 0" }} />
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box" }}>
-                <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.rozwiazanie.s1CardTitle}</span>
-                <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s1CardText}</p>
-              </div>
+          <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
+            <div style={{ overflow: "hidden", width: "100%", borderBottom: "1px solid var(--pf-accent-100)" }}>
+              <img src="/raporty-ds-lista-raportow.webp" alt={t.rozwiazanie.s1CardTitle} style={{ width: "calc(100% + 24px)", height: "auto", display: "block", margin: "-12px -12px 0" }} />
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box" }}>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.rozwiazanie.s1CardTitle}</span>
+              <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s1CardText}</p>
             </div>
           </div>
         </Reveal>
@@ -568,13 +334,13 @@ export function RaportyCaseStudy() {
           <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
             <h3 className="pf-h3">{t.rozwiazanie.s2Title}</h3>
             <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s2Text}</p>
-            <img src="/raporty-ds-raport-full.webp" alt="Raport — widok desktop i mobile" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+            <img src="/raporty-ds-raport-full.webp" alt={t.rozwiazanie.s2Title} style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
             <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
               <StaggerItem style={{ flex: "1 1 260px" }}>
-                <ShotCard img="/raporty-ds-ustawienia.webp" alt="Wybór sekcji i ustawienia raportu" title={t.rozwiazanie.s2Pair[0].title} text={t.rozwiazanie.s2Pair[0].text} />
+                <ShotCard img="/raporty-ds-ustawienia.webp" alt={t.rozwiazanie.s2Pair[0].title} title={t.rozwiazanie.s2Pair[0].title} text={t.rozwiazanie.s2Pair[0].text} />
               </StaggerItem>
               <StaggerItem style={{ flex: "1 1 260px" }}>
-                <ShotCard img="/raporty-ds-auto-report.webp" alt="Ustawianie reguł auto-raportu" title={t.rozwiazanie.s2Pair[1].title} text={t.rozwiazanie.s2Pair[1].text} />
+                <ShotCard img="/raporty-ds-auto-report.webp" alt={t.rozwiazanie.s2Pair[1].title} title={t.rozwiazanie.s2Pair[1].title} text={t.rozwiazanie.s2Pair[1].text} />
               </StaggerItem>
             </StaggerGroup>
           </div>
@@ -584,7 +350,7 @@ export function RaportyCaseStudy() {
           <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
             <h3 className="pf-h3">{t.rozwiazanie.s3Title}</h3>
             <div style={{ width: "100%", border: "1px solid var(--pf-accent-100)", borderRadius: 24, overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-              <img src="/raporty-ds-reports-manager-full.webp" alt="Reports manager — portfolio wizytówek" style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100)" }} />
+              <img src="/raporty-ds-reports-manager-full.webp" alt={t.rozwiazanie.s3Title} style={{ width: "100%", height: "auto", display: "block", borderBottom: "1px solid var(--pf-accent-100)" }} />
               <div style={{ display: "flex", flexDirection: "column", gap: 16, padding: 32, boxSizing: "border-box" }}>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.rozwiazanie.s3CardTitle}</span>
                 <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s3CardText}</p>
@@ -592,35 +358,83 @@ export function RaportyCaseStudy() {
             </div>
             <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
               <StaggerItem style={{ flex: "1 1 260px" }}>
-                <ShotCard img="/raporty-ds-statusy.webp" alt="Statusy raportów" title={t.rozwiazanie.s3Pair[0].title} text={t.rozwiazanie.s3Pair[0].text} />
+                <ShotCard img="/raporty-ds-statusy.webp" alt={t.rozwiazanie.s3Pair[0].title} title={t.rozwiazanie.s3Pair[0].title} text={t.rozwiazanie.s3Pair[0].text} />
               </StaggerItem>
               <StaggerItem style={{ flex: "1 1 260px" }}>
-                <ShotCard img="/raporty-ds-bulk-action.webp" alt="Akcja zbiorcza" title={t.rozwiazanie.s3Pair[1].title} text={t.rozwiazanie.s3Pair[1].text} />
+                <ShotCard img="/raporty-ds-bulk-action.webp" alt={t.rozwiazanie.s3Pair[1].title} title={t.rozwiazanie.s3Pair[1].title} text={t.rozwiazanie.s3Pair[1].text} />
               </StaggerItem>
             </StaggerGroup>
             <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
               <StaggerItem style={{ flex: "1 1 220px" }}>
-                <ShotCard img="/raporty-ds-share.webp" alt="Menu udostępniania raportu" title={t.rozwiazanie.s3Triple[0].title} text={t.rozwiazanie.s3Triple[0].text} />
+                <ShotCard img="/raporty-ds-share.webp" alt={t.rozwiazanie.s3Triple[0].title} title={t.rozwiazanie.s3Triple[0].title} text={t.rozwiazanie.s3Triple[0].text} />
               </StaggerItem>
               <StaggerItem style={{ flex: "1 1 220px" }}>
-                <ShotCard img="/raporty-ds-email-settings.webp" alt="Ustawienia e-mail" title={t.rozwiazanie.s3Triple[1].title} text={t.rozwiazanie.s3Triple[1].text} />
+                <ShotCard img="/raporty-ds-email-settings.webp" alt={t.rozwiazanie.s3Triple[1].title} title={t.rozwiazanie.s3Triple[1].title} text={t.rozwiazanie.s3Triple[1].text} />
               </StaggerItem>
               <StaggerItem style={{ flex: "1 1 220px" }}>
-                <ShotCard img="/raporty-ds-email-send.webp" alt="Wysyłka raportu mailem" title={t.rozwiazanie.s3Triple[2].title} text={t.rozwiazanie.s3Triple[2].text} />
+                <ShotCard img="/raporty-ds-email-send.webp" alt={t.rozwiazanie.s3Triple[2].title} title={t.rozwiazanie.s3Triple[2].title} text={t.rozwiazanie.s3Triple[2].text} />
               </StaggerItem>
+            </StaggerGroup>
+          </div>
+        </Reveal>
+      </Section>
+
+      <Divider />
+
+      {/* 05 · DECYZJE */}
+      <Section id="decyzje">
+        <Reveal style={{ width: "100%" }}>
+          <SectionHeader eyebrow={t.decyzje.eyebrow} title={t.decyzje.title} />
+        </Reveal>
+        <Reveal style={{ width: "100%" }}>
+          <div style={{ width: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", gap: 48, boxSizing: "border-box" }}>
+            <img src="/raporty-ds-flow.webp" alt="" style={{ width: "100%", height: "auto", display: "block", borderRadius: 16 }} />
+            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+              <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{t.decyzje.mainDecision.title}</span>
+              <ul style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>
+                {t.decyzje.mainDecision.bullets.map((b, i) => (
+                  <li key={i}>{b.text}{b.bold && <b>{b.bold}</b>}{b.rest}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
+        <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+          {t.decyzje.pair.map((d, i) => (
+            <StaggerItem key={i} style={{ flex: "1 1 280px" }}>
+              <div style={{ width: "100%", height: "100%", borderRadius: 24, boxShadow: "var(--pf-ring)", padding: 32, display: "flex", flexDirection: "column", gap: 32, boxSizing: "border-box" }}>
+                <img src={d.image} alt="" style={{ width: 160, height: "auto", display: "block", borderRadius: 16 }} />
+                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                  <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>{d.title}</span>
+                  <p className="pf-body" style={{ margin: 0 }}>{d.text}<b>{d.textBold}</b>{d.textRest}</p>
+                </div>
+              </div>
+            </StaggerItem>
+          ))}
+        </StaggerGroup>
+
+        <Reveal style={{ width: "100%" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
+            <h3 className="pf-h3">{t.decyzje.testsTitle}</h3>
+            <div style={{ width: "100%", borderRadius: 24, background: "var(--pf-surface-card-subtle)", overflow: "hidden", boxSizing: "border-box" }}>
+              <img src="/raporty-ds-reports-manager.webp" alt={t.decyzje.testsTitle} style={{ width: "100%", height: "auto", display: "block" }} />
+            </div>
+            <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%", alignItems: "stretch" }}>
+              {t.decyzje.testsFindings.map((f, i) => (
+                <StaggerItem key={i} style={{ flex: "1 1 260px" }}>
+                  <TextCard title={f.title} text={f.text} />
+                </StaggerItem>
+              ))}
             </StaggerGroup>
           </div>
         </Reveal>
 
         <Reveal style={{ width: "100%" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-            <h3 className="pf-h3">{t.rozwiazanie.s4Title}</h3>
-            <p className="pf-body" style={{ margin: 0 }}>{t.rozwiazanie.s4Text}</p>
-            <img src="/raporty-ds-komponenty.webp" alt="Komponenty i stany" style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
-            <div className="pf-solution-grid" style={{ display: "grid", gap: 24, width: "100%" }}>
-              <img src="/raporty-ds-alert-spec.webp" alt="Alert — dokumentacja komponentu" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
-              <img src="/raporty-ds-stany.webp" alt="Stany: ładowanie, sukces, błąd, empty state" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
-              <img className="pf-solution-grid-tall" src="/raporty-ds-wariant-maila.webp" alt="Warianty ustawień e-mail" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", borderRadius: 24 }} />
+            <h3 className="pf-h3">{t.decyzje.infraTitle}</h3>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 48, width: "100%", alignItems: "flex-start" }}>
+              <div style={{ flex: "1 1 240px", maxWidth: 360, aspectRatio: "360 / 280", background: "url(/raporty-ds-maps.webp) center / cover no-repeat", borderRadius: 16 }} />
+              <p className="pf-body" style={{ margin: 0, flex: "2 1 320px" }}>{t.decyzje.infraText}</p>
             </div>
           </div>
         </Reveal>
@@ -628,52 +442,37 @@ export function RaportyCaseStudy() {
 
       <Divider />
 
-      {/* 08 · WYNIK */}
+      {/* 06 · WYNIK */}
       <Section id="wynik">
         <Reveal style={{ width: "100%" }}>
           <SectionHeader eyebrow={t.wynik.eyebrow} title={t.wynik.title} />
         </Reveal>
         <Reveal style={{ width: "100%" }}>
+          <p className="pf-body" style={{ margin: 0 }}>{t.wynik.intro}</p>
+        </Reveal>
+        <Reveal style={{ width: "100%" }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
             <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, alignItems: "stretch" }}>
-              <StaggerItem style={{ flex: "1 1 320px" }}>
+              <StaggerItem style={{ flex: "2 1 320px" }}>
                 <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden", borderRadius: 24, padding: "clamp(24px, 5vw, 48px)", display: "flex", flexDirection: "column", justifyContent: "space-between", alignItems: "flex-start", gap: 32, boxSizing: "border-box", background: "var(--pf-primary-700) url(/raporty-ds-bg-panel-3.webp) center / cover no-repeat" }}>
                   <span style={{ fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 8vw, 80px)", lineHeight: "clamp(48px, 9vw, 108px)", letterSpacing: "0.02em", color: "var(--pf-text-on-dark)" }}><AnimatedStat value={t.wynik.heroStat.value} /></span>
                   <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 16, lineHeight: "24px", color: "var(--pf-primary-50)" }}>{t.wynik.heroStat.label}</span>
                 </div>
               </StaggerItem>
-              <StaggerItem style={{ flex: "1 1 320px" }}>
-                <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
-                    <StatCard value={<AnimatedStat value={t.wynik.smallStats[0].value} />} label={t.wynik.smallStats[0].label} style={{ flex: "1 1 140px" }} />
-                    <StatCard value={<AnimatedStat value={t.wynik.smallStats[1].value} />} label={t.wynik.smallStats[1].label} style={{ flex: "1 1 140px" }} />
-                  </div>
-                  <div style={{ display: "flex", flexWrap: "wrap", gap: 24 }}>
-                    <StatCard value={<AnimatedStat value={t.wynik.smallStats[2].value} />} label={t.wynik.smallStats[2].label} style={{ flex: "1 1 140px" }} />
-                    <StatCard value={<AnimatedStat value={t.wynik.smallStats[3].value} />} label={t.wynik.smallStats[3].label} style={{ flex: "1 1 140px" }} />
-                  </div>
-                </div>
-              </StaggerItem>
+              {t.wynik.smallStats.map((s, i) => (
+                <StaggerItem key={i} style={{ flex: "1 1 200px" }}>
+                  <StatCard value={<AnimatedStat value={s.value} />} label={s.label} style={{ width: "100%", height: "100%" }} />
+                </StaggerItem>
+              ))}
             </StaggerGroup>
             <span className="pf-caption" style={{ color: "var(--pf-text-muted)" }}>{t.wynik.dataCaption}</span>
-          </div>
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "flex", flexDirection: "column", gap: 48, width: "100%" }}>
-            <h3 className="pf-h3">{t.wynik.whatItMeansTitle}</h3>
-            <p className="pf-body">{t.wynik.para1}<b>{t.wynik.para1Bold}</b></p>
-            <p className="pf-body">{t.wynik.para2}<b>{t.wynik.para2Bold}</b>{t.wynik.para2Rest}</p>
-            <p className="pf-body">{t.wynik.para3}<b>{t.wynik.para3Bold}</b>{t.wynik.para3Rest}</p>
-            <QuoteBlock attribution={t.wynik.quoteAttribution}>
-              {t.wynik.quotePre}<span style={{ color: "var(--pf-text-accent)" }}>{t.wynik.quoteAccent1}</span>{t.wynik.quoteMid}<span style={{ color: "var(--pf-text-accent)" }}>{t.wynik.quoteAccent2}</span>{t.wynik.quoteEnd}
-            </QuoteBlock>
           </div>
         </Reveal>
       </Section>
 
       <Divider />
 
-      {/* 09 · PODSUMOWANIE */}
+      {/* 07 · PODSUMOWANIE */}
       <Section id="podsumowanie">
         <Reveal style={{ width: "100%" }}>
           <SectionHeader eyebrow={t.podsumowanie.eyebrow} title={t.podsumowanie.title} />
@@ -691,17 +490,9 @@ export function RaportyCaseStudy() {
         </StaggerGroup>
       </Section>
 
-      <Divider />
-
       <Section>
         <Reveal style={{ width: "100%" }}>
           <img src="/raporty-ds-thanks.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
-        </Reveal>
-        <Reveal style={{ width: "100%" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 48, width: "100%", alignItems: "start" }}>
-            <img src="/raporty-ds-for.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
-            <img src="/raporty-ds-watching.webp" alt="" style={{ width: "100%", height: "auto", display: "block" }} />
-          </div>
         </Reveal>
       </Section>
 
