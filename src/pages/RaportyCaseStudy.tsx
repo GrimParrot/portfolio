@@ -209,9 +209,9 @@ export function RaportyCaseStudy() {
           </p>
         </Reveal>
         <Reveal style={{ width: "100%" }}>
-          <ProblemStatement label={t.kontekst.problemLabel}>
-            <span style={{ fontWeight: 400, color: "var(--pf-text-accent-deep)" }}>
-              {t.kontekst.problemStatement}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.kontekst.problemStatementBold1}</b>{t.kontekst.problemStatementMid1}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.kontekst.problemStatementBold2}</b>{t.kontekst.problemStatementMid2}<b style={{ fontWeight: 700, color: "var(--pf-text-accent-deep)" }}>{t.kontekst.problemStatementBold3}</b>{t.kontekst.problemStatementRest}
+          <ProblemStatement tone="dark" label={t.kontekst.problemLabel}>
+            <span style={{ fontWeight: 400 }}>
+              {t.kontekst.problemStatement}<b style={{ fontWeight: 700, color: "var(--pf-text-on-dark)" }}>{t.kontekst.problemStatementBold1}</b>{t.kontekst.problemStatementMid1}<b style={{ fontWeight: 700, color: "var(--pf-text-on-dark)" }}>{t.kontekst.problemStatementBold2}</b>{t.kontekst.problemStatementMid2}<b style={{ fontWeight: 700, color: "var(--pf-text-on-dark)" }}>{t.kontekst.problemStatementBold3}</b>{t.kontekst.problemStatementRest}
             </span>
           </ProblemStatement>
         </Reveal>
