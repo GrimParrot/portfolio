@@ -1,16 +1,70 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>portfolio</title>
+
+    <!-- Polish is the static default because it is what the crawler indexes and
+         what a Polish recruiter lands on; DocumentMeta rewrites the title, the
+         description and this lang attribute the moment the visitor is on EN. -->
+    <title>Edyta Suprun · Product Designer</title>
+    <meta name="description" content="Product Designer z 8+ latami doświadczenia w B2B i B2C SaaS. Case studies z Localo: automatyczny kreator raportów, moduł pozyskiwania klientów, redesign statystyk." />
+    <link rel="canonical" href="https://edytasup.run/" />
+    <meta name="theme-color" content="#0A0A0A" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Edyta Suprun" />
+    <meta property="og:title" content="Edyta Suprun · Product Designer" />
+    <meta property="og:description" content="Product Designer z 8+ latami doświadczenia w B2B i B2C SaaS. Case studies z Localo: automatyczny kreator raportów, moduł pozyskiwania klientów, redesign statystyk." />
+    <meta property="og:url" content="https://edytasup.run/" />
+    <meta property="og:image" content="https://edytasup.run/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Edyta Suprun — Product Designer" />
+    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Edyta Suprun · Product Designer" />
+    <meta name="twitter:description" content="Product Designer z 8+ latami doświadczenia w B2B i B2C SaaS. Case studies z Localo: automatyczny kreator raportów, moduł pozyskiwania klientów, redesign statystyk." />
+    <meta name="twitter:image" content="https://edytasup.run/og.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
+    <!-- Everything below renders only without JavaScript. It is the same
+         content the app shows, written out for agents that do not execute
+         scripts — link unfurlers, older crawlers, text browsers. -->
+    <noscript>
+      <h1>Edyta Suprun — Product Designer</h1>
+      <p>
+        Projektuję produkty B2B i B2C SaaS od ponad ośmiu lat. Od discovery i badań
+        z użytkownikami, przez architekturę informacji i UI, po design system
+        utrzymywany razem z developerami.
+      </p>
+      <h2>Case studies</h2>
+      <ul>
+        <li><a href="/case-study/raporty">Automatyczny kreator raportów (Localo)</a> — automatyzacja, która robi raport za specjalistę.</li>
+        <li><a href="/case-study/client-acquisition">Moduł pozyskiwania klientów (Localo)</a> — od dwóch osobnych narzędzi do jednego flow end-to-end.</li>
+      </ul>
+      <h2>Wybrane projekty</h2>
+      <ul>
+        <li><a href="/ui/dashboard">Profile Dashboard</a> — główny pulpit Localo: widoczność, zadania, recenzje i konkurencja w jednym widoku.</li>
+        <li><a href="/ui/stats">Redesign statystyk</a> — nowy układ kluczowego ekranu, wykresy zamiast surowych liczb.</li>
+        <li><a href="/ui/naturalnie">Naturalnie.pl</a> — mobilna wersja sklepu z naturalnymi kosmetykami.</li>
+        <li><a href="/ui/kafejeto">Kafejeto.pl</a> — sklep dla palarni kawy specialty.</li>
+        <li><a href="/case-study/banneroza">Szyldowe rewolucje</a> — strona konkursu dla projektantów walczącego z chaosem reklamowym.</li>
+      </ul>
+      <h2>Kontakt</h2>
+      <ul>
+        <li><a href="https://linkedin.com/in/esuprun">LinkedIn</a></li>
+        <li><a href="/Edyta-Suprun-Resume-PL.pdf">CV (PL)</a> · <a href="/Edyta-Suprun-Resume-ENG.pdf">CV (EN)</a></li>
+      </ul>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

@@ -19,6 +19,7 @@ function ScrollToTop() {
 import './index.css'
 import App from './App.tsx'
 import { SmoothScroll } from './components/SmoothScroll.tsx'
+import { DocumentMeta } from './components/DocumentMeta.tsx'
 import { HeroLab } from './pages/HeroLab.tsx'
 import { MarqueeLab } from './pages/MarqueeLab.tsx'
 import { RaportyV1Page } from './pages/RaportyV1Page.tsx'
@@ -32,6 +33,7 @@ createRoot(document.getElementById('root')!).render(
       <BrowserRouter>
         <SmoothScroll>
           <ScrollToTop />
+          <DocumentMeta />
           <Routes>
             <Route path="/" element={<App />} />
             {/* Every project is a modal, not a page — but each keeps a real
