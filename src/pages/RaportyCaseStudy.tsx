@@ -6,7 +6,7 @@ import "@/styles/raporty-ds.css"
 import { Badge } from "@/components/ui/badge"
 import { ChapterRail } from "@/components/ChapterRail"
 import {
-  MetaBar, Section, SectionHeader, Divider, Figure,
+  MetaBar, Section, SectionHeader, Divider,
   StatCard, FindingCard, PersonaCard,
   ProblemStatement, GoalBanner, HypothesisCard,
   LessonCard,
@@ -238,10 +238,13 @@ export function RaportyCaseStudy() {
           <p className="pf-body" style={{ margin: 0 }}>{t.discovery.aiPre}<b>{t.discovery.aiBold1}</b>{t.discovery.aiMid}<b>{t.discovery.aiBold2}</b>{t.discovery.aiRest}</p>
         </Reveal>
         <Reveal style={{ width: "100%" }}>
+          {/* One crop box per artefact rather than three natural aspect ratios:
+              the user-stories board is far wider than the survey and the matrix,
+              so left to themselves the three columns end at different heights. */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%" }}>
-            <Figure src="/raporty-ds-badania-3.webp" radius={16} style={{ flex: "1 1 240px" }} />
-            <Figure src="/raporty-ds-badania-2.webp" radius={16} style={{ flex: "1 1 240px" }} />
-            <Figure src="/raporty-user-stories.webp" radius={16} style={{ flex: "1 1 240px" }} />
+            {["/raporty-ds-badania-3.webp", "/raporty-ds-badania-2.webp", "/raporty-user-stories.webp"].map((src) => (
+              <div key={src} style={{ flex: "1 1 240px", aspectRatio: "1000 / 611", borderRadius: 16, background: `url(${src}) center / cover no-repeat` }} />
+            ))}
           </div>
         </Reveal>
       </Section>
