@@ -1,5 +1,16 @@
 import { Frown } from "lucide-react"
 
+export interface NdaImageProps {
+  /** Path to the pre-blurred screenshot in public/. */
+  src: string
+  alt: string
+  /** Badge copy - "Under NDA" / "Objęte NDA" - translates with the rest of the page. */
+  label: string
+  /** CSS aspect-ratio, e.g. "16/9". Falls back to the image's own ratio when omitted. */
+  aspect?: string
+  style?: React.CSSProperties
+}
+
 /** A screenshot we may not show. The blur is baked into the exported file —
  *  a CSS filter would come off with one click in devtools, and the file in
  *  public/ is public. Only the badge is drawn here, so a row of these still
@@ -7,18 +18,13 @@ import { Frown } from "lucide-react"
  *
  *  `label` comes from copy rather than being hardcoded: the badge is the one
  *  piece of text sitting on top of the artwork, and it translates with the
- *  rest of the page. */
-export function NdaImage({
-  src,
-  alt,
-  label,
-  aspect,
-}: {
-  src: string
-  alt: string
-  label: string
-  aspect?: string
-}) {
+ *  rest of the page.
+ *
+ *  Badge colour is #E3E3E3 straight from Figma — it sits between
+ *  --pf-primary-200 (#D4D4D4) and --pf-border (#E7E7E7) with no exact token
+ *  match, so it stays a literal hex rather than drifting the design onto a
+ *  near-match token. */
+export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
   return (
     <div
       style={{
@@ -27,7 +33,8 @@ export function NdaImage({
         aspectRatio: aspect,
         borderRadius: 12,
         overflow: "hidden",
-        background: "#F5F5F5",
+        background: "var(--pf-primary-50)",
+        ...style,
       }}
     >
       <img
