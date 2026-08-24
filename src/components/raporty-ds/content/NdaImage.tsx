@@ -54,7 +54,11 @@ export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
         }}
       >
         <Frown size={49} strokeWidth={1.5} color="#E3E3E3" aria-hidden />
+        {/* Badge text is hidden from assistive technology: the image's alt text
+            already conveys that it is blurred and redacted for NDA reasons, so
+            repeating the badge label would announce the NDA context twice. */}
         <span
+          aria-hidden
           style={{
             fontFamily: "var(--pf-font-body)",
             fontWeight: 600,

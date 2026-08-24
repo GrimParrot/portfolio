@@ -115,9 +115,9 @@ function ProductBlock({ product, id, ndaLabel }: { product: Product; id: string;
       <Reveal style={{ width: "100%" }}>
         <div className="grid grid-cols-1 md:grid-cols-[minmax(0,7fr)_minmax(0,9fr)] gap-10">
           <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
+            <h3 style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
               {product.roleHeading}
-            </span>
+            </h3>
             <ul style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>
               {product.role.map((item, i) => (
                 <li key={i}>{item}</li>
@@ -141,9 +141,9 @@ function ProductBlock({ product, id, ndaLabel }: { product: Product; id: string;
 
       <Reveal style={{ width: "100%" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
-          <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
+          <h3 style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
             {product.challengeHeading}
-          </span>
+          </h3>
           <p className="pf-body">{product.challenge}</p>
           {/* Only product 02 ships a quote, pulled from user interviews. */}
           {product.quote && <QuoteBlock size="md">{product.quote}</QuoteBlock>}
@@ -156,9 +156,9 @@ function ProductBlock({ product, id, ndaLabel }: { product: Product; id: string;
 
       <Reveal style={{ width: "100%" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
-          <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
+          <h3 style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
             {product.solutionHeading}
-          </span>
+          </h3>
           <p className="pf-body">{product.solution}</p>
         </div>
       </Reveal>
