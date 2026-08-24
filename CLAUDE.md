@@ -73,7 +73,7 @@ Język przełącza `LanguageContext` — nie hardkoduj polskich stringów bezpo�
 
 1. Utwórz `src/copy/[nazwa].copy.tsx` (przez PowerShell jeśli są polskie znaki)
 2. Utwórz `src/pages/[Nazwa]CaseStudy.tsx` — wzoruj na `RaportyCaseStudy.tsx`
-3. Dodaj route w `src/main.tsx`
+3. Zarejestruj stronę w mapie `modalContent` w `src/components/sections/Projects.tsx` — route powstanie sam z `galleryPaths()` w `projects.ts`. `src/main.tsx` ruszasz tylko dla stron spoza galerii (np. `/case-study/raporty-v1`).
 4. Dodaj projekt do `src/data/projects.ts` (zostaw zakomentowany/usunięty jeśli WIP)
 
 **Krytyczne:** `copy.pl` i `copy.en` muszą mieć identyczny kształt (te same pola we wszystkich sekcjach s01–s05), inaczej `tsc -b` wywali błąd dopiero na Vercelu (TS wnioskuje typ `t.sXX` jako unię pl/en i traci pola, których nie ma w drugim języku). Po każdej zmianie struktury w jednym języku — od razu powtórz ją w drugim. Zawsze odpalaj `npm run build` lokalnie przed pushem.
