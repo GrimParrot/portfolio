@@ -55,7 +55,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       { label: "SKALA", value: "0→1 i redesign" },
       { label: "DESIGN SYSTEMY", value: "3" },
     ],
-    coverAlt: "Zamazany zrzut ekranu jednego z produktów Codete, zasłonięty ze względu na NDA.",
+    coverAlt: "Widok z lotu ptaka na tablicę projektową z około stu miniaturowymi ekranami z czterech produktów Codete, nieczytelnymi jedynie ze względu na skalę, w jakiej są pokazane.",
     ndaLabel: "Under NDA",
     products: [
       {
@@ -247,7 +247,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       { label: "SCALE", value: "0→1 and redesign" },
       { label: "DESIGN SYSTEMS", value: "3" },
     ],
-    coverAlt: "Blurred screenshot of one of the Codete products, redacted for NDA.",
+    coverAlt: "Zoomed-out view of a design board holding roughly a hundred small screens from all four Codete products, illegible only because of the scale they're shown at.",
     ndaLabel: "Under NDA",
     products: [
       {

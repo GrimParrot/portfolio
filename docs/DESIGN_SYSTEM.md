@@ -155,6 +155,10 @@ Kafelek statystyki z count-up animacją (`useCountUp`, cubic ease-out, 1400ms). 
 </div>
 ```
 
+### NdaImage (zrzut ekranu objęty NDA)
+Wrapper na screenshot, którego nie wolno pokazać wprost: rysuje ikonę (`Frown`, lucide-react) i etykietę (`label`, np. "Under NDA"/"Objęte NDA") na środku obrazka. Props: `src`, `alt`, `label`, opcjonalnie `aspect` (CSS `aspect-ratio`) i `style`. Etykieta ma `aria-hidden` — kontekst NDA już niesie `alt`, więc nie dubluje się dla czytników ekranu.
+**Ważne:** rozmycie musi być zapisane w samym pliku obrazka (eksport), NIE nałożone przez CSS `filter: blur()` — pliki w `public/` są serwowane publicznie, więc filtr CSS da się zdjąć jednym kliknięciem w devtools.
+
 ### NumBadge
 Mały kolorowy krążek z cyfrą (`color: PRIMARY`, 20×20px, `inline-flex`) do odnoszenia się do elementów na zrzucie ekranu w tekście opisu, np. "① Filtrowanie... ② akcje zbiorcze...".
 

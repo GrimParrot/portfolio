@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy, type Product } from "@/copy/codete.copy"
@@ -55,6 +56,69 @@ function HeroStagger({ children, style }: { children: React.ReactNode; style?: R
       {children}
     </motion.div>
   )
+}
+
+/** Locates every number inside a stat string (e.g. "11–13%", "~20x") so each one
+ * can be counted up independently while the surrounding characters stay put. */
+function parseNumberTokens(str: string) {
+  const regex = /\d+(?:[.,]\d+)?/g
+  const tokens: { value: number; decimals: number; index: number; length: number }[] = []
+  let m: RegExpExecArray | null
+  while ((m = regex.exec(str))) {
+    const normalized = m[0].replace(",", ".")
+    const decimals = normalized.includes(".") ? normalized.split(".")[1].length : 0
+    tokens.push({ value: parseFloat(normalized), decimals, index: m.index, length: m[0].length })
+  }
+  return tokens
+}
+
+/** Stat value that counts up from 0 once scrolled into view. Animates every number
+ * found in the string (so ranges like "11-13%" count both ends), leaving prefixes/
+ * suffixes ("~", "%", "x") untouched. */
+function AnimatedStat({ value }: { value: string }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const [active, setActive] = useState(false)
+  const [progress, setProgress] = useState(0)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect() } },
+      { threshold: 0.4 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!active) return
+    const duration = 1400
+    const start = performance.now()
+    let raf: number
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / duration, 1)
+      setProgress(1 - Math.pow(1 - t, 3))
+      if (t < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [active])
+
+  const tokens = parseNumberTokens(value)
+  if (tokens.length === 0) return <span ref={ref}>{value}</span>
+
+  let out = ""
+  let cursor = 0
+  for (const tok of tokens) {
+    out += value.slice(cursor, tok.index)
+    const current = tok.value * progress
+    out += tok.decimals > 0 ? current.toFixed(tok.decimals) : Math.round(current).toString()
+    cursor = tok.index + tok.length
+  }
+  out += value.slice(cursor)
+
+  return <span ref={ref}>{out}</span>
 }
 
 /** aspect strings look like "945 / 242" — the two numbers are that image's own
@@ -133,7 +197,7 @@ function ProductBlock({ product, id, ndaLabel }: { product: Product; id: string;
         <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ width: "100%" }}>
           {product.stats.map((stat, i) => (
             <StaggerItem key={i}>
-              <StatCard value={stat.value} label={stat.label} />
+              <StatCard value={<AnimatedStat value={stat.value} />} label={stat.label} />
             </StaggerItem>
           ))}
         </StaggerGroup>
