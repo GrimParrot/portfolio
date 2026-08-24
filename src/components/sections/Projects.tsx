@@ -76,9 +76,11 @@ type TileSize = "lg" | "sm"
 // The same tile renders in a two-column grid (~570px) and a three-column one
 // (~360px). The scale travels as a prop rather than a breakpoint, because what
 // decides it is the section the tile stands in, not the width of the window.
+// The clamp differs too: a case study's description carries the numbers it is
+// there for, and two lines cut them off. The gallery's one-liners fit in two.
 const tileScale: Record<TileSize, { title: string; description: string }> = {
-  lg: { title: "text-[22px]", description: "text-[15px]" },
-  sm: { title: "text-[18px]", description: "text-[14px]" },
+  lg: { title: "text-[22px]", description: "text-[15px] line-clamp-4" },
+  sm: { title: "text-[18px]", description: "text-[14px] line-clamp-2" },
 }
 
 function ProjectTile({
@@ -143,7 +145,7 @@ function ProjectTile({
         )}
         <h3 className={`${scale.title} font-semibold leading-snug tracking-tight text-pf-ink`}>{title}</h3>
         {description && (
-          <p className={`${scale.description} line-clamp-2 leading-normal text-pf-subtle`}>{description}</p>
+          <p className={`${scale.description} leading-normal text-pf-subtle`}>{description}</p>
         )}
       </div>
 

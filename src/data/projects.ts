@@ -31,10 +31,12 @@ export const galleryPaths = (): string[] =>
 
 export const projects: Project[] = [
   {
-    title: "Case Study - Automated Reporting",
-    title_pl: "Case study - Automatyczne raporty",
-    description: "Automatyzacja, która robi raport za specjalistę.",
-    description_en: "Automation that does the report for the specialist.",
+    title: "Localo · Report Builder",
+    title_pl: "Localo · Kreator raportów",
+    description:
+      "Agencje sklejały raporty dla swoich klientów ze zrzutów, kilka godzin miesięcznie. Dziś 60% użytkowników raportów generuje je i wysyła automatycznie.",
+    description_en:
+      "Agencies used to piece client reports together from screenshots, several hours a month. Today 60% of report users generate and send them automatically.",
     tag: "Case Study",
     tags: ["Case Study", "Product Design", "UX Research"],
     featured: true,
@@ -44,10 +46,12 @@ export const projects: Project[] = [
     href: "/case-study/raporty",
   },
   {
-    title: "Case Study - Client Acquisition",
-    title_pl: "Case study - Moduł pozyskiwania klientów",
-    description: "Od dwóch osobnych narzędzi do jednego flow end-to-end.",
-    description_en: "Two separate tools replaced by one flow — from lead to client onboarding.",
+    title: "Localo · Client Acquisition",
+    title_pl: "Localo · Pozyskiwanie klientów",
+    description:
+      "Prawie nikt nie uruchamiał funkcji sam, wartość docierała do ludzi dopiero na callu z Customer Success. Po redesignie sesji na funkcji przybyło 2,5×, mediana czasu na niej wydłużyła się o 81%, a callów onboardingowych ubyło.",
+    description_en:
+      "Almost nobody switched the feature on themselves — its value only landed on a call with Customer Success. After the redesign, sessions on the feature grew 2.5×, median time on it rose 81%, and onboarding calls dropped.",
     tag: "Case Study",
     tags: ["Case Study", "Product Design", "B2B SaaS"],
     featured: true,
