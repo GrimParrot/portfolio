@@ -14,7 +14,7 @@
 - **Kształt PL/EN:** `copy.pl` i `copy.en` muszą mieć identyczne pola we wszystkich sekcjach. Rozjazd przechodzi lokalnie, a wywala `tsc -b` dopiero na Vercelu.
 - **Brak testów jednostkowych:** projekt nie ma runnera. Weryfikacja to `npm run build` (pełny `tsc -b`) plus przegląd w preview. Każde zadanie kończy się buildem.
 - **NDA:** żaden ostry oryginał z Second Brain nie może trafić do `public/` ani do repo. Rozmycie musi pochodzić z eksportu Figmy, wypalone w pikselach.
-- **Git:** branch `master`, commit po każdym zadaniu. Nie robić `git push` — tylko na wyraźną prośbę użytkowniczki.
+- **Git:** branch `master`, commit po każdym zadaniu. Nie robić `git push` — tylko na wyraźną prośbę użytkowniczki. **Stage'uj wyłącznie pliki, które sam zmieniłeś, wymieniając je po nazwie.** Nigdy `git add -A`, `git add .` ani `git add :/`: w drzewie roboczym leżą celowo nieśledzone katalogi narzędziowe (`.agents/`, `.claude/`, `.codex/`, `.cursor/`, `.gemini/`, `.zed/`, `config/`, `.mcp.json`, `opencode.json`). Raz już wjechały do commita — 434 pliki i 212 tys. linii zamiast dwóch plików.
 - **Źródło projektu:** Figma `Realizajce`, frame „Reports", node `558:93167`.
 
 ---
