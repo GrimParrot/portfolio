@@ -7,6 +7,7 @@ export { Divider } from "./layout/Divider"
 export { Figure } from "./layout/Figure"
 
 export { StatCard } from "./content/StatCard"
+export { NdaImage } from "./content/NdaImage"
 export { FindingCard } from "./content/FindingCard"
 export { PersonaCard } from "./content/PersonaCard"
 export { LessonCard } from "./content/LessonCard"
