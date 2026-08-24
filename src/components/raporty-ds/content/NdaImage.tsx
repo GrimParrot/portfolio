@@ -8,6 +8,9 @@ export interface NdaImageProps {
   label: string
   /** CSS aspect-ratio, e.g. "16/9". Falls back to the image's own ratio when omitted. */
   aspect?: string
+  /** Set when the screenshot behind the badge is light. The badge is near-white,
+   *  so it needs more opacity to stay visible there than it does on a dark one. */
+  light?: boolean
   style?: React.CSSProperties
 }
 
@@ -24,7 +27,7 @@ export interface NdaImageProps {
  *  --pf-primary-200 (#D4D4D4) and --pf-border (#E7E7E7) with no exact token
  *  match, so it stays a literal hex rather than drifting the design onto a
  *  near-match token. */
-export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
+export function NdaImage({ src, alt, label, aspect, light, style }: NdaImageProps) {
   return (
     <div
       style={{
@@ -47,8 +50,10 @@ export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
         alt={alt}
         style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
       />
-      {/* 20% opacity sits on the wrapper rather than on the icon and the label
-          separately, so the two can never drift apart. */}
+      {/* Opacity sits on the wrapper rather than on the icon and the label
+          separately, so the two can never drift apart. A near-white badge
+          disappears on a light screenshot at the value that reads fine on a
+          dark one, hence the two steps. */}
       <div
         style={{
           position: "absolute",
@@ -58,7 +63,7 @@ export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
           alignItems: "center",
           justifyContent: "center",
           gap: 8,
-          opacity: 0.2,
+          opacity: light ? 0.4 : 0.2,
         }}
       >
         <Frown size={49} strokeWidth={1.5} color="#E3E3E3" aria-hidden />

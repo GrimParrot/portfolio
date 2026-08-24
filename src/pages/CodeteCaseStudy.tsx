@@ -10,6 +10,28 @@ import { MetaBar, Section, NdaImage, StatCard, QuoteBlock } from "@/components/r
 /** Codete's own accent, standing in for the site's default blue on this page. */
 const PRIMARY = "#722ED1"
 
+/** Screenshots whose backdrop behind the centred badge is light, measured by
+ *  scaling each file to a single pixel: these read 248-255, the rest 8-32.
+ *  They get a stronger badge, because a near-white badge vanishes on them.
+ *
+ *  Two the measurement could not settle, resolved by looking:
+ *  02-product-logic is a single-frame animated WebP that ffmpeg will not
+ *  decode, and is a diagram on white — light. 01-login averages 131 only
+ *  because it is a white column beside a deep purple panel; the badge is
+ *  centred, so it lands on the purple and stays with the dark group. */
+const LIGHT_SHOTS = new Set([
+  "/codete-01-dashboard-3.webp",
+  "/codete-01-logo.webp",
+  "/codete-01-typography.webp",
+  "/codete-02-product-logic.webp",
+  "/codete-02-user-interviews.webp",
+  "/codete-03-architecture.webp",
+  "/codete-04-dashboard.webp",
+  "/codete-04-pipelines.webp",
+  "/codete-04-plugin.webp",
+  "/codete-04-relation.webp",
+])
+
 const CHAPTER_IDS = ["intro", "management", "reconciliation", "devtools", "analytics"] as const
 
 /** Scroll-reveal motion, same values as the fade-up used on the Localo case study page. */
@@ -144,7 +166,7 @@ function ImageRow({ images, ndaLabel }: { images: Product["imagesAfterChallenge"
       style={{ width: "100%", "--cols": cols } as React.CSSProperties}
     >
       {images.map((im, i) => (
-        <NdaImage key={i} src={im.src} alt={im.alt} label={ndaLabel} aspect={im.aspect} />
+        <NdaImage key={i} src={im.src} alt={im.alt} label={ndaLabel} aspect={im.aspect} light={LIGHT_SHOTS.has(im.src)} />
       ))}
     </div>
   )
@@ -191,7 +213,7 @@ function ProductBlock({ product, id, ndaLabel }: { product: Product; id: string;
               ))}
             </ul>
           </div>
-          <NdaImage src={product.heroImage.src} alt={product.heroImage.alt} label={ndaLabel} aspect={product.heroImage.aspect} />
+          <NdaImage src={product.heroImage.src} alt={product.heroImage.alt} label={ndaLabel} aspect={product.heroImage.aspect} light={LIGHT_SHOTS.has(product.heroImage.src)} />
         </div>
       </Reveal>
 
