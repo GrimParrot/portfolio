@@ -497,7 +497,13 @@ Szczegóły układu:
 - **Dwie kolumny:** `grid-cols-1 md:grid-cols-[minmax(0,7fr)_minmax(0,9fr)] gap-10`, lewa to `roleHeading` plus `<ul>` z `role`, prawa to `<NdaImage>` z `product.heroImage`
 - **Rząd statystyk:** `StaggerGroup` z `grid-cols-1 md:grid-cols-3 gap-6`, po `<StatCard>` na wpis. Renderuj tylko gdy `product.stats` istnieje.
 - **Cytat:** `<QuoteBlock>` zaraz pod akapitem `challenge`, tylko gdy `product.quote` istnieje. Sprawdź w `src/components/raporty-ds/content/QuoteBlock.tsx`, jakich propsów oczekuje.
-- **Rzędy obrazków:** `grid` o liczbie kolumn równej `images.length` na `md`, `grid-cols-1` poniżej, `gap-6`
+- **Rzędy obrazków:** kolumny **nie są równe**. W Figmie obrazki w rzędzie mają wspólną wysokość, ale bardzo różne szerokości (blok 02 po Wyzwaniu: 945 px obok 231 px; blok 04: 816 px obok 358 px). Równy `grid-cols-N` by je zdeformował. Ponieważ wysokości w rzędzie są zgodne, szerokość kolumny jest wprost proporcjonalna do proporcji obrazka — zbuduj `gridTemplateColumns` z pola `aspect` każdego obrazka:
+
+  ```tsx
+  const cols = images.map((im) => `${ratio(im.aspect)}fr`).join(" ")
+  ```
+
+  gdzie `ratio("945 / 242")` zwraca `945 / 242`. Poniżej `md` jedna kolumna. `gap-6`.
 - Każdy blok owinięty w `Reveal`, żeby wjeżdżał przy scrollu — zgodnie z DESIGN_SYSTEM §6
 
 - [ ] **Step 2: Wyrenderuj cztery bloki**
