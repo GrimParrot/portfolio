@@ -6,20 +6,22 @@ import { useLang } from "@/i18n/LanguageContext"
 import { smoothScrollTo } from "@/lib/lenis"
 import { Plasma } from "./hero-v2/Plasma"
 
-const tags = ["B2B", "B2C", "SaaS", "8+ years exp", "AI-oriented"]
-
 const copy = {
   pl: {
     name: "Cześć, jestem Edyta",
     headingLine1: "Product",
     headingLine2: "Designer",
     workBtn: "Zobacz moje projekty",
+    // B2B, B2C i SaaS zapisuje się po polsku tak samo — tłumaczy się tu tylko
+    // to, co naprawdę jest zdaniem, a nie skrótem branżowym.
+    tags: ["B2B", "B2C", "SaaS", "8+ lat doświadczenia", "zorientowana na AI"],
   },
   en: {
     name: "Hi, I'm Edyta",
     headingLine1: "Product",
     headingLine2: "Designer",
     workBtn: "See my work",
+    tags: ["B2B", "B2C", "SaaS", "8+ years exp", "AI-oriented"],
   },
 }
 
@@ -60,7 +62,7 @@ export function HeroV2() {
         </h1>
 
         <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {tags.map((tag) => (
+          {t.tags.map((tag) => (
             <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium bg-black/5 text-[#0A0A0A] hover:bg-black/10">
               {tag}
             </Badge>
