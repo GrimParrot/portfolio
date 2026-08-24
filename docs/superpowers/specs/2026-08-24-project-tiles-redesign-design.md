@@ -52,7 +52,7 @@ przez propa (`size: "lg" | "sm"`), a nie przez breakpointy.
 |---|---|---|---|
 | karta | `translateY(-4px)` | 0.4s | `cubic-bezier(.22,1,.36,1)` |
 | ramka | `#E7E7E7` → `rgba(0,0,0,.14)` | 0.4s | ta sama |
-| cień | `0 10px 20px -8px rgba(0,0,0,.12)`, `0 4px 8px -4px rgba(0,0,0,.08)` | 0.4s | ta sama |
+| cień | `0 6px 14px -6px rgba(0,0,0,.07)`, `0 2px 5px -3px rgba(0,0,0,.05)` | 0.4s | ta sama |
 | obrazek | `scale(1.06)` | 0.7s | ta sama |
 
 Wideo (`project.video`, dziś tylko Kafejeto) zachowuje się jak dotąd: startuje na

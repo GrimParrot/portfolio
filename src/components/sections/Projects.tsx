@@ -111,7 +111,7 @@ function ProjectTile({
           onOpen(project)
         }
       }}
-      className="group flex h-full cursor-pointer flex-col gap-4 rounded-3xl border border-pf-line bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-[transform,box-shadow,border-color] duration-[400ms] ease-[cubic-bezier(.22,1,.36,1)] hover:-translate-y-1 hover:border-black/15 hover:shadow-[0_10px_20px_-8px_rgba(0,0,0,0.12),0_4px_8px_-4px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      className="group flex h-full cursor-pointer flex-col gap-4 rounded-3xl border border-pf-line bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-[transform,box-shadow,border-color] duration-[400ms] ease-[cubic-bezier(.22,1,.36,1)] hover:-translate-y-1 hover:border-black/15 hover:shadow-[0_6px_14px_-6px_rgba(0,0,0,0.07),0_2px_5px_-3px_rgba(0,0,0,0.05)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
       {/* Cover — its own rounded block inside the card, not the card itself.
           The scaling layer sits over the media so a video zooms like a photo. */}
