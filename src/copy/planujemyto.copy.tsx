@@ -16,6 +16,7 @@ type PlanujemyToCopy = {
   coverImages: CopyImage[]
   sections: SectionCopy[]
   palette: PaletteEntry[]
+  closingLogo: CopyImage
   closingImage: CopyImage
 }
 
@@ -83,6 +84,7 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
       },
     ],
     palette,
+    closingLogo: { src: "/planujemyto-closing-logo.webp", alt: "Logotyp PlanujemyTo w bieli na fioletowym polu marki." },
     closingImage: { src: "/planujemyto-closing.webp", alt: "Znak PlanujemyTo na jednolitym polu w kolorze marki." },
   },
   en: {
@@ -140,6 +142,7 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
       },
     ],
     palette,
+    closingLogo: { src: "/planujemyto-closing-logo.webp", alt: "The PlanujemyTo wordmark in white on the violet brand field." },
     closingImage: { src: "/planujemyto-closing.webp", alt: "The PlanujemyTo mark on a solid brand-colour field." },
   },
 }

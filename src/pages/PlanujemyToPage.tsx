@@ -11,6 +11,15 @@ import { Section, SectionHeader, Divider } from "@/components/raporty-ds"
 // and nothing outside this page is affected.
 const PRIMARY = "#8585FF"
 
+/** Artwork that already carries its own card edges in the pixels. The mono
+ *  pair is two rounded panels with a gutter between them, and the icon strip
+ *  is four rounded tiles standing on white. Putting either inside a bordered
+ *  card draws a frame around a frame — the design has neither in one. */
+const SELF_FRAMED = new Set([
+  "/planujemyto-mono.webp",
+  "/planujemyto-icons.webp",
+])
+
 /** Scroll-reveal motion, copied from RaportyCaseStudy/ClientAcquisitionCaseStudy
  * per DESIGN_SYSTEM.md §6 — only the helpers this page actually uses. */
 const fadeUp = {
@@ -207,7 +216,11 @@ export function PlanujemyToPage() {
             pairing any two side by side would shrink them to a sliver. */}
         {brand.images.map((image, i) => (
           <Reveal key={i} style={{ width: "100%" }}>
-            <ContainedFigure img={image.src} alt={image.alt} />
+            {SELF_FRAMED.has(image.src) ? (
+              <img src={image.src} alt={image.alt} style={{ width: "100%", height: "auto", display: "block" }} />
+            ) : (
+              <ContainedFigure img={image.src} alt={image.alt} />
+            )}
           </Reveal>
         ))}
       </Section>
@@ -250,8 +263,11 @@ export function PlanujemyToPage() {
         </StaggerGroup>
       </Section>
 
-      {/* ZAMKNIECIE — mark on a solid brand-colour field */}
+      {/* ZAMKNIECIE — the wordmark panel, then the mark on the brand field */}
       <Section>
+        <Reveal style={{ width: "100%" }}>
+          <img src={t.closingLogo.src} alt={t.closingLogo.alt} style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
+        </Reveal>
         <Reveal style={{ width: "100%" }}>
           <img src={t.closingImage.src} alt={t.closingImage.alt} style={{ width: "100%", height: "auto", display: "block", borderRadius: 24 }} />
         </Reveal>
