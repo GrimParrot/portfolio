@@ -208,10 +208,16 @@ git commit -m "Bring in the Codete screenshots with the blur already in them"
 
 - [ ] **Step 1: Dociągnij brakujące teksty z Figmy**
 
-Odczyt metadanych uciął dwie rzeczy. Nie zgaduj ich:
+**Odczytane z Figmy — nie trzeba już nic dociągać.** Etykiety tagów, komplet:
 
-1. **Etykiety pigułek tagów** — instancje w node'ach `560:166715` (blok 01), `560:166727` (blok 02), `560:166743` (blok 03), `560:179498` (blok 04). Blok 01 jest już odczytany ze zrzutu: `Enterprise`, `Internal Tools`, `Information Architecture`, `Heavy Data`, `Dashboard`. Pozostałe trzy bloki mają odpowiednio 6, 5 i 5 tagów.
-2. **Lista „Moja rola" w bloku 04** — node `560:179509`, w metadanych ucięta na „prowadzenie zespołu projektantów: podział pracy, feedback, nadzór nad efektami t...".
+- blok 01: `Enterprise`, `Internal Tools`, `Information Architecture`, `Heavy Data`, `Dashboard`
+- blok 02: `B2B`, `0→1`, `Contract Management`, `Data Reconciliation`, `Design System`, `Dashboard`
+- blok 03: `DevTools`, `B2B`, `0→1`, `Deployments & Releases`, `Design System`
+- blok 04: `Data Analytics`, `Heavy Data`, `Data Lake`, `0→1`, `MVP`
+
+Strzałka w `0→1` to znak `→` (U+2192), nie `->`.
+
+**Ważne, czego pierwsza wersja planu nie ujmowała:** pozycje list „Moja rola" mają **pogrubienia w środku zdania** (np. „nowa **architektura informacji**"). Dlatego `role` jest typu `React.ReactNode[]`, a nie `string[]`. Pogrubienia zaznaczone niżej gwiazdkami odwzorowuj jako `<strong>` w JSX — dokładnie te frazy, nie inne.
 
 - [ ] **Step 2: Zbuduj strukturę pliku**
 
@@ -224,7 +230,7 @@ export type Product = {
   tags: string[]
   intro: string
   roleHeading: string
-  role: string[]
+  role: React.ReactNode[]
   stats?: { value: string; label: string }[]
   challengeHeading: string
   challenge: string
@@ -275,7 +281,19 @@ Nagłówki powtarzalne w każdym produkcie: `roleHeading` = „Moja rola", `chal
 
 `intro`: „To narzędzie wewnętrzne dużego międzynarodowego operatora telekomunikacyjnego: firmy współpracujące, klienci i partnerzy razem z informacjami o nich i przypisanymi tokenami, użytkownicy z dostępami i stanowiskami. Do tego całe portfolio produktów, zamówienia, zarządzanie API i faktury. Korzystało z niego kilkaset osób."
 
-`role`: nowe logo i brand guide / nowa architektura informacji / wyodrębnione persony / flow dla każdej persony / system logowania z uwierzytelnianiem dwuskładnikowym / design system od zera, atomy, patterny, komponenty / dokumentacja, prototypy i handoff dla dwóch zespołów deweloperskich / po redesignie rozwijałam platformę dalej, razem z innymi projektantami / dark-light mode
+`tags`: `Enterprise`, `Internal Tools`, `Information Architecture`, `Heavy Data`, `Dashboard`
+
+`role` (dziewięć pozycji, pogrubienia dokładnie tam gdzie gwiazdki):
+
+- nowe logo i brand guide
+- nowa **architektura informacji**
+- wyodrębnione persony
+- flow dla każdej persony
+- system logowania z uwierzytelnianiem dwuskładnikowym
+- **design system od zera**, atomy, patterny, komponenty
+- dokumentacja, prototypy i **handoff** dla dwóch zespołów deweloperskich
+- po redesignie rozwijałam platformę dalej, razem z innymi projektantami
+- dark/light mode
 
 `stats`: `8` — „ról w rdzeniu systemu"; `100+` — „zaprojektowanych ekranów"; `4` — „główne typy zamówień z własną ścieżką"
 
@@ -289,7 +307,18 @@ Nagłówki powtarzalne w każdym produkcie: `roleHeading` = „Moja rola", `chal
 
 `intro`: „Narzędzie, w którym firmy zawierają ze sobą umowy i sprawdzają dane, które tym umowom podlegają. Zaprojektowałam cały produkt: mapowanie pól między systemami, które to porównanie robi za użytkownika, moduł negocjacji rozbieżności, logo, brand i design system od zera. 25+ widoków"
 
-`role`: nowe logo i identyfikacja wizualna / flow całego produktu / architektura informacji / UI, prototyp / mapowanie pól między systemami, które zastąpiło ręczną weryfikację przesyłu / moduł negocjacji rozbieżności / dashboard umów i proces zawierania nowej umowy / design system od zera
+`tags`: `B2B`, `0→1`, `Contract Management`, `Data Reconciliation`, `Design System`, `Dashboard`
+
+`role` (osiem pozycji):
+
+- nowe logo i identyfikacja wizualna
+- flow całego produktu
+- **architektura informacji**
+- UI, **prototyp**
+- mapowanie pól między systemami, które zastąpiło ręczną weryfikację przesyłu
+- moduł negocjacji rozbieżności
+- **dashboard umów** i proces zawierania nowej umowy
+- **design system od zera**
 
 `challenge`: „Trzy rzeczy, które musiały zmieścić się w jednym produkcie: zawarcie umowy, automatyczne porównanie danych mimo dwóch różnych nazewnictw i sposób na negocjacje, kiedy porównanie pokaże rozbieżność. Skomplikowany interfejs, bo produkt obsługuje dwie firmy naraz, ich dwa systemy i umowę, która to spina. Mnóstwo danych porównawczych, całe pliki pól przy polach. Do tego wymagający użytkownicy: managerowie i stakeholderzy, którzy oceniają produkt od pierwszego spojrzenia. Wywiady po pierwszej wersji pokazały, gdzie to boli:"
 
@@ -303,7 +332,19 @@ Nagłówki powtarzalne w każdym produkcie: `roleHeading` = „Moja rola", `chal
 
 `intro`: „Prowadziłam trzyosobowy zespół projektantów, ze mną włącznie. Zbudowaliśmy narzędzie dla deweloperów do nadzoru nad aplikacjami, pipeline'ami, środowiskami, deploymentami i release'ami."
 
-`role`: rozmowy z deweloperami / end-to-end product design / prowadzenie zespołu projektantów: podział pracy, feedback, nadzór nad efektami / standardy projektowania dla ekosystemu / wzorce projektowe (m.in. style i variables) / nowe logo i brand / architektura informacji i flow / cały produkt, 50+ widoków / design system od zera
+`tags`: `DevTools`, `B2B`, `0→1`, `Deployments & Releases`, `Design System`
+
+`role` (dziewięć pozycji):
+
+- rozmowy z deweloperami
+- **end-to-end product design**
+- **prowadzenie zespołu projektantów**: podział pracy, feedback, nadzór nad efektami
+- standardy projektowania dla ekosystemu
+- wzorce projektowe (m.in. style i variables)
+- nowe logo i brand
+- **architektura informacji** i flow
+- cały produkt, 50+ widoków
+- **design system od zera**
 
 `challenge`: „Jedno miejsce na zarządzanie pipeline'ami, środowiskami, deploymentami i release'ami. Najpierw trzeba było zrozumieć je jako obiekty i zależności między nimi, zanim dało się je pogrupować w ekrany. Użytkownikami byli deweloperzy, więc narzędzie musiało mówić ich językiem. Do tego koordynacja pracy trzech projektantów i wspólny wzorzec, żeby nasze prace działały w jednym ekosystemie, plus zbudowanie kultury feedbacku i współpracy."
 
@@ -315,7 +356,21 @@ Nagłówki powtarzalne w każdym produkcie: `roleHeading` = „Moja rola", `chal
 
 `intro`: „Platforma do analizy danych, narzędzie dla analityków. Zbieranie surowych danych z data lake, budowanie pipeline'ów dla kolejnych etapów, katalogi danych, modelowanie i pluginy. Działające MVP miało powstać w 3 miesiące. Prowadziłam dwuosobowy zespół projektantów, ze mną włącznie."
 
-`role`: **z node `560:179509`**, dociągnięte w Step 1. Pierwsza pozycja to „prowadzenie zespołu projektantów: podział pracy, feedback, nadzór nad efektami".
+`tags`: `Data Analytics`, `Heavy Data`, `Data Lake`, `0→1`, `MVP`
+
+`role` (jedenaście pozycji — najdłuższa lista z czterech):
+
+- **prowadzenie zespołu projektantów**: podział pracy, feedback, nadzór nad efektami
+- trzy **spotkania z analitykami danych**: jak wygląda ich praca, czego potrzebują, jakim językiem mówią
+- **architektura informacji** całej platformy
+- flow dla kolejnych etapów pracy z danymi
+- zbieranie surowych danych z **data lake**
+- tworzenie **pipeline'ów**: lake, normalization, modeling
+- katalogi danych i modelowanie
+- pluginy po stronie source i destination, na przykład BigQuery
+- moduł **użytkowników, ról i uprawnień** razem z definicjami i klasyfikacją
+- ekrany i **klikalny prototyp** całego MVP
+- procesy pracy zespołu przeniesione z poprzedniego projektu
 
 `challenge`: „Analitycy potrzebowali jednego narzędzia na całą drogę danych, od surowych plików w data lake po gotowy model. Trzy miesiące na działające MVP, przy ograniczonych zasobach. Dużo zagadnień, analiz, danych i metryk naraz. Wcześniej pracowałam z danymi już przetworzonymi, a tu po raz pierwszy weszłam w fazę zbierania surowych danych i ich obrabiania. Do tego czas: to był jeden wielki sprint dowożenia."
 
