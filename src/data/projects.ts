@@ -49,9 +49,9 @@ export const projects: Project[] = [
     title: "Localo · Client Acquisition",
     title_pl: "Localo · Pozyskiwanie klientów",
     description:
-      "Prawie nikt nie uruchamiał funkcji sam, wartość docierała do ludzi dopiero na callu z Customer Success. Po redesignie sesji na funkcji przybyło 2,5×, mediana czasu na niej wydłużyła się o 81%, a callów onboardingowych ubyło.",
+      "Prawie nikt nie uruchamiał funkcji sam, wartość docierała do ludzi dopiero na callu z Customer Success. Po redesignie sesji na funkcji przybyło 2,5×, a mediana czasu na niej wydłużyła się o 81%.",
     description_en:
-      "Almost nobody switched the feature on themselves — its value only landed on a call with Customer Success. After the redesign, sessions on the feature grew 2.5×, median time on it rose 81%, and onboarding calls dropped.",
+      "Almost nobody switched the feature on themselves — its value only landed on a call with Customer Success. After the redesign, sessions on the feature grew 2.5× and median time on it rose 81%.",
     tag: "Case Study",
     tags: ["Case Study", "Product Design", "B2B SaaS"],
     featured: true,
