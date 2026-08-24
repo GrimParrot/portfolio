@@ -10,7 +10,7 @@
 
 ## Global Constraints
 
-- **Polskie znaki:** nowe pliki z ą ę ó ś ź ż ć ń ł twórz przez PowerShell UTF-8 no-BOM albo Node.js z `fs.writeFileSync(path, text, "utf8")`. Nigdy przez Write/Edit od zera. Edycja istniejącego pliku przez Edit jest OK.
+- **Polskie znaki:** zweryfikowane w tej sesji — narzędzie Write zapisuje czyste UTF-8 bez BOM, razem z ą ę ó ś ź ż ć ń ł, apostrofami i myślnikami. Używaj Write, a po zapisie potwierdź `file <plik>` (oczekiwane „UTF-8 text", bez „with BOM"). **Nie przepuszczaj polskiego tekstu przez heredoc w Bashu** — pojedynczy apostrof (`pipeline'ami`, `don't`) rozwala cytowanie polecenia; to realnie wywróciło pisanie tego planu dwa razy. Alternatywy przy problemach: PowerShell UTF-8 no-BOM albo Node.js z `fs.writeFileSync(path, text, "utf8")`.
 - **Kształt PL/EN:** `copy.pl` i `copy.en` muszą mieć identyczne pola we wszystkich sekcjach. Rozjazd przechodzi lokalnie, a wywala `tsc -b` dopiero na Vercelu.
 - **Brak testów jednostkowych:** projekt nie ma runnera. Weryfikacja to `npm run build` (pełny `tsc -b`) plus przegląd w preview. Każde zadanie kończy się buildem.
 - **NDA:** żaden ostry oryginał z Second Brain nie może trafić do `public/` ani do repo. Rozmycie musi pochodzić z eksportu Figmy, wypalone w pikselach.
