@@ -2,6 +2,7 @@ import { useRef } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { projects, type ProjectTag, type Project } from "@/data/projects"
+import { Badge } from "@/components/ui/badge"
 import { useLang } from "@/i18n/LanguageContext"
 import { ProjectModal } from "@/components/ProjectModal"
 import { RaportyCaseStudy } from "@/pages/RaportyCaseStudy"
@@ -98,7 +99,10 @@ function ProjectTile({
   const scale = tileScale[size]
   const title = lang === "pl" && project.title_pl ? project.title_pl : project.title
   const description = lang === "pl" ? project.description : project.description_en ?? project.description
-  const tags = lang === "pl" ? project.tags : project.tags_en ?? project.tags
+  // Projects carry four or five tags on their own page, where there is a full
+  // width to spread them across. A tile has one row, so it shows the first
+  // three — the order in the copy files is already most-telling-first.
+  const tags = (lang === "pl" ? project.tags : project.tags_en ?? project.tags)?.slice(0, 3)
 
   return (
     // This is the only way into a case study from the homepage, so it has to
@@ -140,9 +144,9 @@ function ProjectTile({
           bottom even when a neighbouring card in the row is taller. */}
       <div className="flex flex-1 flex-col gap-2 px-1">
         {showTag && (
-          <span className="inline-block self-start rounded-xl bg-pf-surface-subtle px-3.5 py-2 text-sm font-semibold text-pf-body">
+          <Badge variant="secondary" className="self-start">
             {project.tag}
-          </span>
+          </Badge>
         )}
         <h3 className={`${scale.title} font-semibold leading-snug tracking-tight text-pf-ink`}>{title}</h3>
         {description && (
@@ -151,7 +155,15 @@ function ProjectTile({
       </div>
 
       {tags && tags.length > 0 && (
-        <p className="px-1 pb-1 text-[12px] tracking-tight text-pf-muted">{tags.join(" · ")}</p>
+        // Tighter than the same chips on a project page: three of them have to
+        // share one row of a 368px tile, and the longest set needs every pixel.
+        <div className="flex flex-wrap gap-1 px-1 pb-1">
+          {tags.map((tag) => (
+            <Badge key={tag} variant="secondary" className="px-2">
+              {tag}
+            </Badge>
+          ))}
+        </div>
       )}
     </div>
   )
