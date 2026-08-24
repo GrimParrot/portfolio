@@ -52,7 +52,7 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
           "Znak dostał komplet zastosowań, których produkt naprawdę potrzebuje: wersję poziomą, sygnet solo, warianty mono na jasnym i ciemnym tle oraz ikonę aplikacji w czterech wariantach kolorystycznych. Sygnet jest na tyle prosty, że bez problemów schodzi do rozmiaru favicony.",
         ],
         images: [
-          { src: "/planujemyto-logo-lockup.webp", alt: "Pozioma wersja loga PlanujemyTo, checkbox połączony z balonem." },
+          { src: "/planujemyto-logo-lockup.webp", alt: "Pozioma wersja logo PlanujemyTo, checkbox połączony z balonem." },
           { src: "/planujemyto-idea.webp", alt: "Szkic koncepcyjny znaku PlanujemyTo pokazujący połączenie checkboxa i balonu." },
           { src: "/planujemyto-mono.webp", alt: "Dwa panele obok siebie z monochromatycznymi wariantami znaku PlanujemyTo na jasnym i ciemnym tle." },
           { src: "/planujemyto-icons.webp", alt: "Cztery kolorystyczne warianty ikony aplikacji PlanujemyTo." },
@@ -77,7 +77,7 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
         ],
         images: [
           { src: "/planujemyto-app-event.webp", alt: "Zrzut ekranu widoku wydarzenia w aplikacji PlanujemyTo z listą zadań." },
-          { src: "/planujemyto-app-login.webp", alt: "Zrzut ekranu ekranu logowania aplikacji PlanujemyTo." },
+          { src: "/planujemyto-app-login.webp", alt: "Zrzut ekranu logowania w aplikacji PlanujemyTo." },
           { src: "/planujemyto-app-system.webp", alt: "Zrzut ekranu panelu administracyjnego PlanujemyTo z zarządzaniem typami wydarzeń." },
           { src: "/planujemyto-app-components.webp", alt: "Zrzut ekranu komponentów design systemu PlanujemyTo." },
         ],
@@ -95,7 +95,7 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
       </>
     ),
     heroLead:
-      "PlanujemyTo is a free event-planning app: weddings, christenings, birthdays, 18th birthdays, trips. Instead of an empty list, the user picks an event type and the app suggests the tasks that kind of event always needs ticked off, each one with a date, a place and a note. I owned the whole visual and product side of this project: the brand, information architecture, flow, the app and admin panel interface, and the design system both of those are built on.",
+      "PlanujemyTo is a free event-planning app: weddings, christenings, birthdays, coming-of-age parties, trips. Instead of an empty list, the user picks an event type and the app suggests the tasks that kind of event always needs ticking off, each one with a date, a place and a note. I owned the whole visual and product side of this project: the brand, information architecture, flow, the app and admin panel interface, and the design system both of those are built on.",
     coverImages: [
       { src: "/planujemyto-cover-mark.webp", alt: "The PlanujemyTo mark, a checkbox joined with a balloon." },
       { src: "/planujemyto-cover-logo.webp", alt: "The full horizontal PlanujemyTo logo." },
@@ -106,8 +106,8 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
         eyebrow: "01 · Brand",
         title: "Identity and mark system",
         paragraphs: [
-          "The brand had to carry many different event types at once, from christenings to eighteenths, so it couldn't lean into any single one of them. I built it around a checkbox standing for a completed task and balloons, a fixture at most of these events. Together, the two symbols describe everything the product does, and combined into one shape they read as the heart of PlanujemyTo.",
-          "The mark got the full set of uses the product actually needs: a horizontal lockup, a standalone symbol, mono variants for light and dark backgrounds, and an app icon in four colour variants. The symbol is simple enough that it holds up all the way down to favicon size.",
+          "The brand had to carry many different event types at once, from christenings to coming-of-age parties, so it couldn't lean into any single one of them. I built it around a checkbox standing for a completed task and balloons, which turn up at most of these events. Together, the two symbols describe everything the product does, and combined into one shape they read as the heart of PlanujemyTo.",
+          "The mark got the full set of uses the product actually needs: a horizontal lockup, a standalone symbol, mono versions for light and dark backgrounds, and an app icon in four colourways. The symbol is simple enough that it holds up all the way down to favicon size.",
         ],
         images: [
           { src: "/planujemyto-logo-lockup.webp", alt: "Horizontal lockup of the PlanujemyTo logo, checkbox joined with a balloon." },
