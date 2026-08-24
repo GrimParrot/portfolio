@@ -1,8 +1,10 @@
+import { projectTags } from "@/data/projectTags"
+
 export const copy = {
   pl: {
     heroEyebrow: "UI · SKLEP MOBILNY Z KOSMETYKAMI NATURALNYMI",
     title: <>Naturalnie.pl. Zakupy z <span style={{ color: "#32685B" }}>klasą</span>.</>,
-    tags: ["Aplikacja mobilna", "E-commerce", "UI Design", "Beauty & Care"],
+    tags: projectTags.naturalnie,
     cover: { img: "/naturalnie-cover.webp", alt: "Naturalnie.pl" },
     caption: "Projekt UI mobilnej wersji sklepu z naturalnymi kosmetykami i produktami do pielęgnacji.",
     sections: [
@@ -27,7 +29,7 @@ export const copy = {
   en: {
     heroEyebrow: "UI · MOBILE STORE FOR NATURAL COSMETICS",
     title: <>Naturalnie.pl. Shopping with <span style={{ color: "#32685B" }}>class</span>.</>,
-    tags: ["Mobile App", "E-commerce", "UI Design", "Beauty & Care"],
+    tags: projectTags.naturalnie,
     cover: { img: "/naturalnie-cover.webp", alt: "Naturalnie.pl" },
     caption: "UI project for the mobile version of a natural cosmetics and personal care online store.",
     sections: [

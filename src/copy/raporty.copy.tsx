@@ -1,8 +1,10 @@
+import { projectTags } from "@/data/projectTags"
+
 export const copy = {
   pl: {
     heroEyebrow: "CASE STUDY · LOCALO",
     heroTitle: "Automatyczny kreator raportów",
-    heroTags: ["Local SEO", "B2B2C", "Reporting", "Responsive Web", "Design System"],
+    heroTags: projectTags.raporty,
     heroLead:
       "Obaliłam pierwszą hipotezę, przeprowadziłam badania z których utworzyłam nową. Zamiast wpuszczać klienta agencji do Localo, zaprojektowałam raport, który sam się generuje i wysyła jednym kliknięciem. Dziś 60% użytkowników raportów wykorzystuje auto-generowanie zamiast robić to ręcznie.",
     metaBar: [
@@ -170,7 +172,7 @@ export const copy = {
   en: {
     heroEyebrow: "CASE STUDY · LOCALO",
     heroTitle: "Automatic report builder",
-    heroTags: ["Local SEO", "B2B2C", "Reporting", "Responsive Web", "Design System"],
+    heroTags: projectTags.raporty,
     heroLead:
       "I disproved the first hypothesis, ran the research and built a new one out of it. Instead of letting the agency's client into Localo, I designed a report that generates and sends itself with one click. Today 60% of report users rely on auto-generation instead of doing it by hand.",
     metaBar: [

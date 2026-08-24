@@ -1,8 +1,10 @@
+import { projectTags } from "@/data/projectTags"
+
 export const copy = {
   pl: {
     heroEyebrow: "PRODUKT · LOCALO — REDESIGN EKRANU STATYSTYK",
     title: <>Stats Redesign. Dane po <span style={{ color: "var(--pf-accent-500)" }}>ludzku</span>.</>,
-    tags: ["Dashboard", "Wizualizacja danych", "Product Design", "SaaS"],
+    tags: projectTags.stats,
     cover: { img: "/stats-cover.webp", alt: "Stats Redesign" },
     caption: "Przeprojektowałam kluczowy ekran statystyk — nowy układ, wykresy zamiast surowych liczb. Teraz widzi go 80%+ klientów, którzy przechodzą na płatny plan.",
     sections: [
@@ -25,7 +27,7 @@ export const copy = {
   en: {
     heroEyebrow: "PRODUCT · LOCALO — STATS SCREEN REDESIGN",
     title: <>Stats Redesign. Data, made <span style={{ color: "var(--pf-accent-500)" }}>human</span>.</>,
-    tags: ["Dashboard", "Data Visualization", "Product Design", "SaaS"],
+    tags: projectTags.stats,
     cover: { img: "/stats-cover.webp", alt: "Stats Redesign" },
     caption: "Redesigned the core stats screen — new layout, charts instead of raw numbers. Now seen by 80%+ of clients who go on to convert to a paid plan.",
     sections: [

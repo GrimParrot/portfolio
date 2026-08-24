@@ -1,3 +1,5 @@
+import { projectTags } from "@/data/projectTags"
+
 export type ProjectTag = "UI" | "Case Study" | "Web"
 
 export interface Project {
@@ -37,7 +39,7 @@ export const projects: Project[] = [
     description_en:
       "Agencies used to piece client reports together from screenshots, several hours a month. Today 60% of report users generate and send them automatically.",
     tag: "Case Study",
-    tags: ["Product Design", "B2B2C", "UX Strategy"],
+    tags: projectTags.raporty,
     featured: true,
     bg: "bg-indigo-50",
     image: "/raporty-ds-cover.webp",
@@ -52,7 +54,7 @@ export const projects: Project[] = [
     description_en:
       "Almost nobody switched the feature on themselves — its value only landed on a call with Customer Success. After the redesign, sessions on the feature grew 2.5× and median time on it rose 81%.",
     tag: "Case Study",
-    tags: ["Redesign", "B2B2C", "Workflow Optimization"],
+    tags: projectTags.clientAcquisition,
     featured: true,
     bg: "bg-violet-50",
     image: "/client-acquisition-cover.webp",
@@ -63,7 +65,7 @@ export const projects: Project[] = [
     description: "Darmowa aplikacja do planowania wydarzeń — marka, produkt i design system.",
     description_en: "Free event-planning app — brand, product and design system.",
     tag: "UI",
-    tags: ["0→1 Design", "Brand Identity", "Design System"],
+    tags: projectTags.planujemyto,
     bg: "bg-[#eeeeff]",
     image: "/planujemyto-cover.webp",
     href: "/ui/planujemyto",
@@ -73,7 +75,7 @@ export const projects: Project[] = [
     description: "Projekt mobilnej wersji sklepu z naturalnymi kosmetykami i produktami do pielęgnacji.",
     description_en: "Mobile UI concept for a natural cosmetics and personal care online store.",
     tag: "UI",
-    tags: ["Redesign", "E-commerce", "Mobile Design"],
+    tags: projectTags.naturalnie,
     bg: "bg-[#eaf2f0]",
     image: "/naturalnie-cover.webp",
     href: "/ui/naturalnie",
@@ -83,7 +85,7 @@ export const projects: Project[] = [
     description: "Sklep internetowy dla polskiej palarni kawy specialty — świeża kawa, akcesoria, szkolenia.",
     description_en: "Online store for a Polish specialty coffee roastery — fresh coffee, accessories, training.",
     tag: "UI",
-    tags: ["UI Design", "E-commerce", "Responsive Web"],
+    tags: projectTags.kafejeto,
     bg: "bg-[#f2f7e8]",
     image: "/kafejeto/okladka.jpg",
     href: "/ui/kafejeto",
@@ -94,7 +96,7 @@ export const projects: Project[] = [
     description: "Przeprojektowałam kluczowy ekran statystyk — nowy układ, wykresy zamiast surowych liczb.",
     description_en: "Redesigned the core stats screen — new layout, charts instead of raw numbers.",
     tag: "Web",
-    tags: ["Redesign", "MarTech", "Data Visualization"],
+    tags: projectTags.stats,
     bg: "bg-pf-50",
     image: "/stats-cover.webp",
     href: "/ui/stats",
@@ -105,7 +107,7 @@ export const projects: Project[] = [
     description: "Główny pulpit Localo — widoczność, zadania, recenzje i konkurencja w jednym widoku.",
     description_en: "Localo's main dashboard — visibility, tasks, reviews and competitors in one view.",
     tag: "Web",
-    tags: ["Product Design", "MarTech", "Design System"],
+    tags: projectTags.dashboard,
     bg: "bg-pf-50",
     image: "/dashboard-cover.webp",
     href: "/ui/dashboard",
@@ -116,6 +118,7 @@ export const projects: Project[] = [
     description: "Strona konkursu dla projektantów walczącego z chaosem reklamowym w przestrzeni miejskiej.",
     description_en: "Competition website for designers fighting advertising chaos in urban space.",
     tag: "Web",
+    tags: projectTags.banneroza,
     bg: "bg-[#fffbeb]",
     image: "/banneroza/cover2.jpg",
     href: "/case-study/banneroza",

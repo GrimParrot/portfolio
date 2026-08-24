@@ -79,9 +79,11 @@ type TileSize = "lg" | "sm"
 // decides it is the section the tile stands in, not the width of the window.
 // The clamp differs too: a case study's description carries the numbers it is
 // there for, and two lines cut them off. The gallery's one-liners fit in two.
-const tileScale: Record<TileSize, { title: string; description: string }> = {
-  lg: { title: "text-[22px]", description: "text-[15px] line-clamp-4" },
-  sm: { title: "text-[18px]", description: "text-[14px] line-clamp-2" },
+// Chips are sized the same way — a 534px tile carries four at 14px, a 338px one
+// three at 13px, and both stay on a single row.
+const tileScale: Record<TileSize, { title: string; description: string; chip: string }> = {
+  lg: { title: "text-[22px]", description: "text-[15px] line-clamp-4", chip: "px-2.5 py-1 text-sm" },
+  sm: { title: "text-[18px]", description: "text-[14px] line-clamp-2", chip: "px-2 py-1 text-[13px]" },
 }
 
 function ProjectTile({
@@ -99,9 +101,10 @@ function ProjectTile({
   const scale = tileScale[size]
   const title = lang === "pl" && project.title_pl ? project.title_pl : project.title
   const description = lang === "pl" ? project.description : project.description_en ?? project.description
-  // Three is what one row of a 368px tile holds; the slice is a guard against a
-  // fourth being added to the data later and silently wrapping.
-  const tags = project.tags?.slice(0, 3)
+  // No cap: a featured tile is 534px wide and holds four, a gallery one 338px
+  // and holds three. The data says how many each project has, and the row wraps
+  // if a future tag outgrows its tile.
+  const tags = project.tags
 
   return (
     // This is the only way into a case study from the homepage, so it has to
@@ -158,7 +161,7 @@ function ProjectTile({
         // share one row of a 368px tile, and the longest set needs every pixel.
         <div className="flex flex-wrap gap-1 px-1 pb-1">
           {tags.map((tag) => (
-            <Badge key={tag} variant="secondary" className="px-2">
+            <Badge key={tag} variant="secondary" className={`${scale.chip} font-medium`}>
               {tag}
             </Badge>
           ))}
