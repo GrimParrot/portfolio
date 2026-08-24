@@ -68,8 +68,12 @@ dotyczy warstwy nad `<img>` / `<video>`, więc obejmuje oba przypadki tak samo.
 
 ### Tło sekcji
 
-`#projects` zmienia tło z `bg-white` na `pf-surface-subtle` (`#F5F5F5`). Bez tego
-białe karty na białym tle trzymałaby tylko ramka `#E7E7E7`.
+`#projects` zostaje białe (`bg-white`).
+
+Pierwotnie spec przewidywał zmianę na `pf-surface-subtle` (`#F5F5F5`), żeby białe
+karty odbiły się od tła. Po zobaczeniu tego na żywo użytkowniczka odrzuciła szare
+tło i wybrała powrót do bieli — karty rozdziela sama ramka `#E7E7E7` plus cień,
+który przy hoverze rośnie.
 
 ## Dane
 

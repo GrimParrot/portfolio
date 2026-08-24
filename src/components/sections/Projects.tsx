@@ -177,7 +177,7 @@ export function Projects() {
   }
 
   return (
-    <section id="projects" className="pt-24 pb-40 bg-pf-surface-subtle">
+    <section id="projects" className="pt-24 pb-40 bg-white">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Case study — featured, unfiltered */}
         <h2 className="text-3xl font-black text-pf-ink mb-6">{t.caseStudyHeading}</h2>
