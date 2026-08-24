@@ -1,7 +1,6 @@
 import { useRef } from "react"
 import { motion, AnimatePresence } from "motion/react"
 import { useLocation, useNavigate } from "react-router-dom"
-import { ArrowUpRight } from "lucide-react"
 import { projects, type ProjectTag, type Project } from "@/data/projects"
 import { useLang } from "@/i18n/LanguageContext"
 import { ProjectModal } from "@/components/ProjectModal"
@@ -60,7 +59,7 @@ function HoverVideo({ src, poster }: { src: string; poster?: string }) {
       loop
       playsInline
       preload="auto"
-      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      className="w-full h-full object-cover"
       onMouseEnter={() => ref.current?.play()}
       onMouseLeave={() => {
         const el = ref.current
@@ -72,14 +71,36 @@ function HoverVideo({ src, poster }: { src: string; poster?: string }) {
   )
 }
 
-function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: boolean; onOpen: (project: Project) => void }) {
+type TileSize = "lg" | "sm"
+
+// The same tile renders in a two-column grid (~570px) and a three-column one
+// (~360px). The scale travels as a prop rather than a breakpoint, because what
+// decides it is the section the tile stands in, not the width of the window.
+const tileScale: Record<TileSize, { title: string; description: string }> = {
+  lg: { title: "text-[22px]", description: "text-[15px]" },
+  sm: { title: "text-[18px]", description: "text-[14px]" },
+}
+
+function ProjectTile({
+  project,
+  size,
+  showTag,
+  onOpen,
+}: {
+  project: Project
+  size: TileSize
+  showTag: boolean
+  onOpen: (project: Project) => void
+}) {
   const { lang } = useLang()
+  const scale = tileScale[size]
+  const title = lang === "pl" && project.title_pl ? project.title_pl : project.title
+  const description = lang === "pl" ? project.description : project.description_en ?? project.description
 
   return (
     // This is the only way into a case study from the homepage, so it has to
     // work from the keyboard. It stays a div rather than becoming a <button>:
-    // the tile is laid out by an aspect-ratio box holding an absolutely
-    // positioned image, and a button's own layout defaults fight that.
+    // a button's content model is phrasing content, and the card holds an <h3>.
     <div
       role="button"
       tabIndex={0}
@@ -90,37 +111,45 @@ function ProjectTile({ project, showTag, onOpen }: { project: Project; showTag: 
           onOpen(project)
         }
       }}
-      className="group cursor-pointer rounded-2xl border border-pf-line hover:border-pf-200 hover:shadow-sm transition-colors duration-200 overflow-hidden relative focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-      style={{ aspectRatio: "4/3" }}
+      className="group flex h-full cursor-pointer flex-col gap-4 rounded-3xl border border-pf-line bg-white p-3.5 shadow-[0_1px_2px_rgba(0,0,0,0.04)] transition-[transform,box-shadow,border-color] duration-[400ms] ease-[cubic-bezier(.22,1,.36,1)] hover:-translate-y-1 hover:border-black/15 hover:shadow-[0_10px_20px_-8px_rgba(0,0,0,0.12),0_4px_8px_-4px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
-      {/* Image — full height */}
-      <div className={`absolute inset-0 ${project.bg}`}>
-        {project.video ? (
-          <HoverVideo src={project.video} poster={project.image} />
-        ) : (
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-            style={{ objectPosition: project.imagePosition ?? "center" }}
-          />
-        )}
+      {/* Cover — its own rounded block inside the card, not the card itself.
+          The scaling layer sits over the media so a video zooms like a photo. */}
+      <div
+        className={`relative overflow-hidden rounded-2xl ring-1 ring-black/5 ${project.bg}`}
+        style={{ aspectRatio: "4/3" }}
+      >
+        <div className="absolute inset-0 transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.06]">
+          {project.video ? (
+            <HoverVideo src={project.video} poster={project.image} />
+          ) : (
+            <img
+              src={project.image}
+              alt={title}
+              className="w-full h-full object-cover"
+              style={{ objectPosition: project.imagePosition ?? "center" }}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Bottom overlay — tag, title, arrow, on a darkened transparent scrim */}
-      <div className="absolute bottom-0 left-0 right-0 px-4 pt-10 pb-4" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.6), transparent)" }}>
+      {/* Title and description — flex-1 so the tag line stays pinned to the
+          bottom even when a neighbouring card in the row is taller. */}
+      <div className="flex flex-1 flex-col gap-2 px-1">
         {showTag && (
-          <span className="inline-block text-sm font-semibold px-3.5 py-2 rounded-xl text-white mb-2" style={{ backgroundColor: "rgba(255,255,255,0.16)", backdropFilter: "blur(4px)" }}>
+          <span className="inline-block self-start rounded-xl bg-pf-surface-subtle px-3.5 py-2 text-sm font-semibold text-pf-body">
             {project.tag}
           </span>
         )}
-        <div className="flex items-center justify-between gap-3">
-          <p className="font-semibold text-white leading-snug">{lang === "pl" && project.title_pl ? project.title_pl : project.title}</p>
-          <span className="flex-shrink-0 rounded-xl flex items-center justify-center" style={{ width: 32, height: 32, border: "1px solid rgba(255,255,255,0.4)" }}>
-            <ArrowUpRight className="w-4 h-4 text-white" />
-          </span>
-        </div>
+        <h3 className={`${scale.title} font-semibold leading-snug tracking-tight text-pf-ink`}>{title}</h3>
+        {description && (
+          <p className={`${scale.description} line-clamp-2 leading-normal text-pf-subtle`}>{description}</p>
+        )}
       </div>
+
+      {project.tags && project.tags.length > 0 && (
+        <p className="px-1 pb-1 text-[12px] tracking-tight text-pf-muted">{project.tags.join(" · ")}</p>
+      )}
     </div>
   )
 }
@@ -148,13 +177,13 @@ export function Projects() {
   }
 
   return (
-    <section id="projects" className="pt-24 pb-40 bg-white">
+    <section id="projects" className="pt-24 pb-40 bg-pf-surface-subtle">
       <div className="max-w-[1200px] mx-auto px-6">
         {/* Case study — featured, unfiltered */}
         <h2 className="text-3xl font-black text-pf-ink mb-6">{t.caseStudyHeading}</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-20">
           {featured.map((project) => (
-            <ProjectTile key={project.title} project={project} showTag={false} onOpen={open} />
+            <ProjectTile key={project.title} project={project} size="lg" showTag={false} onOpen={open} />
           ))}
         </div>
 
@@ -172,8 +201,9 @@ export function Projects() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="h-full"
             >
-              <ProjectTile project={project} showTag={false} onOpen={open} />
+              <ProjectTile project={project} size="sm" showTag={false} onOpen={open} />
             </motion.div>
           ))}
           </AnimatePresence>
