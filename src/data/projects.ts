@@ -71,6 +71,17 @@ export const projects: Project[] = [
     href: "/ui/planujemyto",
   },
   {
+    title: "Case Study - Codete",
+    title_pl: "Case study - Codete",
+    description: "Dwa lata, cztery produkty B2B — każdy w innej domenie.",
+    description_en: "Two years, four B2B products — each in a different domain.",
+    tag: "Case Study",
+    featured: true,
+    bg: "bg-slate-50",
+    image: "/codete-cover.webp",
+    href: "/case-study/codete",
+  },
+  {
     title: "Naturalnie.pl",
     description: "Projekt mobilnej wersji sklepu z naturalnymi kosmetykami i produktami do pielęgnacji.",
     description_en: "Mobile UI concept for a natural cosmetics and personal care online store.",
