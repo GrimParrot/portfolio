@@ -42,6 +42,8 @@ export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
         alt={alt}
         style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
       />
+      {/* 20% opacity sits on the wrapper rather than on the icon and the label
+          separately, so the two can never drift apart. */}
       <div
         style={{
           position: "absolute",
@@ -51,6 +53,7 @@ export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
           alignItems: "center",
           justifyContent: "center",
           gap: 8,
+          opacity: 0.2,
         }}
       >
         <Frown size={49} strokeWidth={1.5} color="#E3E3E3" aria-hidden />
