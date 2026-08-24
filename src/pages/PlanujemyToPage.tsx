@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy } from "@/copy/planujemyto.copy"
 import "@/styles/raporty-ds.css"
@@ -189,6 +190,13 @@ export function PlanujemyToPage() {
                 <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 10vw, 126px)", lineHeight: "clamp(44px, 10.5vw, 136px)", letterSpacing: "0em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
                   {t.heroTitle}
                 </h1>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {t.heroTags.map((tag) => (
+                  <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium">
+                    {tag}
+                  </Badge>
+                ))}
               </div>
               <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-body)" }}>{t.heroLead}</p>
             </header>

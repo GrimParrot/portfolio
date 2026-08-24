@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge"
 import { Fragment, useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { useLang } from "@/i18n/LanguageContext"
@@ -239,15 +240,22 @@ export function ClientAcquisitionCaseStudy() {
       <Section gap={80}>
         <HeroStagger style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%" }}>
           <StaggerItem style={{ width: "100%" }}>
-            <header style={{ display: "flex", flexDirection: "column", gap: 80, width: "100%", padding: 0, boxSizing: "border-box" }}>
-              {/* Eyebrow and title are one unit, 24px apart. The header's own
-                  80px gap then separates that unit from the lead — before this
-                  the eyebrow floated a full 80px above the title it labels. */}
+            {/* Eyebrow and title are one unit, 24px apart. Tags and lead then sit
+                40px below it and below each other — the hero has its own rhythm,
+                tighter than the 80px between hero blocks. */}
+            <header style={{ display: "flex", flexDirection: "column", gap: 40, width: "100%", padding: 0, boxSizing: "border-box" }}>
               <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
                 <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 10vw, 126px)", lineHeight: "clamp(44px, 10.5vw, 136px)", letterSpacing: "0em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
                   <span style={{ color: "var(--pf-accent-500)" }}>{t.heroTitleAccent}</span> {t.heroTitle}
                 </h1>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {t.heroTags.map((tag) => (
+                  <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium">
+                    {tag}
+                  </Badge>
+                ))}
               </div>
               <p style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-body)" }}>{t.heroLead}</p>
             </header>

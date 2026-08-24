@@ -1,6 +1,9 @@
+import { projectTags } from "@/data/projectTags"
+
 export const copy = {
   pl: {
     heroEyebrow: "CASE STUDY - LOCALO · CLIENT ACQUISITION",
+    heroTags: projectTags.clientAcquisition,
     heroTitle: "do pozyskiwania klientów.",
     heroTitleAccent: "Jeden flow",
     heroLead:
@@ -222,6 +225,7 @@ export const copy = {
   },
   en: {
     heroEyebrow: "CASE STUDY - LOCALO · CLIENT ACQUISITION",
+    heroTags: projectTags.clientAcquisition,
     heroTitle: "for client acquisition.",
     heroTitleAccent: "One flow",
     heroLead:

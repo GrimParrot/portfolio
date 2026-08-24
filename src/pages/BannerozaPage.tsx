@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge"
 import { useLayoutEffect, useRef, type ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { Lightbulb } from "lucide-react"
@@ -236,6 +237,18 @@ export function BannerozaPage() {
                   { key: "en", content: <>{copy.en.h1} <span style={{ color: PRIMARY }}>{copy.en.h1Accent}</span></> },
                 ]}
               />
+            </StaggerItem>
+
+            <StaggerItem>
+              {/* mt-10 = 40px, the same gap the other case studies keep between
+                  their title, tags and lead. */}
+              <div className="mt-10 flex flex-wrap gap-2">
+                {t.heroTags.map((tag) => (
+                  <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
             </StaggerItem>
 
             <StaggerItem>

@@ -1,3 +1,5 @@
+import { projectTags } from "@/data/projectTags"
+
 export type CopyImage = { src: string; alt: string }
 
 export type PaletteEntry = { hex: string; name: string }
@@ -11,6 +13,7 @@ export type SectionCopy = {
 
 type PlanujemyToCopy = {
   heroEyebrow: string
+  heroTags: string[]
   heroTitle: React.ReactNode
   heroLead: string
   coverImages: CopyImage[]
@@ -31,6 +34,7 @@ const palette: PaletteEntry[] = [
 export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
   pl: {
     heroEyebrow: "BRAND & PRODUKT · PLANUJEMYTO",
+    heroTags: projectTags.planujemyto,
     heroTitle: (
       <>
         <span style={{ color: "var(--pf-accent-500)" }}>PlanujemyTo</span>, razem.
@@ -89,6 +93,7 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
   },
   en: {
     heroEyebrow: "BRAND & PRODUCT · PLANUJEMYTO",
+    heroTags: projectTags.planujemyto,
     heroTitle: (
       <>
         <span style={{ color: "var(--pf-accent-500)" }}>PlanujemyTo</span>, together.
