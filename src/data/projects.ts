@@ -50,6 +50,15 @@ export const projects: Project[] = [
     href: "/case-study/client-acquisition",
   },
   {
+    title: "PlanujemyTo",
+    description: "Darmowa aplikacja do planowania wydarzeń — marka, produkt i design system.",
+    description_en: "Free event-planning app — brand, product and design system.",
+    tag: "UI",
+    bg: "bg-[#eeeeff]",
+    image: "/planujemyto-cover.webp",
+    href: "/ui/planujemyto",
+  },
+  {
     title: "Naturalnie.pl",
     description: "Projekt mobilnej wersji sklepu z naturalnymi kosmetykami i produktami do pielęgnacji.",
     description_en: "Mobile UI concept for a natural cosmetics and personal care online store.",

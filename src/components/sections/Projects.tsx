@@ -7,6 +7,7 @@ import { useLang } from "@/i18n/LanguageContext"
 import { ProjectModal } from "@/components/ProjectModal"
 import { RaportyCaseStudy } from "@/pages/RaportyCaseStudy"
 import { ClientAcquisitionCaseStudy } from "@/pages/ClientAcquisitionCaseStudy"
+import { PlanujemyToPage } from "@/pages/PlanujemyToPage"
 import { NaturalniePage } from "@/pages/NaturalniePage"
 import { KafejetoPage } from "@/pages/KafejetoPage"
 import { BannerozaPage } from "@/pages/BannerozaPage"
@@ -18,6 +19,7 @@ type Filter = "all" | ProjectTag
 const modalContent: Record<string, () => React.ReactNode> = {
   "/case-study/raporty": () => <RaportyCaseStudy />,
   "/case-study/client-acquisition": () => <ClientAcquisitionCaseStudy />,
+  "/ui/planujemyto": () => <PlanujemyToPage />,
   "/ui/naturalnie": () => <NaturalniePage />,
   "/ui/kafejeto": () => <KafejetoPage />,
   "/case-study/banneroza": () => <BannerozaPage />,
