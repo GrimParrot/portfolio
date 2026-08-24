@@ -6,7 +6,7 @@ import { useLang } from "@/i18n/LanguageContext"
 import { smoothScrollTo } from "@/lib/lenis"
 import { Plasma } from "./hero-v2/Plasma"
 
-const tags = ["B2B", "B2C", "SaaS", "8+ years exp", "AI-powered"]
+const tags = ["B2B", "B2C", "SaaS", "8+ years exp", "AI-oriented"]
 
 const copy = {
   pl: {
