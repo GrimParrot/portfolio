@@ -7,12 +7,8 @@ import { Badge } from "@/components/ui/badge"
 import { ChapterRail } from "@/components/ChapterRail"
 import { MetaBar, Section, NdaImage, StatCard, QuoteBlock } from "@/components/raporty-ds"
 
-/** Codete's own accent, standing in for the site's default blue on this page.
- *  PRIMARY_TINT is the light companion the image borders sit on — it plays the
- *  part --pf-accent-100 (#E3E9FE) plays against the blue, at matching
- *  lightness, so a blue-tinted hairline never frames a purple page. */
+/** Codete's own accent, standing in for the site's default blue on this page. */
 const PRIMARY = "#722ED1"
-const PRIMARY_TINT = "#EFDBFF"
 
 const CHAPTER_IDS = ["intro", "management", "reconciliation", "devtools", "analytics"] as const
 
@@ -257,7 +253,6 @@ export function CodeteCaseStudy() {
       // nothing outside this page is touched.
       "--pf-accent-500": PRIMARY,
       "--pf-text-accent": PRIMARY,
-      "--pf-accent-100": PRIMARY_TINT,
     } as React.CSSProperties}>
 
       <ChapterRail chapters={chapters} accent={PRIMARY} topOffset={24} />
@@ -283,7 +278,7 @@ export function CodeteCaseStudy() {
             <MetaBar items={t.metaBar} />
           </StaggerItem>
           <StaggerItem style={{ width: "100%" }}>
-            <img src="/codete-cover.webp" alt={t.coverAlt} style={{ width: "100%", height: "auto", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100)", boxSizing: "border-box" }} />
+            <img src="/codete-cover.webp" alt={t.coverAlt} style={{ width: "100%", height: "auto", display: "block", borderRadius: 24, border: "var(--pf-hairline)", boxSizing: "border-box" }} />
           </StaggerItem>
         </HeroStagger>
       </Section>

@@ -31,11 +31,11 @@ export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
         position: "relative",
         width: "100%",
         aspectRatio: aspect,
-        // 24px and a hairline accent border are what every other case study
-        // frames an image with. --pf-accent-100 rather than a fixed hex so a
-        // page that scopes its own accent takes the border with it.
+        // 24px and a hairline border are how every case study frames an image.
+        // The hairline stays neutral rather than tinted, so it reads the same
+        // whatever accent the page around it happens to use.
         borderRadius: 24,
-        border: "1px solid var(--pf-accent-100)",
+        border: "var(--pf-hairline)",
         boxSizing: "border-box",
         overflow: "hidden",
         background: "var(--pf-primary-50)",
