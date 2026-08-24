@@ -1,3 +1,8 @@
+import { copy as dashboardCopy } from "@/copy/dashboard.copy"
+import { copy as kafejetoCopy } from "@/copy/kafejeto.copy"
+import { copy as naturalnieCopy } from "@/copy/naturalnie.copy"
+import { copy as statsCopy } from "@/copy/stats.copy"
+
 export type ProjectTag = "UI" | "Case Study" | "Web"
 
 export interface Project {
@@ -6,10 +11,12 @@ export interface Project {
   description?: string
   description_en?: string
   tag: ProjectTag
-  /** Etykiety pokazywane w stopce kafla, np. ["UI Design", "Branding"].
-   *  Po angielsku w obu wersjach językowych — konwencja portfolio
-   *  projektowych, i nie mnoży pól w danych. */
+  /** Etykiety w stopce kafla. Projekty, które mają własną stronę na
+   *  SimpleProjectPage, pokazują dokładnie te same tagi w badge'ach nad
+   *  okładką — tutaj są importowane z ich plików copy, żeby nie mogły
+   *  rozjechać się z tamtymi. */
   tags?: string[]
+  tags_en?: string[]
   featured?: boolean
   bg: string
   image: string
@@ -38,7 +45,6 @@ export const projects: Project[] = [
     description_en:
       "Agencies used to piece client reports together from screenshots, several hours a month. Today 60% of report users generate and send them automatically.",
     tag: "Case Study",
-    tags: ["Case Study", "Product Design", "UX Research"],
     featured: true,
     bg: "bg-indigo-50",
     image: "/raporty-ds-cover.webp",
@@ -53,7 +59,6 @@ export const projects: Project[] = [
     description_en:
       "Almost nobody switched the feature on themselves — its value only landed on a call with Customer Success. After the redesign, sessions on the feature grew 2.5× and median time on it rose 81%.",
     tag: "Case Study",
-    tags: ["Case Study", "Product Design", "B2B SaaS"],
     featured: true,
     bg: "bg-violet-50",
     image: "/client-acquisition-cover.webp",
@@ -64,7 +69,6 @@ export const projects: Project[] = [
     description: "Darmowa aplikacja do planowania wydarzeń — marka, produkt i design system.",
     description_en: "Free event-planning app — brand, product and design system.",
     tag: "UI",
-    tags: ["UI Design", "Branding", "Design System"],
     bg: "bg-[#eeeeff]",
     image: "/planujemyto-cover.webp",
     href: "/ui/planujemyto",
@@ -74,7 +78,8 @@ export const projects: Project[] = [
     description: "Projekt mobilnej wersji sklepu z naturalnymi kosmetykami i produktami do pielęgnacji.",
     description_en: "Mobile UI concept for a natural cosmetics and personal care online store.",
     tag: "UI",
-    tags: ["UI Design", "Mobile", "E-commerce"],
+    tags: naturalnieCopy.pl.tags,
+    tags_en: naturalnieCopy.en.tags,
     bg: "bg-[#eaf2f0]",
     image: "/naturalnie-cover.webp",
     href: "/ui/naturalnie",
@@ -84,7 +89,8 @@ export const projects: Project[] = [
     description: "Sklep internetowy dla polskiej palarni kawy specialty — świeża kawa, akcesoria, szkolenia.",
     description_en: "Online store for a Polish specialty coffee roastery — fresh coffee, accessories, training.",
     tag: "UI",
-    tags: ["UI Design", "E-commerce", "Web"],
+    tags: kafejetoCopy.pl.tags,
+    tags_en: kafejetoCopy.en.tags,
     bg: "bg-[#f2f7e8]",
     image: "/kafejeto/okladka.jpg",
     href: "/ui/kafejeto",
@@ -95,7 +101,8 @@ export const projects: Project[] = [
     description: "Przeprojektowałam kluczowy ekran statystyk — nowy układ, wykresy zamiast surowych liczb.",
     description_en: "Redesigned the core stats screen — new layout, charts instead of raw numbers.",
     tag: "Web",
-    tags: ["Product Design", "Data Viz", "Redesign"],
+    tags: statsCopy.pl.tags,
+    tags_en: statsCopy.en.tags,
     bg: "bg-pf-50",
     image: "/stats-cover.webp",
     href: "/ui/stats",
@@ -106,7 +113,8 @@ export const projects: Project[] = [
     description: "Główny pulpit Localo — widoczność, zadania, recenzje i konkurencja w jednym widoku.",
     description_en: "Localo's main dashboard — visibility, tasks, reviews and competitors in one view.",
     tag: "Web",
-    tags: ["Product Design", "Dashboard", "B2B SaaS"],
+    tags: dashboardCopy.pl.tags,
+    tags_en: dashboardCopy.en.tags,
     bg: "bg-pf-50",
     image: "/dashboard-cover.webp",
     href: "/ui/dashboard",
@@ -117,7 +125,6 @@ export const projects: Project[] = [
     description: "Strona konkursu dla projektantów walczącego z chaosem reklamowym w przestrzeni miejskiej.",
     description_en: "Competition website for designers fighting advertising chaos in urban space.",
     tag: "Web",
-    tags: ["Web Design", "Landing Page"],
     bg: "bg-[#fffbeb]",
     image: "/banneroza/cover2.jpg",
     href: "/case-study/banneroza",

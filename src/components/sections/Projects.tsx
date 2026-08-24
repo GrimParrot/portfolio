@@ -98,6 +98,7 @@ function ProjectTile({
   const scale = tileScale[size]
   const title = lang === "pl" && project.title_pl ? project.title_pl : project.title
   const description = lang === "pl" ? project.description : project.description_en ?? project.description
+  const tags = lang === "pl" ? project.tags : project.tags_en ?? project.tags
 
   return (
     // This is the only way into a case study from the homepage, so it has to
@@ -149,8 +150,8 @@ function ProjectTile({
         )}
       </div>
 
-      {project.tags && project.tags.length > 0 && (
-        <p className="px-1 pb-1 text-[12px] tracking-tight text-pf-muted">{project.tags.join(" · ")}</p>
+      {tags && tags.length > 0 && (
+        <p className="px-1 pb-1 text-[12px] tracking-tight text-pf-muted">{tags.join(" · ")}</p>
       )}
     </div>
   )
