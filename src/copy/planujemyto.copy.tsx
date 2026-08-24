@@ -95,7 +95,7 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
       </>
     ),
     heroLead:
-      "PlanujemyTo is a free event-planning app: weddings, christenings, birthdays, coming-of-age parties, trips. Instead of an empty list, the user picks an event type and the app suggests the tasks that kind of event always needs ticking off, each one with a date, a place and a note. I owned the whole visual and product side of this project: the brand, information architecture, flow, the app and admin panel interface, and the design system both of those are built on.",
+      "PlanujemyTo is a free event-planning app: weddings, christenings, birthdays, eighteenths, trips. Instead of an empty list, the user picks an event type and the app suggests the tasks that kind of event always needs ticking off, each one with a date, a place and a note. I owned the whole visual and product side of this project: the brand, information architecture, flow, the app and admin panel interface, and the design system both of those are built on.",
     coverImages: [
       { src: "/planujemyto-cover-mark.webp", alt: "The PlanujemyTo mark, a checkbox joined with a balloon." },
       { src: "/planujemyto-cover-logo.webp", alt: "The full horizontal PlanujemyTo logo." },
@@ -106,7 +106,7 @@ export const copy: { pl: PlanujemyToCopy; en: PlanujemyToCopy } = {
         eyebrow: "01 · Brand",
         title: "Identity and mark system",
         paragraphs: [
-          "The brand had to carry many different event types at once, from christenings to coming-of-age parties, so it couldn't lean into any single one of them. I built it around a checkbox standing for a completed task and balloons, which turn up at most of these events. Together, the two symbols describe everything the product does, and combined into one shape they read as the heart of PlanujemyTo.",
+          "The brand had to carry many different event types at once, from christenings to eighteenths, so it couldn't lean into any single one of them. I built it around a checkbox standing for a completed task and balloons, which turn up at most of these events. Together, the two symbols describe everything the product does, and combined into one shape they read as the heart of PlanujemyTo.",
           "The mark got the full set of uses the product actually needs: a horizontal lockup, a standalone symbol, mono versions for light and dark backgrounds, and an app icon in four colourways. The symbol is simple enough that it holds up all the way down to favicon size.",
         ],
         images: [
