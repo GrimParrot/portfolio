@@ -51,28 +51,9 @@ przez propa (`size: "lg" | "sm"`), a nie przez breakpointy.
 | element | zmiana | czas | easing |
 |---|---|---|---|
 | karta | `translateY(-4px)` | 0.4s | `cubic-bezier(.22,1,.36,1)` |
-| ramka | smuga `#0ABA53` obiegająca krawędź | 2.4s w kółko, wejście 0.3s | `linear` / `ease` |
-| obrazek | `scale(1.06)` | 0.7s | `cubic-bezier(.22,1,.36,1)` |
-
-Cień na hoverze nie rośnie — karta ma tylko spoczynkowy `0 1px 2px rgba(0,0,0,.04)`.
-
-Hover najpierw dostał rosnący cień, potem cień złagodzony o 40%, a ostatecznie
-użytkowniczka wybrała animowaną ramkę zamiast cienia — inspiracją był
-[SpecularButton z React Bits](https://reactbits.dev/components/specular-button).
-
-Oryginał rysuje smugę shaderem WebGL i tworzy własny kontekst GL na instancję.
-Na homepage stoi osiem kafli, a hero ma już własny kontekst dla Plasmy, więc
-zamiast portu shadera efekt robi CSS: `conic-gradient` przycięty maską
-(`mask-composite: exclude`) do pierścienia szerokiego na 1px, a kąt gradientu
-animuje `@property --pf-edge-angle` typu `<angle>`. Bez rejestracji przez
-`@property` kąt byłby dla silnika animacji zwykłym stringiem i skakałby z 0deg
-na 360deg zamiast przez wartości pośrednie.
-
-Przy `prefers-reduced-motion: reduce` pierścień zapala się cały naraz i stoi.
-
-Styl mieszka w `src/index.css` jako klasa `.specular-edge`. Kolor smugi bierze
-`var(--pf-edge-color, var(--pf-brand-green))`, więc pojedynczą kartę można
-przemalować, ustawiając `--pf-edge-color` na jej elemencie.
+| ramka | `#E7E7E7` → `rgba(0,0,0,.14)` | 0.4s | ta sama |
+| cień | `0 6px 14px -6px rgba(0,0,0,.07)`, `0 2px 5px -3px rgba(0,0,0,.05)` | 0.4s | ta sama |
+| obrazek | `scale(1.06)` | 0.7s | ta sama |
 
 Wideo (`project.video`, dziś tylko Kafejeto) zachowuje się jak dotąd: startuje na
 `mouseenter`, pauzuje i przewija do zera na `mouseleave`. Skalowanie obrazka
