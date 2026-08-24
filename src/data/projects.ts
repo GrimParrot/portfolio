@@ -1,9 +1,3 @@
-import { copy as raportyCopy } from "@/copy/raporty.copy"
-import { copy as dashboardCopy } from "@/copy/dashboard.copy"
-import { copy as kafejetoCopy } from "@/copy/kafejeto.copy"
-import { copy as naturalnieCopy } from "@/copy/naturalnie.copy"
-import { copy as statsCopy } from "@/copy/stats.copy"
-
 export type ProjectTag = "UI" | "Case Study" | "Web"
 
 export interface Project {
@@ -12,12 +6,9 @@ export interface Project {
   description?: string
   description_en?: string
   tag: ProjectTag
-  /** Etykiety w stopce kafla. Projekty, które mają własną stronę na
-   *  SimpleProjectPage, pokazują dokładnie te same tagi w badge'ach nad
-   *  okładką — tutaj są importowane z ich plików copy, żeby nie mogły
-   *  rozjechać się z tamtymi. */
+  /** Etykiety w stopce kafla, po trzy: typ pracy, domena, specjalizacja.
+   *  Te same w obu językach — to terminy branżowe, których się nie tłumaczy. */
   tags?: string[]
-  tags_en?: string[]
   featured?: boolean
   bg: string
   image: string
@@ -46,8 +37,7 @@ export const projects: Project[] = [
     description_en:
       "Agencies used to piece client reports together from screenshots, several hours a month. Today 60% of report users generate and send them automatically.",
     tag: "Case Study",
-    tags: raportyCopy.pl.heroTags,
-    tags_en: raportyCopy.en.heroTags,
+    tags: ["Product Design", "B2B2C", "UX Strategy"],
     featured: true,
     bg: "bg-indigo-50",
     image: "/raporty-ds-cover.webp",
@@ -62,6 +52,7 @@ export const projects: Project[] = [
     description_en:
       "Almost nobody switched the feature on themselves — its value only landed on a call with Customer Success. After the redesign, sessions on the feature grew 2.5× and median time on it rose 81%.",
     tag: "Case Study",
+    tags: ["Redesign", "B2B2C", "Workflow Optimization"],
     featured: true,
     bg: "bg-violet-50",
     image: "/client-acquisition-cover.webp",
@@ -72,6 +63,7 @@ export const projects: Project[] = [
     description: "Darmowa aplikacja do planowania wydarzeń — marka, produkt i design system.",
     description_en: "Free event-planning app — brand, product and design system.",
     tag: "UI",
+    tags: ["0→1 Design", "Brand Identity", "Design System"],
     bg: "bg-[#eeeeff]",
     image: "/planujemyto-cover.webp",
     href: "/ui/planujemyto",
@@ -81,8 +73,7 @@ export const projects: Project[] = [
     description: "Projekt mobilnej wersji sklepu z naturalnymi kosmetykami i produktami do pielęgnacji.",
     description_en: "Mobile UI concept for a natural cosmetics and personal care online store.",
     tag: "UI",
-    tags: naturalnieCopy.pl.tags,
-    tags_en: naturalnieCopy.en.tags,
+    tags: ["Redesign", "E-commerce", "Mobile Design"],
     bg: "bg-[#eaf2f0]",
     image: "/naturalnie-cover.webp",
     href: "/ui/naturalnie",
@@ -92,8 +83,7 @@ export const projects: Project[] = [
     description: "Sklep internetowy dla polskiej palarni kawy specialty — świeża kawa, akcesoria, szkolenia.",
     description_en: "Online store for a Polish specialty coffee roastery — fresh coffee, accessories, training.",
     tag: "UI",
-    tags: kafejetoCopy.pl.tags,
-    tags_en: kafejetoCopy.en.tags,
+    tags: ["UI Design", "E-commerce", "Responsive Web"],
     bg: "bg-[#f2f7e8]",
     image: "/kafejeto/okladka.jpg",
     href: "/ui/kafejeto",
@@ -104,8 +94,7 @@ export const projects: Project[] = [
     description: "Przeprojektowałam kluczowy ekran statystyk — nowy układ, wykresy zamiast surowych liczb.",
     description_en: "Redesigned the core stats screen — new layout, charts instead of raw numbers.",
     tag: "Web",
-    tags: statsCopy.pl.tags,
-    tags_en: statsCopy.en.tags,
+    tags: ["Redesign", "MarTech", "Data Visualization"],
     bg: "bg-pf-50",
     image: "/stats-cover.webp",
     href: "/ui/stats",
@@ -116,8 +105,7 @@ export const projects: Project[] = [
     description: "Główny pulpit Localo — widoczność, zadania, recenzje i konkurencja w jednym widoku.",
     description_en: "Localo's main dashboard — visibility, tasks, reviews and competitors in one view.",
     tag: "Web",
-    tags: dashboardCopy.pl.tags,
-    tags_en: dashboardCopy.en.tags,
+    tags: ["Product Design", "MarTech", "Design System"],
     bg: "bg-pf-50",
     image: "/dashboard-cover.webp",
     href: "/ui/dashboard",

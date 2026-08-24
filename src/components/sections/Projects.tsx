@@ -99,10 +99,9 @@ function ProjectTile({
   const scale = tileScale[size]
   const title = lang === "pl" && project.title_pl ? project.title_pl : project.title
   const description = lang === "pl" ? project.description : project.description_en ?? project.description
-  // Projects carry four or five tags on their own page, where there is a full
-  // width to spread them across. A tile has one row, so it shows the first
-  // three — the order in the copy files is already most-telling-first.
-  const tags = (lang === "pl" ? project.tags : project.tags_en ?? project.tags)?.slice(0, 3)
+  // Three is what one row of a 368px tile holds; the slice is a guard against a
+  // fourth being added to the data later and silently wrapping.
+  const tags = project.tags?.slice(0, 3)
 
   return (
     // This is the only way into a case study from the homepage, so it has to
