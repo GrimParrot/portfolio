@@ -31,7 +31,12 @@ export function NdaImage({ src, alt, label, aspect, style }: NdaImageProps) {
         position: "relative",
         width: "100%",
         aspectRatio: aspect,
-        borderRadius: 12,
+        // 24px and a hairline accent border are what every other case study
+        // frames an image with. --pf-accent-100 rather than a fixed hex so a
+        // page that scopes its own accent takes the border with it.
+        borderRadius: 24,
+        border: "1px solid var(--pf-accent-100)",
+        boxSizing: "border-box",
         overflow: "hidden",
         background: "var(--pf-primary-50)",
         ...style,

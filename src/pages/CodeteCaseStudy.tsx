@@ -7,6 +7,13 @@ import { Badge } from "@/components/ui/badge"
 import { ChapterRail } from "@/components/ChapterRail"
 import { MetaBar, Section, NdaImage, StatCard, QuoteBlock } from "@/components/raporty-ds"
 
+/** Codete's own accent, standing in for the site's default blue on this page.
+ *  PRIMARY_TINT is the light companion the image borders sit on — it plays the
+ *  part --pf-accent-100 (#E3E9FE) plays against the blue, at matching
+ *  lightness, so a blue-tinted hairline never frames a purple page. */
+const PRIMARY = "#722ED1"
+const PRIMARY_TINT = "#EFDBFF"
+
 const CHAPTER_IDS = ["intro", "management", "reconciliation", "devtools", "analytics"] as const
 
 /** Scroll-reveal motion, same values as the fade-up used on the Localo case study page. */
@@ -243,9 +250,17 @@ export function CodeteCaseStudy() {
   return (
     // No fixed navbar left to clear, so the top reserve drops from
     // clamp(96px, 14vw, 160px) to about the breathing room Banneroza has.
-    <div id="top" style={{ display: "flex", flexDirection: "column", gap: "clamp(56px, 10vw, 120px)", padding: "clamp(56px, 8vw, 96px) 0", alignItems: "center", width: "100%", boxSizing: "border-box" }}>
+    <div id="top" style={{ display: "flex", flexDirection: "column", gap: "clamp(56px, 10vw, 120px)", padding: "clamp(56px, 8vw, 96px) 0", alignItems: "center", width: "100%", boxSizing: "border-box",
+      // Codete's accent is purple, not the site's default blue. Rebinding the
+      // accent tokens here rather than hardcoding the hex per element means
+      // MetaBar labels and every image border pick it up on their own, and
+      // nothing outside this page is touched.
+      "--pf-accent-500": PRIMARY,
+      "--pf-text-accent": PRIMARY,
+      "--pf-accent-100": PRIMARY_TINT,
+    } as React.CSSProperties}>
 
-      <ChapterRail chapters={chapters} topOffset={24} />
+      <ChapterRail chapters={chapters} accent={PRIMARY} topOffset={24} />
 
       {/* HERO / INTRO */}
       <Section gap={80} id="intro">
@@ -268,7 +283,7 @@ export function CodeteCaseStudy() {
             <MetaBar items={t.metaBar} />
           </StaggerItem>
           <StaggerItem style={{ width: "100%" }}>
-            <img src="/codete-cover.webp" alt={t.coverAlt} style={{ width: "100%", height: "auto", display: "block" }} />
+            <img src="/codete-cover.webp" alt={t.coverAlt} style={{ width: "100%", height: "auto", display: "block", borderRadius: 24, border: "1px solid var(--pf-accent-100)", boxSizing: "border-box" }} />
           </StaggerItem>
         </HeroStagger>
       </Section>
