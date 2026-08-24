@@ -99,8 +99,8 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
           { src: "/codete-01-dashboard-3.webp", alt: "Zamazany zrzut ekranu kolejnego wariantu dashboardu, zasłonięty ze względu na NDA.", aspect: "263 / 211" },
         ],
         imagesAfterSolution: [
-          { src: "/codete-01-logo.webp", alt: "Prezentacja nowego logo zaprojektowanego dla platformy.", aspect: "588 / 331" },
-          { src: "/codete-01-typography.webp", alt: "Zestawienie typografii z design systemu platformy.", aspect: "588 / 331" },
+          { src: "/codete-01-logo.webp", alt: "Zamazany zrzut ekranu nowego logo zaprojektowanego dla platformy, zasłonięty ze względu na NDA.", aspect: "588 / 331" },
+          { src: "/codete-01-typography.webp", alt: "Zamazany zrzut ekranu zestawienia typografii z design systemu platformy, zasłonięty ze względu na NDA.", aspect: "588 / 331" },
         ],
       },
       {
@@ -255,7 +255,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         title: "Management platform redesign",
         tags: ["Enterprise", "Internal Tools", "Information Architecture", "Heavy Data", "Dashboard"],
         intro:
-          "This is an internal tool for a large international telecom operator: partner companies, clients and partners along with their information and assigned tokens, users with access levels and roles. On top of that, the entire product portfolio, orders, API management and invoices. Several hundred people used it.",
+          "This is an internal tool for a large international telecom operator: collaborating companies, clients and partners along with their information and assigned tokens, users with access levels and roles. On top of that, the entire product portfolio, orders, API management and invoices. Several hundred people used it.",
         roleHeading: "My role",
         role: [
           "new logo and brand guide",
@@ -291,8 +291,8 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
           { src: "/codete-01-dashboard-3.webp", alt: "Blurred screenshot of a further dashboard variant, redacted for NDA.", aspect: "263 / 211" },
         ],
         imagesAfterSolution: [
-          { src: "/codete-01-logo.webp", alt: "Presentation of the new logo designed for the platform.", aspect: "588 / 331" },
-          { src: "/codete-01-typography.webp", alt: "Typography specimen from the platform's design system.", aspect: "588 / 331" },
+          { src: "/codete-01-logo.webp", alt: "Blurred screenshot of the new logo designed for the platform, redacted for NDA.", aspect: "588 / 331" },
+          { src: "/codete-01-typography.webp", alt: "Blurred screenshot of the typography specimen from the platform's design system, redacted for NDA.", aspect: "588 / 331" },
         ],
       },
       {
@@ -314,7 +314,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         ],
         challengeHeading: "The challenge",
         challenge:
-          "Three things that had to fit into a single product: entering a contract, automatically comparing data despite two different naming conventions, and a way to negotiate when the comparison surfaces a discrepancy. A complicated interface, because the product handles two companies at once, their two systems, and the contract that ties them together. Huge amounts of comparison data, whole files of field against field. On top of that, demanding users: managers and stakeholders who judge the product at first glance. Interviews after the first version showed where it hurt:",
+          "Three things that had to fit into a single product: entering a contract, automatically comparing data despite two different naming conventions, and a way to negotiate when the comparison surfaces a discrepancy. A complicated interface, because the product handles two companies at once, their two systems, and the contract that ties them together. Masses of comparison data — entire files of fields lined up against fields. On top of that, demanding users: managers and stakeholders who judge the product at first glance. Interviews after the first version showed where it hurt:",
         quote: "Reconciliation process is not clear enough. Users don't know where they should start, what they supposed to do and how they can resolve mismatches",
         solutionHeading: "The solution",
         solution:
