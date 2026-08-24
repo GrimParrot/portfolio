@@ -86,6 +86,22 @@ function ContainedFigure({ img, alt, style }: { img: string; alt: string; style?
   )
 }
 
+/** A section's body copy. One Reveal around the whole run, with a 16px rhythm
+ * inside it. As separate children of the Section each paragraph was picking up
+ * the Section's 80px block gap — nearly three blank lines at a 30px
+ * line-height — and fading in one after another instead of as one passage. */
+function Paragraphs({ items }: { items: string[] }) {
+  return (
+    <Reveal style={{ width: "100%" }}>
+      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+        {items.map((p, i) => (
+          <p key={i} className="pf-body">{p}</p>
+        ))}
+      </div>
+    </Reveal>
+  )
+}
+
 /** Perceived brightness (ITU-R BT.601 luma) of a hex colour. Used to flip a
  * palette swatch's label between near-black and light text so the five
  * swatches don't need five hand-picked label colours. */
@@ -205,11 +221,7 @@ export function PlanujemyToPage() {
         <Reveal style={{ width: "100%" }}>
           <SectionHeader eyebrow={brand.eyebrow} title={brand.title} />
         </Reveal>
-        {brand.paragraphs.map((p, i) => (
-          <Reveal key={i} style={{ width: "100%" }}>
-            <p className="pf-body">{p}</p>
-          </Reveal>
-        ))}
+        <Paragraphs items={brand.paragraphs} />
         {/* All four full width, stacked, in the order the spec lists them:
             lockup, idea, mono, icons. That is how the design has them — and
             these files are wide strips (1200x350, 1200x468, 1200x327), so
@@ -232,11 +244,7 @@ export function PlanujemyToPage() {
         <Reveal style={{ width: "100%" }}>
           <SectionHeader eyebrow={kolory.eyebrow} title={kolory.title} />
         </Reveal>
-        {kolory.paragraphs.map((p, i) => (
-          <Reveal key={i} style={{ width: "100%" }}>
-            <p className="pf-body">{p}</p>
-          </Reveal>
-        ))}
+        <Paragraphs items={kolory.paragraphs} />
         <Reveal style={{ width: "100%" }}>
           <PaletteGrid entries={t.palette} />
         </Reveal>
@@ -249,11 +257,7 @@ export function PlanujemyToPage() {
         <Reveal style={{ width: "100%" }}>
           <SectionHeader eyebrow={produkt.eyebrow} title={produkt.title} />
         </Reveal>
-        {produkt.paragraphs.map((p, i) => (
-          <Reveal key={i} style={{ width: "100%" }}>
-            <p className="pf-body">{p}</p>
-          </Reveal>
-        ))}
+        <Paragraphs items={produkt.paragraphs} />
         <StaggerGroup style={{ display: "flex", flexDirection: "column", gap: 32, width: "100%" }}>
           {produkt.images.map((image, i) => (
             <StaggerItem key={i} style={{ width: "100%" }}>
