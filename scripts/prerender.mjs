@@ -122,20 +122,47 @@ async function sitemap(list) {
   )
 }
 
+/** The hero paints through WebGL (ogl). Headless has no GPU, so without a
+ *  software rasteriser the canvas fails to initialise and the hero throws
+ *  partway through the render we are trying to capture — both paths below
+ *  therefore run with SwiftShader.
+ *
+ *  Vercel's build image does not ship the shared libraries Chrome for Testing
+ *  links against, so the browser puppeteer downloads runs fine locally and dies
+ *  on deploy with `libnspr4.so: cannot open shared object file`.
+ *  @sparticuz/chromium carries an Amazon Linux 2023 build bundled with exactly
+ *  those libraries and points LD_LIBRARY_PATH at them. .puppeteerrc.cjs skips
+ *  the download that cannot be used there. */
+async function launch() {
+  if (!process.env.VERCEL) {
+    return puppeteer.launch({
+      args: [
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+        "--enable-unsafe-swiftshader",
+        "--use-gl=angle",
+        "--use-angle=swiftshader",
+      ],
+    })
+  }
+  const { default: chromium } = await import("@sparticuz/chromium")
+  // Leaving graphics mode on is what extracts SwiftShader and adds the flags
+  // that let WebGL come up; switched off, it passes --disable-webgl instead.
+  chromium.setGraphicsMode = true
+  return puppeteer.launch({
+    args: chromium.args,
+    executablePath: await chromium.executablePath(),
+    // The bundled binary is chrome-headless-shell, and "shell" is the only
+    // value that matches it. The package dropped its own `headless` export in
+    // v149, so reading chromium.headless here would quietly hand puppeteer
+    // undefined and launch the shell binary with --headless=new.
+    headless: "shell",
+  })
+}
+
 const list = await routes()
 const { server, port } = await serve()
-const browser = await puppeteer.launch({
-  args: [
-    "--no-sandbox",
-    "--disable-dev-shm-usage",
-    // The hero paints through WebGL (ogl). Headless has no GPU, so without a
-    // software rasteriser the canvas fails to initialise and the hero throws
-    // partway through the render we are trying to capture.
-    "--enable-unsafe-swiftshader",
-    "--use-gl=angle",
-    "--use-angle=swiftshader",
-  ],
-})
+const browser = await launch()
 
 let failed = 0
 for (const { href: route } of list) {
