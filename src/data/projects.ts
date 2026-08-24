@@ -1,3 +1,4 @@
+import { copy as raportyCopy } from "@/copy/raporty.copy"
 import { copy as dashboardCopy } from "@/copy/dashboard.copy"
 import { copy as kafejetoCopy } from "@/copy/kafejeto.copy"
 import { copy as naturalnieCopy } from "@/copy/naturalnie.copy"
@@ -45,6 +46,8 @@ export const projects: Project[] = [
     description_en:
       "Agencies used to piece client reports together from screenshots, several hours a month. Today 60% of report users generate and send them automatically.",
     tag: "Case Study",
+    tags: raportyCopy.pl.heroTags,
+    tags_en: raportyCopy.en.heroTags,
     featured: true,
     bg: "bg-indigo-50",
     image: "/raporty-ds-cover.webp",
