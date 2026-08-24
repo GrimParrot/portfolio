@@ -170,6 +170,13 @@ Rozmyte prostokąty do pobrania, wg nazw warstw w Figmie:
 
 Otwórz jeden pobrany PNG i potwierdź, że zrzut jest rozmyty w samym pliku. Jeśli którykolwiek plik wyszedł ostry, **przerwij** — eksport nie złapał efektu blur, a wrzucenie takiego pliku do repo złamałoby NDA.
 
+**Dwa wyjątki, rozstrzygnięte przez właścicielkę NDA 2026-08-24 — nie zgłaszaj ich ponownie jako defektu:**
+
+1. `codete-02-user-interviews.webp` ma **ostry nagłówek „User Interview Summary"** (warstwa tytułu wypadła poza blur w Figmie; reszta kadru rozmyta). Zostaje ostry: to generyczny tytuł artefaktu badawczego, bez nazwy klienta, produktu i bez wyników.
+2. `codete-cover.webp` **nie jest rozmyta w ogóle** — to oddalony widok tablicy ze ~100 miniaturami ekranów, nieczytelny przez skalę, nie przez blur. Tak jest w Figmie i tak ma zostać: sens okładki polega właśnie na pokazaniu skali pracy.
+
+Weryfikując rozmycie, sprawdź **próbkę z każdego z czterech bloków**, nie kilka losowych plików. W pierwszym podejściu sprawdzono 5 z 23 i próbka nie objęła pliku z punktu 1.
+
 - [ ] **Step 4: Skompresuj do WebP**
 
 `ffmpeg` jest zainstalowany przez winget. Jeśli nie ma go w PATH:
