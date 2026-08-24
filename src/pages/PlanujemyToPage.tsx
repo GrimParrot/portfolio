@@ -61,14 +61,18 @@ function HeroStagger({ children, style }: { children: React.ReactNode; style?: R
   )
 }
 
-/** Logo/mark artwork boxed on a neutral tint, image never cropped — the
- * "object-contain on a #F5F5F5 field" treatment the case studies use for
- * graphic assets whose aspect ratio doesn't fill the frame, as opposed to
- * photographic screenshots (which use object-cover instead, see below). */
+/** Brand artwork in a card. The image fills the card edge to edge and the card
+ * takes the file's own proportions — no fixed frame, no inset.
+ *
+ * These exports already carry their margins in the pixels: the lockup sits on
+ * its watermark field, the mark strip has its own spacing around the icons.
+ * Boxing them again in a 3:2 frame and insetting them inside it left the
+ * artwork floating in a mostly empty card — the icon strip drew 943x257 inside
+ * a 1152x768 box, so two thirds of it was blank. */
 function ContainedFigure({ img, alt, style }: { img: string; alt: string; style?: React.CSSProperties }) {
   return (
-    <div style={{ width: "100%", aspectRatio: "3 / 2", borderRadius: 24, border: "var(--pf-hairline)", background: "var(--pf-primary-50)", boxSizing: "border-box", overflow: "hidden", display: "flex", alignItems: "center", justifyContent: "center", ...style }}>
-      <img src={img} alt={alt} style={{ maxWidth: "82%", maxHeight: "82%", width: "auto", height: "auto", objectFit: "contain", display: "block" }} />
+    <div style={{ width: "100%", borderRadius: 24, border: "var(--pf-hairline)", background: "var(--pf-primary-50)", boxSizing: "border-box", overflow: "hidden", ...style }}>
+      <img src={img} alt={alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
     </div>
   )
 }
@@ -172,9 +176,13 @@ export function PlanujemyToPage() {
               <div style={{ flex: "1.4 1 320px", minHeight: 360, borderRadius: 24, border: "var(--pf-hairline)", overflow: "hidden", boxSizing: "border-box" }}>
                 <img src={t.coverImages[2].src} alt={t.coverImages[2].alt} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
               </div>
+              {/* No flex:1 on these two: the mark is 427x651 and the logo panel
+                  427x242, so stretching them to equal heights would crop one of
+                  them. At their own proportions they stack to roughly the
+                  screenshot's height beside them, which is how the design has it. */}
               <div style={{ flex: "1 1 260px", display: "flex", flexDirection: "column", gap: 24 }}>
-                <ContainedFigure img={t.coverImages[0].src} alt={t.coverImages[0].alt} style={{ flex: 1, aspectRatio: "auto", minHeight: 168 }} />
-                <ContainedFigure img={t.coverImages[1].src} alt={t.coverImages[1].alt} style={{ flex: 1, aspectRatio: "auto", minHeight: 168 }} />
+                <ContainedFigure img={t.coverImages[0].src} alt={t.coverImages[0].alt} />
+                <ContainedFigure img={t.coverImages[1].src} alt={t.coverImages[1].alt} />
               </div>
             </div>
           </StaggerItem>
@@ -193,21 +201,15 @@ export function PlanujemyToPage() {
             <p className="pf-body">{p}</p>
           </Reveal>
         ))}
-        {/* lockup, then the idea/mono pair, then icons — the order the spec lists them in. */}
-        <Reveal style={{ width: "100%" }}>
-          <ContainedFigure img={brand.images[0].src} alt={brand.images[0].alt} />
-        </Reveal>
-        <StaggerGroup style={{ display: "flex", flexWrap: "wrap", gap: 24, width: "100%" }}>
-          <StaggerItem style={{ flex: "1 1 320px" }}>
-            <ContainedFigure img={brand.images[1].src} alt={brand.images[1].alt} />
-          </StaggerItem>
-          <StaggerItem style={{ flex: "1 1 320px" }}>
-            <ContainedFigure img={brand.images[2].src} alt={brand.images[2].alt} />
-          </StaggerItem>
-        </StaggerGroup>
-        <Reveal style={{ width: "100%" }}>
-          <ContainedFigure img={brand.images[3].src} alt={brand.images[3].alt} />
-        </Reveal>
+        {/* All four full width, stacked, in the order the spec lists them:
+            lockup, idea, mono, icons. That is how the design has them — and
+            these files are wide strips (1200x350, 1200x468, 1200x327), so
+            pairing any two side by side would shrink them to a sliver. */}
+        {brand.images.map((image, i) => (
+          <Reveal key={i} style={{ width: "100%" }}>
+            <ContainedFigure img={image.src} alt={image.alt} />
+          </Reveal>
+        ))}
       </Section>
 
       <Divider />
