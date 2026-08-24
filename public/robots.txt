@@ -7,4 +7,4 @@ Disallow: /case-study/raporty-v1
 Disallow: /hero-lab
 Disallow: /marquee-lab
 
-Sitemap: https://edytasup.run/sitemap.xml
+Sitemap: https://www.edytasup.run/sitemap.xml

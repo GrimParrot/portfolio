@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom"
 import { useLang } from "@/i18n/LanguageContext"
 import { projects } from "@/data/projects"
 
-const SITE = "https://edytasup.run"
+const SITE = "https://www.edytasup.run"
 const NAME = "Edyta Suprun"
 
 /** Homepage copy. index.html ships the Polish version statically — this is what

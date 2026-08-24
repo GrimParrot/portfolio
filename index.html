@@ -10,15 +10,15 @@
          description and this lang attribute the moment the visitor is on EN. -->
     <title>Edyta Suprun · Product Designer</title>
     <meta name="description" content="Product Designer z 8+ latami doświadczenia w B2B i B2C SaaS. Case studies z Localo: automatyczny kreator raportów, moduł pozyskiwania klientów, redesign statystyk." />
-    <link rel="canonical" href="https://edytasup.run/" />
+    <link rel="canonical" href="https://www.edytasup.run/" />
     <meta name="theme-color" content="#0A0A0A" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Edyta Suprun" />
     <meta property="og:title" content="Edyta Suprun · Product Designer" />
     <meta property="og:description" content="Product Designer z 8+ latami doświadczenia w B2B i B2C SaaS. Case studies z Localo: automatyczny kreator raportów, moduł pozyskiwania klientów, redesign statystyk." />
-    <meta property="og:url" content="https://edytasup.run/" />
-    <meta property="og:image" content="https://edytasup.run/og.png" />
+    <meta property="og:url" content="https://www.edytasup.run/" />
+    <meta property="og:image" content="https://www.edytasup.run/og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Edyta Suprun — Product Designer" />
@@ -28,7 +28,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Edyta Suprun · Product Designer" />
     <meta name="twitter:description" content="Product Designer z 8+ latami doświadczenia w B2B i B2C SaaS. Case studies z Localo: automatyczny kreator raportów, moduł pozyskiwania klientów, redesign statystyk." />
-    <meta name="twitter:image" content="https://edytasup.run/og.png" />
+    <meta name="twitter:image" content="https://www.edytasup.run/og.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,9 +36,10 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- Everything below renders only without JavaScript. It is the same
-         content the app shows, written out for agents that do not execute
-         scripts — link unfurlers, older crawlers, text browsers. -->
+    <!-- The last-resort summary for readers without JavaScript. scripts/prerender.mjs
+         strips it, because a prerendered page carries the real thing and this
+         would trail every one of them with the same homepage blurb. It survives
+         in dev, and in a `vite build` run on its own without the prerender pass. -->
     <noscript>
       <h1>Edyta Suprun — Product Designer</h1>
       <p>

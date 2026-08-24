@@ -3,7 +3,7 @@
 ## 1. Środowisko i komendy
 
 - **Dev server:** `npm run dev` → port 5173. W sesji z preview używaj `preview_start "portfolio"` zamiast Bash.
-- **Build:** `npm run build` (weryfikacja TypeScript + Vite bundle)
+- **Build:** `npm run build` (TypeScript + Vite bundle + prerender przez headless Chrome — patrz §6b). Sam prerender bez przebudowy: `npm run prerender`.
 - **Testy:** brak — weryfikacja przez preview w przeglądarce
 - **Stack:** React 19 · Vite · TypeScript · Tailwind CSS · shadcn/ui · lucide-react · React Router
 
@@ -81,6 +81,25 @@ Język przełącza `LanguageContext` — nie hardkoduj polskich stringów bezpo�
 **Jeśli user pyta "gdzie jest ten tekst" i nie widzisz go na stronie:** sprawdź `grep -rn "<pole>" src/pages/` zanim odpowiesz — pole w `copy.tsx` mogło zostać dodane, ale nigdy nie podłączone do renderu (martwe copy). Tak było z `devWarningLabel`/`devWarningText` w Raporty — istniały w danych, ale żaden JSX ich nie czytał. W takiej sytuacji usuń pole z obu języków zamiast zostawiać je "na wszelki wypadek".
 
 **Route działa lokalnie ≠ działa na produkcji.** Preset Vite na Vercelu nie dodaje SPA fallbacku, więc każde wejście z zewnątrz na trasę kliencką (`/case-study/...`, `/ui/...`) dostawało od Vercela `404 NOT_FOUND` — mimo poprawnego route'a w `main.tsx`. Załatwia to `rewrites` w `vercel.json`; nie usuwaj go. Filesystem jest na Vercelu sprawdzany **przed** `rewrites`, więc PDF-y i assety z `public/` nadal serwują się jako pliki i rewrite ich nie przechwytuje. `vite dev` w ogóle nie czyta `vercel.json`, więc routingu produkcyjnego nie potwierdzisz lokalnie — po deployu sprawdź `curl -o /dev/null -w "%{http_code}"` na trasie projektu.
+
+## 6b. Prerendering — strona musi być czytelna bez JS
+
+Aplikacja renderuje się w całości po stronie klienta, więc każdy adres zwracał ten sam pusty shell (~4 KB). Crawler bez JS — w tym fetchery LLM-ów, na których opiera się „wklej link do czatu" — nie widział ani jednego zdania z case studies.
+
+`scripts/prerender.mjs` domyka to po `vite build`: serwuje `dist/` lokalnie, odwiedza każdą indeksowalną trasę w headless Chrome (puppeteer) i zapisuje gotowy DOM jako `dist/<trasa>/index.html`. Filesystem jest na Vercelu sprawdzany **przed** `rewrites`, więc te pliki wygrywają, a rewrite z `vercel.json` zostaje fallbackiem dla reszty.
+
+Czego nie ruszać:
+
+- **Lista tras pochodzi z `src/data/projects.ts`** (te same `href`, które czyta router i galeria) plus `/`. Nowy projekt dostaje statyczną stronę sam z siebie — nie dopisuj tras w skrypcie.
+- **`dist/sitemap.xml` też generuje ten skrypt.** Nie ma już `public/sitemap.xml` — inaczej lista tras i sitemap znowu by się rozjechały (tak zgubiło się `/ui/planujemyto`).
+- **`document.querySelectorAll('[data-prerendered]')` w `main.tsx`.** Modal projektu to portal do `<body>`, poza `#root`. React czyści `#root` sam, ale o tym rodzeństwie nie wie i zamontowałby drugi modal obok prerenderowanego. Skrypt go znakuje, `main.tsx` usuwa przed `createRoot`.
+- **Snapshot leci z `prefers-reduced-motion: reduce`.** Dzięki temu `initial={reduce ? false : "hidden"}` nie zapisuje elementów z `opacity: 0` (czyli treści niewidocznej dla czytającego bez JS), a Lenis w ogóle nie startuje.
+- **`<noscript>` w `index.html` jest wycinany z prerenderowanych stron.** Zostaje tylko dla `npm run dev` i dla builda odpalonego bez prerenderu.
+- **Chromium ląduje w `node_modules/.cache/puppeteer`** (`.puppeteerrc.cjs`), bo `~/.cache` nie przechodzi między buildami na Vercelu.
+
+Nieudany prerender **przerywa build** — trasa wypuszczona jako pusty shell to dokładnie ten bug, który ten skrypt naprawia.
+
+Weryfikacja po zmianie: `node -e` na `dist/<trasa>/index.html` — sprawdź długość tekstu po zdjęciu tagów oraz `<title>`/`canonical` (mają być per-trasa, ustawia je `DocumentMeta`, a snapshot je łapie).
 
 ## 7. Techniczne pułapki komponentów sekcji case study
 

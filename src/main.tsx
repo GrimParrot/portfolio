@@ -27,6 +27,13 @@ import { LanguageProvider } from './i18n/LanguageContext.tsx'
 import { galleryPaths } from './data/projects.ts'
 import { Analytics } from '@vercel/analytics/react'
 
+// scripts/prerender.mjs ships every route as finished HTML so crawlers that do
+// not run JavaScript still get the text. React clears #root itself when it
+// mounts, but a project route also carries a prerendered copy of the modal —
+// which is a portal into <body>, outside #root, and would otherwise sit there
+// under the live one. The prerender marks it; this takes it away.
+document.querySelectorAll('[data-prerendered]').forEach((el) => el.remove())
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LanguageProvider>
