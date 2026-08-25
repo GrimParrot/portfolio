@@ -129,12 +129,12 @@ function ProductCard({ product, id, index, ndaLabel, imageNote }: { product: Pro
             <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
               <h3 className="pf-h4">{product.title}</h3>
               <div className="flex flex-wrap gap-2">
-                {/* The card's own chip, not the site's secondary Badge: the design
-                    gives these a full pill on the line colour, a step darker than
-                    Badge's surface. `border-0` keeps the box at the 36px the
-                    design draws — Badge's transparent border would add two. */}
+                {/* The same chip every other project page uses, including this
+                    page's own hero. The design draws a slightly wider pill on a
+                    darker grey here; matching it would have made these the one
+                    set of tags on the site that looks different from the rest. */}
                 {product.tags.map((tag) => (
-                  <Badge key={tag} className="rounded-full border-0 bg-[var(--pf-primary-100)] px-3 py-1.5 text-base font-normal leading-6 text-[color:var(--pf-text-primary)] hover:bg-[var(--pf-primary-100)]">
+                  <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium">
                     {tag}
                   </Badge>
                 ))}
