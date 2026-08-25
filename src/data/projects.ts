@@ -50,9 +50,9 @@ export const projects: Project[] = [
     title: "Codete · Four B2B products",
     title_pl: "Codete · Cztery produkty B2B",
     description:
-      "Wewnętrzna platforma enterprise, narzędzie do uzgadniania danych, narzędzie dla deweloperów i platforma danych w MVP. Wszystkie cztery potrzebowały design systemu od zera.",
+      "Wewnętrzna platforma enterprise, narzędzie do umów i uzgadniania danych, narzędzie dla deweloperów i platforma analityczna w MVP. Wszystkie cztery potrzebowały design systemu od zera.",
     description_en:
-      "An internal enterprise platform, a data-reconciliation tool, a developer tool and a data platform at MVP. All four needed a design system built from scratch.",
+      "An internal enterprise platform, a tool for contracts and data reconciliation, a developer tool and an analytics platform at MVP. All four needed a design system built from scratch.",
     tag: "Case Study",
     tags: projectTags.codete,
     featured: true,
