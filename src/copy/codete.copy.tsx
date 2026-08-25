@@ -50,7 +50,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
     heroTitleAccent: "cztery produkty",
     heroLead: (
       <>
-        Podczas mojej <strong>2-letniej pracy w Codete</strong> zaprojektowałam cztery <strong>złożone produkty B2B</strong>, każdy w innej domenie: wewnętrzna platforma enterprise, narzędzie do umów i uzgadniania danych, narzędzie dla zespołów technicznych i platforma analityczna w MVP. Trzy z nich wymagały stworzenia <strong>design systemu od zera</strong>, razem z logo i brandem. Przy każdym pracowałam <strong>end-to-end</strong>: architektura informacji, flow, UI, dokumentacja i handoff dla zespołów developerskich.
+        Podczas mojej 2-letniej pracy w Codete zaprojektowałam cztery <strong>złożone produkty B2B</strong>, każdy w innej domenie: wewnętrzna platforma enterprise, narzędzie do umów i uzgadniania danych, narzędzie dla zespołów technicznych i platforma analityczna w MVP. Trzy z nich wymagały stworzenia <strong>design systemu od zera</strong>, razem z logo i brandem. Przy każdym pracowałam <strong>end-to-end</strong>: architektura informacji, flow, UI, dokumentacja i handoff dla zespołów developerskich.
       </>
     ),
     ndaNote: (
@@ -67,7 +67,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
     productsHeading: "Products",
     coverAlt:
       "Cztery ciemne makiety interfejsów, ułożone pod kątem na falistym fioletowym tle: platforma do zarządzania, narzędzie deweloperskie, uzgadnianie danych i analityka. Ilustracja poglądowa, nie zrzuty rzeczywistych produktów.",
-    coverCaption: "Materiał poglądowy, ze względu na NDA nie moge pokazać rzeczywistych projektów",
+    coverCaption: "Materiał poglądowy, ze względu na NDA nie mogę pokazać rzeczywistych projektów",
     imageNote:
       "Ze względów NDA nie mogę upubliczniać materiałów. Jeśli chcesz dowiedzieć się więcej o tym projekcie daj znać :)",
     ndaLabel: "Under NDA",
@@ -78,26 +78,26 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         tags: ["Redesign", "Enterprise", "Internal tools"],
         intro: (
           <>
-            Platforma była <strong>centralnym systemem operacyjnym firmy</strong>: kontrahenci i partnerzy, katalog produktów i usług, zamówienia, konfiguracja techniczna i rozliczenia w jednym miejscu. Pracowało w niej <strong>kilkaset osób z czterech departamentów</strong>, z których każdy przychodził do tego samego systemu po zupełnie inne rzeczy.
+            Platforma była centralnym <strong>systemem operacyjnym firmy</strong>: kontrahenci i partnerzy, katalog produktów i usług, zamówienia, konfiguracja techniczna i rozliczenia w jednym miejscu. Pracowało w niej <strong>kilkaset osób</strong> z czterech departamentów, z których każdy przychodził do tego samego systemu po zupełnie inne rzeczy.
           </>
         ),
         roleHeading: "Mój zakres",
         roleLeft: [
-          <><strong>system klasy enterprise</strong>, ponad <strong>100 ekranów</strong></>,
-          <><strong>duże wolumeny przetwarzanych danych</strong> i rozbudowana struktura zależności między obiektami</>,
+          <>system klasy enterprise, ponad <strong>100 ekranów</strong></>,
+          <><strong>duże wolumeny</strong> przetwarzanych danych i rozbudowana struktura zależności między obiektami</>,
           <><strong>cztery departamenty</strong>, każdy z własnymi procesami i ścieżkami</>,
           <><strong>analiza zachowań użytkowników</strong> i celów biznesowych</>,
-          <><strong>persony</strong> dla każdego z czterech departamentów wraz z ich <strong>głównymi flow</strong></>,
+          <><strong>persony</strong> dla każdego z czterech departamentów wraz z ich głównymi flow</>,
           <><strong>architektura informacji</strong> dla całego systemu</>,
         ],
         roleRight: [
-          <><strong>uproszczenie złożonych procesów B2B</strong> do przewidywalnych ścieżek</>,
+          <>uproszczenie <strong>złożonych procesów B2B</strong> do przewidywalnych ścieżek</>,
           <>osobne ścieżki i <strong>dashboardy produktowe</strong> dla czterech departamentów</>,
-          <strong>dwuskładnikowy system logowania</strong>,
-          <strong>makiety, prototypy i finalny design</strong>,
-          <><strong>design system od zera</strong>: zmienne, style, komponenty, wraz z <strong>dokumentacją</strong></>,
-          <strong>nowe logo i brand guide</strong>,
-          <>ścisła, zwinna praca z <strong>Product Ownerem i zespołem developerskim</strong></>,
+          <><strong>dwuskładnikowy</strong> system logowania</>,
+          "makiety, prototypy i finalny design",
+          <><strong>design system od zera</strong>: zmienne, style, komponenty, wraz z dokumentacją</>,
+          "nowe logo i brand guide",
+          <>ścisła, zwinna praca z <strong>Product Ownerem</strong> i zespołem developerskim</>,
         ],
         images: [
           { src: "/codete-01-information-architecture.webp", alt: "Rozmyta mapa architektury informacji platformy do zarządzania: kilkadziesiąt połączonych węzłów, nieczytelnych ze względu na NDA.", aspect: "916 / 169" },
@@ -109,7 +109,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         tags: ["0→1 Design", "B2B SaaS", "Design System"],
         intro: (
           <>
-            Narzędzie, w którym dwie firmy <strong>zawierały umowy i uzgadniały podlegające im dane</strong>. Użytkownik mapował pola między dwoma systemami, dzięki czemu narzędzie <strong>porównywało pliki automatycznie i wskazywało rozbieżności</strong>. Każda rozbieżność trafiała do <strong>modułu negocjacji</strong>, w którym obie strony dochodziły do wspólnej wersji.
+            Narzędzie, w którym dwie firmy <strong>zawierały umowy</strong> i uzgadniały podlegające im dane. Użytkownik mapował pola między dwoma systemami, dzięki czemu narzędzie porównywało pliki automatycznie i <strong>wskazywało rozbieżności</strong>. Każda rozbieżność trafiała do <strong>modułu negocjacji</strong>, w którym obie strony dochodziły do wspólnej wersji.
           </>
         ),
         roleHeading: "Moja rola",
@@ -125,14 +125,14 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         ],
         roleRight: [
           "wywiady z użytkownikami",
-          "ścisła, zwinna praca z Produkt ownerem i developerami",
+          "ścisła, zwinna praca z Product Ownerem i developerami",
           "upraszczanie skomplikowanych procesów",
           "duży focus na niwelacji potencjalnych błędów",
           "badanie ścieżek błędów",
           "użytkownik produktu to managerowie i C-level",
           "niska tolerancja na niedociągnięcia",
           "krótki czas realizacji",
-          "Solo designer",
+          "solo designer",
         ],
         images: [
           { src: "/codete-02-product-logic.webp", alt: "Rozmyty diagram logiki produktu i mapowania pól między systemami, nieczytelny ze względu na NDA.", aspect: "687 / 176" },
@@ -145,21 +145,21 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         tags: ["0→1 Design", "B2B SaaS", "Information Architecture"],
         intro: (
           <>
-            Podgląd <strong>deploymentów, przepływów i stanów</strong>, a z tego samego miejsca <strong>kontrolowane release'y</strong>. <strong>Siedem połączonych ze sobą obszarów</strong>, w których deweloper widzi stan na pierwszym ekranie i schodzi w szczegóły dopiero wtedy, kiedy sam tego chce. Środowisko na wskroś techniczne, więc narzędzie musiało dawać obraz szybciej, niż użytkownik sprawdziłby go sam.
+            Podgląd <strong>deploymentów, przepływów i stanów</strong>, a z tego samego miejsca kontrolowane release'y. <strong>Siedem</strong> połączonych ze sobą obszarów, w których deweloper widzi stan na pierwszym ekranie i schodzi w szczegóły dopiero wtedy, kiedy sam tego chce. Środowisko na wskroś techniczne, więc narzędzie musiało dawać obraz szybciej, niż użytkownik sprawdziłby go sam.
           </>
         ),
         roleHeading: "Moja rola",
         roleLeft: [
           "rozmowy z osobami, które miały z tego korzystać",
           "nowe logo i brand",
-          <strong>architektura informacji i flow</strong>,
+          <><strong>architektura informacji</strong> i flow</>,
           "end-to-end product design całego produktu",
-          <strong>design system od zera</strong>,
+          <><strong>design system</strong> od zera</>,
           "wspólne patterny, biblioteki, zmienne i style dla całego ekosystemu",
         ],
         roleRight: [
           "wywiady z użytkownikami",
-          "ścisła, zwinna praca z Produkt ownerem i developerami",
+          "ścisła, zwinna praca z Product Ownerem i developerami",
           "upraszczanie skomplikowanych procesów",
           "duży focus na niwelacji potencjalnych błędów",
           "badanie ścieżek błędów",
@@ -177,23 +177,23 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         tags: ["MVP", "Enterprise", "Team Leadership"],
         intro: (
           <>
-            Każdy etap pracy z danymi był <strong>osobnym, złożonym procesem</strong>: zbieranie surowych plików, kolejne etapy obróbki, katalogi, <strong>modelowanie i integracje</strong> po obu stronach. Do tego moduł użytkowników, ról i uprawnień. <strong>Na działające MVP były trzy miesiące</strong>.
+            Każdy etap pracy z danymi był <strong>osobnym, złożonym procesem</strong>: zbieranie surowych plików, kolejne etapy obróbki, katalogi, modelowanie i integracje po obu stronach. Do tego moduł użytkowników, ról i uprawnień. Na działające MVP były <strong>trzy miesiące</strong>.
           </>
         ),
         roleHeading: "Moja rola",
         roleLeft: [
-          <strong>prowadzenie trzysosobowego zespołu projektantów</strong>,
+          <>prowadzenie <strong>trzyosobowego zespołu</strong> projektantów</>,
           "organizacja pracy, definiowanie zadań, usprawnianie procesów projektowych",
-          "design system od 0 (m.in style, viariables, typografia, kolory, komponenty, interakcje, motion, wzorce projektowe)",
+          "design system od 0 (m.in. style, variables, typografia, kolory, komponenty, interakcje, motion, wzorce projektowe)",
           "pogłębianie wiedzy na spotkaniach z analitykami",
-          <strong>architektura informacji, user journeys oraz jobs to be done</strong>,
+          <><strong>architektura informacji</strong>, user journeys oraz jobs to be done</>,
           "moduł użytkowników, ról i uprawnień",
-          "3 miesiące na realizacje",
+          "3 miesiące na realizację",
         ],
         roleRight: [
           "ścisła współpraca z produkt ownerem i zespołem developerskim",
-          "Złożone procesy mapowania i modelowania danych",
-          "Zarządzanie data leke'ami i pipelinami",
+          "złożone procesy mapowania i modelowania danych",
+          "zarządzanie data lake'ami i pipeline'ami",
           "mentoring młodszych projektantów",
         ],
         images: [
@@ -216,7 +216,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
     heroTitleAccent: "four products",
     heroLead: (
       <>
-        Over my <strong>two years at Codete</strong> I designed four <strong>complex B2B products</strong>, each in a different domain: an internal enterprise platform, a tool for contracts and data reconciliation, a tool for technical teams and an analytics platform at MVP. Three of them needed a <strong>design system built from scratch</strong>, logo and brand included. On every one of them I worked <strong>end to end</strong>: information architecture, flows, UI, documentation and handoff to the development teams.
+        Over my two years at Codete I designed four <strong>complex B2B products</strong>, each in a different domain: an internal enterprise platform, a tool for contracts and data reconciliation, a tool for technical teams and an analytics platform at MVP. Three of them needed a <strong>design system built from scratch</strong>, logo and brand included. On every one of them I worked <strong>end to end</strong>: information architecture, flows, UI, documentation and handoff to the development teams.
       </>
     ),
     ndaNote: (
@@ -244,26 +244,26 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         tags: ["Redesign", "Enterprise", "Internal tools"],
         intro: (
           <>
-            The platform was the <strong>company's central operating system</strong>: counterparties and partners, the catalogue of products and services, orders, technical configuration and billing in one place. <strong>Several hundred people across four departments</strong> worked in it, and each of them came to the same system for something entirely different.
+            The platform was the company's <strong>central operating system</strong>: counterparties and partners, the catalogue of products and services, orders, technical configuration and billing in one place. <strong>Several hundred people</strong> across four departments worked in it, and each of them came to the same system for something entirely different.
           </>
         ),
         roleHeading: "My scope",
         roleLeft: [
-          <>an <strong>enterprise-class system</strong>, over <strong>100 screens</strong></>,
-          <><strong>large volumes of processed data</strong> and a deep structure of dependencies between objects</>,
+          <>an enterprise-class system, over <strong>100 screens</strong></>,
+          <><strong>large volumes</strong> of processed data and a deep structure of dependencies between objects</>,
           <><strong>four departments</strong>, each with its own processes and paths</>,
           <><strong>analysis of user behaviour</strong> and business goals</>,
-          <><strong>personas</strong> for each of the four departments, along with their <strong>main flows</strong></>,
+          <><strong>personas</strong> for each of the four departments, along with their main flows</>,
           <><strong>information architecture</strong> for the whole system</>,
         ],
         roleRight: [
-          <><strong>complex B2B processes simplified</strong> into predictable paths</>,
+          <>complex <strong>B2B processes</strong> simplified into predictable paths</>,
           <>separate paths and <strong>product dashboards</strong> for the four departments</>,
-          <strong>two-factor sign-in</strong>,
-          <strong>wireframes, prototypes and the final design</strong>,
-          <>a <strong>design system from scratch</strong>: variables, styles, components, with <strong>documentation</strong></>,
-          <strong>a new logo and brand guide</strong>,
-          <>close, agile work with the <strong>Product Owner and the development team</strong></>,
+          <><strong>two-factor</strong> sign-in</>,
+          "wireframes, prototypes and the final design",
+          <>a <strong>design system from scratch</strong>: variables, styles, components, with documentation</>,
+          "a new logo and brand guide",
+          <>close, agile work with the <strong>Product Owner</strong> and the development team</>,
         ],
         images: [
           { src: "/codete-01-information-architecture.webp", alt: "Blurred information-architecture map of the management platform: dozens of connected nodes, illegible for NDA reasons.", aspect: "916 / 169" },
@@ -275,7 +275,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         tags: ["0→1 Design", "B2B SaaS", "Design System"],
         intro: (
           <>
-            A tool where two companies <strong>signed contracts and reconciled the data those contracts covered</strong>. The user mapped fields between the two systems, which let the tool <strong>compare files automatically and flag the mismatches</strong>. Every mismatch went to a <strong>negotiation module</strong>, where both sides worked their way to one agreed version.
+            A tool where two companies <strong>signed contracts</strong> and reconciled the data those contracts covered. The user mapped fields between the two systems, which let the tool compare files automatically and <strong>flag the mismatches</strong>. Every mismatch went to a <strong>negotiation module</strong>, where both sides worked their way to one agreed version.
           </>
         ),
         roleHeading: "My role",
@@ -311,16 +311,16 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         tags: ["0→1 Design", "B2B SaaS", "Information Architecture"],
         intro: (
           <>
-            A view of <strong>deployments, pipelines and states</strong>, with <strong>controlled releases</strong> from the same place. <strong>Seven connected areas</strong>, where a developer sees the state on the first screen and only goes deeper when they choose to. A thoroughly technical environment, so the tool had to give them the picture faster than they could check it themselves.
+            A view of <strong>deployments, pipelines and states</strong>, with controlled releases from the same place. <strong>Seven</strong> connected areas, where a developer sees the state on the first screen and only goes deeper when they choose to. A thoroughly technical environment, so the tool had to give them the picture faster than they could check it themselves.
           </>
         ),
         roleHeading: "My role",
         roleLeft: [
           "conversations with the people who would be using it",
           "a new logo and brand",
-          <strong>information architecture and flows</strong>,
+          <><strong>information architecture</strong> and flows</>,
           "end-to-end product design for the whole product",
-          <strong>a design system from scratch</strong>,
+          <>a <strong>design system</strong> from scratch</>,
           "shared patterns, libraries, variables and styles for the whole ecosystem",
         ],
         roleRight: [
@@ -343,16 +343,16 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
         tags: ["MVP", "Enterprise", "Team Leadership"],
         intro: (
           <>
-            Every stage of working with the data was <strong>its own complicated process</strong>: collecting raw files, the successive rounds of processing, catalogues, <strong>modelling and integrations</strong> on both sides. Plus a module for users, roles and permissions. <strong>There were three months to a working MVP</strong>.
+            Every stage of working with the data was <strong>its own complicated process</strong>: collecting raw files, the successive rounds of processing, catalogues, modelling and integrations on both sides. Plus a module for users, roles and permissions. There were <strong>three months</strong> to a working MVP.
           </>
         ),
         roleHeading: "My role",
         roleLeft: [
-          <strong>leading a team of three designers</strong>,
+          <>leading a <strong>team of three designers</strong></>,
           "organising the work, defining tasks, improving the design processes",
           "a design system from scratch (styles, variables, typography, colour, components, interactions, motion, design patterns)",
           "deepening my grasp of the domain in sessions with the analysts",
-          <strong>information architecture, user journeys and jobs to be done</strong>,
+          <><strong>information architecture</strong>, user journeys and jobs to be done</>,
           "the users, roles and permissions module",
           "three months to deliver",
         ],
