@@ -167,7 +167,7 @@ Sekcja produktu to rząd `.pf-product-row`: numer w stałej kolumnie 180px (`.pf
 
 Chipy w karcie to `Badge` bez wariantu, z `rounded-full border-0 bg-[var(--pf-primary-100)] px-3 py-1.5 text-base font-normal leading-6` — pełna pigułka na kolorze linii, o stopień ciemniejszym niż powierzchnia `secondary`. `border-0` trzyma wysokość na 36px, bo przezroczysta ramka `Badge` dodałaby dwa piksele.
 
-`.pf-role-list` to **jedna** lista w dwóch szpaltach (`columns: 2`, `column-gap: 32px`, `break-inside: avoid`), nie dwie listy obok siebie: projekt dzieli ją wizualnie, ale czytnik ekranu ma usłyszeć jeden ciąg punktów. Poniżej 768px schodzi do jednej szpalty.
+Zakres to `.pf-role-cols` — grid `1fr 1fr` z odstępem 32px, w środku **dwie** listy `.pf-role-list`. To celowo dwie listy, nie jedna puszczona w `columns: 2`: kolumny niosą co innego (po lewej co zrobiłam, po prawej w jakich warunkach), więc balansowanie ich przez przeglądarkę według wysokości wymieszałoby jedno z drugim. Poniżej 768px schodzą pod siebie, prawa pod lewą — w tej samej kolejności, w jakiej się je czyta.
 
 ### NumBadge
 Mały kolorowy krążek z cyfrą (`color: PRIMARY`, 20×20px, `inline-flex`) do odnoszenia się do elementów na zrzucie ekranu w tekście opisu, np. "① Filtrowanie... ② akcje zbiorcze...".

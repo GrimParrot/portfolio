@@ -144,14 +144,22 @@ function ProductCard({ product, id, index, ndaLabel, imageNote }: { product: Pro
 
             <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
               <h4 className="pf-h4">{product.roleHeading}</h4>
-              {/* One list in two balanced columns rather than two lists side by
-                  side: the design splits it visually, but a screen reader should
-                  still hear a single run of scope items. */}
-              <ul className="pf-role-list">
-                {product.role.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
+              {/* Two lists, not one list flowed into two columns. The design's
+                  columns carry different things — what I built on the left, the
+                  conditions I built it under on the right — so letting the
+                  browser balance them by height would shuffle the two together. */}
+              <div className="pf-role-cols">
+                <ul className="pf-role-list">
+                  {product.roleLeft.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+                <ul className="pf-role-list">
+                  {product.roleRight.map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
 
             <ImageRow images={product.images} ndaLabel={ndaLabel} />

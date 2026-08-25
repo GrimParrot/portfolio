@@ -40,19 +40,20 @@
   .pf-product-label { width: auto; }
 }
 
-/* The scope list under "Moja rola". One list in two balanced columns rather
-   than two lists side by side, so a screen reader still hears one run of items.
-   `break-inside: avoid` keeps a wrapped bullet from being split across the
-   column gap, which is the one thing multi-column gets wrong on its own. */
+/* The scope under "Moja rola": two lists side by side, 32px apart. They hold
+   different things — what I built on the left, the conditions I built it under
+   on the right — so this is a real two-column split, not one list flowed into
+   two. Stacks below 768px, right column under left, which is also the order
+   they are read in. */
+.pf-role-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; width: 100%; }
+@media (max-width: 768px) {
+  .pf-role-cols { grid-template-columns: 1fr; gap: 24px; }
+}
+
 .pf-role-list {
   margin: 0; padding: 0 0 0 27px; list-style: disc;
   font-family: var(--pf-font-body); font-weight: 400;
   font-size: var(--pf-body-size); line-height: var(--pf-body-lh); color: var(--pf-text-body);
-  columns: 2; column-gap: 32px;
-}
-.pf-role-list > li { break-inside: avoid; }
-@media (max-width: 768px) {
-  .pf-role-list { columns: 1; }
 }
 
 .pf-skrot-stats { display: grid; grid-template-columns: 2fr 1fr 1fr; }

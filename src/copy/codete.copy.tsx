@@ -4,9 +4,13 @@ export type Product = {
   eyebrow: string
   title: string
   tags: string[]
-  intro: string
+  intro: React.ReactNode
   roleHeading: string
-  role: React.ReactNode[]
+  /** The scope runs in two columns, and they are not one list cut in half:
+   *  the left one is what I built, the right one the conditions I built it
+   *  under. Balancing them automatically would shuffle the two together. */
+  roleLeft: React.ReactNode[]
+  roleRight: React.ReactNode[]
   /** One or two pictures closing the card. Two sit side by side, weighted by
    *  their own aspect ratios rather than split down the middle. */
   images: { src: string; alt: string; aspect?: string }[]
@@ -40,52 +44,60 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       devtools: "Dev tools",
       analytics: "Data analytics",
     },
-    heroEyebrow: "PROJECTS · CODETE",
+    heroEyebrow: "PROJECTS - CODETE",
     heroTags: projectTags.codete,
     heroTitle: "Dwa lata,",
     heroTitleAccent: "cztery produkty",
     heroLead: (
       <>
-        Podczas mojej <strong>2-letniej pracy w Codete</strong> zaprojektowałam cztery <strong>złożone produkty B2B</strong>, każdy w innej domenie: wewnętrzna platforma enterprise dla operatora telekomunikacyjnego, narzędzie do umów i uzgadniania danych, narzędzie dla deweloperów i platforma danych w MVP. Trzy z nich wymagały stworzenia <strong>design systemu od zera</strong>, razem z logo i brandem. Przy każdym pracowałam <strong>end-to-end</strong>: architektura informacji, flow, UI, dokumentacja i handoff dla zespołów deweloperskich.
+        Podczas mojej <strong>2-letniej pracy w Codete</strong> zaprojektowałam cztery <strong>złożone produkty B2B</strong>, każdy w innej domenie: wewnętrzna platforma enterprise, narzędzie do umów i uzgadniania danych, narzędzie dla zespołów technicznych i platforma analityczna w MVP. Trzy z nich wymagały stworzenia <strong>design systemu od zera</strong>, razem z logo i brandem. Przy każdym pracowałam <strong>end-to-end</strong>: architektura informacji, flow, UI, dokumentacja i handoff dla zespołów developerskich.
       </>
     ),
     ndaNote: (
-      <>
-        Ze względu na <strong>NDA nie mogę upublicznić wszystkich informacji i materiałów. Chętnie opowiem więcej na spotkaniu.</strong>
-      </>
+      <strong>
+        Ze względu na NDA nie mogę pokazać nazw, materiałów ani szczegółów technicznych. Chętnie opowiem więcej o procesie i decyzjach na spotkaniu.
+      </strong>
     ),
     metaBar: [
       { label: "MOJA ROLA", value: "Senior UX/UI Designer" },
-      { label: "PRODUKTY", value: "4" },
+      { label: "Design Team", value: "1-4" },
       { label: "SKALA", value: "0→1 i redesign" },
       { label: "DESIGN SYSTEMY", value: "3" },
     ],
     productsHeading: "Products",
     coverAlt:
       "Cztery ciemne makiety interfejsów, ułożone pod kątem na falistym fioletowym tle: platforma do zarządzania, narzędzie deweloperskie, uzgadnianie danych i analityka. Ilustracja poglądowa, nie zrzuty rzeczywistych produktów.",
-    coverCaption:
-      "Materiał poglądowy, ze względu na NDA nie mogę pokazać rzeczywistych projektów.",
+    coverCaption: "Materiał poglądowy, ze względu na NDA nie moge pokazać rzeczywistych projektów",
     imageNote:
-      "Ze względów NDA nie mogę upubliczniać materiałów. Jeśli chcesz dowiedzieć się więcej o tym projekcie, daj znać :)",
+      "Ze względów NDA nie mogę upubliczniać materiałów. Jeśli chcesz dowiedzieć się więcej o tym projekcie daj znać :)",
     ndaLabel: "Under NDA",
     products: [
       {
-        eyebrow: "01 · Management platform",
+        eyebrow: "01 · MANAGEMENT PLATFORM",
         title: "Redesign platformy do zarządzania",
         tags: ["Redesign", "Enterprise", "Internal tools"],
-        intro:
-          "To narzędzie wewnętrzne dużego międzynarodowego operatora telekomunikacyjnego: firmy współpracujące, klienci i partnerzy razem z informacjami o nich i przypisanymi tokenami, użytkownicy z dostępami i stanowiskami. Do tego całe portfolio produktów, zamówienia, zarządzanie API i faktury. Korzystało z niego kilkaset osób.",
-        roleHeading: "Moja rola",
-        role: [
-          "nowe logo i brand guide",
-          <>nowa <strong>architektura informacji</strong></>,
-          "wyodrębnione persony",
-          "flow dla każdej persony",
-          "system logowania z uwierzytelnianiem dwuskładnikowym",
-          <><strong>design system od zera</strong>, atomy, patterny, komponenty</>,
-          <>dokumentacja, prototypy i <strong>handoff</strong> dla dwóch zespołów deweloperskich</>,
-          "po redesignie rozwijałam platformę dalej, razem z innymi projektantami",
-          "dark/light mode",
+        intro: (
+          <>
+            Platforma była <strong>centralnym systemem operacyjnym firmy</strong>: kontrahenci i partnerzy, katalog produktów i usług, zamówienia, konfiguracja techniczna i rozliczenia w jednym miejscu. Pracowało w niej <strong>kilkaset osób z czterech departamentów</strong>, z których każdy przychodził do tego samego systemu po zupełnie inne rzeczy.
+          </>
+        ),
+        roleHeading: "Mój zakres",
+        roleLeft: [
+          <><strong>system klasy enterprise</strong>, ponad <strong>100 ekranów</strong></>,
+          <><strong>duże wolumeny przetwarzanych danych</strong> i rozbudowana struktura zależności między obiektami</>,
+          <><strong>cztery departamenty</strong>, każdy z własnymi procesami i ścieżkami</>,
+          <><strong>analiza zachowań użytkowników</strong> i celów biznesowych</>,
+          <><strong>persony</strong> dla każdego z czterech departamentów wraz z ich <strong>głównymi flow</strong></>,
+          <><strong>architektura informacji</strong> dla całego systemu</>,
+        ],
+        roleRight: [
+          <><strong>uproszczenie złożonych procesów B2B</strong> do przewidywalnych ścieżek</>,
+          <>osobne ścieżki i <strong>dashboardy produktowe</strong> dla czterech departamentów</>,
+          <strong>dwuskładnikowy system logowania</strong>,
+          <strong>makiety, prototypy i finalny design</strong>,
+          <><strong>design system od zera</strong>: zmienne, style, komponenty, wraz z <strong>dokumentacją</strong></>,
+          <strong>nowe logo i brand guide</strong>,
+          <>ścisła, zwinna praca z <strong>Product Ownerem i zespołem developerskim</strong></>,
         ],
         images: [
           { src: "/codete-01-information-architecture.webp", alt: "Rozmyta mapa architektury informacji platformy do zarządzania: kilkadziesiąt połączonych węzłów, nieczytelnych ze względu na NDA.", aspect: "916 / 169" },
@@ -93,20 +105,34 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       },
       {
         eyebrow: "02 · DATA RECONCILIATION",
-        title: "Platforma do negocjacji",
+        title: "Platforma do negocjacji umów i danych",
         tags: ["0→1 Design", "B2B SaaS", "Design System"],
-        intro:
-          "Narzędzie, w którym firmy zawierają ze sobą umowy i sprawdzają dane, które tym umowom podlegają. Zaprojektowałam cały produkt: mapowanie pól między systemami, które to porównanie robi za użytkownika, moduł negocjacji rozbieżności, logo, brand i design system od zera. 25+ widoków",
+        intro: (
+          <>
+            Narzędzie, w którym dwie firmy <strong>zawierały umowy i uzgadniały podlegające im dane</strong>. Użytkownik mapował pola między dwoma systemami, dzięki czemu narzędzie <strong>porównywało pliki automatycznie i wskazywało rozbieżności</strong>. Każda rozbieżność trafiała do <strong>modułu negocjacji</strong>, w którym obie strony dochodziły do wspólnej wersji.
+          </>
+        ),
         roleHeading: "Moja rola",
-        role: [
-          "nowe logo i identyfikacja wizualna",
+        roleLeft: [
+          "nowe logo i brand guide",
           "flow całego produktu",
-          <strong>architektura informacji</strong>,
-          <>UI, <strong>prototyp</strong></>,
-          "mapowanie pól między systemami, które zastąpiło ręczną weryfikację przesyłu",
-          "moduł negocjacji rozbieżności",
-          <><strong>dashboard umów</strong> i proces zawierania nowej umowy</>,
-          <strong>design system od zera</strong>,
+          "architektura informacji",
+          "proces mapowania pól między systemami",
+          "moduł uzgadniania rozbieżności",
+          "dashboard umów i proces zawierania nowej",
+          "design system od 0 (variables, style, komponenty) wraz z dokumentacją",
+          "hi-fi i klikalne prototypy od pierwszego dnia",
+        ],
+        roleRight: [
+          "wywiady z użytkownikami",
+          "ścisła, zwinna praca z Produkt ownerem i developerami",
+          "upraszczanie skomplikowanych procesów",
+          "duży focus na niwelacji potencjalnych błędów",
+          "badanie ścieżek błędów",
+          "użytkownik produktu to managerowie i C-level",
+          "niska tolerancja na niedociągnięcia",
+          "krótki czas realizacji",
+          "Solo designer",
         ],
         images: [
           { src: "/codete-02-product-logic.webp", alt: "Rozmyty diagram logiki produktu i mapowania pól między systemami, nieczytelny ze względu na NDA.", aspect: "687 / 176" },
@@ -115,21 +141,31 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       },
       {
         eyebrow: "03 · DEV TOOLS",
-        title: "Narzędzie dla deweloperów",
+        title: "Narzędzie dla zespołów technicznych",
         tags: ["0→1 Design", "B2B SaaS", "Information Architecture"],
-        intro:
-          "Prowadziłam trzyosobowy zespół projektantów, ze mną włącznie. Zbudowaliśmy narzędzie dla deweloperów do nadzoru nad aplikacjami, pipeline'ami, środowiskami, deploymentami i release'ami.",
+        intro: (
+          <>
+            Podgląd <strong>deploymentów, przepływów i stanów</strong>, a z tego samego miejsca <strong>kontrolowane release'y</strong>. <strong>Siedem połączonych ze sobą obszarów</strong>, w których deweloper widzi stan na pierwszym ekranie i schodzi w szczegóły dopiero wtedy, kiedy sam tego chce. Środowisko na wskroś techniczne, więc narzędzie musiało dawać obraz szybciej, niż użytkownik sprawdziłby go sam.
+          </>
+        ),
         roleHeading: "Moja rola",
-        role: [
-          "rozmowy z deweloperami",
-          <strong>end-to-end product design</strong>,
-          <><strong>prowadzenie zespołu projektantów</strong>: podział pracy, feedback, nadzór nad efektami</>,
-          "standardy projektowania dla ekosystemu",
-          "wzorce projektowe (m.in. style i variables)",
+        roleLeft: [
+          "rozmowy z osobami, które miały z tego korzystać",
           "nowe logo i brand",
-          <><strong>architektura informacji</strong> i flow</>,
-          "cały produkt, 50+ widoków",
+          <strong>architektura informacji i flow</strong>,
+          "end-to-end product design całego produktu",
           <strong>design system od zera</strong>,
+          "wspólne patterny, biblioteki, zmienne i style dla całego ekosystemu",
+        ],
+        roleRight: [
+          "wywiady z użytkownikami",
+          "ścisła, zwinna praca z Produkt ownerem i developerami",
+          "upraszczanie skomplikowanych procesów",
+          "duży focus na niwelacji potencjalnych błędów",
+          "badanie ścieżek błędów",
+          "niska tolerancja na niedociągnięcia",
+          "krótki czas realizacji",
+          "2 projektantów w zespole",
         ],
         images: [
           { src: "/codete-03-architecture.webp", alt: "Rozmyty diagram architektury narzędzia dla zespołów technicznych, nieczytelny ze względu na NDA.", aspect: "4096 / 1034" },
@@ -137,23 +173,28 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       },
       {
         eyebrow: "04 · DATA ANALYTICS",
-        title: "Platforma do analizy danych",
+        title: "MVP platformy do analizy danych",
         tags: ["MVP", "Enterprise", "Team Leadership"],
-        intro:
-          "Platforma do analizy danych, narzędzie dla analityków. Zbieranie surowych danych z data lake, budowanie pipeline'ów dla kolejnych etapów, katalogi danych, modelowanie i pluginy. Działające MVP miało powstać w 3 miesiące. Prowadziłam dwuosobowy zespół projektantów, ze mną włącznie.",
+        intro: (
+          <>
+            Każdy etap pracy z danymi był <strong>osobnym, złożonym procesem</strong>: zbieranie surowych plików, kolejne etapy obróbki, katalogi, <strong>modelowanie i integracje</strong> po obu stronach. Do tego moduł użytkowników, ról i uprawnień. <strong>Na działające MVP były trzy miesiące</strong>.
+          </>
+        ),
         roleHeading: "Moja rola",
-        role: [
-          <><strong>prowadzenie zespołu projektantów</strong>: podział pracy, feedback, nadzór nad efektami</>,
-          <>trzy <strong>spotkania z analitykami danych</strong>: jak wygląda ich praca, czego potrzebują, jakim językiem mówią</>,
-          <><strong>architektura informacji</strong> całej platformy</>,
-          "flow dla kolejnych etapów pracy z danymi",
-          <>zbieranie surowych danych z <strong>data lake</strong></>,
-          <>tworzenie <strong>pipeline'ów</strong>: lake, normalization, modeling</>,
-          "katalogi danych i modelowanie",
-          "pluginy po stronie source i destination, na przykład BigQuery",
-          <>moduł <strong>użytkowników, ról i uprawnień</strong> razem z definicjami i klasyfikacją</>,
-          <>ekrany i <strong>klikalny prototyp</strong> całego MVP</>,
-          "procesy pracy zespołu przeniesione z poprzedniego projektu",
+        roleLeft: [
+          <strong>prowadzenie trzysosobowego zespołu projektantów</strong>,
+          "organizacja pracy, definiowanie zadań, usprawnianie procesów projektowych",
+          "design system od 0 (m.in style, viariables, typografia, kolory, komponenty, interakcje, motion, wzorce projektowe)",
+          "pogłębianie wiedzy na spotkaniach z analitykami",
+          <strong>architektura informacji, user journeys oraz jobs to be done</strong>,
+          "moduł użytkowników, ról i uprawnień",
+          "3 miesiące na realizacje",
+        ],
+        roleRight: [
+          "ścisła współpraca z produkt ownerem i zespołem developerskim",
+          "Złożone procesy mapowania i modelowania danych",
+          "Zarządzanie data leke'ami i pipelinami",
+          "mentoring młodszych projektantów",
         ],
         images: [
           { src: "/codete-04-data-flow.webp", alt: "Rozmyty diagram przepływu danych w platformie analitycznej, nieczytelny ze względu na NDA.", aspect: "907 / 225" },
@@ -169,52 +210,60 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       devtools: "Dev tools",
       analytics: "Data analytics",
     },
-    heroEyebrow: "PROJECTS · CODETE",
+    heroEyebrow: "PROJECTS - CODETE",
     heroTags: projectTags.codete,
     heroTitle: "Two years,",
     heroTitleAccent: "four products",
     heroLead: (
       <>
-        During my <strong>two years at Codete</strong> I designed four <strong>complex B2B products</strong>, each in a different domain: an internal enterprise platform for a telecom operator, a contract and data-reconciliation tool, a developer tool, and a data platform in MVP. Three of them needed a <strong>design system built from scratch</strong>, logo and brand included. On each one I worked <strong>end-to-end</strong>: information architecture, flow, UI, documentation and handoff for the engineering teams.
+        Over my <strong>two years at Codete</strong> I designed four <strong>complex B2B products</strong>, each in a different domain: an internal enterprise platform, a tool for contracts and data reconciliation, a tool for technical teams and an analytics platform at MVP. Three of them needed a <strong>design system built from scratch</strong>, logo and brand included. On every one of them I worked <strong>end to end</strong>: information architecture, flows, UI, documentation and handoff to the development teams.
       </>
     ),
     ndaNote: (
-      <>
-        Due to <strong>NDA I can't share all the information and materials publicly. I'm happy to tell you more in person.</strong>
-      </>
+      <strong>
+        NDA means I cannot show names, materials or technical details. I am happy to talk through the process and the decisions in person.
+      </strong>
     ),
     metaBar: [
       { label: "MY ROLE", value: "Senior UX/UI Designer" },
-      { label: "PRODUCTS", value: "4" },
+      { label: "Design Team", value: "1-4" },
       { label: "SCALE", value: "0→1 and redesign" },
       { label: "DESIGN SYSTEMS", value: "3" },
     ],
     productsHeading: "Products",
     coverAlt:
       "Four dark interface mockups laid out at an angle on a wavy purple background: a management platform, a developer tool, data reconciliation and analytics. Indicative artwork, not screenshots of the real products.",
-    coverCaption:
-      "Indicative artwork — NDA means I cannot show the real projects.",
+    coverCaption: "Indicative artwork — NDA means I cannot show the real projects",
     imageNote:
       "NDA means I cannot publish the materials. If you would like to hear more about this project, let me know :)",
     ndaLabel: "Under NDA",
     products: [
       {
-        eyebrow: "01 · Management platform",
+        eyebrow: "01 · MANAGEMENT PLATFORM",
         title: "Management platform redesign",
         tags: ["Redesign", "Enterprise", "Internal tools"],
-        intro:
-          "This is an internal tool for a large international telecom operator: collaborating companies, clients and partners along with their information and assigned tokens, users with access levels and roles. On top of that, the entire product portfolio, orders, API management and invoices. Several hundred people used it.",
-        roleHeading: "My role",
-        role: [
-          "new logo and brand guide",
-          <>new <strong>information architecture</strong></>,
-          "defined personas",
-          "flow for each persona",
-          "login system with two-factor authentication",
-          <><strong>design system built from scratch</strong>, atoms, patterns, components</>,
-          <>documentation, prototypes and <strong>handoff</strong> for two engineering teams</>,
-          "kept developing the platform after the redesign, alongside other designers",
-          "dark/light mode",
+        intro: (
+          <>
+            The platform was the <strong>company's central operating system</strong>: counterparties and partners, the catalogue of products and services, orders, technical configuration and billing in one place. <strong>Several hundred people across four departments</strong> worked in it, and each of them came to the same system for something entirely different.
+          </>
+        ),
+        roleHeading: "My scope",
+        roleLeft: [
+          <>an <strong>enterprise-class system</strong>, over <strong>100 screens</strong></>,
+          <><strong>large volumes of processed data</strong> and a deep structure of dependencies between objects</>,
+          <><strong>four departments</strong>, each with its own processes and paths</>,
+          <><strong>analysis of user behaviour</strong> and business goals</>,
+          <><strong>personas</strong> for each of the four departments, along with their <strong>main flows</strong></>,
+          <><strong>information architecture</strong> for the whole system</>,
+        ],
+        roleRight: [
+          <><strong>complex B2B processes simplified</strong> into predictable paths</>,
+          <>separate paths and <strong>product dashboards</strong> for the four departments</>,
+          <strong>two-factor sign-in</strong>,
+          <strong>wireframes, prototypes and the final design</strong>,
+          <>a <strong>design system from scratch</strong>: variables, styles, components, with <strong>documentation</strong></>,
+          <strong>a new logo and brand guide</strong>,
+          <>close, agile work with the <strong>Product Owner and the development team</strong></>,
         ],
         images: [
           { src: "/codete-01-information-architecture.webp", alt: "Blurred information-architecture map of the management platform: dozens of connected nodes, illegible for NDA reasons.", aspect: "916 / 169" },
@@ -222,20 +271,34 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       },
       {
         eyebrow: "02 · DATA RECONCILIATION",
-        title: "Negotiation platform",
+        title: "Contract and data reconciliation platform",
         tags: ["0→1 Design", "B2B SaaS", "Design System"],
-        intro:
-          "A tool where companies enter into contracts with each other and verify the data those contracts cover. I designed the entire product: field mapping between systems that runs the comparison for the user, a discrepancy-negotiation module, logo, brand and a design system from scratch. 25+ views",
+        intro: (
+          <>
+            A tool where two companies <strong>signed contracts and reconciled the data those contracts covered</strong>. The user mapped fields between the two systems, which let the tool <strong>compare files automatically and flag the mismatches</strong>. Every mismatch went to a <strong>negotiation module</strong>, where both sides worked their way to one agreed version.
+          </>
+        ),
         roleHeading: "My role",
-        role: [
-          "new logo and visual identity",
-          "flow for the entire product",
-          <strong>information architecture</strong>,
-          <>UI, <strong>prototype</strong></>,
-          "field mapping between systems, replacing manual transfer verification",
-          "discrepancy-negotiation module",
-          <><strong>contracts dashboard</strong> and the flow for entering a new contract</>,
-          <strong>design system built from scratch</strong>,
+        roleLeft: [
+          "a new logo and brand guide",
+          "flows for the whole product",
+          "information architecture",
+          "the field-mapping process between systems",
+          "the mismatch reconciliation module",
+          "a contract dashboard and the process for signing a new one",
+          "a design system from scratch (variables, styles, components) with documentation",
+          "hi-fi and clickable prototypes from day one",
+        ],
+        roleRight: [
+          "user interviews",
+          "close, agile work with the Product Owner and the developers",
+          "simplifying complicated processes",
+          "a heavy focus on heading off possible errors",
+          "studying the error paths",
+          "the product's users are managers and C-level",
+          "low tolerance for rough edges",
+          "a short delivery window",
+          "solo designer",
         ],
         images: [
           { src: "/codete-02-product-logic.webp", alt: "Blurred diagram of the product logic and the field mapping between systems, illegible for NDA reasons.", aspect: "687 / 176" },
@@ -244,21 +307,31 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       },
       {
         eyebrow: "03 · DEV TOOLS",
-        title: "Developer tool",
+        title: "A tool for technical teams",
         tags: ["0→1 Design", "B2B SaaS", "Information Architecture"],
-        intro:
-          "I led a three-person team of designers, myself included. We built a tool for developers to oversee applications, pipelines, environments, deployments and releases.",
+        intro: (
+          <>
+            A view of <strong>deployments, pipelines and states</strong>, with <strong>controlled releases</strong> from the same place. <strong>Seven connected areas</strong>, where a developer sees the state on the first screen and only goes deeper when they choose to. A thoroughly technical environment, so the tool had to give them the picture faster than they could check it themselves.
+          </>
+        ),
         roleHeading: "My role",
-        role: [
-          "conversations with developers",
-          <strong>end-to-end product design</strong>,
-          <><strong>leading a team of designers</strong>: splitting the work, giving feedback, overseeing the output</>,
-          "design standards for the ecosystem",
-          "design patterns (styles and variables, among others)",
-          "new logo and brand",
-          <><strong>information architecture</strong> and flow</>,
-          "the entire product, 50+ views",
-          <strong>design system built from scratch</strong>,
+        roleLeft: [
+          "conversations with the people who would be using it",
+          "a new logo and brand",
+          <strong>information architecture and flows</strong>,
+          "end-to-end product design for the whole product",
+          <strong>a design system from scratch</strong>,
+          "shared patterns, libraries, variables and styles for the whole ecosystem",
+        ],
+        roleRight: [
+          "user interviews",
+          "close, agile work with the Product Owner and the developers",
+          "simplifying complicated processes",
+          "a heavy focus on heading off possible errors",
+          "studying the error paths",
+          "low tolerance for rough edges",
+          "a short delivery window",
+          "two designers on the team",
         ],
         images: [
           { src: "/codete-03-architecture.webp", alt: "Blurred architecture diagram of the tool for technical teams, illegible for NDA reasons.", aspect: "4096 / 1034" },
@@ -266,23 +339,28 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       },
       {
         eyebrow: "04 · DATA ANALYTICS",
-        title: "Data analytics platform",
+        title: "Data analytics platform at MVP",
         tags: ["MVP", "Enterprise", "Team Leadership"],
-        intro:
-          "A data analytics platform, a tool for analysts. Collecting raw data from a data lake, building pipelines for successive stages, data catalogs, modeling and plugins. A working MVP had to ship in 3 months. I led a two-person team of designers, myself included.",
+        intro: (
+          <>
+            Every stage of working with the data was <strong>its own complicated process</strong>: collecting raw files, the successive rounds of processing, catalogues, <strong>modelling and integrations</strong> on both sides. Plus a module for users, roles and permissions. <strong>There were three months to a working MVP</strong>.
+          </>
+        ),
         roleHeading: "My role",
-        role: [
-          <><strong>leading a team of designers</strong>: splitting the work, giving feedback, overseeing the output</>,
-          <>three <strong>meetings with data analysts</strong>: what their work looks like, what they need, what language they speak</>,
-          <><strong>information architecture</strong> for the entire platform</>,
-          "flow for successive stages of working with data",
-          <>collecting raw data from the <strong>data lake</strong></>,
-          <>building <strong>pipelines</strong>: lake, normalization, modeling</>,
-          "data catalogs and modeling",
-          "source- and destination-side plugins, for example BigQuery",
-          <>a module for <strong>users, roles and permissions</strong> along with definitions and classification</>,
-          <>screens and a <strong>clickable prototype</strong> of the entire MVP</>,
-          "team workflows carried over from a previous project",
+        roleLeft: [
+          <strong>leading a team of three designers</strong>,
+          "organising the work, defining tasks, improving the design processes",
+          "a design system from scratch (styles, variables, typography, colour, components, interactions, motion, design patterns)",
+          "deepening my grasp of the domain in sessions with the analysts",
+          <strong>information architecture, user journeys and jobs to be done</strong>,
+          "the users, roles and permissions module",
+          "three months to deliver",
+        ],
+        roleRight: [
+          "close collaboration with the Product Owner and the development team",
+          "complex data mapping and modelling processes",
+          "managing data lakes and pipelines",
+          "mentoring junior designers",
         ],
         images: [
           { src: "/codete-04-data-flow.webp", alt: "Blurred data-flow diagram of the analytics platform, illegible for NDA reasons.", aspect: "907 / 225" },
