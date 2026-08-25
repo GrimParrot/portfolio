@@ -1,3 +1,4 @@
+import { Fragment } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { ChartNoAxesColumnIncreasing, GitBranch, Grid3x3, Terminal, type LucideIcon } from "lucide-react"
 import { useLang } from "@/i18n/LanguageContext"
@@ -5,7 +6,7 @@ import { copy, type Product } from "@/copy/codete.copy"
 import "@/styles/raporty-ds.css"
 import { Badge } from "@/components/ui/badge"
 import { ChapterRail } from "@/components/ChapterRail"
-import { MetaBar, Section, NdaImage, type NdaImageCrop } from "@/components/raporty-ds"
+import { MetaBar, Section, Divider, NdaImage, type NdaImageCrop } from "@/components/raporty-ds"
 
 /** Codete's own accent, standing in for the site's default blue on this page. */
 const PRIMARY = "#8B5CF6"
@@ -105,29 +106,34 @@ function ProductCard({ product, id, index, ndaLabel, imageNote }: { product: Pro
         <div className="pf-product-row">
           <span className="pf-product-label pf-overline">{product.eyebrow}</span>
 
+          {/* No frame of its own: the products are told apart by the hairline
+              between them, not by a box around each. */}
           <article
             style={{
               width: "100%", boxSizing: "border-box",
-              display: "flex", flexDirection: "column", gap: 32,
-              background: "var(--pf-surface-card)",
-              border: "var(--pf-hairline)",
-              borderRadius: 24,
-              padding: "clamp(20px, 3vw, 32px)",
+              display: "flex", flexDirection: "column", gap: 48,
             }}
           >
-            <span
-              aria-hidden
-              style={{
-                width: 32, height: 32, flexShrink: 0, borderRadius: 8,
-                background: "var(--pf-accent-500)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-              }}
-            >
-              <Icon size={19} strokeWidth={1.75} color="#fff" />
-            </span>
-
             <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
-              <h3 className="pf-h4">{product.title}</h3>
+              {/* Mark and title read as one line: the mark sits to the left of
+                  the name rather than above it. Aligned to the top rather than
+                  centred, because a title that wraps to three lines on a phone
+                  would otherwise leave the mark floating beside the middle of
+                  it. On the desktop widths, where every title is one line, the
+                  two are within a few pixels of each other. */}
+              <div style={{ display: "flex", alignItems: "flex-start", gap: 16 }}>
+                <span
+                  aria-hidden
+                  style={{
+                    width: 32, height: 32, flexShrink: 0, borderRadius: 8,
+                    background: "var(--pf-accent-500)",
+                    display: "flex", alignItems: "center", justifyContent: "center",
+                  }}
+                >
+                  <Icon size={19} strokeWidth={1.75} color="#fff" />
+                </span>
+                <h3 className="pf-h4">{product.title}</h3>
+              </div>
               <div className="flex flex-wrap gap-2">
                 {/* The same chip every other project page uses, including this
                     page's own hero. The design draws a slightly wider pill on a
@@ -139,8 +145,11 @@ function ProductCard({ product, id, index, ndaLabel, imageNote }: { product: Pro
                   </Badge>
                 ))}
               </div>
-              <p className="pf-body">{product.intro}</p>
             </div>
+
+            {/* The description stands on its own, a section apart from the name
+                and its tags, rather than crowding up under them. */}
+            <p className="pf-body">{product.intro}</p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
               <h4 className="pf-h4">{product.roleHeading}</h4>
@@ -236,9 +245,18 @@ export function CodeteCaseStudy() {
       </Section>
 
       {/* Four products, one rhythm — CHAPTER_IDS[0] is "intro", so the chapter
-          rail id for product i is offset by one. */}
+          rail id for product i is offset by one. A hairline separates one from
+          the next; it goes inside a Section so it lines up with the column
+          rather than running the 48px wider that Divider defaults to. */}
       {t.products.map((product, i) => (
-        <ProductCard key={CHAPTER_IDS[i + 1]} id={CHAPTER_IDS[i + 1]} index={i} product={product} ndaLabel={t.ndaLabel} imageNote={t.imageNote} />
+        <Fragment key={CHAPTER_IDS[i + 1]}>
+          {i > 0 && (
+            <Section>
+              <Divider />
+            </Section>
+          )}
+          <ProductCard id={CHAPTER_IDS[i + 1]} index={i} product={product} ndaLabel={t.ndaLabel} imageNote={t.imageNote} />
+        </Fragment>
       ))}
 
     </div>
