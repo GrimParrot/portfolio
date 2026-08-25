@@ -6,7 +6,7 @@ export interface Chapter {
   label: string
 }
 
-/** Fixed chapter rail down the right edge of a case study.
+/** Fixed chapter rail down the left edge of a case study.
  *
  * Three pages had grown their own version of this. Raporty and Client
  * Acquisition carried byte-identical copies of a pill that expands to show its
@@ -73,7 +73,7 @@ export function ChapterRail({
   return (
     <nav
       aria-label="Chapters"
-      className="hidden lg:flex fixed right-8 top-1/2 -translate-y-1/2 z-40 flex-col items-end gap-0.5"
+      className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 z-40 flex-col items-start gap-0.5"
     >
       {chapters.map((c) => {
         const isActive = active === c.id
@@ -103,30 +103,21 @@ export function ChapterRail({
             }}
             onMouseEnter={() => setHovered(c.id)}
             onMouseLeave={() => setHovered(null)}
-            className="flex items-center justify-end rounded-full border-0 bg-transparent cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            className="flex items-center justify-start rounded-full border-0 bg-transparent cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             style={{
               gap: on ? 10 : 0,
-              padding: on ? "7px 14px 7px 16px" : "7px 8px",
+              // Mirrored with the rail: the tighter side is the one the dot sits
+              // on, nearest the screen edge, and the roomier side is where the
+              // label expands into.
+              padding: on ? "7px 16px 7px 14px" : "7px 8px",
               backgroundColor: on ? "rgba(255,255,255,.86)" : "transparent",
               backdropFilter: on ? "blur(12px)" : "none",
               boxShadow: on ? "var(--pf-ring)" : "none",
               transition: "all var(--pf-duration) var(--pf-ease)",
             }}
           >
-            <span
-              className="whitespace-nowrap overflow-hidden"
-              style={{
-                font: "600 13px/1 var(--pf-font-body)",
-                letterSpacing: ".04em",
-                color: isActive ? accent : "var(--pf-text-muted)",
-                maxWidth: on ? 200 : 0,
-                opacity: on ? 1 : 0,
-                transition:
-                  "max-width var(--pf-duration) var(--pf-ease), opacity var(--pf-duration) var(--pf-ease)",
-              }}
-            >
-              {c.label}
-            </span>
+            {/* Dot first, so it stays pinned to the screen edge and the label
+                opens away from it, into the page. */}
             <span
               aria-hidden="true"
               className="shrink-0 rounded-full"
@@ -141,6 +132,20 @@ export function ChapterRail({
                 transition: "var(--pf-transition)",
               }}
             />
+            <span
+              className="whitespace-nowrap overflow-hidden"
+              style={{
+                font: "600 13px/1 var(--pf-font-body)",
+                letterSpacing: ".04em",
+                color: isActive ? accent : "var(--pf-text-muted)",
+                maxWidth: on ? 200 : 0,
+                opacity: on ? 1 : 0,
+                transition:
+                  "max-width var(--pf-duration) var(--pf-ease), opacity var(--pf-duration) var(--pf-ease)",
+              }}
+            >
+              {c.label}
+            </span>
           </button>
         )
       })}
