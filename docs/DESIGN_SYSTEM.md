@@ -156,8 +156,18 @@ Kafelek statystyki z count-up animacją (`useCountUp`, cubic ease-out, 1400ms). 
 ```
 
 ### NdaImage (zrzut ekranu objęty NDA)
-Wrapper na screenshot, którego nie wolno pokazać wprost: rysuje ikonę (`Frown`, lucide-react) i etykietę (`label`, np. "Under NDA"/"Objęte NDA") na środku obrazka. Props: `src`, `alt`, `label`, opcjonalnie `aspect` (CSS `aspect-ratio`) i `style`. Etykieta ma `aria-hidden` — kontekst NDA już niesie `alt`, więc nie dubluje się dla czytników ekranu.
+Wrapper na screenshot, którego nie wolno pokazać wprost: rysuje ikonę (`Frown`, lucide-react) i etykietę (`label`, np. "Under NDA"/"Objęte NDA") na środku obrazka. Props: `src`, `alt`, `label`, opcjonalnie `aspect` (CSS `aspect-ratio`), `crop` i `style`. Ramka to radius 16 + `var(--pf-hairline)`; plakietka stoi na płasko na 20% krycia w `--pf-text-muted`, w foncie display 24/37. Etykieta ma `aria-hidden` — kontekst NDA już niesie `alt`, więc nie dubluje się dla czytników ekranu.
+
+`crop` (`{ left, top, width, height }`, wartości w procentach) jest dla obrazków, które projekt **ustawia ręcznie** zamiast dopasowywać do ramki — np. szeroki pasek wycięty z góry wysokiej mapy albo mały diagram wypuszczony na środek szerokiego pola. Bez `crop` obrazek po prostu pokrywa ramkę (`object-fit: cover`). Procenty bierz wprost z Figmy; skalują się responsywnie same.
+
 **Ważne:** rozmycie musi być zapisane w samym pliku obrazka (eksport), NIE nałożone przez CSS `filter: blur()` — pliki w `public/` są serwowane publicznie, więc filtr CSS da się zdjąć jednym kliknięciem w devtools.
+
+### Karta produktu (Codete)
+Sekcja produktu to rząd `.pf-product-row`: numer w stałej kolumnie 180px (`.pf-product-label` + `.pf-overline`), 48px odstępu, a obok karta zajmująca resztę. Poniżej 1024px numer wskakuje nad kartę. Karta: `--pf-surface-card`, `var(--pf-hairline)`, radius 24, padding 32, `gap: 32` — kolejno znacznik 32×32 (radius 8, tło `--pf-accent-500`, ikona lucide 19px `strokeWidth 1.75` na biało), blok tytułu (h3 `.pf-h4` + chipy + intro), blok zakresu (h4 `.pf-h4` + `.pf-role-list`), rząd obrazków i podpis `.pf-caption` w `--pf-text-muted`.
+
+Chipy w karcie to `Badge` bez wariantu, z `rounded-full border-0 bg-[var(--pf-primary-100)] px-3 py-1.5 text-base font-normal leading-6` — pełna pigułka na kolorze linii, o stopień ciemniejszym niż powierzchnia `secondary`. `border-0` trzyma wysokość na 36px, bo przezroczysta ramka `Badge` dodałaby dwa piksele.
+
+`.pf-role-list` to **jedna** lista w dwóch szpaltach (`columns: 2`, `column-gap: 32px`, `break-inside: avoid`), nie dwie listy obok siebie: projekt dzieli ją wizualnie, ale czytnik ekranu ma usłyszeć jeden ciąg punktów. Poniżej 768px schodzi do jednej szpalty.
 
 ### NumBadge
 Mały kolorowy krążek z cyfrą (`color: PRIMARY`, 20×20px, `inline-flex`) do odnoszenia się do elementów na zrzucie ekranu w tekście opisu, np. "① Filtrowanie... ② akcje zbiorcze...".

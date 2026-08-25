@@ -1,36 +1,27 @@
-import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
+import { ChartNoAxesColumnIncreasing, GitBranch, Grid3x3, Terminal, type LucideIcon } from "lucide-react"
 import { useLang } from "@/i18n/LanguageContext"
 import { copy, type Product } from "@/copy/codete.copy"
 import "@/styles/raporty-ds.css"
 import { Badge } from "@/components/ui/badge"
 import { ChapterRail } from "@/components/ChapterRail"
-import { MetaBar, Section, NdaImage, StatCard, QuoteBlock } from "@/components/raporty-ds"
+import { MetaBar, Section, NdaImage, type NdaImageCrop } from "@/components/raporty-ds"
 
 /** Codete's own accent, standing in for the site's default blue on this page. */
-const PRIMARY = "#722ED1"
+const PRIMARY = "#8B5CF6"
 
-/** Screenshots whose backdrop behind the centred badge is light, measured by
- *  scaling each file to a single pixel: these read 248-255, the rest 8-32.
- *  They get a stronger badge, because a near-white badge vanishes on them.
- *
- *  Two the measurement could not settle, resolved by looking:
- *  02-product-logic is a single-frame animated WebP that ffmpeg will not
- *  decode, and is a diagram on white — light. 01-login averages 131 only
- *  because it is a white column beside a deep purple panel; the badge is
- *  centred, so it lands on the purple and stays with the dark group. */
-const LIGHT_SHOTS = new Set([
-  "/codete-01-dashboard-3.webp",
-  "/codete-01-logo.webp",
-  "/codete-01-typography.webp",
-  "/codete-02-product-logic.webp",
-  "/codete-02-user-interviews.webp",
-  "/codete-03-architecture.webp",
-  "/codete-04-dashboard.webp",
-  "/codete-04-pipelines.webp",
-  "/codete-04-plugin.webp",
-  "/codete-04-relation.webp",
-])
+/** One mark per product, in page order. These live here rather than in copy
+ *  because they do not translate — the same four glyphs serve both languages. */
+const PRODUCT_ICONS: LucideIcon[] = [Grid3x3, GitBranch, Terminal, ChartNoAxesColumnIncreasing]
+
+/** The two pictures the design places by hand instead of fitting to the frame:
+ *  a wide strip taken off the top of a tall map, and a small diagram floated in
+ *  the middle of a wide band. Percentages are the design's own. Every other
+ *  picture matches its frame's ratio and simply covers it. */
+const CROPS: Record<string, NdaImageCrop> = {
+  "/codete-01-information-architecture.webp": { left: "0.55%", top: "-0.16%", width: "98.91%", height: "197.24%" },
+  "/codete-04-data-flow.webp": { left: "20.98%", top: "-11.18%", width: "47.82%", height: "122.64%" },
+}
 
 const CHAPTER_IDS = ["intro", "management", "reconciliation", "devtools", "analytics"] as const
 
@@ -63,16 +54,6 @@ function Reveal({ children, style }: { children: React.ReactNode; style?: React.
   )
 }
 
-/** Wraps a row of cards so its StaggerItem children fade up one after another. */
-function StaggerGroup({ children, style, className }: { children: React.ReactNode; style?: React.CSSProperties; className?: string }) {
-  const reduce = useReducedMotion()
-  return (
-    <motion.div className={className} style={style} initial={reduce ? false : "hidden"} whileInView="show" viewport={{ once: true, amount: 0.2 }} variants={staggerParent}>
-      {children}
-    </motion.div>
-  )
-}
-
 /** Same as Reveal but plays immediately on mount instead of waiting for scroll — used for the hero, which is already in view on load. */
 function HeroStagger({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
   const reduce = useReducedMotion()
@@ -83,82 +64,18 @@ function HeroStagger({ children, style }: { children: React.ReactNode; style?: R
   )
 }
 
-/** Locates every number inside a stat string (e.g. "11–13%", "~20x") so each one
- * can be counted up independently while the surrounding characters stay put. */
-function parseNumberTokens(str: string) {
-  const regex = /\d+(?:[.,]\d+)?/g
-  const tokens: { value: number; decimals: number; index: number; length: number }[] = []
-  let m: RegExpExecArray | null
-  while ((m = regex.exec(str))) {
-    const normalized = m[0].replace(",", ".")
-    const decimals = normalized.includes(".") ? normalized.split(".")[1].length : 0
-    tokens.push({ value: parseFloat(normalized), decimals, index: m.index, length: m[0].length })
-  }
-  return tokens
-}
-
-/** Stat value that counts up from 0 once scrolled into view. Animates every number
- * found in the string (so ranges like "11-13%" count both ends), leaving prefixes/
- * suffixes ("~", "%", "x") untouched. */
-function AnimatedStat({ value }: { value: string }) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const [active, setActive] = useState(false)
-  const [progress, setProgress] = useState(0)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect() } },
-      { threshold: 0.4 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  useEffect(() => {
-    if (!active) return
-    const duration = 1400
-    const start = performance.now()
-    let raf: number
-    const tick = (now: number) => {
-      const t = Math.min((now - start) / duration, 1)
-      setProgress(1 - Math.pow(1 - t, 3))
-      if (t < 1) raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [active])
-
-  const tokens = parseNumberTokens(value)
-  if (tokens.length === 0) return <span ref={ref}>{value}</span>
-
-  let out = ""
-  let cursor = 0
-  for (const tok of tokens) {
-    out += value.slice(cursor, tok.index)
-    const current = tok.value * progress
-    out += tok.decimals > 0 ? current.toFixed(tok.decimals) : Math.round(current).toString()
-    cursor = tok.index + tok.length
-  }
-  out += value.slice(cursor)
-
-  return <span ref={ref}>{out}</span>
-}
-
-/** aspect strings look like "945 / 242" — the two numbers are that image's own
- *  design width/height. A row's images share one rendered height, so that
- *  same ratio doubles as the column's `fr` weight in the row's grid. */
+/** Reads "916 / 169" as the number the CSS grid wants. A row's pictures share
+ *  one rendered height, so that ratio doubles as the column's `fr` weight. */
 function ratio(aspect?: string): number {
   if (!aspect) return 1
   const [w, h] = aspect.split("/").map((n) => parseFloat(n))
   return w && h ? w / h : 1
 }
 
-/** A row of NDA screenshots sized off their own aspect ratios rather than an
- *  equal grid, so a 945/242 image doesn't get squeezed as wide as a 231/243
- *  one sitting next to it. Collapses to one column below md. */
-function ImageRow({ images, ndaLabel }: { images: Product["imagesAfterChallenge"]; ndaLabel: string }) {
+/** The one or two pictures closing a product card, sized off their own aspect
+ *  ratios rather than an equal split — so the wide diagram beside a narrow one
+ *  keeps the proportions the design gives it. Collapses to one column below md. */
+function ImageRow({ images, ndaLabel }: { images: Product["images"]; ndaLabel: string }) {
   const cols = images.map((im) => `${ratio(im.aspect)}fr`).join(" ")
   return (
     <div
@@ -166,94 +83,79 @@ function ImageRow({ images, ndaLabel }: { images: Product["imagesAfterChallenge"
       style={{ width: "100%", "--cols": cols } as React.CSSProperties}
     >
       {images.map((im, i) => (
-        <NdaImage key={i} src={im.src} alt={im.alt} label={ndaLabel} aspect={im.aspect} light={LIGHT_SHOTS.has(im.src)} />
+        <NdaImage key={i} src={im.src} alt={im.alt} label={ndaLabel} aspect={im.aspect} crop={CROPS[im.src]} />
       ))}
     </div>
   )
 }
 
-/** One product's full write-up: header, role, optional stats, challenge with
- *  an optional quote, and the before/after image rows. All four products
- *  share this exact rhythm, so they render from one component rather than
- *  four hand-copied blocks. */
-function ProductBlock({ product, id, ndaLabel }: { product: Product; id: string; ndaLabel: string }) {
+/** One product, as a card beside its number. Everything the reader needs about
+ *  that product is inside the one bordered box: what it was, what I did on it,
+ *  and the one or two pictures NDA leaves room to show. All four products share
+ *  this shape, so they render from one component rather than four hand-copied
+ *  blocks. */
+function ProductCard({ product, id, index, ndaLabel, imageNote }: { product: Product; id: string; index: number; ndaLabel: string; imageNote: string }) {
+  const Icon = PRODUCT_ICONS[index]
   return (
     <Section id={id}>
       <Reveal style={{ width: "100%" }}>
-        <header style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
-          <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>
-            {product.eyebrow}
-          </span>
-          <h2 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(32px, 6vw, 56px)", lineHeight: 1.15, color: "var(--pf-text-primary)" }}>
-            {product.title}
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            {product.tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="px-3 py-1.5 text-sm font-medium">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-        </header>
-      </Reveal>
+        <div className="pf-product-row">
+          <span className="pf-product-label pf-overline">{product.eyebrow}</span>
 
-      <Reveal style={{ width: "100%" }}>
-        <p className="pf-body">{product.intro}</p>
-      </Reveal>
+          <article
+            style={{
+              flex: "1 1 0", minWidth: 0, boxSizing: "border-box",
+              display: "flex", flexDirection: "column", gap: 32,
+              background: "var(--pf-surface-card)",
+              border: "var(--pf-hairline)",
+              borderRadius: 24,
+              padding: "clamp(20px, 3vw, 32px)",
+            }}
+          >
+            <span
+              aria-hidden
+              style={{
+                width: 32, height: 32, flexShrink: 0, borderRadius: 8,
+                background: "var(--pf-accent-500)",
+                display: "flex", alignItems: "center", justifyContent: "center",
+              }}
+            >
+              <Icon size={19} strokeWidth={1.75} color="#fff" />
+            </span>
 
-      <Reveal style={{ width: "100%" }}>
-        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,7fr)_minmax(0,9fr)] gap-10">
-          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-            <h3 style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
-              {product.roleHeading}
-            </h3>
-            <ul style={{ margin: 0, padding: "0 0 0 20px", listStyle: "disc", fontFamily: "var(--pf-font-body)", fontWeight: 400, fontSize: 18, lineHeight: "30px", color: "var(--pf-text-body)" }}>
-              {product.role.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <NdaImage src={product.heroImage.src} alt={product.heroImage.alt} label={ndaLabel} aspect={product.heroImage.aspect} light={LIGHT_SHOTS.has(product.heroImage.src)} />
+            <div style={{ display: "flex", flexDirection: "column", gap: 16, width: "100%" }}>
+              <h3 className="pf-h4">{product.title}</h3>
+              <div className="flex flex-wrap gap-2">
+                {/* The card's own chip, not the site's secondary Badge: the design
+                    gives these a full pill on the line colour, a step darker than
+                    Badge's surface. `border-0` keeps the box at the 36px the
+                    design draws — Badge's transparent border would add two. */}
+                {product.tags.map((tag) => (
+                  <Badge key={tag} className="rounded-full border-0 bg-[var(--pf-primary-100)] px-3 py-1.5 text-base font-normal leading-6 text-[color:var(--pf-text-primary)] hover:bg-[var(--pf-primary-100)]">
+                    {tag}
+                  </Badge>
+                ))}
+              </div>
+              <p className="pf-body">{product.intro}</p>
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
+              <h4 className="pf-h4">{product.roleHeading}</h4>
+              {/* One list in two balanced columns rather than two lists side by
+                  side: the design splits it visually, but a screen reader should
+                  still hear a single run of scope items. */}
+              <ul className="pf-role-list">
+                {product.role.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <ImageRow images={product.images} ndaLabel={ndaLabel} />
+
+            <p className="pf-caption" style={{ color: "var(--pf-text-muted)" }}>{imageNote}</p>
+          </article>
         </div>
-      </Reveal>
-
-      {/* Only product 01 ships stats — guard on presence rather than assuming every product has them. */}
-      {product.stats && (
-        <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ width: "100%" }}>
-          {product.stats.map((stat, i) => (
-            <StaggerItem key={i}>
-              <StatCard value={<AnimatedStat value={stat.value} />} label={stat.label} />
-            </StaggerItem>
-          ))}
-        </StaggerGroup>
-      )}
-
-      <Reveal style={{ width: "100%" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
-          <h3 style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
-            {product.challengeHeading}
-          </h3>
-          <p className="pf-body">{product.challenge}</p>
-          {/* Only product 02 ships a quote, pulled from user interviews. */}
-          {product.quote && <QuoteBlock size="md">{product.quote}</QuoteBlock>}
-        </div>
-      </Reveal>
-
-      <Reveal style={{ width: "100%" }}>
-        <ImageRow images={product.imagesAfterChallenge} ndaLabel={ndaLabel} />
-      </Reveal>
-
-      <Reveal style={{ width: "100%" }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
-          <h3 style={{ margin: 0, fontFamily: "var(--pf-font-body)", fontWeight: 700, fontSize: 22, lineHeight: "34px", color: "var(--pf-text-primary)" }}>
-            {product.solutionHeading}
-          </h3>
-          <p className="pf-body">{product.solution}</p>
-        </div>
-      </Reveal>
-
-      <Reveal style={{ width: "100%" }}>
-        <ImageRow images={product.imagesAfterSolution} ndaLabel={ndaLabel} />
       </Reveal>
     </Section>
   )
@@ -271,8 +173,8 @@ export function CodeteCaseStudy() {
     <div id="top" style={{ display: "flex", flexDirection: "column", gap: "clamp(56px, 10vw, 120px)", padding: "clamp(56px, 8vw, 96px) 0", alignItems: "center", width: "100%", boxSizing: "border-box",
       // Codete's accent is purple, not the site's default blue. Rebinding the
       // accent tokens here rather than hardcoding the hex per element means
-      // MetaBar labels and every image border pick it up on their own, and
-      // nothing outside this page is touched.
+      // MetaBar labels and the card marks pick it up on their own, and nothing
+      // outside this page is touched.
       "--pf-accent-500": PRIMARY,
       "--pf-text-accent": PRIMARY,
     } as React.CSSProperties}>
@@ -289,7 +191,7 @@ export function CodeteCaseStudy() {
               <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
                 <span style={{ fontFamily: "var(--pf-font-body)", fontWeight: 600, fontSize: 16, lineHeight: "22px", letterSpacing: "0.1em", color: "var(--pf-text-muted)" }}>{t.heroEyebrow}</span>
                 <h1 style={{ margin: 0, fontFamily: "var(--pf-font-display)", fontWeight: 700, fontSize: "clamp(40px, 10vw, 126px)", lineHeight: "clamp(44px, 10.5vw, 136px)", letterSpacing: "0em", color: "var(--pf-text-primary)", textWrap: "pretty" }}>
-                  {t.heroTitle}
+                  {t.heroTitle} <span style={{ color: "var(--pf-accent-500)" }}>{t.heroTitleAccent}</span>
                 </h1>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -307,15 +209,25 @@ export function CodeteCaseStudy() {
             <MetaBar items={t.metaBar} />
           </StaggerItem>
           <StaggerItem style={{ width: "100%" }}>
-            <img src="/codete-cover.webp" alt={t.coverAlt} style={{ width: "100%", height: "auto", display: "block", borderRadius: 24, border: "var(--pf-hairline)", boxSizing: "border-box" }} />
+            <figure style={{ margin: 0, display: "flex", flexDirection: "column", gap: 24, width: "100%" }}>
+              <img src="/codete-cover.webp" alt={t.coverAlt} style={{ width: "100%", height: "auto", display: "block", borderRadius: 24, border: "var(--pf-hairline)", boxSizing: "border-box" }} />
+              <figcaption className="pf-caption" style={{ color: "var(--pf-text-muted)" }}>{t.coverCaption}</figcaption>
+            </figure>
           </StaggerItem>
         </HeroStagger>
+      </Section>
+
+      {/* PRODUCTS */}
+      <Section>
+        <Reveal style={{ width: "100%" }}>
+          <h2 className="pf-h3">{t.productsHeading}</h2>
+        </Reveal>
       </Section>
 
       {/* Four products, one rhythm — CHAPTER_IDS[0] is "intro", so the chapter
           rail id for product i is offset by one. */}
       {t.products.map((product, i) => (
-        <ProductBlock key={CHAPTER_IDS[i + 1]} id={CHAPTER_IDS[i + 1]} product={product} ndaLabel={t.ndaLabel} />
+        <ProductCard key={CHAPTER_IDS[i + 1]} id={CHAPTER_IDS[i + 1]} index={i} product={product} ndaLabel={t.ndaLabel} imageNote={t.imageNote} />
       ))}
 
     </div>

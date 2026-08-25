@@ -1,5 +1,19 @@
 import { Frown } from "lucide-react"
 
+/** Where the picture sits inside its frame, as percentages of the frame.
+ *
+ *  Only needed when the frame deliberately shows part of the image rather
+ *  than all of it — a wide strip cropped from a tall diagram, or a small
+ *  drawing floated in the middle of a wide band. Both come straight from the
+ *  design, which positions those two images by hand instead of fitting them.
+ *  Leave it off and the picture simply covers the frame. */
+export interface NdaImageCrop {
+  left: string
+  top: string
+  width: string
+  height: string
+}
+
 export interface NdaImageProps {
   /** Path to the pre-blurred screenshot in public/. */
   src: string
@@ -8,9 +22,8 @@ export interface NdaImageProps {
   label: string
   /** CSS aspect-ratio, e.g. "16/9". Falls back to the image's own ratio when omitted. */
   aspect?: string
-  /** Set when the screenshot behind the badge is light. The badge is near-white,
-   *  so it needs more opacity to stay visible there than it does on a dark one. */
-  light?: boolean
+  /** Hand-placed crop. Omit for the default cover fit. */
+  crop?: NdaImageCrop
   style?: React.CSSProperties
 }
 
@@ -23,37 +36,40 @@ export interface NdaImageProps {
  *  piece of text sitting on top of the artwork, and it translates with the
  *  rest of the page.
  *
- *  Badge colour is #E3E3E3 straight from Figma — it sits between
- *  --pf-primary-200 (#D4D4D4) and --pf-border (#E7E7E7) with no exact token
- *  match, so it stays a literal hex rather than drifting the design onto a
- *  near-match token. */
-export function NdaImage({ src, alt, label, aspect, light, style }: NdaImageProps) {
+ *  Badge colour and the flat 20% opacity are what the design specifies. An
+ *  earlier version stepped the opacity up to 40% over light screenshots,
+ *  because a near-white badge vanished on them. That is gone with the
+ *  screenshots that needed it: every picture on the page is now a pale
+ *  diagram, so one value covers them all. */
+export function NdaImage({ src, alt, label, aspect, crop, style }: NdaImageProps) {
   return (
     <div
       style={{
         position: "relative",
         width: "100%",
         aspectRatio: aspect,
-        // 24px and a hairline border are how every case study frames an image.
-        // The hairline stays neutral rather than tinted, so it reads the same
-        // whatever accent the page around it happens to use.
-        borderRadius: 24,
+        // 16px and a hairline border are how this page frames a picture inside
+        // a product card. The hairline stays neutral rather than tinted, so it
+        // reads the same whatever accent the page around it happens to use.
+        borderRadius: 16,
         border: "var(--pf-hairline)",
         boxSizing: "border-box",
         overflow: "hidden",
-        background: "var(--pf-primary-50)",
+        background: "var(--pf-surface-card)",
         ...style,
       }}
     >
       <img
         src={src}
         alt={alt}
-        style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+        style={
+          crop
+            ? { position: "absolute", left: crop.left, top: crop.top, width: crop.width, height: crop.height, maxWidth: "none", display: "block" }
+            : { width: "100%", height: "100%", objectFit: "cover", display: "block" }
+        }
       />
       {/* Opacity sits on the wrapper rather than on the icon and the label
-          separately, so the two can never drift apart. A near-white badge
-          disappears on a light screenshot at the value that reads fine on a
-          dark one, hence the two steps. */}
+          separately, so the two can never drift apart. */}
       <div
         style={{
           position: "absolute",
@@ -63,21 +79,23 @@ export function NdaImage({ src, alt, label, aspect, light, style }: NdaImageProp
           alignItems: "center",
           justifyContent: "center",
           gap: 8,
-          opacity: light ? 0.4 : 0.2,
+          opacity: 0.2,
         }}
       >
-        <Frown size={49} strokeWidth={1.5} color="#E3E3E3" aria-hidden />
+        <Frown size={49} strokeWidth={1.5} color="var(--pf-text-muted)" aria-hidden />
         {/* Badge text is hidden from assistive technology: the image's alt text
             already conveys that it is blurred and redacted for NDA reasons, so
             repeating the badge label would announce the NDA context twice. */}
         <span
           aria-hidden
           style={{
-            fontFamily: "var(--pf-font-body)",
+            fontFamily: "var(--pf-font-display)",
             fontWeight: 600,
-            fontSize: 20,
-            lineHeight: "26px",
-            color: "#E3E3E3",
+            fontSize: 24,
+            lineHeight: "37px",
+            color: "var(--pf-text-muted)",
+            textAlign: "center",
+            whiteSpace: "nowrap",
           }}
         >
           {label}
