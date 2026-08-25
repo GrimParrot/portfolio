@@ -72,7 +72,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       {
         eyebrow: "01 · Management platform",
         title: "Redesign platformy do zarządzania",
-        tags: ["Enterprise", "Internal Tools", "Information Architecture", "Heavy Data", "Dashboard"],
+        tags: ["Redesign", "Enterprise", "Internal tools"],
         intro:
           "To narzędzie wewnętrzne dużego międzynarodowego operatora telekomunikacyjnego: firmy współpracujące, klienci i partnerzy razem z informacjami o nich i przypisanymi tokenami, użytkownicy z dostępami i stanowiskami. Do tego całe portfolio produktów, zamówienia, zarządzanie API i faktury. Korzystało z niego kilkaset osób.",
         roleHeading: "Moja rola",
@@ -94,7 +94,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       {
         eyebrow: "02 · DATA RECONCILIATION",
         title: "Platforma do negocjacji",
-        tags: ["B2B", "0→1", "Contract Management", "Data Reconciliation", "Design System", "Dashboard"],
+        tags: ["0→1 Design", "B2B SaaS", "Design System"],
         intro:
           "Narzędzie, w którym firmy zawierają ze sobą umowy i sprawdzają dane, które tym umowom podlegają. Zaprojektowałam cały produkt: mapowanie pól między systemami, które to porównanie robi za użytkownika, moduł negocjacji rozbieżności, logo, brand i design system od zera. 25+ widoków",
         roleHeading: "Moja rola",
@@ -116,7 +116,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       {
         eyebrow: "03 · DEV TOOLS",
         title: "Narzędzie dla deweloperów",
-        tags: ["DevTools", "B2B", "0→1", "Deployments & Releases", "Design System"],
+        tags: ["0→1 Design", "B2B SaaS", "Information Architecture"],
         intro:
           "Prowadziłam trzyosobowy zespół projektantów, ze mną włącznie. Zbudowaliśmy narzędzie dla deweloperów do nadzoru nad aplikacjami, pipeline'ami, środowiskami, deploymentami i release'ami.",
         roleHeading: "Moja rola",
@@ -138,7 +138,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       {
         eyebrow: "04 · DATA ANALYTICS",
         title: "Platforma do analizy danych",
-        tags: ["Data Analytics", "Heavy Data", "Data Lake", "0→1", "MVP"],
+        tags: ["MVP", "Enterprise", "Team Leadership"],
         intro:
           "Platforma do analizy danych, narzędzie dla analityków. Zbieranie surowych danych z data lake, budowanie pipeline'ów dla kolejnych etapów, katalogi danych, modelowanie i pluginy. Działające MVP miało powstać w 3 miesiące. Prowadziłam dwuosobowy zespół projektantów, ze mną włącznie.",
         roleHeading: "Moja rola",
@@ -201,7 +201,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       {
         eyebrow: "01 · Management platform",
         title: "Management platform redesign",
-        tags: ["Enterprise", "Internal Tools", "Information Architecture", "Heavy Data", "Dashboard"],
+        tags: ["Redesign", "Enterprise", "Internal tools"],
         intro:
           "This is an internal tool for a large international telecom operator: collaborating companies, clients and partners along with their information and assigned tokens, users with access levels and roles. On top of that, the entire product portfolio, orders, API management and invoices. Several hundred people used it.",
         roleHeading: "My role",
@@ -223,7 +223,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       {
         eyebrow: "02 · DATA RECONCILIATION",
         title: "Negotiation platform",
-        tags: ["B2B", "0→1", "Contract Management", "Data Reconciliation", "Design System", "Dashboard"],
+        tags: ["0→1 Design", "B2B SaaS", "Design System"],
         intro:
           "A tool where companies enter into contracts with each other and verify the data those contracts cover. I designed the entire product: field mapping between systems that runs the comparison for the user, a discrepancy-negotiation module, logo, brand and a design system from scratch. 25+ views",
         roleHeading: "My role",
@@ -245,7 +245,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       {
         eyebrow: "03 · DEV TOOLS",
         title: "Developer tool",
-        tags: ["DevTools", "B2B", "0→1", "Deployments & Releases", "Design System"],
+        tags: ["0→1 Design", "B2B SaaS", "Information Architecture"],
         intro:
           "I led a three-person team of designers, myself included. We built a tool for developers to oversee applications, pipelines, environments, deployments and releases.",
         roleHeading: "My role",
@@ -267,7 +267,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       {
         eyebrow: "04 · DATA ANALYTICS",
         title: "Data analytics platform",
-        tags: ["Data Analytics", "Heavy Data", "Data Lake", "0→1", "MVP"],
+        tags: ["MVP", "Enterprise", "Team Leadership"],
         intro:
           "A data analytics platform, a tool for analysts. Collecting raw data from a data lake, building pipelines for successive stages, data catalogs, modeling and plugins. A working MVP had to ship in 3 months. I led a two-person team of designers, myself included.",
         roleHeading: "My role",

@@ -19,7 +19,10 @@ const PRODUCT_ICONS: LucideIcon[] = [Grid3x3, GitBranch, Terminal, ChartNoAxesCo
  *  the middle of a wide band. Percentages are the design's own. Every other
  *  picture matches its frame's ratio and simply covers it. */
 const CROPS: Record<string, NdaImageCrop> = {
-  "/codete-01-information-architecture.webp": { left: "0.55%", top: "-0.16%", width: "98.91%", height: "197.24%" },
+  // Height is 194.9%, not the design's 197.24%: the exported fill carried
+  // Figma's own canvas chrome — the section outline and its name chip — which
+  // is cropped out of the file here, leaving it fractionally shorter.
+  "/codete-01-information-architecture.webp": { left: "0.55%", top: "0%", width: "98.91%", height: "194.9%" },
   "/codete-04-data-flow.webp": { left: "20.98%", top: "-11.18%", width: "47.82%", height: "122.64%" },
 }
 

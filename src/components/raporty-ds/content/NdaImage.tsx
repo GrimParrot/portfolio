@@ -64,7 +64,10 @@ export function NdaImage({ src, alt, label, aspect, crop, style }: NdaImageProps
         alt={alt}
         style={
           crop
-            ? { position: "absolute", left: crop.left, top: crop.top, width: crop.width, height: crop.height, maxWidth: "none", display: "block" }
+            ? // `cover` matters even here: width and height are both given, so any
+              // rounding between the stated box and the file's own ratio would
+              // otherwise stretch the picture instead of trimming a hair off it.
+              { position: "absolute", left: crop.left, top: crop.top, width: crop.width, height: crop.height, maxWidth: "none", display: "block", objectFit: "cover" }
             : { width: "100%", height: "100%", objectFit: "cover", display: "block" }
         }
       />
