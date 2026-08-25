@@ -9,6 +9,7 @@ export const projectTags = {
   raporty: ["Product Design", "B2B2C", "SaaS", "UX Strategy"],
   clientAcquisition: ["Redesign", "B2B2C", "SaaS", "Workflow Optimization"],
   planujemyto: ["0→1 Design", "Brand Identity", "Design System"],
+  codete: ["0→1 Design", "Enterprise B2B", "Design System", "UX Strategy"],
   naturalnie: ["Redesign", "E-commerce", "Mobile Design"],
   kafejeto: ["UI Design", "E-commerce", "Responsive Web"],
   stats: ["Redesign", "MarTech", "Data Visualization"],

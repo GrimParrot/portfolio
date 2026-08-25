@@ -1,3 +1,5 @@
+import { projectTags } from "@/data/projectTags"
+
 export type Product = {
   eyebrow: string
   title: string
@@ -19,6 +21,7 @@ export type Product = {
 type CodeteCopy = {
   chapters: Record<"intro" | "management" | "reconciliation" | "devtools" | "analytics", string>
   heroEyebrow: string
+  heroTags: string[]
   heroTitle: string
   heroLead: React.ReactNode
   ndaNote: React.ReactNode
@@ -38,6 +41,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       analytics: "Data analytics",
     },
     heroEyebrow: "PROJECTS · CODETE",
+    heroTags: projectTags.codete,
     heroTitle: "Dwa lata, cztery produkty",
     heroLead: (
       <>
@@ -230,6 +234,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       analytics: "Data analytics",
     },
     heroEyebrow: "PROJECTS · CODETE",
+    heroTags: projectTags.codete,
     heroTitle: "Two years, four products",
     heroLead: (
       <>

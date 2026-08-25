@@ -71,11 +71,14 @@ export const projects: Project[] = [
     href: "/ui/planujemyto",
   },
   {
-    title: "Case Study - Codete",
-    title_pl: "Case study - Codete",
-    description: "Dwa lata, cztery produkty B2B — każdy w innej domenie.",
-    description_en: "Two years, four B2B products — each in a different domain.",
+    title: "Codete · Four B2B products",
+    title_pl: "Codete · Cztery produkty B2B",
+    description:
+      "Wewnętrzna platforma enterprise, narzędzie do uzgadniania danych, narzędzie dla deweloperów i platforma danych w MVP. Trzy z nich potrzebowały design systemu od zera.",
+    description_en:
+      "An internal enterprise platform, a data-reconciliation tool, a developer tool and a data platform at MVP. Three of them needed a design system built from scratch.",
     tag: "Case Study",
+    tags: projectTags.codete,
     featured: true,
     bg: "bg-slate-50",
     image: "/codete-cover.webp",
