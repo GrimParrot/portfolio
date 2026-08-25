@@ -50,7 +50,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
     heroTitleAccent: "cztery produkty",
     heroLead: (
       <>
-        Podczas mojej 2-letniej pracy w Codete zaprojektowałam cztery <strong>złożone produkty B2B</strong>, każdy w innej domenie: wewnętrzna platforma enterprise, narzędzie do umów i uzgadniania danych, narzędzie dla zespołów technicznych i platforma analityczna w MVP. Trzy z nich wymagały stworzenia <strong>design systemu od zera</strong>, razem z logo i brandem. Przy każdym pracowałam <strong>end-to-end</strong>: architektura informacji, flow, UI, dokumentacja i handoff dla zespołów developerskich.
+        Podczas mojej 2-letniej pracy w Codete zaprojektowałam cztery <strong>złożone produkty B2B</strong>, każdy w innej domenie: wewnętrzna platforma enterprise, narzędzie do umów i uzgadniania danych, narzędzie dla zespołów technicznych i platforma analityczna w MVP. Wszystkie cztery wymagały stworzenia <strong>design systemu od zera</strong>, razem z logo i brandem. Przy każdym pracowałam <strong>end-to-end</strong>: architektura informacji, flow, UI, dokumentacja i handoff dla zespołów developerskich.
       </>
     ),
     ndaNote: (
@@ -216,7 +216,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
     heroTitleAccent: "four products",
     heroLead: (
       <>
-        Over my two years at Codete I designed four <strong>complex B2B products</strong>, each in a different domain: an internal enterprise platform, a tool for contracts and data reconciliation, a tool for technical teams and an analytics platform at MVP. Three of them needed a <strong>design system built from scratch</strong>, logo and brand included. On every one of them I worked <strong>end to end</strong>: information architecture, flows, UI, documentation and handoff to the development teams.
+        Over my two years at Codete I designed four <strong>complex B2B products</strong>, each in a different domain: an internal enterprise platform, a tool for contracts and data reconciliation, a tool for technical teams and an analytics platform at MVP. All four needed a <strong>design system built from scratch</strong>, logo and brand included. On every one of them I worked <strong>end to end</strong>: information architecture, flows, UI, documentation and handoff to the development teams.
       </>
     ),
     ndaNote: (
