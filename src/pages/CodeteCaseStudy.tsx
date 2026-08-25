@@ -107,7 +107,7 @@ function ProductCard({ product, id, index, ndaLabel, imageNote }: { product: Pro
 
           <article
             style={{
-              flex: "1 1 0", minWidth: 0, boxSizing: "border-box",
+              width: "100%", boxSizing: "border-box",
               display: "flex", flexDirection: "column", gap: 32,
               background: "var(--pf-surface-card)",
               border: "var(--pf-hairline)",

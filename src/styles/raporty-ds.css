@@ -29,16 +29,12 @@
   .pf-meta-bar { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Codete product row: the section number sits in a fixed 180px column beside
-   the card, 48px apart. Below the desktop column the number stacks above the
-   card instead — 180px of label plus a card is more than a tablet has room for,
-   and the number reads fine as a heading over the box it names. */
-.pf-product-row { display: flex; gap: 48px; align-items: flex-start; width: 100%; }
-.pf-product-label { width: 180px; flex-shrink: 0; }
-@media (max-width: 1024px) {
-  .pf-product-row { flex-direction: column; gap: 24px; }
-  .pf-product-label { width: auto; }
-}
+/* Codete product section. The topic label sits above its card, so the page
+   runs as one column all the way down: hero, "Products", and every section
+   share the same left edge and the same width. It used to be a fixed 180px
+   label column beside the card, which left the cards narrower than everything
+   above them and put the numbers on an edge of their own. */
+.pf-product-row { display: flex; flex-direction: column; gap: 24px; width: 100%; }
 
 /* The scope under "Moja rola": two lists side by side, 32px apart. They hold
    different things — what I built on the left, the conditions I built it under

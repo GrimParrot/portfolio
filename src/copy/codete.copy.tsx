@@ -62,7 +62,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       { label: "MOJA ROLA", value: "Senior UX/UI Designer" },
       { label: "Design Team", value: "1-4" },
       { label: "SKALA", value: "0→1 i redesign" },
-      { label: "DESIGN SYSTEMY", value: "3" },
+      { label: "DESIGN SYSTEMY", value: "4" },
     ],
     productsHeading: "Products",
     coverAlt:
@@ -228,7 +228,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       { label: "MY ROLE", value: "Senior UX/UI Designer" },
       { label: "Design Team", value: "1-4" },
       { label: "SCALE", value: "0→1 and redesign" },
-      { label: "DESIGN SYSTEMS", value: "3" },
+      { label: "DESIGN SYSTEMS", value: "4" },
     ],
     productsHeading: "Products",
     coverAlt:
