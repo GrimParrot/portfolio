@@ -47,6 +47,20 @@ export const projects: Project[] = [
     href: "/case-study/raporty",
   },
   {
+    title: "Codete · Four B2B products",
+    title_pl: "Codete · Cztery produkty B2B",
+    description:
+      "Wewnętrzna platforma enterprise, narzędzie do uzgadniania danych, narzędzie dla deweloperów i platforma danych w MVP. Trzy z nich potrzebowały design systemu od zera.",
+    description_en:
+      "An internal enterprise platform, a data-reconciliation tool, a developer tool and a data platform at MVP. Three of them needed a design system built from scratch.",
+    tag: "Case Study",
+    tags: projectTags.codete,
+    featured: true,
+    bg: "bg-slate-50",
+    image: "/codete-cover.webp",
+    href: "/case-study/codete",
+  },
+  {
     title: "Localo · Client Acquisition",
     title_pl: "Localo · Pozyskiwanie klientów",
     description:
@@ -69,20 +83,6 @@ export const projects: Project[] = [
     bg: "bg-[#eeeeff]",
     image: "/planujemyto-cover.webp",
     href: "/ui/planujemyto",
-  },
-  {
-    title: "Codete · Four B2B products",
-    title_pl: "Codete · Cztery produkty B2B",
-    description:
-      "Wewnętrzna platforma enterprise, narzędzie do uzgadniania danych, narzędzie dla deweloperów i platforma danych w MVP. Trzy z nich potrzebowały design systemu od zera.",
-    description_en:
-      "An internal enterprise platform, a data-reconciliation tool, a developer tool and a data platform at MVP. Three of them needed a design system built from scratch.",
-    tag: "Case Study",
-    tags: projectTags.codete,
-    featured: true,
-    bg: "bg-slate-50",
-    image: "/codete-cover.webp",
-    href: "/case-study/codete",
   },
   {
     title: "Naturalnie.pl",
