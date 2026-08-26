@@ -1,4 +1,6 @@
-/** Tagi projektu — po trzy: typ pracy, domena, specjalizacja. Te same w obu
+/** Tagi projektu — po trzy albo cztery. Zwykle typ pracy, domena i
+ *  specjalizacja; czwarty, gdy jest, dokłada coś, czego te trzy nie mieszczą
+ *  (u Codete to `NDA` — status projektu, nie umiejętność). Te same w obu
  *  językach, bo to terminy branżowe, których się nie tłumaczy.
  *
  *  Mieszkają tutaj, a nie w plikach copy ani w `projects.ts`, bo czytają je

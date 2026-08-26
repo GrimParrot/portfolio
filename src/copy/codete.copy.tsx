@@ -67,9 +67,9 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
     productsHeading: "Products",
     coverAlt:
       "Cztery ciemne makiety interfejsów, ułożone pod kątem na falistym fioletowym tle: platforma do zarządzania, narzędzie deweloperskie, uzgadnianie danych i analityka. Ilustracja poglądowa, nie zrzuty rzeczywistych produktów.",
-    coverCaption: "Materiał poglądowy, ze względu na NDA nie mogę pokazać rzeczywistych projektów",
+    coverCaption: "Materiał poglądowy, ze względu na NDA nie mogę pokazać rzeczywistych projektów.",
     imageNote:
-      "Ze względów NDA nie mogę upubliczniać materiałów. Jeśli chcesz dowiedzieć się więcej o tym projekcie daj znać :)",
+      "Ze względów NDA nie mogę upubliczniać materiałów. Jeśli chcesz dowiedzieć się więcej o tym projekcie daj znać.",
     ndaLabel: "Objęte NDA",
     products: [
       {
@@ -138,7 +138,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       },
       {
         eyebrow: "03 · DEV TOOLS",
-        title: "Narzędzie dla zespołów technicznych",
+        title: "Narzędzie dla deweloperów",
         tags: ["0→1 Design", "B2B SaaS", "Information Architecture"],
         intro: (
           <>
@@ -163,7 +163,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
           "ścisła, zwinna praca z Product Ownerem i developerami",
         ],
         images: [
-          { src: "/codete-03-architecture.webp", alt: "Rozmyty diagram architektury narzędzia dla zespołów technicznych, nieczytelny ze względu na NDA.", aspect: "4096 / 1034" },
+          { src: "/codete-03-architecture.webp", alt: "Rozmyty diagram architektury narzędzia dla deweloperów, nieczytelny ze względu na NDA.", aspect: "4096 / 1034" },
         ],
       },
       {
@@ -231,9 +231,9 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
     productsHeading: "Products",
     coverAlt:
       "Four dark interface mockups laid out at an angle on a wavy purple background: a management platform, a developer tool, data reconciliation and analytics. Indicative artwork, not screenshots of the real products.",
-    coverCaption: "Indicative artwork — NDA means I cannot show the real projects",
+    coverCaption: "Indicative artwork — NDA means I cannot show the real projects.",
     imageNote:
-      "NDA means I cannot publish the materials. If you would like to hear more about this project, let me know :)",
+      "NDA means I cannot publish the materials. If you would like to hear more about this project, let me know.",
     ndaLabel: "Under NDA",
     products: [
       {
@@ -302,7 +302,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
       },
       {
         eyebrow: "03 · DEV TOOLS",
-        title: "A tool for technical teams",
+        title: "A tool for developers",
         tags: ["0→1 Design", "B2B SaaS", "Information Architecture"],
         intro: (
           <>
@@ -327,7 +327,7 @@ export const copy: { pl: CodeteCopy; en: CodeteCopy } = {
           "close, agile work with the Product Owner and the developers",
         ],
         images: [
-          { src: "/codete-03-architecture.webp", alt: "Blurred architecture diagram of the tool for technical teams, illegible for NDA reasons.", aspect: "4096 / 1034" },
+          { src: "/codete-03-architecture.webp", alt: "Blurred architecture diagram of the developer tool, illegible for NDA reasons.", aspect: "4096 / 1034" },
         ],
       },
       {
