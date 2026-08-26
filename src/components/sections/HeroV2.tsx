@@ -10,7 +10,7 @@ const copy = {
   pl: {
     name: "Cześć, jestem Edyta, Product Designer",
     headingLine1: "Tworzę produkty end-to-end",
-    headingLine2: "z AI i z okiem na realnych ludzi.",
+    headingLine2: "z AI i z otwartym okiem na ludzi.",
     workBtn: "Zobacz moje projekty",
     // B2B, B2C i SaaS zapisuje się po polsku tak samo — tłumaczy się tu tylko
     // to, co naprawdę jest zdaniem, a nie skrótem branżowym.

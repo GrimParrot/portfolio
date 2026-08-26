@@ -16,7 +16,7 @@ Tożsamość schodzi do eyebrow w wersalikach, a rolę głównego nagłówka prz
         CZEŚĆ, JESTEM EDYTA, PRODUCT DESIGNER        ← eyebrow, wersaliki
 
         Tworzę produkty end-to-end
-        z AI i z okiem na realnych ludzi.             ← <h1>, bold
+        z AI i z otwartym okiem na ludzi.             ← <h1>, bold
 
         [B2B] [B2C] [SaaS] [8+ lat doświadczenia] [zorientowana na AI]
 
@@ -45,7 +45,7 @@ Tożsamość schodzi do eyebrow w wersalikach, a rolę głównego nagłówka prz
 |---|---|---|
 | `name` | Cześć, jestem Edyta, Product Designer | Hi, I'm Edyta, Product Designer |
 | `headingLine1` | Tworzę produkty end-to-end | I build products end-to-end |
-| `headingLine2` | z AI i z okiem na realnych ludzi. | with AI and eyes on real people. |
+| `headingLine2` | z AI i z otwartym okiem na ludzi. | with AI and eyes on real people. |
 | `workBtn` | Zobacz moje projekty | See my work |
 | `tags` | B2B, B2C, SaaS, 8+ lat doświadczenia, zorientowana na AI | B2B, B2C, SaaS, 8+ years exp, AI-oriented |
 
