@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge"
 import { useLayoutEffect, useRef, type ReactNode } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { Lightbulb } from "lucide-react"
-import { useLang } from "@/i18n/LanguageContext"
+import { useLang } from "@/i18n/lang"
 import { copy } from "@/copy/banneroza.copy"
 import { ChapterRail } from "@/components/ChapterRail"
 

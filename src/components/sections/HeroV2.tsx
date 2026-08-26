@@ -2,7 +2,7 @@ import { ArrowDown } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Magnetic } from "@/components/Magnetic"
-import { useLang } from "@/i18n/LanguageContext"
+import { useLang } from "@/i18n/lang"
 import { smoothScrollTo } from "@/lib/lenis"
 import { Plasma } from "./hero-v2/Plasma"
 

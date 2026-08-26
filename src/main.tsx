@@ -1,21 +1,7 @@
-import { StrictMode, useEffect } from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
-import { getLenis } from './lib/lenis'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
-  // A gallery path renders the homepage with a modal over it, so opening or
-  // closing one is not a page change and must not move the page underneath —
-  // otherwise you lose your place in the grid every time you shut a project.
-  const page = galleryPaths().includes(pathname) ? "/" : pathname
-  useEffect(() => {
-    const lenis = getLenis()
-    if (lenis) lenis.scrollTo(0, { immediate: true })
-    else window.scrollTo(0, 0)
-  }, [page])
-  return null
-}
 import './index.css'
 import App from './App.tsx'
 import { SmoothScroll } from './components/SmoothScroll.tsx'
@@ -26,6 +12,7 @@ import { RaportyV1Page } from './pages/RaportyV1Page.tsx'
 import { LanguageProvider } from './i18n/LanguageContext.tsx'
 import { galleryPaths } from './data/projects.ts'
 import { Analytics } from '@vercel/analytics/react'
+import { ScrollToTop } from './components/ScrollToTop.tsx'
 
 // scripts/prerender.mjs ships every route as finished HTML so crawlers that do
 // not run JavaScript still get the text. React clears #root itself when it

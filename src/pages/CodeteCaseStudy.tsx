@@ -1,7 +1,7 @@
 import { Fragment } from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { ChartNoAxesColumnIncreasing, GitBranch, Grid3x3, Terminal, type LucideIcon } from "lucide-react"
-import { useLang } from "@/i18n/LanguageContext"
+import { useLang } from "@/i18n/lang"
 import { copy, type Product } from "@/copy/codete.copy"
 import "@/styles/raporty-ds.css"
 import { Badge } from "@/components/ui/badge"

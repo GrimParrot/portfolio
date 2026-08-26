@@ -319,7 +319,10 @@ export const Plasma = ({
       }
       try {
         containerEl?.removeChild(canvas)
-      } catch {}
+      } catch {
+        // The canvas is already gone when React has torn the container down
+        // first; nothing to remove and nothing to report.
+      }
     }
   }, [color, speed, direction, scale, opacity, mouseInteractive, renderScale, maxDpr, targetFps, iterations])
 

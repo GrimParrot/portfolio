@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { motion, useReducedMotion } from "motion/react"
-import { useLang } from "@/i18n/LanguageContext"
+import { useLang } from "@/i18n/lang"
 import { copy } from "@/copy/raporty.copy"
 import "@/styles/raporty-ds.css"
 import { Badge } from "@/components/ui/badge"
