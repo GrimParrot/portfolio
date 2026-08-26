@@ -104,6 +104,9 @@ export const projects: Project[] = [
     image: "/kafejeto/okladka.jpg",
     href: "/ui/kafejeto",
   },
+  /* Ukryte na razie — poza galerią, poza routerem i poza prerenderem, bo
+     wszystkie trzy czytają tę tablicę. Odkrycie = zdjęcie tego komentarza;
+     wpisy w `modalContent` w Projects.tsx zostają na miejscu i czekają.
   {
     title: "Stats Redesign",
     title_pl: "Redesign statystyk",
@@ -126,6 +129,7 @@ export const projects: Project[] = [
     image: "/dashboard-cover.webp",
     href: "/ui/dashboard",
   },
+  */
   {
     title: "Banner Revolution",
     title_pl: "Szyldowe rewolucje",

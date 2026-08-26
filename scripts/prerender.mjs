@@ -32,7 +32,13 @@ const SITE = "https://www.edytasup.run"
  *  added, renamed or unpublished there from silently missing its static page —
  *  the same single source of truth the router and the gallery read. */
 async function routes() {
-  const src = await readFile(join(ROOT, "src/data/projects.ts"), "utf8")
+  const file = await readFile(join(ROOT, "src/data/projects.ts"), "utf8")
+  // Commented-out entries are how a project gets unpublished for a while, so
+  // they have to disappear from here too. This reads the file as text rather
+  // than importing it, and a regex cannot see that a block is commented out —
+  // strip the comments first, or an unpublished project keeps its static page
+  // and its sitemap line while vanishing from the gallery and the router.
+  const src = file.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "")
   // No project literal nests a brace, so each {...} is exactly one entry —
   // enough to read its href and whether it is featured without pulling a TS
   // parser in just to build a sitemap.

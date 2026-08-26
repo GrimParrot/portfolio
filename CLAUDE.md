@@ -90,7 +90,7 @@ Aplikacja renderuje się w całości po stronie klienta, więc każdy adres zwra
 
 Czego nie ruszać:
 
-- **Lista tras pochodzi z `src/data/projects.ts`** (te same `href`, które czyta router i galeria) plus `/`. Nowy projekt dostaje statyczną stronę sam z siebie — nie dopisuj tras w skrypcie.
+- **Lista tras pochodzi z `src/data/projects.ts`** (te same `href`, które czyta router i galeria) plus `/`. Nowy projekt dostaje statyczną stronę sam z siebie — nie dopisuj tras w skrypcie. Skrypt czyta ten plik **jako tekst** i wyłuskuje wpisy regexem, więc przed dopasowaniem wycina komentarze: bez tego zakomentowany projekt (patrz punkt 6, krok 4) znikałby z galerii i routera, ale dalej dostawałby statyczną stronę i wpis w sitemapie. Nie usuwaj tego czyszczenia.
 - **`dist/sitemap.xml` też generuje ten skrypt.** Nie ma już `public/sitemap.xml` — inaczej lista tras i sitemap znowu by się rozjechały (tak zgubiło się `/ui/planujemyto`).
 - **`document.querySelectorAll('[data-prerendered]')` w `main.tsx`.** Modal projektu to portal do `<body>`, poza `#root`. React czyści `#root` sam, ale o tym rodzeństwie nie wie i zamontowałby drugi modal obok prerenderowanego. Skrypt go znakuje, `main.tsx` usuwa przed `createRoot`.
 - **Snapshot leci z `prefers-reduced-motion: reduce`.** Dzięki temu `initial={reduce ? false : "hidden"}` nie zapisuje elementów z `opacity: 0` (czyli treści niewidocznej dla czytającego bez JS), a Lenis w ogóle nie startuje.

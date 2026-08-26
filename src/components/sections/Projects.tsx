@@ -32,7 +32,7 @@ const modalContent: Record<string, () => React.ReactNode> = {
 const copy = {
   pl: {
     caseStudyHeading: "Wybrane case study",
-    otherHeading: "Galeria projektów",
+    otherHeading: "Projekty poboczne",
     filters: [
       { id: "all" as Filter, label: "Wszystkie" },
       { id: "UI" as Filter, label: "UI" },
@@ -41,7 +41,7 @@ const copy = {
   },
   en: {
     caseStudyHeading: "Selected case study",
-    otherHeading: "Project gallery",
+    otherHeading: "Side projects",
     filters: [
       { id: "all" as Filter, label: "All" },
       { id: "UI" as Filter, label: "UI" },
