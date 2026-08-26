@@ -62,10 +62,14 @@ export function HeroV2() {
         {/* Dwa twarde wiersze, nie zawijanie — nagłówek jest teraz zdaniem, a nie
             dwoma słowami.
 
-            Dzielnik 16 to zmierzona szerokość najszerszego wiersza w wadze 700
-            z tracking-tight: "with AI and eyes on real people." zajmuje ~14.9em,
+            Dzielnik 15.4 to zmierzona szerokość najszerszego wiersza w wadze 500
+            z tracking-tight: "with AI and eyes on real people." zajmuje ~14.3em,
             mimo że PL ma więcej znaków — decyduje szerokość liter (w, m), nie ich
             liczba. Reszta to zapas na różnice w renderowaniu fontu.
+
+            Każda zmiana wagi zmienia ten dzielnik: 900 → 15.1em, 700 → 14.9em,
+            500 → 14.3em, 400 → 14.4em. Przy podmianie font-* przelicz go, inaczej
+            drugi wiersz cicho pęknie na trzeci w jednym z języków.
 
             Wartości brane z realnego renderu, nie z pomiaru na ukrytym elemencie:
             ten drugi zaniża o ~3% i przy zbyt luźnym dzielniku angielski wiersz
@@ -74,8 +78,8 @@ export function HeroV2() {
             calc(100vw - 48px), nie samo vw: px-6 zabiera 24px z każdej strony,
             a przy czystym vw drugi wiersz EN pękał na trzeci na 375px. */}
         <h1
-          className="font-bold text-[#0A0A0A] tracking-tight leading-[0.95] mb-12"
-          style={{ fontSize: "clamp(1.1rem, calc((100vw - 48px) / 16), 4.75rem)" }}
+          className="font-medium text-[#0A0A0A] tracking-tight leading-[1.05] mb-12"
+          style={{ fontSize: "clamp(1.1rem, calc((100vw - 48px) / 15.4), 3.75rem)" }}
         >
           {t.headingLine1}
           <br />
