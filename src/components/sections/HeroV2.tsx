@@ -8,18 +8,18 @@ import { Plasma } from "./hero-v2/Plasma"
 
 const copy = {
   pl: {
-    name: "Cześć, jestem Edyta",
-    headingLine1: "Product",
-    headingLine2: "Designer",
+    name: "Cześć, jestem Edyta, Product Designer",
+    headingLine1: "Tworzę produkty end-to-end",
+    headingLine2: "z AI i z okiem na realnych ludzi.",
     workBtn: "Zobacz moje projekty",
     // B2B, B2C i SaaS zapisuje się po polsku tak samo — tłumaczy się tu tylko
     // to, co naprawdę jest zdaniem, a nie skrótem branżowym.
     tags: ["B2B", "B2C", "SaaS", "8+ lat doświadczenia", "zorientowana na AI"],
   },
   en: {
-    name: "Hi, I'm Edyta",
-    headingLine1: "Product",
-    headingLine2: "Designer",
+    name: "Hi, I'm Edyta, Product Designer",
+    headingLine1: "I build products end-to-end",
+    headingLine2: "with AI and eyes on real people.",
     workBtn: "See my work",
     tags: ["B2B", "B2C", "SaaS", "8+ years exp", "AI-oriented"],
   },
@@ -50,11 +50,32 @@ export function HeroV2() {
           button reads #0A0A0A but painted out around #6B6B6B, because it lands
           where the fade is already 40% white. The copy belongs above it. */}
       <div className="relative z-30 w-full max-w-[1200px] mx-auto px-6 text-center flex flex-col items-center pointer-events-none">
-        <p className="text-foreground text-base md:text-lg font-medium mb-5">{t.name}</p>
+        {/* Eyebrow, nie zdanie: wersaliki robi CSS, więc źródłowy tekst zostaje
+            normalnie zapisany i nie psuje się przy przełączeniu języka.
 
+            Cięższe rozstrzelenie dopiero od md. PL ma tu 37 znaków i przy
+            0.18em samo rozstrzelenie zjada 80px — na 375px wiersz potrzebował
+            336px przy 327px dostępnych i łamał się po "EDYTA,", zostawiając
+            osierocone "DESIGNER". 0.12em oddaje te 27px i mieści go w jednej linii. */}
+        <p className="text-muted-foreground text-xs md:text-sm font-semibold uppercase tracking-[0.12em] md:tracking-[0.18em] mb-6">{t.name}</p>
+
+        {/* Dwa twarde wiersze, nie zawijanie — nagłówek jest teraz zdaniem, a nie
+            dwoma słowami.
+
+            Dzielnik 16 to zmierzona szerokość najszerszego wiersza w wadze 700
+            z tracking-tight: "with AI and eyes on real people." zajmuje ~14.9em,
+            mimo że PL ma więcej znaków — decyduje szerokość liter (w, m), nie ich
+            liczba. Reszta to zapas na różnice w renderowaniu fontu.
+
+            Wartości brane z realnego renderu, nie z pomiaru na ukrytym elemencie:
+            ten drugi zaniża o ~3% i przy zbyt luźnym dzielniku angielski wiersz
+            pęka na trzeci (potrzebował 1155px przy kontenerze 1152px).
+
+            calc(100vw - 48px), nie samo vw: px-6 zabiera 24px z każdej strony,
+            a przy czystym vw drugi wiersz EN pękał na trzeci na 375px. */}
         <h1
-          className="font-black text-[#0A0A0A] leading-[0.9] mb-12"
-          style={{ fontSize: "clamp(2.75rem, 13vw, 13rem)" }}
+          className="font-bold text-[#0A0A0A] tracking-tight leading-[0.95] mb-12"
+          style={{ fontSize: "clamp(1.1rem, calc((100vw - 48px) / 16), 4.75rem)" }}
         >
           {t.headingLine1}
           <br />
